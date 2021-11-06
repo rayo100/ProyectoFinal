@@ -23,6 +23,7 @@ public class TetrisGUI extends JFrame {
     public void prepareElementos(){
         setPreferredSize(new Dimension(600,200));
         pack();
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
         setLayout(new BorderLayout());
