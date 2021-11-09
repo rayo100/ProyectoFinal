@@ -56,7 +56,7 @@
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
           <text value="Play"/>
-          <verticalAlignment value="1"/>
+          <verticalAlignment value="0"/>
           <verticalTextPosition value="0"/>
         </properties>
       </component>

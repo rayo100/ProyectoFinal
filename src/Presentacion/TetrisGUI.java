@@ -4,12 +4,15 @@ import java.awt.*;
 import java.awt.Font;
 
 public class TetrisGUI extends JFrame {
-    private JLabel titulo;
+    //Panel botones
     private JButton play;
     private JButton credits;
     private JButton exit;
     private JPanel botones;
+    //Panel textos
     private JPanel textos;
+    private JLabel titulo;
+
     private TetrisGUI(String title) {
         super(title);
         prepareElementos();
