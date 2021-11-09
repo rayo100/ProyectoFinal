@@ -1,7 +1,11 @@
 package Presentacion;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
+import java.awt.Font;
 
 public class Tetris extends JFrame {
     //Panel options
@@ -51,22 +55,33 @@ public class Tetris extends JFrame {
         pack();
         setResizable(false);
         setLayout(new BorderLayout());
+        Font font = new Font("Arial Bold", Font.ITALIC, 16);
+        Font font2 = new Font("Arial", Font.BOLD, 16);
         options = new JPanel(new GridLayout(2,2));
+        options.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Opcions")));
         start = new JButton("Start");
+        start.setFont(font2);
         restart = new JButton("Restart");
+        restart.setFont(font2);
         save = new JButton("Save");
+        save.setFont(font2);
         help = new JButton("Help");
+        help.setFont(font2);
         options.add(start);
         options.add(restart);
         options.add(save);
         options.add(help);
 
         configurations = new JPanel(new GridLayout(3,1));
+        configurations.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Configurations")));
         level = new JLabel("Level: ");
+        level.setFont(font);
         level.setHorizontalAlignment(SwingConstants.CENTER);
         velocity = new JLabel("Velocity: ");
+        velocity.setFont(font);
         velocity.setHorizontalAlignment(SwingConstants.CENTER);
         color = new JLabel("Color: ");
+        color.setFont(font);
         color.setHorizontalAlignment(SwingConstants.CENTER);
         comboLevel = new JComboBox();
         comboLevel.addItem("Easy");
@@ -89,16 +104,22 @@ public class Tetris extends JFrame {
 
         figura = new JPanel(new GridLayout(1,1));
         nextFigura = new JLabel("Next Figure");
+        nextFigura.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Figures")));
+        nextFigura.setFont(font);
         nextFigura.setHorizontalAlignment(SwingConstants.CENTER);
         nextFigura.setVerticalAlignment(SwingConstants.NORTH);
         figura.add(nextFigura);
 
         information = new JPanel(new GridLayout(3,1));
+        information.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Information")));
         time = new JLabel("Time: ");
+        time.setFont(font);
         time.setHorizontalAlignment(SwingConstants.CENTER);
         score = new JLabel("Score: ");
+        score.setFont(font);
         score.setHorizontalAlignment(SwingConstants.CENTER);
         nickname = new JLabel("Nickname: ");
+        nickname.setFont(font);
         nickname.setHorizontalAlignment(SwingConstants.CENTER);
         textTime = new JTextField();
         textScore = new JTextField();
@@ -122,8 +143,11 @@ public class Tetris extends JFrame {
         principal3.add(principal);
         principal3.add(principal2);
 
-        add(principal3,BorderLayout.WEST);
-        //add(tablero,BorderLayout.CENTER);
+        tablero = new JPanel(new GridLayout(1,2));
+        tablero.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Board")));
+
+        add(principal3, BorderLayout.WEST);
+        add(tablero, BorderLayout.CENTER);
 
     }
 

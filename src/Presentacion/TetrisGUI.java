@@ -1,5 +1,8 @@
 package Presentacion;
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.Font;
 
@@ -38,6 +41,7 @@ public class TetrisGUI extends JFrame {
         titulo = new JLabel("WELCOME TO TETRIS GAME");
         titulo.setFont(font);
         botones = new JPanel(new GridLayout(1,3));
+        botones.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Opcions")));
         play = new JButton("Play");
         //play.setMinimumSize(new Dimension(20,20));
         //play.setMaximumSize(new Dimension(150,60));
