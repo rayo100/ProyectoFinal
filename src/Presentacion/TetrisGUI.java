@@ -35,6 +35,10 @@ public class TetrisGUI extends JFrame {
         pack();
         setResizable(false);
         setLayout(new BorderLayout());
+        prepareElementos1();
+        prepareElementos2();
+    }
+    private void prepareElementos1(){
         Font font = new Font("Times New Roman", Font.BOLD, 40);
         textos = new JPanel(new GridLayout(1,1));
         textos.setBackground(Color.CYAN);
@@ -48,6 +52,8 @@ public class TetrisGUI extends JFrame {
         //play.setPreferredSize(new Dimension(60,30));
         credits = new JButton("Credits");
         exit = new JButton("Exit");
+    }
+    private void prepareElementos2(){
         textos.add(titulo);
         botones.add(play);
         botones.add(credits);
@@ -55,6 +61,5 @@ public class TetrisGUI extends JFrame {
         add(textos,BorderLayout.CENTER);
         add(botones,BorderLayout.SOUTH);
     }
-
 
 }
