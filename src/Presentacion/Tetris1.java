@@ -7,7 +7,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.Font;
 
-public class Tetris extends JFrame {
+public class Tetris1 extends JFrame {
     //Panel options
     private JPanel options;
     private JButton start;
@@ -35,23 +35,21 @@ public class Tetris extends JFrame {
     private JLabel score;
     private JTextField textNickname;
     private JLabel nickname;
-
     private JPanel principal;
     private JPanel principal2;
     private JPanel principal3;
+    //Tamano ventana
+    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width;
+    private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height - 100;
 
-    private Tetris(String title) {
+    public Tetris1(String title) {
         super(title);
         prepareElementos();
     }
-    public static void main(String[] args) {
-        Tetris frame = new Tetris("Tetris Game");
-        frame.setVisible(true);
-    }
     public void prepareElementos(){
-        setPreferredSize(new Dimension(1000,800));
+        setPreferredSize(new Dimension(ANCHO,ALTO));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //setLocationRelativeTo(null);
+        //setLocationRelativeTo();
         pack();
         setResizable(false);
         setLayout(new BorderLayout());
