@@ -9,8 +9,9 @@ public class TetrisMain extends JFrame {
     //Tamano ventana
     private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width / 2;
     private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height / 2;
+    private JPanel mainPanel;
     //Panel bottons
-    private JButton play;
+    private JButton mode;
     private JButton credits;
     private JButton exit;
     private JPanel botones;
@@ -19,7 +20,7 @@ public class TetrisMain extends JFrame {
     private ImageIcon icon;
     private JLabel labelIcon;
 
-    private TetrisMain(String title) {
+    public TetrisMain(String title) {
         super(title);
         prepareElementosMain();
         prepareAcciones();
@@ -40,36 +41,44 @@ public class TetrisMain extends JFrame {
         prepareElementosM2();
     }
     private void prepareElementosM1(){
+        mainPanel = new JPanel(new GridLayout(2,1));
         iconTetris = new JPanel();
         icon = new ImageIcon("tetris.jpg");
         labelIcon = new JLabel(null,icon,SwingConstants.CENTER);
         iconTetris.add(labelIcon);
-        botones = new JPanel(new GridLayout(1,3));
+        botones = new JPanel();
+        botones.setLayout(null);
         botones.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Opciones")));
-        play = new JButton("Play");
+        mode = new JButton("Mode");
+        mode.setBounds(120 ,100,220,30);
         credits = new JButton("Credits");
+        credits.setBounds(360,100,220,30);
         exit = new JButton("Exit");
+        exit.setBounds(600,100,220,30);
     }
     private void prepareElementosM2(){
-        botones.add(play);
+        botones.add(mode);
         botones.add(credits);
         botones.add(exit);
-        add(iconTetris,BorderLayout.CENTER);
-        add(botones,BorderLayout.SOUTH);
+        mainPanel.add(iconTetris);
+        mainPanel.add(botones);
+        add(mainPanel,BorderLayout.CENTER);
     }
     private void prepareAcciones(){
-        play.addActionListener(e -> prepareTablero());
+        mode.addActionListener(e -> prepareMode());
         credits.addActionListener(e -> irACreditos());
         exit.addActionListener(e -> salga());
     }
-    private void prepareTablero(){
+
+    private void prepareMode() {
         setVisible(false);
-        Tetris1 frame = new Tetris1("Tetris Game");
+        Mode frame = new Mode("Game Mode", mainPanel);
         frame.setVisible(true);
     }
+
     private void irACreditos() {
         setVisible(false);
-        Creditos frame = new Creditos("Creditos");
+        Credits frame = new Credits("Credits");
         frame.setVisible(true);
     }
     private void salga() {

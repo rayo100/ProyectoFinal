@@ -29,7 +29,7 @@ public class Tetris1 extends JFrame {
     private JLabel nextFigura;
     //Panel information
     private JPanel information;
-    private JPanel information2;
+    //private JPanel information2;
     private JTextField textTime;
     private JLabel time;
     private JTextField textScore;
@@ -50,7 +50,6 @@ public class Tetris1 extends JFrame {
     public void prepareElementos(){
         setPreferredSize(new Dimension(ANCHO,ALTO));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //setLocationRelativeTo();
         pack();
         setResizable(false);
         setLayout(new BorderLayout());
@@ -131,8 +130,8 @@ public class Tetris1 extends JFrame {
         information.add(score);
         information.add(textScore);
 
-        information2 = new JPanel(new GridLayout(3,1));
-        information2.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Player # 2")));
+        //information2 = new JPanel(new GridLayout(3,1));
+        //information2.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Player # 2")));
         time = new JLabel("Time: ");
         time.setFont(font);
         time.setHorizontalAlignment(SwingConstants.CENTER);
@@ -146,12 +145,12 @@ public class Tetris1 extends JFrame {
         textScore = new JTextField();
         textNickname = new JTextField();
 
-        information2.add(nickname);
-        information2.add(textNickname);
-        information2.add(time);
-        information2.add(textTime);
-        information2.add(score);
-        information2.add(textScore);
+        //information2.add(nickname);
+        //information2.add(textNickname);
+        //information2.add(time);
+        //information2.add(textTime);
+        //information2.add(score);
+        //information2.add(textScore);
 
         principal = new JPanel(new GridLayout(2,2));
         principal.add(configurations);
@@ -159,7 +158,7 @@ public class Tetris1 extends JFrame {
         principal.add(options);
         principal2 = new JPanel(new GridLayout(2,1));
         principal2.add(information);
-        principal2.add(information2);
+        //principal2.add(information2);
 
         principal3 = new JPanel(new GridLayout(2,1));
         principal3.add(principal);
