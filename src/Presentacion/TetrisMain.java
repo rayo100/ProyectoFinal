@@ -14,6 +14,7 @@ public class TetrisMain extends JFrame {
     private JButton mode;
     private JButton credits;
     private JButton exit;
+    private JButton load;
     private JPanel botones;
     //Panel images
     private JPanel iconTetris;
@@ -39,6 +40,7 @@ public class TetrisMain extends JFrame {
         setLayout(new BorderLayout());
         prepareElementosM1();
         prepareElementosM2();
+
     }
     private void prepareElementosM1(){
         mainPanel = new JPanel(new GridLayout(2,1));
@@ -46,23 +48,21 @@ public class TetrisMain extends JFrame {
         icon = new ImageIcon("tetris.jpg");
         labelIcon = new JLabel(null,icon,SwingConstants.CENTER);
         iconTetris.add(labelIcon);
-        botones = new JPanel();
-        botones.setLayout(null);
-        botones.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Opciones")));
+        botones = new JPanel(new GridLayout(1,4));
         mode = new JButton("Mode");
-        mode.setBounds(120 ,100,220,30);
+        load = new JButton("Load");
         credits = new JButton("Credits");
-        credits.setBounds(360,100,220,30);
         exit = new JButton("Exit");
-        exit.setBounds(600,100,220,30);
     }
     private void prepareElementosM2(){
         botones.add(mode);
+        botones.add(load);
         botones.add(credits);
         botones.add(exit);
         mainPanel.add(iconTetris);
         mainPanel.add(botones);
-        add(mainPanel,BorderLayout.CENTER);
+        add(iconTetris,BorderLayout.CENTER);
+        add(botones,BorderLayout.SOUTH);
     }
     private void prepareAcciones(){
         mode.addActionListener(e -> prepareMode());
