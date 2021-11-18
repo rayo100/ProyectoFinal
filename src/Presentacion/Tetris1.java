@@ -29,6 +29,7 @@ public class Tetris1 extends JFrame {
     private JLabel nextFigura;
     //Panel information
     private JPanel information;
+    private JPanel information2;
     private JTextField textTime;
     private JLabel time;
     private JTextField textScore;
@@ -39,7 +40,7 @@ public class Tetris1 extends JFrame {
     private JPanel principal2;
     private JPanel principal3;
     //Tamano ventana
-    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width;
+    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width - 100;
     private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height - 100;
 
     public Tetris1(String title) {
@@ -109,7 +110,7 @@ public class Tetris1 extends JFrame {
         figura.add(nextFigura);
 
         information = new JPanel(new GridLayout(3,1));
-        information.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Information")));
+        information.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Player # 1")));
         time = new JLabel("Time: ");
         time.setFont(font);
         time.setHorizontalAlignment(SwingConstants.CENTER);
@@ -130,12 +131,35 @@ public class Tetris1 extends JFrame {
         information.add(score);
         information.add(textScore);
 
-        principal = new JPanel(new GridLayout(1,2));
+        information2 = new JPanel(new GridLayout(3,1));
+        information2.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Player # 2")));
+        time = new JLabel("Time: ");
+        time.setFont(font);
+        time.setHorizontalAlignment(SwingConstants.CENTER);
+        score = new JLabel("Score: ");
+        score.setFont(font);
+        score.setHorizontalAlignment(SwingConstants.CENTER);
+        nickname = new JLabel("Nickname: ");
+        nickname.setFont(font);
+        nickname.setHorizontalAlignment(SwingConstants.CENTER);
+        textTime = new JTextField();
+        textScore = new JTextField();
+        textNickname = new JTextField();
+
+        information2.add(nickname);
+        information2.add(textNickname);
+        information2.add(time);
+        information2.add(textTime);
+        information2.add(score);
+        information2.add(textScore);
+
+        principal = new JPanel(new GridLayout(2,2));
         principal.add(configurations);
         principal.add(figura);
+        principal.add(options);
         principal2 = new JPanel(new GridLayout(2,1));
-        principal2.add(options);
         principal2.add(information);
+        principal2.add(information2);
 
         principal3 = new JPanel(new GridLayout(2,1));
         principal3.add(principal);

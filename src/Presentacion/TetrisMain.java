@@ -9,12 +9,12 @@ public class TetrisMain extends JFrame {
     //Tamano ventana
     private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width / 2;
     private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height / 2;
-    //Panel botones
+    //Panel bottons
     private JButton play;
     private JButton credits;
     private JButton exit;
     private JPanel botones;
-    //Panel imagen
+    //Panel images
     private JPanel iconTetris;
     private ImageIcon icon;
     private JLabel labelIcon;
@@ -26,7 +26,7 @@ public class TetrisMain extends JFrame {
     }
 
     public static void main(String[] args) {
-        TetrisMain gui = new TetrisMain("Tetris1 Game");
+        TetrisMain gui = new TetrisMain("Tetris Game");
         gui.setVisible(true);
     }
     private void prepareElementosMain(){
@@ -64,7 +64,7 @@ public class TetrisMain extends JFrame {
     }
     private void prepareTablero(){
         setVisible(false);
-        Tetris1 frame = new Tetris1("Tetris1 Game");
+        Tetris1 frame = new Tetris1("Tetris Game");
         frame.setVisible(true);
     }
     private void irACreditos() {
@@ -73,6 +73,9 @@ public class TetrisMain extends JFrame {
         frame.setVisible(true);
     }
     private void salga() {
-        System.exit(0);
+        if (JOptionPane.showConfirmDialog(rootPane, "¿Desea salir del sistema?",
+                "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
     }
 }

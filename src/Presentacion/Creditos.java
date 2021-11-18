@@ -9,7 +9,10 @@ public class Creditos  extends JFrame {
         prepareAcciones();
     }
     private void prepareElementos() {
-
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //setLocationRelativeTo();
+        pack();
+        setResizable(false);
     }
     private void prepareAcciones() {
 
