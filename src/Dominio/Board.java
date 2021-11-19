@@ -1,7 +1,6 @@
 package Dominio;
 
 import Presentacion.Tetris1;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -39,13 +38,19 @@ public class Board extends JPanel{
     }
 
     public boolean isValidAndEmpty(Tetrominoe type, int x, int y, int rotation){
-        return false;
+        if(x < -type.getLeftInset(rotation) || x + type.getDimension() - type.getRightInset(rotation) >= NCOLS) {
+            return false;
+        }
+        //if(y < -type.getTopInset(rotation) || y + type.getDimension())
+        return true;
     }
 
     public int checkLines(){
         int completedLines = 0;
         for(int row = 0; row < NROWS; row ++){
-
+            if(checkLine(row)){
+                completedLines++;
+            }
         }
         return completedLines;
     }
@@ -104,7 +109,18 @@ public class Board extends JPanel{
                     }
                 }
             }
-            
+            Color base = type.getBaseColor();
+            base = new Color(base.getRed(), base.getGreen(), base.getBlue());
+            for(int lowest = pieceRow; lowest < NROWS; lowest++){
+                if(isValidAndEmpty(type,pieceCol,lowest,rotation)) continue;
+                lowest--;
+                for (int col = 0; col < type.getDimension(); col ++){
+                    for(int row = 0; row < type.getDimension();row ++){
+                        if(lowest + row >= 2 && type.isTile(col,row,rotation)){}
+                    }
+                }
+            }
+
         }
     }
 
