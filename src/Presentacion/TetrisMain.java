@@ -6,21 +6,27 @@ import java.io.*;
 
 public class TetrisMain extends JFrame {
     //Tamano ventana
-    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width / 2;
+    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 100;
     private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height / 2;
     private JPanel mainPanel;
     //Menu
     private JMenuBar menuExit;
     private JMenu archivo;
+    private JMenuItem newGame;
     private JMenuItem saveGame;
     private JMenuItem openGame;
+    private JMenuItem importGame;
+    private JMenuItem exportGame;
     private JMenuItem exitGame;
     private JFileChooser fileChooser;
     //Panel bottons
-    private JButton mode;
+    private JPanel panelBuffos;
+    private JLabel numberBuffos;
+    private JSpinner spinnerBuffos;
+    private JButton start;
     private JButton credits;
     private JButton exit;
-    private JButton load;
+    private JButton players;
     private JPanel botones;
     //Panel images
     private JPanel iconTetris;
@@ -52,36 +58,52 @@ public class TetrisMain extends JFrame {
     }
 
     private void prepareElementosM1(){
-        mainPanel = new JPanel(new GridLayout(2,1));
         iconTetris = new JPanel();
         icon = new ImageIcon("tetris.jpg");
-        labelIcon = new JLabel(null,icon,SwingConstants.CENTER);
+        labelIcon = new JLabel(null,icon ,SwingConstants.CENTER);
         iconTetris.add(labelIcon);
-        botones = new JPanel(new GridLayout(1,4));
+        iconTetris.setBackground(Color.BLACK);
+        botones = new JPanel(new GridLayout(1,5));
         comboMode = new JComboBox();
-        load = new JButton("Load");
+        players = new JButton("Players");
         credits = new JButton("Credits");
+        panelBuffos = new JPanel(new GridLayout(1,2));
+        numberBuffos = new JLabel("# Buffos:");
+        spinnerBuffos = new JSpinner();
+        spinnerBuffos.setModel(new SpinnerNumberModel(0, 0, 50, 1));
+        start = new JButton("Start");
         exit = new JButton("Exit");
         menuExit = new JMenuBar();
         archivo = new JMenu("File");
-        menuExit.add(archivo);
+        newGame = new JMenuItem("New");
         saveGame = new JMenuItem("Save");
         openGame = new JMenuItem("Open");
+        importGame = new JMenuItem("Import");
+        exportGame = new JMenuItem("Export");
         exitGame = new JMenuItem("Exit");
     }
 
     private void agregueElementosM1(){
+        panelBuffos.add(numberBuffos);
+        panelBuffos.add(spinnerBuffos);
         botones.add(comboMode);
-        botones.add(load);
+        botones.add(players);
+        botones.add(panelBuffos);
         botones.add(credits);
+        botones.add(start);
         botones.add(exit);
-        mainPanel.add(iconTetris);
-        mainPanel.add(botones);
         add(iconTetris,BorderLayout.CENTER);
         add(botones,BorderLayout.SOUTH);
+        menuExit.add(archivo);
+        archivo.add(newGame);
+        archivo.addSeparator();
         archivo.add(openGame);
         archivo.addSeparator();
         archivo.add(saveGame);
+        archivo.addSeparator();
+        archivo.add(importGame);
+        archivo.addSeparator();
+        archivo.add(exportGame);
         archivo.addSeparator();
         archivo.add(exitGame);
         setJMenuBar(menuExit);
@@ -89,6 +111,7 @@ public class TetrisMain extends JFrame {
         comboMode.addItem("Player");
         comboMode.addItem("Player vs Player");
         comboMode.addItem("Player vs Machine");
+
     }
 
 
