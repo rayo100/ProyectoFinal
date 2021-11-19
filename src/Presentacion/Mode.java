@@ -32,13 +32,13 @@ public class Mode extends JFrame {
         panelMode = new JPanel();
         panelMode.setLayout(null);
         onePlayer = new JButton("A Player");
-        onePlayer.setBounds((this.getWidth()/2)-140,70,280,30);
+        onePlayer.setBounds((this.getWidth()/2)-140,30,280,30);
         twoPlayers = new JButton("Player Vs Player");
-        twoPlayers.setBounds((this.getWidth()/2)-140,140,280,30);
+        twoPlayers.setBounds((this.getWidth()/2)-140,80,280,30);
         playerVsMachine = new JButton("Player Vs Machine");
-        playerVsMachine.setBounds((this.getWidth()/2)-140,210,280,30);
+        playerVsMachine.setBounds((this.getWidth()/2)-140,130,280,30);
         returnMode = new JButton("Return");
-        returnMode.setBounds(490,280,120,30);
+        returnMode.setBounds(380,200,80,30);
         panelMode.add(onePlayer);
         panelMode.add(twoPlayers);
         panelMode.add(playerVsMachine);
@@ -46,6 +46,7 @@ public class Mode extends JFrame {
         add(panelMode);
         panelMode.setVisible(true);
     }
+
     private void prepareAcciones() {
         returnMode.addActionListener(e -> volverDeMode());
         onePlayer.addActionListener(e -> prepareTablero());
