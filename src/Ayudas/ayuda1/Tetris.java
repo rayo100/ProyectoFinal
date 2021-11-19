@@ -1,4 +1,4 @@
-package Dominio;
+package Ayudas.ayuda1;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import javax.swing.JFrame;

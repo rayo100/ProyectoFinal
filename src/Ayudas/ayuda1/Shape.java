@@ -1,4 +1,4 @@
-package Dominio;
+package Ayudas.ayuda1;
 import java.util.Random;
 
 public class Shape {

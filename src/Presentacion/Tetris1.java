@@ -1,5 +1,7 @@
 package Presentacion;
 
+import Dominio.Tetrominoe;
+
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -181,5 +183,31 @@ public class Tetris1 extends JFrame {
         //information2.add(textScore);
         //principal2.add(information2);
     }
+    public boolean isPaused(){
+        return false;
+    }
 
+    public boolean isNewGame() {
+        return false;
+    }
+
+    public boolean isGameOver() {
+        return false;
+    }
+
+    public Tetrominoe getPieceType() {
+        return null;
+    }
+
+    public int getPieceCol() {
+        return 0;
+    }
+
+    public int getPieceRow() {
+        return 0;
+    }
+
+    public int getPieceRotation() {
+        return 0;
+    }
 }
