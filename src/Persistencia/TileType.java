@@ -247,7 +247,7 @@ public enum TileType {
 	 * @param rows The number of rows.
 	 * @param tiles The tiles.
 	 */
-	private TileType(Color color, int dimension, int cols, int rows, boolean[][] tiles) {
+	TileType(Color color, int dimension, int cols, int rows, boolean[][] tiles) {
 		this.baseColor = color;
 		this.lightColor = color.brighter();
 		this.darkColor = color.darker();

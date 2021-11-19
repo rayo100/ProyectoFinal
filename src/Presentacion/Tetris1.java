@@ -39,6 +39,8 @@ public class Tetris1 extends JFrame {
     private JPanel principal;
     private JPanel principal2;
     private JPanel principal3;
+    private Font font = new Font("Arial Bold", Font.ITALIC, 16);
+    private Font font2 = new Font("Arial", Font.BOLD, 16);
     //Tamano ventana
     private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width - 100;
     private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height - 100;
@@ -47,129 +49,137 @@ public class Tetris1 extends JFrame {
         super(title);
         prepareElementos();
     }
-    public void prepareElementos(){
-        setPreferredSize(new Dimension(ANCHO,ALTO));
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        pack();
-        setResizable(false);
-        setLayout(new BorderLayout());
-        Font font = new Font("Arial Bold", Font.ITALIC, 16);
-        Font font2 = new Font("Arial", Font.BOLD, 16);
+    private void cargueElementos1(){
         options = new JPanel(new GridLayout(2,2));
-        options.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Opcions")));
         start = new JButton("Start");
-        start.setFont(font2);
         restart = new JButton("Restart");
-        restart.setFont(font2);
         save = new JButton("Save");
-        save.setFont(font2);
         help = new JButton("Help");
+        configurations = new JPanel(new GridLayout(3,1));
+        level = new JLabel("Level: ");
+        velocity = new JLabel("Velocity: ");
+        color = new JLabel("Color: ");
+        comboLevel = new JComboBox();
+        figura = new JPanel(new GridLayout(1,1));
+        nextFigura = new JLabel("Next Figure");
+        comboVelocity = new JComboBox();
+        comboColor = new JComboBox();
+        information = new JPanel(new GridLayout(3,1));
+        time = new JLabel("Time: ");
+    }
+    private void cargueElementos2(){
+        score = new JLabel("Score: ");
+        nickname = new JLabel("Nickname: ");
+        textTime = new JTextField();
+        textScore = new JTextField();
+        textNickname = new JTextField();
+        time = new JLabel("Time: ");
+        score = new JLabel("Score: ");
+        nickname = new JLabel("Nickname: ");
+        principal = new JPanel(new GridLayout(2,2));
+        principal2 = new JPanel(new GridLayout(2,1));
+        principal3 = new JPanel(new GridLayout(2,1));
+        tablero = new JPanel(new GridLayout(1,2));
+        textTime = new JTextField();
+        textScore = new JTextField();
+        textNickname = new JTextField();
+    }
+    private void configureElementos1(){
+        options.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5),
+                new TitledBorder("Opcions")));
+        configurations.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5),
+                new TitledBorder("Configurations")));
+        start.setFont(font2);
+        restart.setFont(font2);
+        save.setFont(font2);
         help.setFont(font2);
+        level.setFont(font);
+        level.setHorizontalAlignment(SwingConstants.CENTER);
+        velocity.setFont(font);
+        velocity.setHorizontalAlignment(SwingConstants.CENTER);
+        color.setFont(font);
+        color.setHorizontalAlignment(SwingConstants.CENTER);
+        nextFigura.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Figures")));
+        nextFigura.setFont(font);
+        nextFigura.setHorizontalAlignment(SwingConstants.CENTER);
+        nextFigura.setVerticalAlignment(SwingConstants.NORTH);
+    }
+    private void configureElementos2(){
+        information.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Player # 1")));
+        time.setFont(font);
+        time.setHorizontalAlignment(SwingConstants.CENTER);
+        score.setFont(font);
+        score.setHorizontalAlignment(SwingConstants.CENTER);
+        nickname.setFont(font);
+        nickname.setHorizontalAlignment(SwingConstants.CENTER);
+        time.setFont(font);
+        time.setHorizontalAlignment(SwingConstants.CENTER);
+        score.setFont(font);
+        score.setHorizontalAlignment(SwingConstants.CENTER);
+        nickname.setFont(font);
+        nickname.setHorizontalAlignment(SwingConstants.CENTER);
+        tablero.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Board")));
+
+    }
+    private void agregueElementos1(){
         options.add(start);
         options.add(restart);
         options.add(save);
         options.add(help);
-
-        configurations = new JPanel(new GridLayout(3,1));
-        configurations.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Configurations")));
-        level = new JLabel("Level: ");
-        level.setFont(font);
-        level.setHorizontalAlignment(SwingConstants.CENTER);
-        velocity = new JLabel("Velocity: ");
-        velocity.setFont(font);
-        velocity.setHorizontalAlignment(SwingConstants.CENTER);
-        color = new JLabel("Color: ");
-        color.setFont(font);
-        color.setHorizontalAlignment(SwingConstants.CENTER);
-        comboLevel = new JComboBox();
-        comboLevel.addItem("Easy");
-        comboLevel.addItem("Medium");
-        comboLevel.addItem("Hard");
-        comboVelocity = new JComboBox();
-        comboVelocity.addItem("Slow");
-        comboVelocity.addItem("Fast");
-        comboColor = new JComboBox();
-        comboColor.addItem("Unicolor");
-        comboColor.addItem("Multicolor");
-        comboColor.addItem("Black and White");
-
         configurations.add(level);
         configurations.add(comboLevel);
         configurations.add(velocity);
         configurations.add(comboVelocity);
         configurations.add(color);
         configurations.add(comboColor);
+        comboLevel.addItem("Easy");
+        comboLevel.addItem("Medium");
+        comboLevel.addItem("Hard");
+        comboVelocity.addItem("Slow");
+        comboVelocity.addItem("Fast");
+        comboColor.addItem("Unicolor");
+        comboColor.addItem("Multicolor");
+        comboColor.addItem("Black and White");
 
-        figura = new JPanel(new GridLayout(1,1));
-        nextFigura = new JLabel("Next Figure");
-        nextFigura.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Figures")));
-        nextFigura.setFont(font);
-        nextFigura.setHorizontalAlignment(SwingConstants.CENTER);
-        nextFigura.setVerticalAlignment(SwingConstants.NORTH);
+    }
+    private void agregueElementos2(){
         figura.add(nextFigura);
-
-        information = new JPanel(new GridLayout(3,1));
-        information.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Player # 1")));
-        time = new JLabel("Time: ");
-        time.setFont(font);
-        time.setHorizontalAlignment(SwingConstants.CENTER);
-        score = new JLabel("Score: ");
-        score.setFont(font);
-        score.setHorizontalAlignment(SwingConstants.CENTER);
-        nickname = new JLabel("Nickname: ");
-        nickname.setFont(font);
-        nickname.setHorizontalAlignment(SwingConstants.CENTER);
-        textTime = new JTextField();
-        textScore = new JTextField();
-        textNickname = new JTextField();
-
         information.add(nickname);
         information.add(textNickname);
         information.add(time);
         information.add(textTime);
         information.add(score);
         information.add(textScore);
-
+        principal.add(configurations);
+        principal.add(figura);
+        principal.add(options);
+        principal2.add(information);
+        principal3.add(principal);
+        principal3.add(principal2);
+        add(principal3, BorderLayout.WEST);
+        add(tablero, BorderLayout.CENTER);
+    }
+    public void prepareElementos(){
+        setPreferredSize(new Dimension(ANCHO,ALTO));
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        pack();
+        setResizable(false);
+        setLayout(new BorderLayout());
+        cargueElementos1();
+        cargueElementos2();
+        configureElementos1();
+        configureElementos2();
+        agregueElementos1();
+        agregueElementos2();
         //information2 = new JPanel(new GridLayout(3,1));
         //information2.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Player # 2")));
-        time = new JLabel("Time: ");
-        time.setFont(font);
-        time.setHorizontalAlignment(SwingConstants.CENTER);
-        score = new JLabel("Score: ");
-        score.setFont(font);
-        score.setHorizontalAlignment(SwingConstants.CENTER);
-        nickname = new JLabel("Nickname: ");
-        nickname.setFont(font);
-        nickname.setHorizontalAlignment(SwingConstants.CENTER);
-        textTime = new JTextField();
-        textScore = new JTextField();
-        textNickname = new JTextField();
-
         //information2.add(nickname);
         //information2.add(textNickname);
         //information2.add(time);
         //information2.add(textTime);
         //information2.add(score);
         //information2.add(textScore);
-
-        principal = new JPanel(new GridLayout(2,2));
-        principal.add(configurations);
-        principal.add(figura);
-        principal.add(options);
-        principal2 = new JPanel(new GridLayout(2,1));
-        principal2.add(information);
         //principal2.add(information2);
-
-        principal3 = new JPanel(new GridLayout(2,1));
-        principal3.add(principal);
-        principal3.add(principal2);
-
-        tablero = new JPanel(new GridLayout(1,2));
-        tablero.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Board")));
-
-        add(principal3, BorderLayout.WEST);
-        add(tablero, BorderLayout.CENTER);
-
     }
 
 }
