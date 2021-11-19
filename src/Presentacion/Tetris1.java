@@ -60,16 +60,13 @@ public class Tetris1 extends JFrame {
         velocity = new JLabel("Velocity: ");
         color = new JLabel("Color: ");
         comboLevel = new JComboBox();
-        figura = new JPanel(new GridLayout(1,1));
-        nextFigura = new JLabel("Next Figure");
         comboVelocity = new JComboBox();
         comboColor = new JComboBox();
-        information = new JPanel(new GridLayout(3,1));
-        time = new JLabel("Time: ");
+        figura = new JPanel(new GridLayout(1,1));
+        nextFigura = new JLabel("Next Figure");
     }
     private void cargueElementos2(){
-        score = new JLabel("Score: ");
-        nickname = new JLabel("Nickname: ");
+        information = new JPanel(new GridLayout(3,1));
         textTime = new JTextField();
         textScore = new JTextField();
         textNickname = new JTextField();

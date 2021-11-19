@@ -16,7 +16,6 @@ public class TetrisMain extends JFrame {
     private JMenuItem openGame;
     private JMenuItem exitGame;
     private JFileChooser fileChooser;
-
     //Panel bottons
     private JButton mode;
     private JButton credits;
@@ -27,6 +26,8 @@ public class TetrisMain extends JFrame {
     private JPanel iconTetris;
     private ImageIcon icon;
     private JLabel labelIcon;
+    //Mode
+    private JComboBox comboMode;
 
     public TetrisMain(String title) {
         super(title);
@@ -45,25 +46,9 @@ public class TetrisMain extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setLayout(new BorderLayout());
-        prepareElementosMenu();
         prepareElementosM1();
-        prepareElementosM2();
+        agregueElementosM1();
         prepareElementosChooser();
-
-    }
-    private void prepareElementosMenu() {
-        menuExit = new JMenuBar();
-        archivo = new JMenu("File");
-        menuExit.add(archivo);
-        saveGame = new JMenuItem("Save");
-        openGame = new JMenuItem("Open");
-        exitGame = new JMenuItem("Exit");
-        archivo.add(openGame);
-        archivo.addSeparator();
-        archivo.add(saveGame);
-        archivo.addSeparator();
-        archivo.add(exitGame);
-        setJMenuBar(menuExit);
     }
 
     private void prepareElementosM1(){
@@ -73,13 +58,20 @@ public class TetrisMain extends JFrame {
         labelIcon = new JLabel(null,icon,SwingConstants.CENTER);
         iconTetris.add(labelIcon);
         botones = new JPanel(new GridLayout(1,4));
-        mode = new JButton("Mode");
+        comboMode = new JComboBox();
         load = new JButton("Load");
         credits = new JButton("Credits");
         exit = new JButton("Exit");
+        menuExit = new JMenuBar();
+        archivo = new JMenu("File");
+        menuExit.add(archivo);
+        saveGame = new JMenuItem("Save");
+        openGame = new JMenuItem("Open");
+        exitGame = new JMenuItem("Exit");
     }
-    private void prepareElementosM2(){
-        botones.add(mode);
+
+    private void agregueElementosM1(){
+        botones.add(comboMode);
         botones.add(load);
         botones.add(credits);
         botones.add(exit);
@@ -87,28 +79,31 @@ public class TetrisMain extends JFrame {
         mainPanel.add(botones);
         add(iconTetris,BorderLayout.CENTER);
         add(botones,BorderLayout.SOUTH);
+        archivo.add(openGame);
+        archivo.addSeparator();
+        archivo.add(saveGame);
+        archivo.addSeparator();
+        archivo.add(exitGame);
+        setJMenuBar(menuExit);
+        comboMode.addItem("Game Mode");
+        comboMode.addItem("Player");
+        comboMode.addItem("Player vs Player");
+        comboMode.addItem("Player vs Machine");
     }
+
+
     private void prepareAccionesMain(){
-        prepareAccionesMode();
         prepareAccionesMenu();
     }
 
-    private void prepareAccionesMode(){
-        mode.addActionListener(e -> prepareMode());
+    private void prepareAccionesMenu() {
         credits.addActionListener(e -> irACreditos());
         exit.addActionListener(e -> salga());
-    }
-    private void prepareAccionesMenu() {
         exitGame.addActionListener(e -> salga());
         saveGame.addActionListener(e -> save());
         openGame.addActionListener(e -> open());
     }
 
-    private void prepareMode() {
-        setVisible(false);
-        Mode frame = new Mode("Game Mode", mainPanel);
-        frame.setVisible(true);
-    }
 
     private void irACreditos() {
         setVisible(false);
@@ -124,7 +119,7 @@ public class TetrisMain extends JFrame {
         int action = fileChooser.showSaveDialog(saveGame);
         if (action == JFileChooser.APPROVE_OPTION) {
             File archivo = fileChooser.getSelectedFile();
-            JOptionPane.showMessageDialog(null, "Archivo guardado: " + archivo.getName() + "\nFuncionalidad Salvar en construccion");
+            JOptionPane.showMessageDialog(null, "File "+ archivo.getName() +" saved" + "\nFuncionalidad Salvar en construccion");
         }
     }
 
@@ -132,14 +127,18 @@ public class TetrisMain extends JFrame {
         int action = fileChooser.showOpenDialog(openGame);
         if (action == JFileChooser.APPROVE_OPTION) {
             File archivo = fileChooser.getSelectedFile();
-            JOptionPane.showMessageDialog(null, "Archivo cargado: " + archivo.getName() + "\nFuncionalidad Abir en construccion");
+            JOptionPane.showMessageDialog(null, "File " + archivo.getName() + " opened "  +"\nFuncionalidad Abir en construccion");
         }
     }
 
     private void salga() {
-        if (JOptionPane.showConfirmDialog(rootPane, "¿Desea salir del sistema?",
-                "Salir del sistema", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(rootPane, "Do you want to log out?",
+                "Get out of the system", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }
+
+
+
+
 }
