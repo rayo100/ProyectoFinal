@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/description.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/project-template.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HenaoVasquez.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProyectoFinal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/ProyectoFinal.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/BoardPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/Clock.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/SidePanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/Tetris$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/Tetris.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/TileType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Board$GameCycle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Board$TAdapter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Board.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Shape$Tetrominoe.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Shape.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Tetris.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tetris.jpg" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="219ng7fLrLYiOThqrYRwlje8R7Z" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="main1" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Presentacion.TetrisMain" />
+      <module name="ProyectoFinal" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="" />
+      <created>1637362279305</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1637362279305</updated>
+    </task>
+    <servers />
+  </component>
+</project>
