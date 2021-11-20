@@ -25,6 +25,7 @@ public class Board extends JPanel{
     private static final Font SMALLFONT = new Font("Arial",Font.ITALIC,12);
     private Tetris1 tetris;
     private Tetrominoe[][] tiles;
+
     public Board(Tetris1 tetris){
         //this.tetris = tetris;
         //this.tiles = new Tetrominoe[NROWS][NCOLS];
