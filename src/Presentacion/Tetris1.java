@@ -40,6 +40,7 @@ public class Tetris1 extends JFrame {
     private void cargueElementos(){
         newFigure = new NewFigurePanel(this);
         board = new Board(this);
+
     }
     private void configureElementos(){
         board.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5),
