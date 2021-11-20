@@ -14,6 +14,7 @@ public class Board extends JPanel{
     public static final int NROWS = VISIBLEROWCOUNT + HIDDENROWCOUNT;
     public static final int TILESIZE = 24;
     public static final int BORDERTILEWIDTH = 4;
+    public static final int MOVEMENT = 25;
     public static final int SHADEWIDTH = 4;
     private static final int CENTERX = NCOLS * TILESIZE / 2;
     private static final int CENTERY = VISIBLEROWCOUNT * TILESIZE / 2;
@@ -145,12 +146,12 @@ public class Board extends JPanel{
         g.setColor(Color.DARK_GRAY);
         for(int x = 0; x < NCOLS; x++){
             for(int y = 0; y < VISIBLEROWCOUNT; y++){
-                g.drawLine(0,y*TILESIZE,NCOLS*TILESIZE,y*TILESIZE);
-                g.drawLine(x*TILESIZE,0,x*TILESIZE,VISIBLEROWCOUNT*TILESIZE);
+                g.drawLine(MOVEMENT,y*TILESIZE+MOVEMENT,NCOLS*TILESIZE+MOVEMENT,y*TILESIZE+MOVEMENT);
+                g.drawLine(x*TILESIZE+MOVEMENT,MOVEMENT,x*TILESIZE+MOVEMENT,VISIBLEROWCOUNT*TILESIZE+MOVEMENT);
             }
         }
         g.setColor(Color.BLACK);
-        g.drawRect(0,0,TILESIZE*NCOLS,TILESIZE*VISIBLEROWCOUNT);
+        g.drawRect(MOVEMENT,MOVEMENT,(TILESIZE*NCOLS),(TILESIZE*VISIBLEROWCOUNT));
     }
 
 

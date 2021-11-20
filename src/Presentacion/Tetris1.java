@@ -48,7 +48,7 @@ public class Tetris1 extends JFrame {
     private Font font2 = new Font("Arial", Font.BOLD, 16);
     //Tamano ventana
     private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width - 300;
-    private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height - 100;
+    private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height - 200;
 
     public Tetris1(String title) {
         super(title);
