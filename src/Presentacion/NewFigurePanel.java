@@ -25,6 +25,7 @@ public class NewFigurePanel extends JPanel {
     private static final Font LARGE_FONT = new Font("Arial Bold", Font.BOLD, 13);
     private static final Color DRAW_COLOR = Color.BLACK;
     //Agregar atributos aca:
+    
 
     //Fin nuevos atributos
 
