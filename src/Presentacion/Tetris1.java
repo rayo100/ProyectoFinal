@@ -36,6 +36,7 @@ public class Tetris1 extends JFrame {
         cargueElementos();
         configureElementos();
         agregueElementos();
+        setLocationRelativeTo(null);
     }
     private void cargueElementos(){
         newFigure = new NewFigurePanel(this);

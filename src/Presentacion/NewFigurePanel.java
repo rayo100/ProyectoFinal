@@ -58,8 +58,8 @@ public class NewFigurePanel extends JPanel {
         g.setFont(SMALL_FONT);
         g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
         g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
-        g.drawString("Q - Rotate Anticlockwise", LARGE_INSET, offset += TEXT_STRIDE);
-        g.drawString("E - Rotate Clockwise", LARGE_INSET, offset += TEXT_STRIDE);
+        g.drawString("W - Rotate Anticlockwise", LARGE_INSET, offset += TEXT_STRIDE);
+        g.drawString(". - Use a buff", LARGE_INSET, offset += TEXT_STRIDE);
         g.drawString("S - Drop", LARGE_INSET, offset += TEXT_STRIDE);
         g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
 
