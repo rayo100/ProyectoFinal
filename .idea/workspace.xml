@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="1">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris1.class" afterDir="false" />
+=======
+>>>>>>> b4c9db004af2a3c00e8b2e408238951f035e0202
       <change beforePath="$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/Tetris1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Tetris1.java" afterDir="false" />
     </list>
