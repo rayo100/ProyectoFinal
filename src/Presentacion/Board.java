@@ -1,5 +1,6 @@
-package Dominio;
+package Presentacion;
 
+import Dominio.Tetrominoe;
 import Presentacion.Tetris1;
 import javax.swing.*;
 import java.awt.*;
@@ -143,17 +144,19 @@ public class Board extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        drawBoard(g);
+    }
+    private void drawBoard(Graphics g){
         g.setColor(Color.DARK_GRAY);
-        for(int x = 0; x < NCOLS; x++){
-            for(int y = 0; y < VISIBLEROWCOUNT; y++){
-                g.drawLine(MOVEMENT,y*TILESIZE+MOVEMENT,NCOLS*TILESIZE+MOVEMENT,y*TILESIZE+MOVEMENT);
-                g.drawLine(x*TILESIZE+MOVEMENT,MOVEMENT,x*TILESIZE+MOVEMENT,VISIBLEROWCOUNT*TILESIZE+MOVEMENT);
+        for(int col = 0; col < NCOLS; col++){
+            for(int row = 0; row < VISIBLEROWCOUNT; row++){
+                g.drawLine(MOVEMENT,row*TILESIZE+MOVEMENT,NCOLS*TILESIZE+MOVEMENT,row*TILESIZE+MOVEMENT);
+                g.drawLine(col*TILESIZE+MOVEMENT,MOVEMENT,col*TILESIZE+MOVEMENT,VISIBLEROWCOUNT*TILESIZE+MOVEMENT);
             }
         }
         g.setColor(Color.BLACK);
         g.drawRect(MOVEMENT,MOVEMENT,(TILESIZE*NCOLS),(TILESIZE*VISIBLEROWCOUNT));
     }
-
 
     private void drawTile(Tetrominoe tile, int x, int y, Graphics g) {
         drawTile(tile.getBaseColor(),tile.getLightColor(), tile.getDarkColor(),x,y,g);

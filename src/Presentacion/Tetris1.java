@@ -1,6 +1,5 @@
 package Presentacion;
 
-import Dominio.Board;
 import Dominio.Tetrominoe;
 
 import javax.swing.*;
@@ -11,43 +10,12 @@ import java.awt.*;
 import java.awt.Font;
 
 public class Tetris1 extends JFrame {
-    //Panel options
-    private JPanel options;
-    private JButton start;
-    private JButton restart;
-    private JButton help;
-    private JButton save;
-    //Panel configurations
-    private JPanel configurations;
-    private JLabel level;
-    private JComboBox comboLevel;
-    private JLabel velocity;
-    private JComboBox comboVelocity;
-    private JLabel color;
-    private JComboBox comboColor;
-    //Panel tablero
-    private Board tablero;
-    //Panel figura
-    private JPanel figura;
-    private JLabel nextFigura;
-    //Panel information
-    private JPanel information;
-    //private JPanel information2;
-    private JTextField textTime;
-    private JLabel time;
-    private JTextField textScore;
-    private JLabel score;
-    private JTextField textNickname;
-    private JLabel nickname;
-    private JPanel principal;
-    private JPanel principal2;
-    private JPanel principal3;
-    //Game
-
-    private Font font = new Font("Arial Bold", Font.ITALIC, 16);
-    private Font font2 = new Font("Arial", Font.BOLD, 16);
+    //Panel NewFigure
+    NewFigurePanel newFigure;
+    //Panel Board
+    Board board;
     //Tamano ventana
-    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width - 300;
+    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width - 800;
     private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height - 200;
 
     public Tetris1(String title) {
@@ -58,6 +26,7 @@ public class Tetris1 extends JFrame {
         Tetris1 gui = new Tetris1("prueba");
         gui.setVisible(true);
     }
+<<<<<<< HEAD
     private void cargueElementos1(){
         options = new JPanel(new GridLayout(2,2));
         start = new JButton("Start");
@@ -165,27 +134,31 @@ public class Tetris1 extends JFrame {
         add(principal3, BorderLayout.WEST);
         add(tablero, BorderLayout.CENTER);
     }
+=======
+>>>>>>> d245e522bacd2d1624e027072f4ae245272e4339
     public void prepareElementos(){
         setPreferredSize(new Dimension(ANCHO,ALTO));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         pack();
         setResizable(false);
         setLayout(new BorderLayout());
-        cargueElementos1();
-        cargueElementos2();
-        configureElementos1();
-        configureElementos2();
-        agregueElementos1();
-        agregueElementos2();
-        //information2 = new JPanel(new GridLayout(3,1));
-        //information2.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5), new TitledBorder("Player # 2")));
-        //information2.add(nickname);
-        //information2.add(textNickname);
-        //information2.add(time);
-        //information2.add(textTime);
-        //information2.add(score);
-        //information2.add(textScore);
-        //principal2.add(information2);
+        cargueElementos();
+        configureElementos();
+        agregueElementos();
+    }
+    private void cargueElementos(){
+        newFigure = new NewFigurePanel(this);
+        board = new Board(this);
+    }
+    private void configureElementos(){
+        board.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5),
+                new TitledBorder("Board")));
+        newFigure.setBorder(new CompoundBorder(new EmptyBorder(5,5,5,5),
+                new TitledBorder("Game Info")));
+    }
+    private void agregueElementos(){
+        add(board,BorderLayout.CENTER);
+        add(newFigure,BorderLayout.WEST);
     }
     public boolean isPaused(){
         return false;
