@@ -309,7 +309,6 @@ public class Board extends JPanel {
     }
 
     class TAdapter extends KeyAdapter {
-
         @Override
         public void keyPressed(KeyEvent e) {
 

@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import Dominio.*;
 
 public class TetrisMain extends JFrame {
     //Tamano ventana
@@ -125,6 +126,8 @@ public class TetrisMain extends JFrame {
         exitGame.addActionListener(e -> salga());
         saveGame.addActionListener(e -> save());
         openGame.addActionListener(e -> open());
+
+        players.addActionListener(e -> player());
     }
 
 
@@ -161,7 +164,28 @@ public class TetrisMain extends JFrame {
         }
     }
 
-
+    private void vsMachine(){
+        JOptionPane.showInputDialog(null, "Player Nickname.", "Player Information", JOptionPane.PLAIN_MESSAGE);
+        String [] options= {"Principiant", "Expert", "Cancel"};
+        JOptionPane.showOptionDialog(null, "Choose machine level.", "Machine Level",
+                0, JOptionPane.QUESTION_MESSAGE, null, options, "Principiant");
+    }
+    private void playerVsPlayer(){
+        JOptionPane.showInputDialog(null, "Player # 1 Nickname.", "Players Information", JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showInputDialog(null, "Player # 2 Nickname.", "Players Information", JOptionPane.PLAIN_MESSAGE);
+    }
+    private void player(){
+        JOptionPane.showInputDialog(null, "Player Nickname.", "Player Information", JOptionPane.PLAIN_MESSAGE);
+    }
+//    private void bottonPlayers() throws TetrisException{
+//        String selected =(String) comboMode.getSelectedItem();
+//        switch (selected) {
+//
+//            case KeyEvent.VK_P -> player();
+//            case KeyEvent.VK_LEFT -> playerVsPlayer();
+//            case KeyEvent.VK_RIGHT -> vsMachine();
+//        }
+//    }
 
 
 }
