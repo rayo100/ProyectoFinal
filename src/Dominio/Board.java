@@ -14,6 +14,7 @@ public class Board extends JPanel{
     public static final int NROWS = VISIBLEROWCOUNT + HIDDENROWCOUNT;
     public static final int TILESIZE = 24;
     public static final int BORDERTILEWIDTH = 4;
+    public static final int SHADEWIDTH = 4;
     private static final int CENTERX = NCOLS * TILESIZE / 2;
     private static final int CENTERY = VISIBLEROWCOUNT * TILESIZE / 2;
     public static final int PANELWIDTH = NCOLS * TILESIZE + BORDERWIDTH * 2;
@@ -23,8 +24,8 @@ public class Board extends JPanel{
     private Tetris1 tetris;
     private Tetrominoe[][] tiles;
     public Board(Tetris1 tetris){
-        this.tetris = tetris;
-        this.tiles = new Tetrominoe[NROWS][NCOLS];
+        //this.tetris = tetris;
+        //this.tiles = new Tetrominoe[NROWS][NCOLS];
         setPreferredSize(new Dimension(PANELWIDTH,PANELHEIGHT));
         setBackground(Color.WHITE);
     }
@@ -41,7 +42,9 @@ public class Board extends JPanel{
         if(x < -type.getLeftInset(rotation) || x + type.getDimension() - type.getRightInset(rotation) >= NCOLS) {
             return false;
         }
-        //if(y < -type.getTopInset(rotation) || y + type.getDimension())
+        if(y < -type.getTopInset(rotation) || y + type.getDimension() - type.getBottomInset(rotation) >= NROWS){
+            return false;
+        }
         return true;
     }
 
@@ -78,53 +81,96 @@ public class Board extends JPanel{
     private Tetrominoe getTile(int x, int y){
         return tiles[y][x];
     }
+//    @Override
+//    public void paintComponent(Graphics g) {
+//        super.paintComponent(g);
+//        g.translate(BORDERWIDTH, BORDERWIDTH);
+//        if (tetris.isPaused()) {
+//            loadCase1(g);
+//        }
+//        else if(tetris.isNewGame() || tetris.isGameOver()){
+//            loadCase2(g);
+//        }
+//        else{
+//            for(int x = 0; x < NCOLS; x++){
+//                for(int y = HIDDENROWCOUNT; y < NROWS; y++){
+//                    Tetrominoe tile = getTile(x,y);
+//                    if(tile != null){
+//                        drawTile(tile, x * TILESIZE, (y - HIDDENROWCOUNT) * TILESIZE,g);
+//                    }
+//                }
+//            }
+//            Tetrominoe type = tetris.getPieceType();
+//            int pieceCol = tetris.getPieceCol();
+//            int pieceRow = tetris.getPieceRow();
+//            int rotation = tetris.getPieceRotation();
+//
+//            for (int col = 0; col < type.getDimension(); col++){
+//                for (int row = 0; row < type.getDimension(); row ++){
+//                    if(pieceRow + row >= 2 && type.isTile(col,row,rotation)){
+//                        drawTile(type,(pieceCol+col)*TILESIZE,(pieceRow+row-HIDDENROWCOUNT)*TILESIZE,g);
+//                    }
+//                }
+//            }
+//            Color base = type.getBaseColor();
+//            base = new Color(base.getRed(), base.getGreen(), base.getBlue());
+//            for(int lowest = pieceRow; lowest < NROWS; lowest++){
+//                if(isValidAndEmpty(type,pieceCol,lowest,rotation)) continue;
+//                lowest--;
+//                for (int col = 0; col < type.getDimension(); col ++){
+//                    for(int row = 0; row < type.getDimension();row ++){
+//                        if(lowest + row >= 2 && type.isTile(col,row,rotation)){
+//                            drawTile(base,base.brighter(),base.darker(),(pieceCol + col)*TILESIZE,
+//                                    (lowest+row -HIDDENROWCOUNT)*TILESIZE,g);
+//                        }
+//                    }
+//                }
+//                break;
+//            }
+//
+//            g.setColor(Color.DARK_GRAY);
+//            for(int x = 0; x < NCOLS; x++){
+//                for(int y = 0; y < VISIBLEROWCOUNT; y++){
+//                    g.drawLine(0,y*TILESIZE,NCOLS*TILESIZE,y*TILESIZE);
+//                    g.drawLine(x*TILESIZE,0,x*TILESIZE,VISIBLEROWCOUNT*TILESIZE);
+//                }
+//            }
+//        }
+//        g.setColor(Color.BLACK);
+//        g.drawRect(0,0,TILESIZE*NCOLS,TILESIZE*VISIBLEROWCOUNT);
+//    }
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.translate(BORDERWIDTH, BORDERWIDTH);
-        if (tetris.isPaused()) {
-            loadCase1(g);
-        }
-        else if(tetris.isNewGame() || tetris.isGameOver()){
-            loadCase2(g);
-        }
-        else{
-            for(int x = 0; x < NCOLS; x++){
-                for(int y = HIDDENROWCOUNT; y < NROWS; y++){
-                    Tetrominoe tile = getTile(x,y);
-                    if(tile != null){
-                        drawTile(tile, x * TILESIZE, (y - HIDDENROWCOUNT) * TILESIZE,g);
-                    }
-                }
+        g.setColor(Color.DARK_GRAY);
+        for(int x = 0; x < NCOLS; x++){
+            for(int y = 0; y < VISIBLEROWCOUNT; y++){
+                g.drawLine(0,y*TILESIZE,NCOLS*TILESIZE,y*TILESIZE);
+                g.drawLine(x*TILESIZE,0,x*TILESIZE,VISIBLEROWCOUNT*TILESIZE);
             }
-            Tetrominoe type = tetris.getPieceType();
-            int pieceCol = tetris.getPieceCol();
-            int pieceRow = tetris.getPieceRow();
-            int rotation = tetris.getPieceRotation();
-
-            for (int col = 0; col < type.getDimension(); col++){
-                for (int row = 0; row < type.getDimension(); row ++){
-                    if(pieceRow + row >= 2 && type.isTile(col,row,rotation)){
-                        drawTile(type,(pieceCol+col)*TILESIZE,(pieceRow+row-HIDDENROWCOUNT)*TILESIZE,g);
-                    }
-                }
-            }
-            Color base = type.getBaseColor();
-            base = new Color(base.getRed(), base.getGreen(), base.getBlue());
-            for(int lowest = pieceRow; lowest < NROWS; lowest++){
-                if(isValidAndEmpty(type,pieceCol,lowest,rotation)) continue;
-                lowest--;
-                for (int col = 0; col < type.getDimension(); col ++){
-                    for(int row = 0; row < type.getDimension();row ++){
-                        if(lowest + row >= 2 && type.isTile(col,row,rotation)){}
-                    }
-                }
-            }
-
         }
+        g.setColor(Color.BLACK);
+        g.drawRect(0,0,TILESIZE*NCOLS,TILESIZE*VISIBLEROWCOUNT);
     }
 
-    private void drawTile(Tetrominoe tile, int i, int i1, Graphics g) {
+
+    private void drawTile(Tetrominoe tile, int x, int y, Graphics g) {
+        drawTile(tile.getBaseColor(),tile.getLightColor(), tile.getDarkColor(),x,y,g);
+    }
+
+    private void drawTile(Color base, Color light, Color dark, int x, int y, Graphics g) {
+        g.setColor(base);
+        g.fillRect(x,y,TILESIZE,TILESIZE);
+
+        g.setColor(dark);
+        g.fillRect(x,y+TILESIZE-SHADEWIDTH,TILESIZE,SHADEWIDTH);
+        g.fillRect(x+TILESIZE-SHADEWIDTH,y,SHADEWIDTH,TILESIZE);
+
+        g.setColor(light);
+        for(int i= 0; i < SHADEWIDTH; i++){
+            g.drawLine(x,y+i,x+TILESIZE-i-1,y+i);
+            g.drawLine(x+i,y,x+i,y+TILESIZE-i-1);
+        }
     }
 
     private void loadCase1(Graphics g){
