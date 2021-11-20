@@ -156,7 +156,7 @@ public class Tetris1 extends JFrame {
         information.add(textTime);
         information.add(score);
         information.add(textScore);
-        //principal.add(configurations);
+        principal.add(configurations);
         principal.add(figura);
         //principal.add(options);
         principal2.add(information);
