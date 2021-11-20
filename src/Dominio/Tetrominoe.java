@@ -22,4 +22,20 @@ public class Tetrominoe {
     public int getRightInset(int rotation) {
         return 0;
     }
+
+    public int getTopInset(int rotation) {
+        return 0;
+    }
+
+    public int getBottomInset(int rotation) {
+        return 0;
+    }
+
+    public Color getLightColor() {
+        return null;
+    }
+
+    public Color getDarkColor() {
+        return null;
+    }
 }

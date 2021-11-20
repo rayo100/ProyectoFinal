@@ -1,5 +1,6 @@
 package Presentacion;
 
+import Dominio.Board;
 import Dominio.Tetrominoe;
 
 import javax.swing.*;
@@ -25,7 +26,7 @@ public class Tetris1 extends JFrame {
     private JLabel color;
     private JComboBox comboColor;
     //Panel tablero
-    private JPanel tablero;
+    private Board tablero;
     //Panel figura
     private JPanel figura;
     private JLabel nextFigura;
@@ -41,15 +42,21 @@ public class Tetris1 extends JFrame {
     private JPanel principal;
     private JPanel principal2;
     private JPanel principal3;
+    //Game
+
     private Font font = new Font("Arial Bold", Font.ITALIC, 16);
     private Font font2 = new Font("Arial", Font.BOLD, 16);
     //Tamano ventana
-    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width - 100;
+    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width - 300;
     private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height - 100;
 
     public Tetris1(String title) {
         super(title);
         prepareElementos();
+    }
+    public static void main(String[] args){
+        Tetris1 gui = new Tetris1("prueba");
+        gui.setVisible(true);
     }
     private void cargueElementos1(){
         options = new JPanel(new GridLayout(2,2));
@@ -78,7 +85,7 @@ public class Tetris1 extends JFrame {
         principal = new JPanel(new GridLayout(2,2));
         principal2 = new JPanel(new GridLayout(2,1));
         principal3 = new JPanel(new GridLayout(2,1));
-        tablero = new JPanel(new GridLayout(1,2));
+        tablero = new Board(this);
         textTime = new JTextField();
         textScore = new JTextField();
         textNickname = new JTextField();
@@ -149,12 +156,12 @@ public class Tetris1 extends JFrame {
         information.add(textTime);
         information.add(score);
         information.add(textScore);
-        principal.add(configurations);
+        //principal.add(configurations);
         principal.add(figura);
-        principal.add(options);
+        //principal.add(options);
         principal2.add(information);
-        principal3.add(principal);
-        principal3.add(principal2);
+        //principal3.add(principal);
+        //principal3.add(principal2);
         add(principal3, BorderLayout.WEST);
         add(tablero, BorderLayout.CENTER);
     }
