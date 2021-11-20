@@ -26,6 +26,7 @@ public class Tetris1 extends JFrame {
         Tetris1 gui = new Tetris1("prueba");
         gui.setVisible(true);
     }
+<<<<<<< HEAD
 
     private void cargueElementos1(){
         options = new JPanel(new GridLayout(2,2));
@@ -135,6 +136,9 @@ public class Tetris1 extends JFrame {
         add(tablero, BorderLayout.CENTER);
     }
 
+=======
+
+>>>>>>> b0f4b7f9221aecd3e79550ef4487bd4a787f5282
     public void prepareElementos(){
         setPreferredSize(new Dimension(ANCHO,ALTO));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
