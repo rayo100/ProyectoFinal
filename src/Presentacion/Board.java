@@ -1,6 +1,5 @@
 package Presentacion;
 
-import Dominio.Tetrominoe;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,7 +25,7 @@ public class Board extends JPanel{
     private static final Font LARGEFONT = new Font("Arial",Font.ITALIC,18);
     private static final Font SMALLFONT = new Font("Arial",Font.ITALIC,12);
     private Tetris1 tetris;
-    private Tetrominoe[][] tiles;
+    //private Tetrominoe[][] tiles;
     private Color[][] shape = {
             {Color.RED,Color.RED,Color.RED},
             {null,Color.RED,null}
@@ -50,47 +49,47 @@ public class Board extends JPanel{
         looper.start();
     }
 
-    public void clear(){
-        for (int i = 0; i < NROWS; i++){
-            for(int j = 0; j < NCOLS; j++){
-                tiles[i][j] = null;
-            }
-        }
-    }
+//    public void clear(){
+//        for (int i = 0; i < NROWS; i++){
+//            for(int j = 0; j < NCOLS; j++){
+//                tiles[i][j] = null;
+//            }
+//        }
+//    }
+//
+//    public int checkLines(){
+//        int completedLines = 0;
+//        for(int row = 0; row < NROWS; row ++){
+//            if(checkLine(row)){
+//                completedLines++;
+//            }
+//        }
+//        return completedLines;
+//    }
 
-    public int checkLines(){
-        int completedLines = 0;
-        for(int row = 0; row < NROWS; row ++){
-            if(checkLine(row)){
-                completedLines++;
-            }
-        }
-        return completedLines;
-    }
+//    private boolean checkLine(int line){
+//        for(int col = 0; col < NCOLS; col++){
+//            if(!isOccupied(col,line)) return false;
+//        }
+//        for(int row = line - 1; row >= 0; row--){
+//            for(int col = 0; col < NCOLS; col ++){
+//                setTile(col,row +1,getTile(col,row));
+//            }
+//        }
+//        return true;
+//    }
 
-    private boolean checkLine(int line){
-        for(int col = 0; col < NCOLS; col++){
-            if(!isOccupied(col,line)) return false;
-        }
-        for(int row = line - 1; row >= 0; row--){
-            for(int col = 0; col < NCOLS; col ++){
-                setTile(col,row +1,getTile(col,row));
-            }
-        }
-        return true;
-    }
-
-    private boolean isOccupied(int x, int y){
-        return tiles[y][x] != null;
-    }
-    
-    private void setTile(int x, int y, Tetrominoe type){
-        tiles[y][x] = type;
-    }
-    
-    private Tetrominoe getTile(int x, int y){
-        return tiles[y][x];
-    }
+//    private boolean isOccupied(int x, int y){
+//        return tiles[y][x] != null;
+//    }
+//
+//    private void setTile(int x, int y, Tetrominoe type){
+//        tiles[y][x] = type;
+//    }
+//
+//    private Tetrominoe getTile(int x, int y){
+//        return tiles[y][x];
+//    }
 //    @Override
 //    public void paintComponent(Graphics g) {
 //        super.paintComponent(g);

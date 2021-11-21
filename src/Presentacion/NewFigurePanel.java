@@ -30,6 +30,7 @@ public class NewFigurePanel extends JPanel {
     private JButton color;
     private JButton controls;
     private JButton help;
+    private JLabel options;
 
 
     //Fin nuevos atributos
@@ -52,7 +53,7 @@ public class NewFigurePanel extends JPanel {
         controls.setBounds(130,200,90, 20);
         color = new JButton("Color");
         color.setBounds(30,240,90, 20);
-//        help = new JButton("Help");
+//        help = new JButton("Help")
         add(save);
         add(controls);
         add(color);
@@ -67,15 +68,16 @@ public class NewFigurePanel extends JPanel {
 
         //Section stats
         g.setFont(LARGE_FONT);
-        g.drawString("Options", SMALL_INSET, offset = STATS_INSET);
+        g.drawString("Options:", SMALL_INSET, offset = STATS_INSET);
         g.setFont(SMALL_FONT);
-        //g.drawString("Nickname: " + tetris.getLevel(), LARGE_INSET, offset += TEXT_STRIDE);
+        //g.drawString("Nickname: " + tetris.getNickname(), LARGE_INSET, offset += TEXT_STRIDE);
         //g.drawString("Score: " + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
 
         //Section controls
-//        g.setFont(LARGE_FONT);
-//        g.drawString("Controls Player one", SMALL_INSET, offset = CONTROLS_INSET);
-//        g.setFont(SMALL_FONT);
+        g.setFont(LARGE_FONT);
+        g.drawString("Stats", SMALL_INSET, offset = CONTROLS_INSET);
+        g.setFont(SMALL_FONT);
+        g.drawString("Nickname: " + tetris.getNickname(), LARGE_INSET, offset += TEXT_STRIDE);
 //        g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
 //        g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
 //        g.drawString("W - Rotate", LARGE_INSET, offset += TEXT_STRIDE);
