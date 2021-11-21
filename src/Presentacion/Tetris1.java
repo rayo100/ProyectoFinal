@@ -59,6 +59,8 @@ public class Tetris1 extends JFrame {
         return false;
     }
 
+
+
     public boolean isNewGame() {
         return false;
     }

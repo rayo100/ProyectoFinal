@@ -3,9 +3,118 @@ package Dominio;
 import java.awt.*;
 
 public class Tetrominoe {
-    //public enum
+    private final boolean[][] TYPEZ = {
+        {
+            false,	true,	true,
+            true,	true,	false,
+            false,	false,	false,
+        },
+        {
+            false,	true,	false,
+            false,	true,	true,
+            false,	false,	true,
+        },
+        {
+            false,	false,	false,
+            false,	true,	true,
+            true,	true,	false,
+        },
+        {
+            true,	false,	false,
+            true,	true,	false,
+            false,	true,	false,
+        }
+    };
+    private final boolean[][] TYPEI ={
+        {
+            false,	false,	false,	false,
+            true,	true,	true,	true,
+            false,	false,	false,	false,
+            false,	false,	false,	false,
+        },
+        {
+            false,	false,	true,	false,
+            false,	false,	true,	false,
+            false,	false,	true,	false,
+            false,	false,	true,	false,
+        },
+        {
+            false,	false,	false,	false,
+            false,	false,	false,	false,
+            true,	true,	true,	true,
+            false,	false,	false,	false,
+        },
+        {
+            false,	true,	false,	false,
+            false,	true,	false,	false,
+            false,	true,	false,	false,
+            false,	true,	false,	false,
+        }
+    };
 
-    private Boolean[][] tiles;
+    private final boolean[][] TYPET = {
+        {
+            false,	true,	false,
+            true,	true,	true,
+            false,	false,	false,
+        },
+        {
+            false,	true,	false,
+            false,	true,	true,
+            false,	true,	false,
+        },
+        {
+            false,	false,	false,
+            true,	true,	true,
+            false,	true,	false,
+        },
+        {
+            false,	true,	false,
+            true,	true,	false,
+            false,	true,	false,
+        }
+    };
+    private final boolean[][] TYPEL = {
+        {
+            false,	false,	true,
+            true,	true,	true,
+            false,	false,	false,
+        },
+        {
+            false,	true,	false,
+            false,	true,	false,
+            false,	true,	true,
+        },
+        {
+            false,	false,	false,
+            true,	true,	true,
+            true,	false,	false,
+        },
+        {
+            true,	true,	false,
+            false,	true,	false,
+            false,	true,	false,
+        }
+    };
+    private final boolean[][] TYPEO ={
+        {
+            true,	true,
+            true,	true,
+        },
+        {
+            true,	true,
+            true,	true,
+        },
+        {
+            true,	true,
+            true,	true,
+        },
+        {
+            true,	true,
+            true,	true,
+        }
+    };
+
     private int rows;
     private int cols;
     private int currentCol;
