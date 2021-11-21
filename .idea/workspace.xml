@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="1">
+    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="s8i">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Board$GameCycle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Board$TAdapter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Shape$Tetrominoe.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Shape.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Tetris.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Board$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Board$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ayudas/ayuda1/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ayudas/ayuda1/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ayudas/ayuda1/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ayudas/ayuda1/Tetris.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentacion/Tetris1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Tetris1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +44,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.TetrisMain">
+    <configuration name="TetrisMain" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Presentacion.TetrisMain" />
+      <module name="ProyectoFinal" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Presentacion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="main1" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Presentacion.Tetris1" />
       <module name="ProyectoFinal" />
@@ -83,14 +89,7 @@
       <option name="project" value="LOCAL" />
       <updated>1637379033699</updated>
     </task>
-    <task id="LOCAL-00003" summary="1">
-      <created>1637462107171</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1637462107171</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -110,12 +109,12 @@
     <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ProyectoFinal$TetrisGUI.ic" NAME="TetrisGUI Coverage Results" MODIFIED="1636317703885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ProyectoFinal$Tetris.ic" NAME="Tetris Coverage Results" MODIFIED="1636420029275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Presentacion.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ProyectoFinal$Test2.ic" NAME="Test2 Coverage Results" MODIFIED="1636310506778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Presentacion.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/ProyectoFinal$TetrisGUI.ic" NAME="TetrisGUI Coverage Results" MODIFIED="1636317703885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

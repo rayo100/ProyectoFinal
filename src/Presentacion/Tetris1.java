@@ -23,7 +23,7 @@ public class Tetris1 extends JFrame {
         prepareElementos();
     }
     public static void main(String[] args){
-        Tetris1 gui = new Tetris1("prueba");
+        Tetris1 gui = new Tetris1("Tetris Game");
         gui.setVisible(true);
     }
 
@@ -53,6 +53,8 @@ public class Tetris1 extends JFrame {
         add(board,BorderLayout.CENTER);
         add(newFigure,BorderLayout.WEST);
     }
+    //public String getNickname(){return nickname; }
+
     public boolean isPaused(){
         return false;
     }

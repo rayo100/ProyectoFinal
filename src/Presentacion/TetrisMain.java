@@ -126,16 +126,22 @@ public class TetrisMain extends JFrame {
         exitGame.addActionListener(e -> salga());
         saveGame.addActionListener(e -> save());
         openGame.addActionListener(e -> open());
+        start.addActionListener(e -> startGame());
 
         players.addActionListener(e -> player());
     }
-
+    private void startGame(){
+        setVisible(false);
+        Tetris1 frame = new Tetris1("Tetris Game");
+        frame.setVisible(true);
+    }
 
     private void irACreditos() {
         setVisible(false);
         Credits frame = new Credits("Credits");
         frame.setVisible(true);
     }
+
 
     private void prepareElementosChooser() {
         fileChooser = new JFileChooser();
@@ -174,8 +180,11 @@ public class TetrisMain extends JFrame {
         JOptionPane.showInputDialog(null, "Player # 1 Nickname.", "Players Information", JOptionPane.PLAIN_MESSAGE);
         JOptionPane.showInputDialog(null, "Player # 2 Nickname.", "Players Information", JOptionPane.PLAIN_MESSAGE);
     }
-    private void player(){
-        JOptionPane.showInputDialog(null, "Player Nickname.", "Player Information", JOptionPane.PLAIN_MESSAGE);
+    private String player(){
+        String nickname = (JOptionPane.showInputDialog(null, "Player Nickname.", "Player Information",
+                JOptionPane.PLAIN_MESSAGE));
+        JOptionPane.showMessageDialog(null, "Your Nickname is: "+nickname, "Nickname", JOptionPane.PLAIN_MESSAGE);
+        return nickname;
     }
 //    private void bottonPlayers() throws TetrisException{
 //        String selected =(String) comboMode.getSelectedItem();

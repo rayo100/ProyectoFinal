@@ -50,7 +50,7 @@ public class NewFigurePanel extends JPanel {
         g.setFont(LARGE_FONT);
         g.drawString("Stats", SMALL_INSET, offset = STATS_INSET);
         g.setFont(SMALL_FONT);
-        //g.drawString("Level: " + tetris.getLevel(), LARGE_INSET, offset += TEXT_STRIDE);
+        //g.drawString("Nickname: " + tetris.getLevel(), LARGE_INSET, offset += TEXT_STRIDE);
         //g.drawString("Score: " + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
 
         //Section controls
@@ -60,7 +60,7 @@ public class NewFigurePanel extends JPanel {
         g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
         g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
         g.drawString("W - Rotate", LARGE_INSET, offset += TEXT_STRIDE);
-        g.drawString(". - Use a buff", LARGE_INSET, offset += TEXT_STRIDE);
+        g.drawString(". - Use a Buffo", LARGE_INSET, offset += TEXT_STRIDE);
         g.drawString("S - Drop", LARGE_INSET, offset += TEXT_STRIDE);
         g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
 
