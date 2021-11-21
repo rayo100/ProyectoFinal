@@ -1,160 +1,186 @@
 package Dominio;
 
+import Ayudas.BoardPanel;
+
 import java.awt.*;
 
-public class Tetrominoe {
-    private final boolean[][] TYPEZ = {
+public enum Tetrominoe {
+    TypeI(new Color(BoardPanel.COLOR_MIN, BoardPanel.COLOR_MAX, BoardPanel.COLOR_MAX), 4, 4, 1, new boolean[][] {
         {
-            false,	true,	true,
-            true,	true,	false,
-            false,	false,	false,
+                false,	false,	false,	false,
+                true,	true,	true,	true,
+                false,	false,	false,	false,
+                false,	false,	false,	false,
         },
         {
-            false,	true,	false,
-            false,	true,	true,
-            false,	false,	true,
+                false,	false,	true,	false,
+                false,	false,	true,	false,
+                false,	false,	true,	false,
+                false,	false,	true,	false,
         },
         {
-            false,	false,	false,
-            false,	true,	true,
-            true,	true,	false,
+                false,	false,	false,	false,
+                false,	false,	false,	false,
+                true,	true,	true,	true,
+                false,	false,	false,	false,
         },
         {
-            true,	false,	false,
-            true,	true,	false,
-            false,	true,	false,
+                false,	true,	false,	false,
+                false,	true,	false,	false,
+                false,	true,	false,	false,
+                false,	true,	false,	false,
         }
-    };
-    private final boolean[][] TYPEI ={
+    }),
+
+    /**
+     * Piece TypeJ.
+     */
+    TypeJ(new Color(BoardPanel.COLOR_MIN, BoardPanel.COLOR_MIN, BoardPanel.COLOR_MAX), 3, 3, 2, new boolean[][] {
         {
-            false,	false,	false,	false,
-            true,	true,	true,	true,
-            false,	false,	false,	false,
-            false,	false,	false,	false,
+                true,	false,	false,
+                true,	true,	true,
+                false,	false,	false,
         },
         {
-            false,	false,	true,	false,
-            false,	false,	true,	false,
-            false,	false,	true,	false,
-            false,	false,	true,	false,
+                false,	true,	true,
+                false,	true,	false,
+                false,	true,	false,
         },
         {
-            false,	false,	false,	false,
-            false,	false,	false,	false,
-            true,	true,	true,	true,
-            false,	false,	false,	false,
+                false,	false,	false,
+                true,	true,	true,
+                false,	false,	true,
         },
         {
-            false,	true,	false,	false,
-            false,	true,	false,	false,
-            false,	true,	false,	false,
-            false,	true,	false,	false,
+                false,	true,	false,
+                false,	true,	false,
+                true,	true,	false,
         }
-    };
+    }),
 
-    private final boolean[][] TYPET = {
-        {
-            false,	true,	false,
-            true,	true,	true,
-            false,	false,	false,
-        },
-        {
-            false,	true,	false,
-            false,	true,	true,
-            false,	true,	false,
-        },
-        {
-            false,	false,	false,
-            true,	true,	true,
-            false,	true,	false,
-        },
-        {
-            false,	true,	false,
-            true,	true,	false,
-            false,	true,	false,
-        }
-    };
-    private final boolean[][] TYPEL = {
-        {
-            false,	false,	true,
-            true,	true,	true,
-            false,	false,	false,
-        },
-        {
-            false,	true,	false,
-            false,	true,	false,
-            false,	true,	true,
-        },
-        {
-            false,	false,	false,
-            true,	true,	true,
-            true,	false,	false,
-        },
-        {
-            true,	true,	false,
-            false,	true,	false,
-            false,	true,	false,
-        }
-    };
-    private final boolean[][] TYPEO ={
-        {
-            true,	true,
-            true,	true,
-        },
-        {
-            true,	true,
-            true,	true,
-        },
-        {
-            true,	true,
-            true,	true,
-        },
-        {
-            true,	true,
-            true,	true,
-        }
-    };
+    /**
+     * Piece TypeL.
+     */
+    TypeL(new Color(BoardPanel.COLOR_MAX, 127, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][] {
+            {
+                    false,	false,	true,
+                    true,	true,	true,
+                    false,	false,	false,
+            },
+            {
+                    false,	true,	false,
+                    false,	true,	false,
+                    false,	true,	true,
+            },
+            {
+                    false,	false,	false,
+                    true,	true,	true,
+                    true,	false,	false,
+            },
+            {
+                    true,	true,	false,
+                    false,	true,	false,
+                    false,	true,	false,
+            }
+    }),
 
-    private int rows;
-    private int cols;
-    private int currentCol;
-    private int currentrow;
-    private int rotation;
+    /**
+     * Piece TypeO.
+     */
+    TypeO(new Color(BoardPanel.COLOR_MAX, BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN), 2, 2, 2, new boolean[][] {
+            {
+                    true,	true,
+                    true,	true,
+            },
+            {
+                    true,	true,
+                    true,	true,
+            },
+            {
+                    true,	true,
+                    true,	true,
+            },
+            {
+                    true,	true,
+                    true,	true,
+            }
+    }),
 
+    /**
+     * Piece TypeS.
+     */
+    TypeS(new Color(BoardPanel.COLOR_MIN, BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][] {
+            {
+                    false,	true,	true,
+                    true,	true,	false,
+                    false,	false,	false,
+            },
+            {
+                    false,	true,	false,
+                    false,	true,	true,
+                    false,	false,	true,
+            },
+            {
+                    false,	false,	false,
+                    false,	true,	true,
+                    true,	true,	false,
+            },
+            {
+                    true,	false,	false,
+                    true,	true,	false,
+                    false,	true,	false,
+            }
+    }),
 
-    /*public int getDimension() {
-        return 0;
-    }
+    /**
+     * Piece TypeT.
+     */
+    TypeT(new Color(128, BoardPanel.COLOR_MIN, 128), 3, 3, 2, new boolean[][] {
+            {
+                    false,	true,	false,
+                    true,	true,	true,
+                    false,	false,	false,
+            },
+            {
+                    false,	true,	false,
+                    false,	true,	true,
+                    false,	true,	false,
+            },
+            {
+                    false,	false,	false,
+                    true,	true,	true,
+                    false,	true,	false,
+            },
+            {
+                    false,	true,	false,
+                    true,	true,	false,
+                    false,	true,	false,
+            }
+    }),
 
-    public boolean isTile(int col, int row, int rotation) {
-        return false;
-    }
-
-    public Color getBaseColor() {
-        return null;
-    }
-
-    public int getLeftInset(int rotation) {
-        return 0;
-    }
-
-    public int getRightInset(int rotation) {
-        return 0;
-    }
-
-    public int getTopInset(int rotation) {
-        return 0;
-    }
-
-    public int getBottomInset(int rotation) {
-        return 0;
-    }
-
-    public Color getLightColor() {
-        return null;
-    }
-
-    public Color getDarkColor() {
-        return null;
-    }*/
+    /**
+     * Piece TypeZ.
+     */
+    TypeZ(new Color(BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][] {
+            {
+                    true,	true,	false,
+                    false,	true,	true,
+                    false,	false,	false,
+            },
+            {
+                    false,	false,	true,
+                    false,	true,	true,
+                    false,	true,	false,
+            },
+            {
+                    false,	false,	false,
+                    true,	true,	false,
+                    false,	true,	true,
+            },
+            {
+                    false,	true,	false,
+                    true,	true,	false,
+                    true,	false,	false,
+            }
+    });
 }

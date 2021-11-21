@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 
 public class NewFigurePanel extends JPanel {
@@ -25,7 +25,11 @@ public class NewFigurePanel extends JPanel {
     private static final Font LARGE_FONT = new Font("Arial Bold", Font.BOLD, 13);
     private static final Color DRAW_COLOR = Color.BLACK;
     //Agregar atributos aca:
-    
+    private JButton save;
+    private JButton color;
+    private JButton controls;
+    private JButton help;
+
 
     //Fin nuevos atributos
 
@@ -35,9 +39,22 @@ public class NewFigurePanel extends JPanel {
         this.tetris = tetris;
         setPreferredSize(new Dimension(Board.PANELWIDTH, Board.PANELHEIGHT));
         setBackground(Color.WHITE);
+        setLayout(null);
+        prepareElementosM1();
     }
     //Metodos nuevos aca:
-
+    private void prepareElementosM1() {
+        save = new JButton("Save");
+        save.setBounds(30,200,90, 20);
+        controls = new JButton("Controls");
+        controls.setBounds(130,200,90, 20);
+        color = new JButton("Color");
+        color.setBounds(30,240,90, 20);
+//        help = new JButton("Help");
+        add(save);
+        add(controls);
+        add(color);
+    }
 
     //Fin metodos nuevos
     @Override
@@ -48,21 +65,21 @@ public class NewFigurePanel extends JPanel {
 
         //Section stats
         g.setFont(LARGE_FONT);
-        g.drawString("Stats", SMALL_INSET, offset = STATS_INSET);
+        g.drawString("Options", SMALL_INSET, offset = STATS_INSET);
         g.setFont(SMALL_FONT);
         //g.drawString("Nickname: " + tetris.getLevel(), LARGE_INSET, offset += TEXT_STRIDE);
         //g.drawString("Score: " + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
 
         //Section controls
-        g.setFont(LARGE_FONT);
-        g.drawString("Controls Player one", SMALL_INSET, offset = CONTROLS_INSET);
-        g.setFont(SMALL_FONT);
-        g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
-        g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
-        g.drawString("W - Rotate", LARGE_INSET, offset += TEXT_STRIDE);
-        g.drawString(". - Use a Buffo", LARGE_INSET, offset += TEXT_STRIDE);
-        g.drawString("S - Drop", LARGE_INSET, offset += TEXT_STRIDE);
-        g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
+//        g.setFont(LARGE_FONT);
+//        g.drawString("Controls Player one", SMALL_INSET, offset = CONTROLS_INSET);
+//        g.setFont(SMALL_FONT);
+//        g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
+//        g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
+//        g.drawString("W - Rotate", LARGE_INSET, offset += TEXT_STRIDE);
+//        g.drawString(". - Use a Buffo", LARGE_INSET, offset += TEXT_STRIDE);
+//        g.drawString("S - Drop", LARGE_INSET, offset += TEXT_STRIDE);
+//        g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
 
         //Section next piece
         g.setFont(LARGE_FONT);
