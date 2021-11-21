@@ -1,5 +1,4 @@
 package Ayudas.ayuda1;
-import Ayudas.ayuda1.Shape.Tetrominoe;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
