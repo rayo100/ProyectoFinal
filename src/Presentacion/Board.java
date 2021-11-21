@@ -32,7 +32,7 @@ public class Board extends JPanel{
             {null,Color.RED,null}
     };
     private Timer looper;
-    private int x = 4,y = 0;
+    private int x = 4,y = 0,z = 3;
 
     public Board(Tetris1 tetris){
         //this.tetris = tetris;
