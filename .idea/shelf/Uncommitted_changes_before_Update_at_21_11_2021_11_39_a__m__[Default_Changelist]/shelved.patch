@@ -1,0 +1,211 @@
+Index: src/Presentacion/NewFigurePanel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Presentacion;\r\n\r\nimport java.awt.Color;\r\nimport java.awt.Dimension;\r\nimport java.awt.Font;\r\nimport java.awt.Graphics;\r\n\r\nimport javax.swing.JPanel;\r\n\r\n\r\npublic class NewFigurePanel extends JPanel {\r\n\r\n    private static final int TILESIZE = Board.TILESIZE / 2;\r\n    private static final int SHADEWIDTH = Board.SHADEWIDTH >> 1;\r\n    private static final int TILECOUNT = 5;\r\n    private static final int SQUARECENTER_X = 130;\r\n    private static final int SQUARECENTER_Y = 65;\r\n    private static final int SQUARESIZE = (TILESIZE * TILECOUNT >> 1);\r\n    private static final int SMALL_INSET = 20;\r\n    private static final int LARGE_INSET = 40;\r\n    private static final int STATS_INSET = 175;\r\n    private static final int CONTROLS_INSET = 300;\r\n    private static final int TEXT_STRIDE = 25;\r\n    private static final Font SMALL_FONT = new Font(\"Arial\", Font.BOLD, 11);\r\n    private static final Font LARGE_FONT = new Font(\"Arial Bold\", Font.BOLD, 13);\r\n    private static final Color DRAW_COLOR = Color.BLACK;\r\n    //Agregar atributos aca:\r\n    \r\n\r\n    //Fin nuevos atributos\r\n\r\n    private Tetris1 tetris;\r\n\r\n    public NewFigurePanel(Tetris1 tetris) {\r\n        this.tetris = tetris;\r\n        setPreferredSize(new Dimension(Board.PANELWIDTH, Board.PANELHEIGHT));\r\n        setBackground(Color.WHITE);\r\n    }\r\n    //Metodos nuevos aca:\r\n\r\n\r\n    //Fin metodos nuevos\r\n    @Override\r\n    public void paintComponent(Graphics g) {\r\n        super.paintComponent(g);\r\n        g.setColor(DRAW_COLOR);\r\n        int offset;\r\n\r\n        //Section stats\r\n        g.setFont(LARGE_FONT);\r\n        g.drawString(\"Stats\", SMALL_INSET, offset = STATS_INSET);\r\n        g.setFont(SMALL_FONT);\r\n        //g.drawString(\"Nickname: \" + tetris.getLevel(), LARGE_INSET, offset += TEXT_STRIDE);\r\n        //g.drawString(\"Score: \" + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);\r\n\r\n        //Section controls\r\n        g.setFont(LARGE_FONT);\r\n        g.drawString(\"Controls Player one\", SMALL_INSET, offset = CONTROLS_INSET);\r\n        g.setFont(SMALL_FONT);\r\n        g.drawString(\"A - Move Left\", LARGE_INSET, offset += TEXT_STRIDE);\r\n        g.drawString(\"D - Move Right\", LARGE_INSET, offset += TEXT_STRIDE);\r\n        g.drawString(\"W - Rotate\", LARGE_INSET, offset += TEXT_STRIDE);\r\n        g.drawString(\". - Use a Buffo\", LARGE_INSET, offset += TEXT_STRIDE);\r\n        g.drawString(\"S - Drop\", LARGE_INSET, offset += TEXT_STRIDE);\r\n        g.drawString(\"P - Pause Game\", LARGE_INSET, offset += TEXT_STRIDE);\r\n\r\n        //Section next piece\r\n        g.setFont(LARGE_FONT);\r\n        g.drawString(\"Next Piece:\", SMALL_INSET, 70);\r\n        g.drawRect(SQUARECENTER_X - SQUARESIZE, SQUARECENTER_Y - SQUARESIZE, SQUARESIZE * 2, SQUARESIZE * 2);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Presentacion/NewFigurePanel.java b/src/Presentacion/NewFigurePanel.java
+--- a/src/Presentacion/NewFigurePanel.java	(revision 2de05ed562a8ba2043be67db6a7c359bc0dc7c44)
++++ b/src/Presentacion/NewFigurePanel.java	(date 1637510115990)
+@@ -24,6 +24,7 @@
+     private static final Font SMALL_FONT = new Font("Arial", Font.BOLD, 11);
+     private static final Font LARGE_FONT = new Font("Arial Bold", Font.BOLD, 13);
+     private static final Color DRAW_COLOR = Color.BLACK;
++    private String nickname;
+     //Agregar atributos aca:
+     
+ 
+@@ -33,6 +34,7 @@
+ 
+     public NewFigurePanel(Tetris1 tetris) {
+         this.tetris = tetris;
++        nickname = tetris.getNickname();
+         setPreferredSize(new Dimension(Board.PANELWIDTH, Board.PANELHEIGHT));
+         setBackground(Color.WHITE);
+     }
+Index: src/Presentacion/TetrisMain.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Presentacion;\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.event.*;\r\nimport java.io.*;\r\nimport Dominio.*;\r\n\r\npublic class TetrisMain extends JFrame {\r\n    //Tamano ventana\r\n    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 100;\r\n    private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height / 2;\r\n    private JPanel mainPanel;\r\n    //Menu\r\n    private JMenuBar menuExit;\r\n    private JMenu archivo;\r\n    private JMenuItem newGame;\r\n    private JMenuItem saveGame;\r\n    private JMenuItem openGame;\r\n    private JMenuItem importGame;\r\n    private JMenuItem exportGame;\r\n    private JMenuItem exitGame;\r\n    private JFileChooser fileChooser;\r\n    //Panel bottons\r\n    private JPanel panelBuffos;\r\n    private JLabel numberBuffos;\r\n    private JSpinner spinnerBuffos;\r\n    private JButton start;\r\n    private JButton credits;\r\n    private JButton exit;\r\n    private JButton players;\r\n    private JPanel botones;\r\n    //Panel images\r\n    private JPanel iconTetris;\r\n    private ImageIcon icon;\r\n    private JLabel labelIcon;\r\n    //Mode\r\n    private JComboBox comboMode;\r\n\r\n    public TetrisMain(String title) {\r\n        super(title);\r\n        prepareElementosMain();\r\n        prepareAccionesMain();\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        TetrisMain gui = new TetrisMain(\"Tetris Game\");\r\n        gui.setVisible(true);\r\n    }\r\n    private void prepareElementosMain(){\r\n        setPreferredSize(new Dimension(ANCHO,ALTO));\r\n        setDefaultCloseOperation(EXIT_ON_CLOSE);\r\n        pack();\r\n        setLocationRelativeTo(null);\r\n        setResizable(false);\r\n        setLayout(new BorderLayout());\r\n        prepareElementosM1();\r\n        agregueElementosM1();\r\n        prepareElementosChooser();\r\n    }\r\n\r\n    private void prepareElementosM1(){\r\n        iconTetris = new JPanel();\r\n        icon = new ImageIcon(\"tetris.jpg\");\r\n        labelIcon = new JLabel(null,icon ,SwingConstants.CENTER);\r\n        iconTetris.add(labelIcon);\r\n        iconTetris.setBackground(Color.BLACK);\r\n        botones = new JPanel(new GridLayout(1,5));\r\n        comboMode = new JComboBox();\r\n        players = new JButton(\"Players\");\r\n        credits = new JButton(\"Credits\");\r\n        panelBuffos = new JPanel(new GridLayout(1,2));\r\n        numberBuffos = new JLabel(\"# Buffos:\");\r\n        spinnerBuffos = new JSpinner();\r\n        spinnerBuffos.setModel(new SpinnerNumberModel(0, 0, 50, 1));\r\n        start = new JButton(\"Start\");\r\n        exit = new JButton(\"Exit\");\r\n        menuExit = new JMenuBar();\r\n        archivo = new JMenu(\"File\");\r\n        newGame = new JMenuItem(\"New\");\r\n        saveGame = new JMenuItem(\"Save\");\r\n        openGame = new JMenuItem(\"Open\");\r\n        importGame = new JMenuItem(\"Import\");\r\n        exportGame = new JMenuItem(\"Export\");\r\n        exitGame = new JMenuItem(\"Exit\");\r\n    }\r\n\r\n    private void agregueElementosM1(){\r\n        panelBuffos.add(numberBuffos);\r\n        panelBuffos.add(spinnerBuffos);\r\n        botones.add(comboMode);\r\n        botones.add(players);\r\n        botones.add(panelBuffos);\r\n        botones.add(credits);\r\n        botones.add(start);\r\n        botones.add(exit);\r\n        add(iconTetris,BorderLayout.CENTER);\r\n        add(botones,BorderLayout.SOUTH);\r\n        menuExit.add(archivo);\r\n        archivo.add(newGame);\r\n        archivo.addSeparator();\r\n        archivo.add(openGame);\r\n        archivo.addSeparator();\r\n        archivo.add(saveGame);\r\n        archivo.addSeparator();\r\n        archivo.add(importGame);\r\n        archivo.addSeparator();\r\n        archivo.add(exportGame);\r\n        archivo.addSeparator();\r\n        archivo.add(exitGame);\r\n        setJMenuBar(menuExit);\r\n        comboMode.addItem(\"Game Mode\");\r\n        comboMode.addItem(\"Player\");\r\n        comboMode.addItem(\"Player vs Player\");\r\n        comboMode.addItem(\"Player vs Machine\");\r\n\r\n    }\r\n\r\n\r\n    private void prepareAccionesMain(){\r\n        prepareAccionesMenu();\r\n    }\r\n\r\n    private void prepareAccionesMenu() {\r\n        credits.addActionListener(e -> irACreditos());\r\n        exit.addActionListener(e -> salga());\r\n        exitGame.addActionListener(e -> salga());\r\n        saveGame.addActionListener(e -> save());\r\n        openGame.addActionListener(e -> open());\r\n        start.addActionListener(e -> startGame());\r\n\r\n        players.addActionListener(e -> player());\r\n    }\r\n    private void startGame(){\r\n        setVisible(false);\r\n        Tetris1 frame = new Tetris1(\"Tetris Game\");\r\n        frame.setVisible(true);\r\n    }\r\n\r\n    private void irACreditos() {\r\n        setVisible(false);\r\n        Credits frame = new Credits(\"Credits\");\r\n        frame.setVisible(true);\r\n    }\r\n\r\n\r\n    private void prepareElementosChooser() {\r\n        fileChooser = new JFileChooser();\r\n    }\r\n\r\n    private void save() {\r\n        int action = fileChooser.showSaveDialog(saveGame);\r\n        if (action == JFileChooser.APPROVE_OPTION) {\r\n            File archivo = fileChooser.getSelectedFile();\r\n            JOptionPane.showMessageDialog(null, \"File \"+ archivo.getName() +\" saved\" + \"\\nFuncionalidad Salvar en construccion\");\r\n        }\r\n    }\r\n\r\n    private void open() {\r\n        int action = fileChooser.showOpenDialog(openGame);\r\n        if (action == JFileChooser.APPROVE_OPTION) {\r\n            File archivo = fileChooser.getSelectedFile();\r\n            JOptionPane.showMessageDialog(null, \"File \" + archivo.getName() + \" opened \"  +\"\\nFuncionalidad Abir en construccion\");\r\n        }\r\n    }\r\n\r\n    private void salga() {\r\n        if (JOptionPane.showConfirmDialog(rootPane, \"Do you want to log out?\",\r\n                \"Get out of the system\", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {\r\n            System.exit(0);\r\n        }\r\n    }\r\n\r\n    private void vsMachine(){\r\n        JOptionPane.showInputDialog(null, \"Player Nickname.\", \"Player Information\", JOptionPane.PLAIN_MESSAGE);\r\n        String [] options= {\"Principiant\", \"Expert\", \"Cancel\"};\r\n        JOptionPane.showOptionDialog(null, \"Choose machine level.\", \"Machine Level\",\r\n                0, JOptionPane.QUESTION_MESSAGE, null, options, \"Principiant\");\r\n    }\r\n    private void playerVsPlayer(){\r\n        JOptionPane.showInputDialog(null, \"Player # 1 Nickname.\", \"Players Information\", JOptionPane.PLAIN_MESSAGE);\r\n        JOptionPane.showInputDialog(null, \"Player # 2 Nickname.\", \"Players Information\", JOptionPane.PLAIN_MESSAGE);\r\n    }\r\n    private String player(){\r\n        String nickname = (JOptionPane.showInputDialog(null, \"Player Nickname.\", \"Player Information\",\r\n                JOptionPane.PLAIN_MESSAGE));\r\n        JOptionPane.showMessageDialog(null, \"Your Nickname is: \"+nickname, \"Nickname\", JOptionPane.PLAIN_MESSAGE);\r\n        return nickname;\r\n    }\r\n//    private void bottonPlayers() throws TetrisException{\r\n//        String selected =(String) comboMode.getSelectedItem();\r\n//        switch (selected) {\r\n//\r\n//            case KeyEvent.VK_P -> player();\r\n//            case KeyEvent.VK_LEFT -> playerVsPlayer();\r\n//            case KeyEvent.VK_RIGHT -> vsMachine();\r\n//        }\r\n//    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Presentacion/TetrisMain.java b/src/Presentacion/TetrisMain.java
+--- a/src/Presentacion/TetrisMain.java	(revision 2de05ed562a8ba2043be67db6a7c359bc0dc7c44)
++++ b/src/Presentacion/TetrisMain.java	(date 1637510271273)
+@@ -132,7 +132,7 @@
+     }
+     private void startGame(){
+         setVisible(false);
+-        Tetris1 frame = new Tetris1("Tetris Game");
++        Tetris1 frame = new Tetris1(this,"Tetris Game");
+         frame.setVisible(true);
+     }
+ 
+@@ -180,10 +180,11 @@
+         JOptionPane.showInputDialog(null, "Player # 1 Nickname.", "Players Information", JOptionPane.PLAIN_MESSAGE);
+         JOptionPane.showInputDialog(null, "Player # 2 Nickname.", "Players Information", JOptionPane.PLAIN_MESSAGE);
+     }
+-    private String player(){
+-        String nickname = (JOptionPane.showInputDialog(null, "Player Nickname.", "Player Information",
++    public String player(){
++        String nickname = (JOptionPane.showInputDialog(null,
++                "Player Nickname.", "Player Information",
+                 JOptionPane.PLAIN_MESSAGE));
+-        JOptionPane.showMessageDialog(null, "Your Nickname is: "+nickname, "Nickname", JOptionPane.PLAIN_MESSAGE);
++        //JOptionPane.showMessageDialog(null, "Your Nickname is: "+nickname, "Nickname", JOptionPane.PLAIN_MESSAGE);
+         return nickname;
+     }
+ //    private void bottonPlayers() throws TetrisException{
+Index: src/Presentacion/Tetris1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Presentacion;\r\n\r\nimport Dominio.Tetrominoe;\r\n\r\nimport javax.swing.*;\r\nimport javax.swing.border.CompoundBorder;\r\nimport javax.swing.border.EmptyBorder;\r\nimport javax.swing.border.TitledBorder;\r\nimport java.awt.*;\r\nimport java.awt.Font;\r\n\r\npublic class Tetris1 extends JFrame {\r\n    //Panel NewFigure\r\n    NewFigurePanel newFigure;\r\n    //Panel Board\r\n    Board board;\r\n    //Tamano ventana\r\n    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width - 800;\r\n    private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height - 200;\r\n\r\n    public Tetris1(String title) {\r\n        super(title);\r\n        prepareElementos();\r\n    }\r\n    public static void main(String[] args){\r\n        Tetris1 gui = new Tetris1(\"Tetris Game\");\r\n        gui.setVisible(true);\r\n    }\r\n\r\n    public void prepareElementos(){\r\n        setPreferredSize(new Dimension(ANCHO,ALTO));\r\n        setDefaultCloseOperation(EXIT_ON_CLOSE);\r\n        pack();\r\n        setResizable(false);\r\n        setLayout(new BorderLayout());\r\n        cargueElementos();\r\n        configureElementos();\r\n        agregueElementos();\r\n        setLocationRelativeTo(null);\r\n    }\r\n    private void cargueElementos(){\r\n        newFigure = new NewFigurePanel(this);\r\n        board = new Board(this);\r\n\r\n    }\r\n    private void configureElementos(){\r\n        board.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5),\r\n                new TitledBorder(\"Board\")));\r\n        newFigure.setBorder(new CompoundBorder(new EmptyBorder(5,5,5,5),\r\n                new TitledBorder(\"Game Info\")));\r\n    }\r\n    private void agregueElementos(){\r\n        add(board,BorderLayout.CENTER);\r\n        add(newFigure,BorderLayout.WEST);\r\n    }\r\n    //public String getNickname(){return nickname; }\r\n\r\n    public boolean isPaused(){\r\n        return false;\r\n    }\r\n\r\n\r\n\r\n    public boolean isNewGame() {\r\n        return false;\r\n    }\r\n\r\n    public boolean isGameOver() {\r\n        return false;\r\n    }\r\n\r\n    public Tetrominoe getPieceType() {\r\n        return null;\r\n    }\r\n\r\n    public int getPieceCol() {\r\n        return 0;\r\n    }\r\n\r\n    public int getPieceRow() {\r\n        return 0;\r\n    }\r\n\r\n    public int getPieceRotation() {\r\n        return 0;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Presentacion/Tetris1.java b/src/Presentacion/Tetris1.java
+--- a/src/Presentacion/Tetris1.java	(revision 2de05ed562a8ba2043be67db6a7c359bc0dc7c44)
++++ b/src/Presentacion/Tetris1.java	(date 1637512039570)
+@@ -11,6 +11,7 @@
+ 
+ public class Tetris1 extends JFrame {
+     //Panel NewFigure
++    TetrisMain main;
+     NewFigurePanel newFigure;
+     //Panel Board
+     Board board;
+@@ -18,14 +19,17 @@
+     private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width - 800;
+     private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height - 200;
+ 
+-    public Tetris1(String title) {
++    public Tetris1(TetrisMain main, String title) {
+         super(title);
++        this.main = main;
++        System.out.println(ANCHO);
++        System.out.println(ALTO);
+         prepareElementos();
+     }
+-    public static void main(String[] args){
+-        Tetris1 gui = new Tetris1("Tetris Game");
+-        gui.setVisible(true);
+-    }
++//    public static void main(String[] args){
++//        Tetris1 gui = new Tetris1("Tetris Game");
++//        gui.setVisible(true);
++//    }
+ 
+     public void prepareElementos(){
+         setPreferredSize(new Dimension(ANCHO,ALTO));
+@@ -53,7 +57,9 @@
+         add(board,BorderLayout.CENTER);
+         add(newFigure,BorderLayout.WEST);
+     }
+-    //public String getNickname(){return nickname; }
++    public String getNickname(){
++        return main.player();
++    }
+ 
+     public boolean isPaused(){
+         return false;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"b2d7d353-4d5c-4575-b84c-54a645cdaf76\" name=\"Default Changelist\" comment=\"s8i\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Presentacion/Tetris1.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Presentacion/Tetris1.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/Presentacion/TetrisMain.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Presentacion/TetrisMain.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"219ng7fLrLYiOThqrYRwlje8R7Z\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.TetrisMain\">\r\n    <configuration name=\"TetrisMain\" type=\"Application\" factoryName=\"Application\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Presentacion.TetrisMain\" />\r\n      <module name=\"ProyectoFinal\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"Presentacion.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"main1\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Presentacion.Tetris1\" />\r\n      <module name=\"ProyectoFinal\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"b2d7d353-4d5c-4575-b84c-54a645cdaf76\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1637362279305</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1637362279305</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"1\">\r\n      <created>1637378982334</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637378982334</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"1\">\r\n      <created>1637379033699</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637379033699</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"1\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"1\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/ProyectoFinal$Tetris.ic\" NAME=\"Tetris Coverage Results\" MODIFIED=\"1636420029275\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>Presentacion.*</FILTER>\r\n    </SUITE>\r\n    <SUITE FILE_PATH=\"coverage/ProyectoFinal$Test2.ic\" NAME=\"Test2 Coverage Results\" MODIFIED=\"1636310506778\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>Presentacion.*</FILTER>\r\n    </SUITE>\r\n    <SUITE FILE_PATH=\"coverage/ProyectoFinal$TetrisGUI.ic\" NAME=\"TetrisGUI Coverage Results\" MODIFIED=\"1636317703885\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 2de05ed562a8ba2043be67db6a7c359bc0dc7c44)
++++ b/.idea/workspace.xml	(date 1637511873989)
+@@ -4,9 +4,13 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="s8i">
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="1">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Tetrominoe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Tetrominoe.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Tile.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/NewFigurePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/NewFigurePanel.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris1.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Presentacion/Tetris1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Tetris1.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" afterDir="false" />
+@@ -35,6 +39,9 @@
+     </file-type-list>
+   </component>
+   <component name="ProjectId" id="219ng7fLrLYiOThqrYRwlje8R7Z" />
++  <component name="ProjectLevelVcsManager">
++    <ConfirmationsSetting value="2" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+@@ -44,22 +51,9 @@
+     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+   </component>
+-  <component name="RunManager" selected="Application.TetrisMain">
+-    <configuration name="TetrisMain" type="Application" factoryName="Application" nameIsGenerated="true">
+-      <option name="MAIN_CLASS_NAME" value="Presentacion.TetrisMain" />
+-      <module name="ProyectoFinal" />
+-      <extension name="coverage">
+-        <pattern>
+-          <option name="PATTERN" value="Presentacion.*" />
+-          <option name="ENABLED" value="true" />
+-        </pattern>
+-      </extension>
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
++  <component name="RunManager">
+     <configuration name="main1" type="Application" factoryName="Application">
+-      <option name="MAIN_CLASS_NAME" value="Presentacion.Tetris1" />
++      <option name="MAIN_CLASS_NAME" value="Presentacion.TetrisMain" />
+       <module name="ProyectoFinal" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -89,7 +83,21 @@
+       <option name="project" value="LOCAL" />
+       <updated>1637379033699</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="1">
++      <created>1637462107171</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1637462107171</updated>
++    </task>
++    <task id="LOCAL-00004" summary="1">
++      <created>1637509558950</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1637509558950</updated>
++    </task>
++    <option name="localTasksCounter" value="5" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -109,12 +117,12 @@
+     <option name="LAST_COMMIT_MESSAGE" value="1" />
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
++    <SUITE FILE_PATH="coverage/ProyectoFinal$TetrisGUI.ic" NAME="TetrisGUI Coverage Results" MODIFIED="1636317703885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+     <SUITE FILE_PATH="coverage/ProyectoFinal$Tetris.ic" NAME="Tetris Coverage Results" MODIFIED="1636420029275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+       <FILTER>Presentacion.*</FILTER>
+     </SUITE>
+     <SUITE FILE_PATH="coverage/ProyectoFinal$Test2.ic" NAME="Test2 Coverage Results" MODIFIED="1636310506778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+       <FILTER>Presentacion.*</FILTER>
+     </SUITE>
+-    <SUITE FILE_PATH="coverage/ProyectoFinal$TetrisGUI.ic" NAME="TetrisGUI Coverage Results" MODIFIED="1636317703885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+   </component>
+ </project>
+\ No newline at end of file
