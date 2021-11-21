@@ -1,6 +1,6 @@
 package Presentacion;
 
-import Dominio.Tetrominoe;
+//import Dominio.Tetrominoe;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -65,8 +65,6 @@ public class Tetris1 extends JFrame {
         return false;
     }
 
-
-
     public boolean isNewGame() {
         return false;
     }
@@ -75,9 +73,6 @@ public class Tetris1 extends JFrame {
         return false;
     }
 
-    public Tetrominoe getPieceType() {
-        return null;
-    }
 
     public int getPieceCol() {
         return 0;
