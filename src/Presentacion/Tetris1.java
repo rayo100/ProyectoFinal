@@ -2,6 +2,8 @@ package Presentacion;
 
 //import Dominio.Tetrominoe;
 
+import Dominio.Tetrominoe;
+
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -10,14 +12,30 @@ import java.awt.*;
 import java.awt.Font;
 
 public class Tetris1 extends JFrame {
-    //Panel NewFigure
+    //Padre
     TetrisMain main;
+    //Panel NewFigure
     NewFigurePanel newFigure;
     //Panel Board
     Board board;
     //Tamano ventana
     private final int ANCHO = 566;
     private final int ALTO = 568;
+    //Atributos motor juego
+    //Estados juego
+    private boolean isPaused;
+    private boolean isNewGame;
+    private boolean isGameOver;
+    //Stats del juego
+    private int level;
+    private int score;
+    //Reloj del juego
+
+    //Fichas juego
+    private Tetrominoe nextPiece;
+    private Tetrominoe currPiece;
+
+
 
     public Tetris1(TetrisMain main, String title) {
         super(title);
@@ -59,6 +77,10 @@ public class Tetris1 extends JFrame {
     private void agregueElementos(){
         add(board,BorderLayout.CENTER);
         add(newFigure,BorderLayout.WEST);
+    }
+
+    public void startGame(){
+
     }
 
     public void updateGame(){

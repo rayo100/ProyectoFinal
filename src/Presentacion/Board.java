@@ -1,6 +1,9 @@
 package Presentacion;
 
 
+import Ayudas.TileType;
+import Dominio.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,7 +28,7 @@ public class Board extends JPanel{
     private static final Font LARGEFONT = new Font("Arial",Font.ITALIC,18);
     private static final Font SMALLFONT = new Font("Arial",Font.ITALIC,12);
     private Tetris1 tetris;
-    //private Tetrominoe[][] tiles;
+    private Tetrominoe[][] tiles;
     private Color[][] shape = {
             {Color.RED,Color.RED,Color.RED},
             {null,Color.RED,null}
@@ -35,125 +38,125 @@ public class Board extends JPanel{
 
     public Board(Tetris1 tetris){
         this.tetris = tetris;
-        //this.tiles = new Tetrominoe[NROWS][NCOLS];
+        this.tiles = new Tetrominoe[NROWS][NCOLS];
         setPreferredSize(new Dimension(PANELWIDTH,PANELHEIGHT));
+    }
 
-        looper = new Timer(500, new ActionListener() {
-            int n = 0;
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                y++;
-                //repaint();
+    public void clear(){
+        for (int i = 0; i < NROWS; i++){
+            for(int j = 0; j < NCOLS; j++){
+                tiles[i][j] = null;
             }
-        });
-        looper.start();
+        }
     }
 
-//    public void clear(){
-//        for (int i = 0; i < NROWS; i++){
-//            for(int j = 0; j < NCOLS; j++){
-//                tiles[i][j] = null;
-//            }
-//        }
-//    }
-//
-//    public int checkLines(){
-//        int completedLines = 0;
-//        for(int row = 0; row < NROWS; row ++){
-//            if(checkLine(row)){
-//                completedLines++;
-//            }
-//        }
-//        return completedLines;
-//    }
+    public int checkLines(){
+        int completedLines = 0;
+        for(int row = 0; row < NROWS; row ++){
+            if(checkLine(row)){
+                completedLines++;
+            }
+        }
+        return completedLines;
+    }
 
-//    private boolean checkLine(int line){
-//        for(int col = 0; col < NCOLS; col++){
-//            if(!isOccupied(col,line)) return false;
-//        }
-//        for(int row = line - 1; row >= 0; row--){
-//            for(int col = 0; col < NCOLS; col ++){
-//                setTile(col,row +1,getTile(col,row));
-//            }
-//        }
-//        return true;
-//    }
+    private boolean checkLine(int line){
+        for(int col = 0; col < NCOLS; col++){
+            if(!isOccupied(col,line)) return false;
+        }
+        for(int row = line - 1; row >= 0; row--){
+            for(int col = 0; col < NCOLS; col ++){
+                setTile(col,row +1,getTile(col,row));
+            }
+        }
+        return true;
+    }
 
-//    private boolean isOccupied(int x, int y){
-//        return tiles[y][x] != null;
-//    }
-//
-//    private void setTile(int x, int y, Tetrominoe type){
-//        tiles[y][x] = type;
-//    }
-//
-//    private Tetrominoe getTile(int x, int y){
-//        return tiles[y][x];
-//    }
-//    @Override
-//    public void paintComponent(Graphics g) {
-//        super.paintComponent(g);
-//        g.translate(BORDERWIDTH, BORDERWIDTH);
-//        if (tetris.isPaused()) {
-//            loadCase1(g);
-//        }
-//        else if(tetris.isNewGame() || tetris.isGameOver()){
-//            loadCase2(g);
-//        }
-//        else{
-//            for(int x = 0; x < NCOLS; x++){
-//                for(int y = HIDDENROWCOUNT; y < NROWS; y++){
-//                    Tetrominoe tile = getTile(x,y);
-//                    if(tile != null){
-//                        drawTile(tile, x * TILESIZE, (y - HIDDENROWCOUNT) * TILESIZE,g);
-//                    }
-//                }
-//            }
-//            Tetrominoe type = tetris.getPieceType();
-//            int pieceCol = tetris.getPieceCol();
-//            int pieceRow = tetris.getPieceRow();
-//            int rotation = tetris.getPieceRotation();
-//
-//            for (int col = 0; col < type.getDimension(); col++){
-//                for (int row = 0; row < type.getDimension(); row ++){
-//                    if(pieceRow + row >= 2 && type.isTile(col,row,rotation)){
-//                        drawTile(type,(pieceCol+col)*TILESIZE,(pieceRow+row-HIDDENROWCOUNT)*TILESIZE,g);
-//                    }
-//                }
-//            }
-//            Color base = type.getBaseColor();
-//            base = new Color(base.getRed(), base.getGreen(), base.getBlue());
-//            for(int lowest = pieceRow; lowest < NROWS; lowest++){
-//                if(isValidAndEmpty(type,pieceCol,lowest,rotation)) continue;
-//                lowest--;
-//                for (int col = 0; col < type.getDimension(); col ++){
-//                    for(int row = 0; row < type.getDimension();row ++){
-//                        if(lowest + row >= 2 && type.isTile(col,row,rotation)){
-//                            drawTile(base,base.brighter(),base.darker(),(pieceCol + col)*TILESIZE,
-//                                    (lowest+row -HIDDENROWCOUNT)*TILESIZE,g);
-//                        }
-//                    }
-//                }
-//                break;
-//            }
-//
-//            g.setColor(Color.DARK_GRAY);
-//            for(int x = 0; x < NCOLS; x++){
-//                for(int y = 0; y < VISIBLEROWCOUNT; y++){
-//                    g.drawLine(0,y*TILESIZE,NCOLS*TILESIZE,y*TILESIZE);
-//                    g.drawLine(x*TILESIZE,0,x*TILESIZE,VISIBLEROWCOUNT*TILESIZE);
-//                }
-//            }
-//        }
-//        g.setColor(Color.BLACK);
-//        g.drawRect(0,0,TILESIZE*NCOLS,TILESIZE*VISIBLEROWCOUNT);
-//    }
+    private boolean isOccupied(int x, int y){
+        return tiles[y][x] != null;
+    }
+
+    private void setTile(int x, int y, Tetrominoe type){
+        tiles[y][x] = type;
+    }
+
+    private Tetrominoe getTile(int x, int y){
+        return tiles[y][x];
+    }
     @Override
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        drawShape(g);
-        drawBoard(g);
+        g.translate(BORDERWIDTH, BORDERWIDTH);
+        if (tetris.isPaused()) {
+            loadCase1(g);
+        }
+        else if(tetris.isNewGame() || tetris.isGameOver()){
+            loadCase2(g);
+        }
+        else{
+            for(int x = 0; x < NCOLS; x++){
+                for(int y = HIDDENROWCOUNT; y < NROWS; y++){
+                    Tetrominoe tile = getTile(x,y);
+                    if(tile != null){
+                        drawTile(tile, x * TILESIZE, (y - HIDDENROWCOUNT) * TILESIZE,g);
+                    }
+                }
+            }
+            Tetrominoe type = tetris.getPieceType();
+            int pieceCol = tetris.getPieceCol();
+            int pieceRow = tetris.getPieceRow();
+            int rotation = tetris.getPieceRotation();
+
+            for (int col = 0; col < type.getDimension(); col++){
+                for (int row = 0; row < type.getDimension(); row ++){
+                    if(pieceRow + row >= 2 && type.isTile(col,row,rotation)){
+                        drawTile(type,(pieceCol+col)*TILESIZE,(pieceRow+row-HIDDENROWCOUNT)*TILESIZE,g);
+                    }
+                }
+            }
+            Color base = type.getBaseColor();
+            base = new Color(base.getRed(), base.getGreen(), base.getBlue());
+            for(int lowest = pieceRow; lowest < NROWS; lowest++){
+                if(isValidAndEmpty(type,pieceCol,lowest,rotation)) continue;
+                lowest--;
+                for (int col = 0; col < type.getDimension(); col ++){
+                    for(int row = 0; row < type.getDimension();row ++){
+                        if(lowest + row >= 2 && type.isTile(col,row,rotation)){
+                            drawTile(base,base.brighter(),base.darker(),(pieceCol + col)*TILESIZE,
+                                    (lowest+row -HIDDENROWCOUNT)*TILESIZE,g);
+                        }
+                    }
+                }
+                break;
+            }
+            drawBoard(g);
+        }
     }
+    private void drawTile(Tetrominoe type, int x, int y, Graphics g) {
+        drawTile(type.getBaseColor(), type.getLightColor(), type.getDarkColor(), x, y, g);
+    }
+    public boolean isValidAndEmpty(TileType type, int x, int y, int rotation) {
+        if(x < -type.getLeftInset(rotation) || x + type.getDimension() - type.getRightInset(rotation) >= NCOLS) {
+            return false;
+        }
+        if(y < -type.getTopInset(rotation) || y + type.getDimension() - type.getBottomInset(rotation) >= NROWS) {
+            return false;
+        }
+        for(int col = 0; col < type.getDimension(); col++) {
+            for(int row = 0; row < type.getDimension(); row++) {
+                if(type.isTile(col, row, rotation) && isOccupied(x + col, y + row)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+//    @Override
+//    public void paintComponent(Graphics g){
+//        super.paintComponent(g);
+//        drawShape(g);
+//        drawBoard(g);
+//    }
     private void drawShape(Graphics g){
         for(int row = 0; row < shape.length; row ++){
             for(int col = 0; col < shape[0].length; col++) {

@@ -1,8 +1,11 @@
 package Dominio;
 
+import Ayudas.TileType;
 import Presentacion.Board;
 
 import java.awt.*;
+import java.util.Random;
+
 
 public enum Tetrominoe {
     TYPEI(new Color(Board.COLORMIN, Board.COLORMAX, Board.COLORMAX), 4, 4, 1, new boolean[][] {
@@ -155,7 +158,98 @@ public enum Tetrominoe {
         this.spawnRow = getTopInset(0);
     }
 
-    private int getTopInset(int rotation) {
-        return 0;
+    public Color getBaseColor() {
+        return baseColor;
+    }
+
+    public Color getLightColor() {
+        return lightColor;
+    }
+
+    public Color getDarkColor() {
+        return darkColor;
+    }
+
+    public int getDimension() {
+        return dimension;
+    }
+
+    public int getSpawnColumn() {
+        return spawnCol;
+    }
+
+    public int getSpawnRow() {
+        return spawnRow;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getCols() {
+        return cols;
+    }
+
+    public boolean isTile(int x, int y, int rotation) {
+        return tiles[rotation][y * dimension + x];
+    }
+
+    public int getLeftInset(int rotation) {
+        for(int x = 0; x < dimension; x++) {
+            for(int y = 0; y < dimension; y++) {
+                if(isTile(x, y, rotation)) {
+                    return x;
+                }
+            }
+        }
+        return -1;
+    }
+
+    public int getRightInset(int rotation) {
+        /*
+         * Loop through from right to left until we find a tile then return
+         * the column.
+         */
+        for(int x = dimension - 1; x >= 0; x--) {
+            for(int y = 0; y < dimension; y++) {
+                if(isTile(x, y, rotation)) {
+                    return dimension - x;
+                }
+            }
+        }
+        return -1;
+    }
+
+    public int getTopInset(int rotation) {
+        /*
+         * Loop through from top to bottom until we find a tile then return
+         * the row.
+         */
+        for(int y = 0; y < dimension; y++) {
+            for(int x = 0; x < dimension; x++) {
+                if(isTile(x, y, rotation)) {
+                    return y;
+                }
+            }
+        }
+        return -1;
+    }
+
+    public int getBottomInset(int rotation) {
+
+        for(int y = dimension - 1; y >= 0; y--) {
+            for(int x = 0; x < dimension; x++) {
+                if(isTile(x, y, rotation)) {
+                    return dimension - y;
+                }
+            }
+        }
+        return -1;
+    }
+    public Tetrominoe makePiece(){
+        Random r = new Random();
+        int tetrominotypesCount = Tetrominoe.values().length;
+        Tetrominoe ficha = Tetrominoe.values()[r.nextInt(tetrominotypesCount)];
+        return ficha;
     }
 }
