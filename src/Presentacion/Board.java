@@ -44,7 +44,7 @@ public class Board extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 y++;
-                repaint();
+                //repaint();
             }
         });
         looper.start();
