@@ -3,7 +3,17 @@ package Dominio;
 import java.awt.*;
 
 public class Tetrominoe {
-    public int getDimension() {
+    //public enum
+
+    private Boolean[][] tiles;
+    private int rows;
+    private int cols;
+    private int currentCol;
+    private int currentrow;
+    private int rotation;
+
+
+    /*public int getDimension() {
         return 0;
     }
 
@@ -37,5 +47,5 @@ public class Tetrominoe {
 
     public Color getDarkColor() {
         return null;
-    }
+    }*/
 }

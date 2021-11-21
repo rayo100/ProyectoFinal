@@ -1,9 +1,11 @@
 package Presentacion;
 
 import Dominio.Tetrominoe;
-import Presentacion.Tetris1;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Board extends JPanel{
     private static final int BORDERWIDTH = 5;
@@ -25,12 +27,27 @@ public class Board extends JPanel{
     private static final Font SMALLFONT = new Font("Arial",Font.ITALIC,12);
     private Tetris1 tetris;
     private Tetrominoe[][] tiles;
+    private Color[][] shape = {
+            {Color.RED,Color.RED,Color.RED},
+            {null,Color.RED,null}
+    };
+    private Timer looper;
+    private int x = 4,y = 0;
 
     public Board(Tetris1 tetris){
         //this.tetris = tetris;
         //this.tiles = new Tetrominoe[NROWS][NCOLS];
         setPreferredSize(new Dimension(PANELWIDTH,PANELHEIGHT));
         setBackground(Color.WHITE);
+        looper = new Timer(500, new ActionListener() {
+            int n = 0;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                y++;
+                repaint();
+            }
+        });
+        looper.start();
     }
 
     public void clear(){
@@ -39,16 +56,6 @@ public class Board extends JPanel{
                 tiles[i][j] = null;
             }
         }
-    }
-
-    public boolean isValidAndEmpty(Tetrominoe type, int x, int y, int rotation){
-        if(x < -type.getLeftInset(rotation) || x + type.getDimension() - type.getRightInset(rotation) >= NCOLS) {
-            return false;
-        }
-        if(y < -type.getTopInset(rotation) || y + type.getDimension() - type.getBottomInset(rotation) >= NROWS){
-            return false;
-        }
-        return true;
     }
 
     public int checkLines(){
@@ -145,7 +152,21 @@ public class Board extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
+        drawShape(g);
         drawBoard(g);
+
+
+    }
+    private void drawShape(Graphics g){
+        for(int row = 0; row < shape.length; row ++){
+            for(int col = 0; col < shape[0].length; col++) {
+                if (shape[row][col] != null) {
+                    g.setColor(shape[row][col]);
+                    g.fillRect((col * TILESIZE+x*TILESIZE) + MOVEMENT,
+                            (row * TILESIZE+y*TILESIZE) + MOVEMENT, TILESIZE, TILESIZE);
+                }
+            }
+        }
     }
     private void drawBoard(Graphics g){
         g.setColor(Color.DARK_GRAY);
@@ -159,9 +180,7 @@ public class Board extends JPanel{
         g.drawRect(MOVEMENT,MOVEMENT,(TILESIZE*NCOLS),(TILESIZE*VISIBLEROWCOUNT));
     }
 
-    private void drawTile(Tetrominoe tile, int x, int y, Graphics g) {
-        drawTile(tile.getBaseColor(),tile.getLightColor(), tile.getDarkColor(),x,y,g);
-    }
+
 
     private void drawTile(Color base, Color light, Color dark, int x, int y, Graphics g) {
         g.setColor(base);
