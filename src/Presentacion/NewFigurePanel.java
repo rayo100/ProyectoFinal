@@ -24,6 +24,7 @@ public class NewFigurePanel extends JPanel {
     private static final Font SMALL_FONT = new Font("Arial", Font.BOLD, 11);
     private static final Font LARGE_FONT = new Font("Arial Bold", Font.BOLD, 13);
     private static final Color DRAW_COLOR = Color.BLACK;
+    private String nickname;
     //Agregar atributos aca:
     private JButton save;
     private JButton color;
@@ -37,6 +38,7 @@ public class NewFigurePanel extends JPanel {
 
     public NewFigurePanel(Tetris1 tetris) {
         this.tetris = tetris;
+        nickname = tetris.getNickname();
         setPreferredSize(new Dimension(Board.PANELWIDTH, Board.PANELHEIGHT));
         setBackground(Color.WHITE);
         setLayout(null);

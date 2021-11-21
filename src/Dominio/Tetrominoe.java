@@ -1,11 +1,11 @@
 package Dominio;
 
-import Ayudas.BoardPanel;
+import Presentacion.Board;
 
 import java.awt.*;
 
 public enum Tetrominoe {
-    TypeI(new Color(BoardPanel.COLOR_MIN, BoardPanel.COLOR_MAX, BoardPanel.COLOR_MAX), 4, 4, 1, new boolean[][] {
+    TypeI(new Color(Board.COLORMIN, Board.COLORMAX, Board.COLORMAX), 4, 4, 1, new boolean[][] {
         {
                 false,	false,	false,	false,
                 true,	true,	true,	true,
@@ -31,37 +31,10 @@ public enum Tetrominoe {
                 false,	true,	false,	false,
         }
     }),
-
-    /**
-     * Piece TypeJ.
-     */
-    TypeJ(new Color(BoardPanel.COLOR_MIN, BoardPanel.COLOR_MIN, BoardPanel.COLOR_MAX), 3, 3, 2, new boolean[][] {
-        {
-                true,	false,	false,
-                true,	true,	true,
-                false,	false,	false,
-        },
-        {
-                false,	true,	true,
-                false,	true,	false,
-                false,	true,	false,
-        },
-        {
-                false,	false,	false,
-                true,	true,	true,
-                false,	false,	true,
-        },
-        {
-                false,	true,	false,
-                false,	true,	false,
-                true,	true,	false,
-        }
-    }),
-
     /**
      * Piece TypeL.
      */
-    TypeL(new Color(BoardPanel.COLOR_MAX, 127, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][] {
+    TypeL(new Color(Board.COLORMAX, 127, Board.COLORMIN), 3, 3, 2, new boolean[][] {
             {
                     false,	false,	true,
                     true,	true,	true,
@@ -87,7 +60,7 @@ public enum Tetrominoe {
     /**
      * Piece TypeO.
      */
-    TypeO(new Color(BoardPanel.COLOR_MAX, BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN), 2, 2, 2, new boolean[][] {
+    TypeO(new Color(Board.COLORMAX, Board.COLORMAX, Board.COLORMIN), 2, 2, 2, new boolean[][] {
             {
                     true,	true,
                     true,	true,
@@ -109,7 +82,7 @@ public enum Tetrominoe {
     /**
      * Piece TypeS.
      */
-    TypeS(new Color(BoardPanel.COLOR_MIN, BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][] {
+    TypeS(new Color(Board.COLORMIN, Board.COLORMAX, Board.COLORMIN), 3, 3, 2, new boolean[][] {
             {
                     false,	true,	true,
                     true,	true,	false,
@@ -135,7 +108,7 @@ public enum Tetrominoe {
     /**
      * Piece TypeT.
      */
-    TypeT(new Color(128, BoardPanel.COLOR_MIN, 128), 3, 3, 2, new boolean[][] {
+    TypeT(new Color(128, Board.COLORMIN, 128), 3, 3, 2, new boolean[][] {
             {
                     false,	true,	false,
                     true,	true,	true,
@@ -158,29 +131,31 @@ public enum Tetrominoe {
             }
     }),
 
-    /**
-     * Piece TypeZ.
-     */
-    TypeZ(new Color(BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][] {
-            {
-                    true,	true,	false,
-                    false,	true,	true,
-                    false,	false,	false,
-            },
-            {
-                    false,	false,	true,
-                    false,	true,	true,
-                    false,	true,	false,
-            },
-            {
-                    false,	false,	false,
-                    true,	true,	false,
-                    false,	true,	true,
-            },
-            {
-                    false,	true,	false,
-                    true,	true,	false,
-                    true,	false,	false,
-            }
-    });
+    ;
+    private final Color baseColor;
+    private final Color lightColor;
+    private final Color darkColor;
+    private final int dimension;
+    private final boolean[][] tiles;
+    private final int cols;
+    private final int rows;
+    private final int spawnCol;
+    private final int spawnRow;
+
+    Tetrominoe(Color color, int dimension, int cols, int rows, boolean[][] tiles) {
+        this.baseColor = color;
+        this.lightColor = color.brighter();
+        this.darkColor = color.darker();
+        this.dimension = dimension;
+        this.tiles = tiles;
+        this.cols = cols;
+        this.rows = rows;
+
+        this.spawnCol = 5 - (dimension >> 1);
+        this.spawnRow = getTopInset(0);
+    }
+
+    private int getTopInset(int i) {
+        return 0;
+    }
 }

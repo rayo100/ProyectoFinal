@@ -11,21 +11,25 @@ import java.awt.Font;
 
 public class Tetris1 extends JFrame {
     //Panel NewFigure
+    TetrisMain main;
     NewFigurePanel newFigure;
     //Panel Board
     Board board;
     //Tamano ventana
-    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width - 800;
-    private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height - 200;
+    private final int ANCHO = 566;
+    private final int ALTO = 568;
 
-    public Tetris1(String title) {
+    public Tetris1(TetrisMain main, String title) {
         super(title);
+        this.main = main;
+        System.out.println(ANCHO);
+        System.out.println(ALTO);
         prepareElementos();
     }
-    public static void main(String[] args){
-        Tetris1 gui = new Tetris1("Tetris Game");
-        gui.setVisible(true);
-    }
+//    public static void main(String[] args){
+//        Tetris1 gui = new Tetris1("Tetris Game");
+//        gui.setVisible(true);
+//    }
 
     public void prepareElementos(){
         setPreferredSize(new Dimension(ANCHO,ALTO));
@@ -53,7 +57,9 @@ public class Tetris1 extends JFrame {
         add(board,BorderLayout.CENTER);
         add(newFigure,BorderLayout.WEST);
     }
-    //public String getNickname(){return nickname; }
+    public String getNickname(){
+        return main.player();
+    }
 
     public boolean isPaused(){
         return false;

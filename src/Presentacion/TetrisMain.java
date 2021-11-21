@@ -132,7 +132,7 @@ public class TetrisMain extends JFrame {
     }
     private void startGame(){
         setVisible(false);
-        Tetris1 frame = new Tetris1("Tetris Game");
+        Tetris1 frame = new Tetris1(this,"Tetris Game");
         frame.setVisible(true);
     }
 
@@ -180,10 +180,11 @@ public class TetrisMain extends JFrame {
         JOptionPane.showInputDialog(null, "Player # 1 Nickname.", "Players Information", JOptionPane.PLAIN_MESSAGE);
         JOptionPane.showInputDialog(null, "Player # 2 Nickname.", "Players Information", JOptionPane.PLAIN_MESSAGE);
     }
-    private String player(){
-        String nickname = (JOptionPane.showInputDialog(null, "Player Nickname.", "Player Information",
+    public String player(){
+        String nickname = (JOptionPane.showInputDialog(null,
+                "Player Nickname.", "Player Information",
                 JOptionPane.PLAIN_MESSAGE));
-        JOptionPane.showMessageDialog(null, "Your Nickname is: "+nickname, "Nickname", JOptionPane.PLAIN_MESSAGE);
+        //JOptionPane.showMessageDialog(null, "Your Nickname is: "+nickname, "Nickname", JOptionPane.PLAIN_MESSAGE);
         return nickname;
     }
 //    private void bottonPlayers() throws TetrisException{
