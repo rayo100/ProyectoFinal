@@ -5,7 +5,7 @@ import Presentacion.Board;
 import java.awt.*;
 
 public enum Tetrominoe {
-    TypeI(new Color(Board.COLORMIN, Board.COLORMAX, Board.COLORMAX), 4, 4, 1, new boolean[][] {
+    TYPEI(new Color(Board.COLORMIN, Board.COLORMAX, Board.COLORMAX), 4, 4, 1, new boolean[][] {
         {
                 false,	false,	false,	false,
                 true,	true,	true,	true,
@@ -34,7 +34,7 @@ public enum Tetrominoe {
     /**
      * Piece TypeL.
      */
-    TypeL(new Color(Board.COLORMAX, 127, Board.COLORMIN), 3, 3, 2, new boolean[][] {
+    TYPEL(new Color(Board.COLORMAX, 127, Board.COLORMIN), 3, 3, 2, new boolean[][] {
             {
                     false,	false,	true,
                     true,	true,	true,
@@ -60,7 +60,7 @@ public enum Tetrominoe {
     /**
      * Piece TypeO.
      */
-    TypeO(new Color(Board.COLORMAX, Board.COLORMAX, Board.COLORMIN), 2, 2, 2, new boolean[][] {
+    TYPEO(new Color(Board.COLORMAX, Board.COLORMAX, Board.COLORMIN), 2, 2, 2, new boolean[][] {
             {
                     true,	true,
                     true,	true,
@@ -82,7 +82,7 @@ public enum Tetrominoe {
     /**
      * Piece TypeS.
      */
-    TypeS(new Color(Board.COLORMIN, Board.COLORMAX, Board.COLORMIN), 3, 3, 2, new boolean[][] {
+    TYPES(new Color(Board.COLORMIN, Board.COLORMAX, Board.COLORMIN), 3, 3, 2, new boolean[][] {
             {
                     false,	true,	true,
                     true,	true,	false,
@@ -108,7 +108,7 @@ public enum Tetrominoe {
     /**
      * Piece TypeT.
      */
-    TypeT(new Color(128, Board.COLORMIN, 128), 3, 3, 2, new boolean[][] {
+    TYPET(new Color(128, Board.COLORMIN, 128), 3, 3, 2, new boolean[][] {
             {
                     false,	true,	false,
                     true,	true,	true,
@@ -144,8 +144,8 @@ public enum Tetrominoe {
 
     Tetrominoe(Color color, int dimension, int cols, int rows, boolean[][] tiles) {
         this.baseColor = color;
-        this.lightColor = color.brighter();
-        this.darkColor = color.darker();
+        this.lightColor = Color.BLACK;
+        this.darkColor = Color.BLACK;
         this.dimension = dimension;
         this.tiles = tiles;
         this.cols = cols;
@@ -155,7 +155,7 @@ public enum Tetrominoe {
         this.spawnRow = getTopInset(0);
     }
 
-    private int getTopInset(int i) {
+    private int getTopInset(int rotation) {
         return 0;
     }
 }
