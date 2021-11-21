@@ -44,6 +44,7 @@ public class NewFigurePanel extends JPanel {
         setBackground(Color.WHITE);
         setLayout(null);
         prepareElementosM1();
+        prepareAccionesM1();
     }
     //Metodos nuevos aca:
     private void prepareElementosM1() {
@@ -59,6 +60,8 @@ public class NewFigurePanel extends JPanel {
         add(color);
     }
 
+    private  void prepareAccionesM1(){
+    }
     //Fin metodos nuevos
     @Override
     public void paintComponent(Graphics g) {
@@ -66,18 +69,26 @@ public class NewFigurePanel extends JPanel {
         g.setColor(DRAW_COLOR);
         int offset;
 
-        //Section stats
+        //Section next piece
+        g.setFont(LARGE_FONT);
+        g.drawString("Next Piece:", SMALL_INSET, 70);
+        g.drawRect(SQUARECENTER_X - SQUARESIZE, SQUARECENTER_Y - SQUARESIZE, SQUARESIZE * 2, SQUARESIZE * 2);
+
+        //Section Options
         g.setFont(LARGE_FONT);
         g.drawString("Options:", SMALL_INSET, offset = STATS_INSET);
         g.setFont(SMALL_FONT);
         //g.drawString("Nickname: " + tetris.getNickname(), LARGE_INSET, offset += TEXT_STRIDE);
         //g.drawString("Score: " + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
 
-        //Section controls
+        //Section Stats
         g.setFont(LARGE_FONT);
         g.drawString("Stats", SMALL_INSET, offset = CONTROLS_INSET);
         g.setFont(SMALL_FONT);
         g.drawString("Nickname: " + nickname, LARGE_INSET, offset += TEXT_STRIDE);
+        //g.drawString("Level: " + tetris.getLevel(), LARGE_INSET, offset += TEXT_STRIDE);
+        //g.drawString("Score: " + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
+        //Section controls
 //        g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
 //        g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
 //        g.drawString("W - Rotate", LARGE_INSET, offset += TEXT_STRIDE);
@@ -85,9 +96,10 @@ public class NewFigurePanel extends JPanel {
 //        g.drawString("S - Drop", LARGE_INSET, offset += TEXT_STRIDE);
 //        g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
 
-        //Section next piece
-        g.setFont(LARGE_FONT);
-        g.drawString("Next Piece:", SMALL_INSET, 70);
-        g.drawRect(SQUARECENTER_X - SQUARESIZE, SQUARECENTER_Y - SQUARESIZE, SQUARESIZE * 2, SQUARESIZE * 2);
     }
+    private void botonControls(){
+
+    }
+
+
 }

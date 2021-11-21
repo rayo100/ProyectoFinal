@@ -34,10 +34,10 @@ public class Board extends JPanel{
     private int x = 4,y = 0,z = 3;
 
     public Board(Tetris1 tetris){
-        //this.tetris = tetris;
+        this.tetris = tetris;
         //this.tiles = new Tetrominoe[NROWS][NCOLS];
         setPreferredSize(new Dimension(PANELWIDTH,PANELHEIGHT));
-        setBackground(Color.WHITE);
+
         looper = new Timer(500, new ActionListener() {
             int n = 0;
             @Override
@@ -153,8 +153,6 @@ public class Board extends JPanel{
         super.paintComponent(g);
         drawShape(g);
         drawBoard(g);
-
-
     }
     private void drawShape(Graphics g){
         for(int row = 0; row < shape.length; row ++){

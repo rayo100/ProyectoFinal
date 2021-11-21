@@ -52,11 +52,20 @@ public class Tetris1 extends JFrame {
                 new TitledBorder("Board")));
         newFigure.setBorder(new CompoundBorder(new EmptyBorder(5,5,5,5),
                 new TitledBorder("Game Info")));
+        Color color = JColorChooser.showDialog(null, "Choose a color", Color.BLACK);
+        newFigure.setBackground(color);
+        board.setBackground(color);
     }
     private void agregueElementos(){
         add(board,BorderLayout.CENTER);
         add(newFigure,BorderLayout.WEST);
     }
+
+    public void updateGame(){
+        newFigure.repaint();
+        board.repaint();
+    }
+
     public String getNickname(){
         return main.player();
     }
