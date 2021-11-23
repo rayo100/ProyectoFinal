@@ -147,8 +147,8 @@ public enum Tetrominoe {
 
     Tetrominoe(Color color, int dimension, int cols, int rows, boolean[][] tiles) {
         this.baseColor = color;
-        this.lightColor = Color.BLACK;
-        this.darkColor = Color.BLACK;
+        this.lightColor = color.brighter();
+        this.darkColor = color.darker();
         this.dimension = dimension;
         this.tiles = tiles;
         this.cols = cols;
@@ -246,10 +246,10 @@ public enum Tetrominoe {
         }
         return -1;
     }
-    public Tetrominoe makePiece(){
-        Random r = new Random();
-        int tetrominotypesCount = Tetrominoe.values().length;
-        Tetrominoe ficha = Tetrominoe.values()[r.nextInt(tetrominotypesCount)];
-        return ficha;
-    }
+//    public static Tetrominoe makePiece(){
+//        Random r = new Random();
+//        int tetrominotypesCount = Tetrominoe.values().length;
+//        Tetrominoe ficha = Tetrominoe.values()[r.nextInt(tetrominotypesCount)];
+//        return ficha;
+//    }
 }

@@ -134,6 +134,7 @@ public class TetrisMain extends JFrame {
         setVisible(false);
         Tetris1 frame = new Tetris1(this,"Tetris Game");
         frame.setVisible(true);
+        //frame.startGame();
     }
 
     private void irACreditos() {

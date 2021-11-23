@@ -269,6 +269,7 @@ public class Tetris extends JFrame {
 		this.random = new Random();
 		this.isNewGame = true;
 		this.gameSpeed = 1.0f;
+
 		
 		/*
 		 * Setup the timer to keep the game from running before the user presses enter
