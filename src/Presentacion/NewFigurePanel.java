@@ -1,5 +1,8 @@
 package Presentacion;
 
+import Ayudas.TileType;
+import Dominio.Tetrominoe;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -74,6 +77,25 @@ public class NewFigurePanel extends JPanel {
         g.drawString("Next Piece:", SMALL_INSET, 70);
         g.drawRect(SQUARECENTER_X - SQUARESIZE, SQUARECENTER_Y - SQUARESIZE, SQUARESIZE * 2, SQUARESIZE * 2);
 
+        Tetrominoe type = tetris.getNextPieceType();
+        if(!tetris.isGameOver() && type != null){
+            int cols = type.getCols();
+            int rows = type.getRows();
+            int dimension = type.getDimension();
+            int startX = (SQUARECENTER_X - (cols * TILESIZE /2));
+            int startY = (SQUARECENTER_Y - (rows * TILESIZE /2));
+            int top = type.getTopInset(0);
+            int left = type.getLeftInset(0);
+            for(int row = 0; row < dimension; row++){
+                for (int col = 0; col < dimension; col++){
+                    if (type.isTile(col,row,0)){
+                        drawTile(type, startX + ((col - left) * TILESIZE), startY + ((row - top) * TILESIZE), g);
+                    }
+                }
+            }
+        }
+
+
         //Section Options
         g.setFont(LARGE_FONT);
         g.drawString("Options:", SMALL_INSET, offset = STATS_INSET);
@@ -99,6 +121,20 @@ public class NewFigurePanel extends JPanel {
     }
     private void botonControls(){
 
+    }
+    private void drawTile(Tetrominoe type, int x, int y, Graphics g) {
+        g.setColor(type.getBaseColor());
+        g.fillRect(x, y, TILESIZE, TILESIZE);
+
+        g.setColor(type.getDarkColor());
+        g.fillRect(x, y + TILESIZE - SHADEWIDTH, TILESIZE, SHADEWIDTH);
+        g.fillRect(x + TILESIZE - SHADEWIDTH, y, SHADEWIDTH, TILESIZE);
+
+        g.setColor(type.getLightColor());
+        for(int i = 0; i < SHADEWIDTH; i++) {
+            g.drawLine(x, y + i, x + TILESIZE - i - 1, y + i);
+            g.drawLine(x + i, y, x + i, y + TILESIZE - i - 1);
+        }
     }
 
 
