@@ -4,6 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Tetrominoe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Tetrominoe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/NewFigurePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/NewFigurePanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dominio/Tetrominoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Tetrominoe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentacion/Tetris1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Tetris1.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +65,7 @@
       </method>
     </configuration>
     <configuration name="main1" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Ayudas.Tetris" />
+      <option name="MAIN_CLASS_NAME" value="Presentacion.Tetris1" />
       <module name="ProyectoFinal" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -110,7 +120,6 @@
       <option name="project" value="LOCAL" />
       <updated>1637514716557</updated>
     </task>
-<<<<<<< HEAD
     <task id="LOCAL-00006" summary="s8i">
       <created>1637517383183</created>
       <option name="number" value="00006" />
@@ -119,24 +128,17 @@
       <updated>1637517383184</updated>
     </task>
     <option name="localTasksCounter" value="7" />
-=======
-    <task id="LOCAL-00006" summary="1">
-      <created>1637517498248</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1637517498248</updated>
-    </task>
-    <task id="LOCAL-00007" summary="1">
-      <created>1637521359132</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1637521359132</updated>
-    </task>
-    <option name="localTasksCounter" value="8" />
->>>>>>> dfe0afaf1f8fe6a5f5e74679f1354ffc7fb92082
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -151,9 +153,19 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="s8i" />
     <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
+    <MESSAGE value="s8i" />
+    <option name="LAST_COMMIT_MESSAGE" value="s8i" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="this" language="JAVA" />
+        <watch expression="this" language="JAVA" />
+        <watch expression="Tetris1" language="JAVA" custom="Presentacion.Tetris1" />
+        <watch expression="Tetris1" language="JAVA" custom="Presentacion.Tetris1" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ProyectoFinal$TetrisGUI.ic" NAME="TetrisGUI Coverage Results" MODIFIED="1636317703885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
