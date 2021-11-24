@@ -1,13 +1,12 @@
-package Presentacion;
+package Reciclaje;
 
 
-import Ayudas.TileType;
+
 import Dominio.*;
+import Reciclaje.Tetris1;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class Board extends JPanel{
     private static final int BORDERWIDTH = 5;
@@ -19,7 +18,7 @@ public class Board extends JPanel{
     public static final int NROWS = VISIBLEROWCOUNT + HIDDENROWCOUNT;
     public static final int TILESIZE = 24;
     //public static final int BORDERTILEWIDTH = 4;
-    public static final int MOVEMENT = 25;
+    public static final int MOVEMENT = 0;
     public static final int SHADEWIDTH = 4;
     private static final int CENTERX = NCOLS * TILESIZE / 2;
     private static final int CENTERY = VISIBLEROWCOUNT * TILESIZE / 2;

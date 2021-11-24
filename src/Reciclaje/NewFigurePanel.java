@@ -1,6 +1,6 @@
-package Presentacion;
-
+package Reciclaje;
 import Dominio.Tetrominoe;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -10,7 +10,7 @@ import javax.swing.*;
 
 public class NewFigurePanel extends JPanel {
 
-    private static final int TILESIZE = Board.TILESIZE / 2;
+    private static final int TILESIZE = Board.TILESIZE >> 1;
     private static final int SHADEWIDTH = Board.SHADEWIDTH >> 1;
     private static final int TILECOUNT = 5;
     private static final int SQUARECENTER_X = 130;
@@ -39,7 +39,7 @@ public class NewFigurePanel extends JPanel {
 
     public NewFigurePanel(Tetris1 tetris) {
         this.tetris = tetris;
-        nickname = tetris.getNickname();
+        nickname = "lll";
         setPreferredSize(new Dimension(Board.PANELWIDTH, Board.PANELHEIGHT));
         setBackground(Color.WHITE);
         setLayout(null);

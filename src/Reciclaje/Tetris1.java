@@ -1,6 +1,7 @@
-package Presentacion;
+package Reciclaje;
 
 import Dominio.*;
+import Presentacion.TetrisMain;
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -50,9 +51,9 @@ public class Tetris1 extends JFrame {
     private float gameSpeed;
 
 
-    public Tetris1(TetrisMain main, String title) {
+    public Tetris1(String title) {
         super(title);
-        this.main = main;
+
         //System.out.println(ANCHO);
         //System.out.println(ALTO);
         prepareElementos();
@@ -60,27 +61,91 @@ public class Tetris1 extends JFrame {
     }
 
 
-//    public static void main(String[] args){
-//        Tetris1 gui = new Tetris1("Tetris Game");
-//        gui.setVisible(true);
-//    }
+    public static void main(String[] args){
+        Tetris1 gui = new Tetris1("Tetris Game");
+        gui.startGame();
+        //gui.setVisible(true);
+
+    }
 
     public void prepareElementos(){
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(ANCHO,ALTO));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-        cargueElementos();
-        configureElementos();
-        agregueElementos();
-        prepareAcciones();
+        this.board = new Board(this);
+        this.newFigure = new NewFigurePanel(this);
+        add(board,BorderLayout.CENTER);
+        add(newFigure,BorderLayout.WEST);
+        //cargueElementos();
+        //configureElementos();
+        //agregueElementos();
+        addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                switch (e.getKeyCode()){
+                    case KeyEvent.VK_S:
+                        if(!isPaused && dropCooldown == 0){
+                            logicTimer.setCyclesPerSecond(25.0f);
+                        }
+                        break;
+                    case KeyEvent.VK_A:
+                        if(!isPaused &&
+                                board.isValidAndEmpty(currPiece,currCol-1,currRow,currRotation))
+                            currCol--;
+                        break;
+                    case KeyEvent.VK_D:
+                        if(!isPaused &&
+                                board.isValidAndEmpty(currPiece,currCol+1,currRow,currRotation)) currCol++;
+                        break;
+                    case KeyEvent.VK_Q:
+                        if(!isPaused){
+                            rotatePiece((currRotation== 0)?3: currRotation-1);
+                        }
+                        break;
+                    case KeyEvent.VK_E:
+                        if(!isPaused){
+                            rotatePiece((currRotation ==3)? 0:currRotation+1);
+                        }
+                        break;
+                    case KeyEvent.VK_P:
+                        if(!isGameOver && !isNewGame) {
+                            isPaused = !isPaused;
+                            logicTimer.setPaused(isPaused);
+                        }
+                        break;
+                    case KeyEvent.VK_ENTER:
+                        if(isGameOver || isNewGame) {
+                            resetGame();
+                        }
+                        break;
+                }
+            }
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+                switch(e.getKeyCode()) {
+
+                    /*
+                     * Drop - When released, we set the speed of the logic timer
+                     * back to whatever the current game speed is and clear out
+                     * any cycles that might still be elapsed.
+                     */
+                    case KeyEvent.VK_S:
+                        logicTimer.setCyclesPerSecond(gameSpeed);
+                        logicTimer.reset();
+                        break;
+                }
+
+            }
+        });
+
         pack();
         setLocationRelativeTo(null);
         setVisible(true);
     }
     private void cargueElementos(){
-        newFigure = new NewFigurePanel(this);
-        board = new Board(this);
+
     }
     private void configureElementos(){
         board.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5),
@@ -92,74 +157,20 @@ public class Tetris1 extends JFrame {
         board.setBackground(color);
     }
     private void agregueElementos(){
-        add(board,BorderLayout.CENTER);
-        add(newFigure,BorderLayout.WEST);
+
     }
     private void prepareAcciones() {
-        addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent e) {
-                switch (e.getKeyCode()){
-                    case KeyEvent.VK_S:
-                        if(!isPaused && dropCooldown == 0){
-                            logicTimer.setCyclesPerSecond(25.0f);
-                        }
-                        break;
 
-                    case KeyEvent.VK_A:
-                        if(!isPaused && board.isValidAndEmpty(currPiece,currCol-1,currRow,currRotation)){
-                            currCol--;
-                        }
-                        break;
-
-                    case KeyEvent.VK_D:
-                        if(!isPaused && board.isValidAndEmpty(currPiece,currCol-1,currRow,currRotation)){
-                            currCol++;
-                        }
-                    case KeyEvent.VK_Q:
-                        if(!isPaused){
-                            rotatePiece((currRotation == 0) ? 3 :currRotation-1);
-                        }
-                        break;
-                    case KeyEvent.VK_E:
-                        if(!isPaused) {
-                            rotatePiece((currRotation == 3)
-                                    ? 0 : currRotation + 1);
-                        }
-                        break;
-                    case KeyEvent.VK_P:
-                        if(!isGameOver && !isNewGame){
-                            isPaused = !isPaused;
-                            logicTimer.setPaused(isPaused);
-                        }
-                        break;
-                    case KeyEvent.VK_ENTER:
-                        if(isGameOver || isNewGame){
-                            resetGame();
-                        }
-                        break;
-                }
-            }
-            @Override
-            public void keyReleased(KeyEvent e) {
-                switch (e.getKeyCode()) {
-                    case KeyEvent.VK_S:
-                        logicTimer.setCyclesPerSecond(gameSpeed);
-                        logicTimer.reset();
-                        break;
-                }
-            }
-        });
     }
 
     public Tetrominoe getNextPieceType() {
         return nextPiece;
     }
 
-    public void startGame(){
+    private void startGame(){
+        this.random = new Random();
         this.isNewGame = true;
         this.gameSpeed = 1.0f;
-        this.random = new Random();
         this.logicTimer = new Clock(gameSpeed);
         logicTimer.setPaused(true);
 
@@ -264,9 +275,9 @@ public class Tetris1 extends JFrame {
 
     }
 
-    public String getNickname(){
-        return main.player();
-    }
+//    public String getNickname(){
+//        return main.player();
+//    }
 
     public boolean isPaused(){
         return isPaused;

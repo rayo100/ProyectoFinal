@@ -9,7 +9,6 @@ public class TetrisMain extends JFrame {
     //Tamano ventana
     private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 100;
     private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height / 2;
-    private JPanel mainPanel;
     //Menu
     private JMenuBar menuExit;
     private JMenu archivo;
@@ -35,6 +34,8 @@ public class TetrisMain extends JFrame {
     private JLabel labelIcon;
     //Mode
     private JComboBox comboMode;
+
+    private Tetris juego;
 
     public TetrisMain(String title) {
         super(title);
@@ -114,7 +115,14 @@ public class TetrisMain extends JFrame {
         comboMode.addItem("Player vs Machine");
 
     }
-
+    private void ocultarJPanels(){
+        botones.setVisible(false);
+        archivo.setVisible(false);
+        iconTetris.setVisible(false);
+        menuExit.setVisible(false);
+        comboMode.setVisible(false);
+        panelBuffos.setVisible(false);
+    }
 
     private void prepareAccionesMain(){
         prepareAccionesMenu();
@@ -131,10 +139,14 @@ public class TetrisMain extends JFrame {
         //players.addActionListener(e -> player());
     }
     private void startGame(){
-        setVisible(false);
-        Tetris1 inicial = new Tetris1(this,"Tetris Game");
+        //ocultarJPanels();
+        //juego = new Tetris(this);
+        //juego.setVisible(true);
+        //juego.startGame();
+
+        //Tetris inicial = new Tetris(this,"Tetris Game");
         //inicial.setVisible(true);
-        inicial.startGame();
+        //inicial.startGame();
     }
 
     private void irACreditos() {

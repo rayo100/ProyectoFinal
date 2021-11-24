@@ -1,4 +1,4 @@
-package Presentacion;
+package Reciclaje;
 
 /**public class ReservaCodigo {
  private JPanel options;
