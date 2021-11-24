@@ -1,6 +1,5 @@
 package Dominio;
 
-import Ayudas.TileType;
 import Presentacion.Board;
 
 import java.awt.*;

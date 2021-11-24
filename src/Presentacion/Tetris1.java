@@ -1,11 +1,6 @@
 package Presentacion;
 
-//import Dominio.Tetrominoe;
-
-import Ayudas.BoardPanel;
-import Ayudas.TileType;
 import Dominio.*;
-
 
 import javax.swing.*;
 import javax.swing.border.CompoundBorder;
@@ -43,7 +38,7 @@ public class Tetris1 extends JFrame {
     private Tetrominoe nextPiece;
     private Tetrominoe currPiece;
     private Random random;
-    private static final int TYPE_COUNT = TileType.values().length;
+    private static final int TYPE_COUNT = Tetrominoe.values().length;
 
     //Fila, columna y rotacion de la pieza
     private int currRow;
@@ -71,10 +66,10 @@ public class Tetris1 extends JFrame {
 //    }
 
     public void prepareElementos(){
+        setLayout(new BorderLayout());
         setPreferredSize(new Dimension(ANCHO,ALTO));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
-        setLayout(new BorderLayout());
         cargueElementos();
         configureElementos();
         agregueElementos();
@@ -126,7 +121,12 @@ public class Tetris1 extends JFrame {
                             rotatePiece((currRotation == 0) ? 3 :currRotation-1);
                         }
                         break;
-
+                    case KeyEvent.VK_E:
+                        if(!isPaused) {
+                            rotatePiece((currRotation == 3)
+                                    ? 0 : currRotation + 1);
+                        }
+                        break;
                     case KeyEvent.VK_P:
                         if(!isGameOver && !isNewGame){
                             isPaused = !isPaused;
@@ -151,19 +151,16 @@ public class Tetris1 extends JFrame {
             }
         });
     }
-    private void actionsFromKeyBoard(KeyEvent e){
-
-    }
 
     public Tetrominoe getNextPieceType() {
         return nextPiece;
     }
 
     public void startGame(){
-        isNewGame = true;
-        gameSpeed = 1.0f;
-        random = new Random();
-        logicTimer = new Clock(gameSpeed);
+        this.isNewGame = true;
+        this.gameSpeed = 1.0f;
+        this.random = new Random();
+        this.logicTimer = new Clock(gameSpeed);
         logicTimer.setPaused(true);
 
         while (true){
@@ -215,12 +212,12 @@ public class Tetris1 extends JFrame {
         board.repaint();
     }
     private void resetGame(){
-        level = 1;
-        score = 0;
-        gameSpeed = 1.0f;
-        nextPiece = Tetrominoe.values()[random.nextInt(TYPE_COUNT)];
-        isNewGame = false;
-        isGameOver = false;
+        this.level = 1;
+        this.score = 0;
+        this.gameSpeed = 1.0f;
+        this.nextPiece = Tetrominoe.values()[random.nextInt(TYPE_COUNT)];
+        this.isNewGame = false;
+        this.isGameOver = false;
         board.clear();
         logicTimer.reset();
         logicTimer.setCyclesPerSecond(gameSpeed);
@@ -228,14 +225,14 @@ public class Tetris1 extends JFrame {
     }
 
     private void spawnPiece() {
-        currPiece = nextPiece;
-        currCol = currPiece.getSpawnColumn();
-        currRow = currPiece.getSpawnRow();
-        currRotation = 0;
-        nextPiece = Tetrominoe.values()[random.nextInt(TYPE_COUNT)];
+        this.currPiece = nextPiece;
+        this.currCol = currPiece.getSpawnColumn();
+        this.currRow = currPiece.getSpawnRow();
+        this.currRotation = 0;
+        this.nextPiece = Tetrominoe.values()[random.nextInt(TYPE_COUNT)];
 
         if(!board.isValidAndEmpty(currPiece,currCol,currRow,currRotation)){
-            isGameOver = true;
+            this.isGameOver = true;
             logicTimer.setPaused(true);
         }
     }
@@ -250,14 +247,14 @@ public class Tetris1 extends JFrame {
 
         if(currCol < -left) {
             newColumn -= currCol - left;
-        } else if(currCol + currPiece.getDimension() - right >= BoardPanel.COL_COUNT) {
-            newColumn -= (currCol + currPiece.getDimension() - right) - BoardPanel.COL_COUNT + 1;
+        } else if(currCol + currPiece.getDimension() - right >= Board.NCOLS) {
+            newColumn -= (currCol + currPiece.getDimension() - right) - Board.NCOLS + 1;
         }
 
         if(currRow < -top) {
             newRow -= currRow - top;
-        } else if(currRow + currPiece.getDimension() - bottom >= BoardPanel.ROW_COUNT) {
-            newRow -= (currRow + currPiece.getDimension() - bottom) - BoardPanel.ROW_COUNT + 1;
+        } else if(currRow + currPiece.getDimension() - bottom >= Board.NROWS) {
+            newRow -= (currRow + currPiece.getDimension() - bottom) - Board.NROWS + 1;
         }
         if(board.isValidAndEmpty(currPiece, newColumn, newRow, newRotation)) {
             currRotation = newRotation;

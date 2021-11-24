@@ -1,0 +1,169 @@
+Index: src/Dominio/Tetrominoe.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Dominio;\r\n\r\nimport Presentacion.Board;\r\n\r\nimport java.awt.*;\r\n\r\npublic enum Tetrominoe {\r\n    TYPEI(new Color(Board.COLORMIN, Board.COLORMAX, Board.COLORMAX), 4, 4, 1, new boolean[][] {\r\n        {\r\n                false,\tfalse,\tfalse,\tfalse,\r\n                true,\ttrue,\ttrue,\ttrue,\r\n                false,\tfalse,\tfalse,\tfalse,\r\n                false,\tfalse,\tfalse,\tfalse,\r\n        },\r\n        {\r\n                false,\tfalse,\ttrue,\tfalse,\r\n                false,\tfalse,\ttrue,\tfalse,\r\n                false,\tfalse,\ttrue,\tfalse,\r\n                false,\tfalse,\ttrue,\tfalse,\r\n        },\r\n        {\r\n                false,\tfalse,\tfalse,\tfalse,\r\n                false,\tfalse,\tfalse,\tfalse,\r\n                true,\ttrue,\ttrue,\ttrue,\r\n                false,\tfalse,\tfalse,\tfalse,\r\n        },\r\n        {\r\n                false,\ttrue,\tfalse,\tfalse,\r\n                false,\ttrue,\tfalse,\tfalse,\r\n                false,\ttrue,\tfalse,\tfalse,\r\n                false,\ttrue,\tfalse,\tfalse,\r\n        }\r\n    }),\r\n    /**\r\n     * Piece TypeL.\r\n     */\r\n    TYPEL(new Color(Board.COLORMAX, 127, Board.COLORMIN), 3, 3, 2, new boolean[][] {\r\n            {\r\n                    false,\tfalse,\ttrue,\r\n                    true,\ttrue,\ttrue,\r\n                    false,\tfalse,\tfalse,\r\n            },\r\n            {\r\n                    false,\ttrue,\tfalse,\r\n                    false,\ttrue,\tfalse,\r\n                    false,\ttrue,\ttrue,\r\n            },\r\n            {\r\n                    false,\tfalse,\tfalse,\r\n                    true,\ttrue,\ttrue,\r\n                    true,\tfalse,\tfalse,\r\n            },\r\n            {\r\n                    true,\ttrue,\tfalse,\r\n                    false,\ttrue,\tfalse,\r\n                    false,\ttrue,\tfalse,\r\n            }\r\n    }),\r\n\r\n    /**\r\n     * Piece TypeO.\r\n     */\r\n    TYPEO(new Color(Board.COLORMAX, Board.COLORMAX, Board.COLORMIN), 2, 2, 2, new boolean[][] {\r\n            {\r\n                    true,\ttrue,\r\n                    true,\ttrue,\r\n            },\r\n            {\r\n                    true,\ttrue,\r\n                    true,\ttrue,\r\n            },\r\n            {\r\n                    true,\ttrue,\r\n                    true,\ttrue,\r\n            },\r\n            {\r\n                    true,\ttrue,\r\n                    true,\ttrue,\r\n            }\r\n    }),\r\n\r\n    /**\r\n     * Piece TypeS.\r\n     */\r\n    TYPES(new Color(Board.COLORMIN, Board.COLORMAX, Board.COLORMIN), 3, 3, 2, new boolean[][] {\r\n            {\r\n                    false,\ttrue,\ttrue,\r\n                    true,\ttrue,\tfalse,\r\n                    false,\tfalse,\tfalse,\r\n            },\r\n            {\r\n                    false,\ttrue,\tfalse,\r\n                    false,\ttrue,\ttrue,\r\n                    false,\tfalse,\ttrue,\r\n            },\r\n            {\r\n                    false,\tfalse,\tfalse,\r\n                    false,\ttrue,\ttrue,\r\n                    true,\ttrue,\tfalse,\r\n            },\r\n            {\r\n                    true,\tfalse,\tfalse,\r\n                    true,\ttrue,\tfalse,\r\n                    false,\ttrue,\tfalse,\r\n            }\r\n    }),\r\n\r\n    /**\r\n     * Piece TypeT.\r\n     */\r\n    TYPET(new Color(128, Board.COLORMIN, 128), 3, 3, 2, new boolean[][] {\r\n            {\r\n                    false,\ttrue,\tfalse,\r\n                    true,\ttrue,\ttrue,\r\n                    false,\tfalse,\tfalse,\r\n            },\r\n            {\r\n                    false,\ttrue,\tfalse,\r\n                    false,\ttrue,\ttrue,\r\n                    false,\ttrue,\tfalse,\r\n            },\r\n            {\r\n                    false,\tfalse,\tfalse,\r\n                    true,\ttrue,\ttrue,\r\n                    false,\ttrue,\tfalse,\r\n            },\r\n            {\r\n                    false,\ttrue,\tfalse,\r\n                    true,\ttrue,\tfalse,\r\n                    false,\ttrue,\tfalse,\r\n            }\r\n    }),\r\n\r\n    ;\r\n    private final Color baseColor;\r\n    private final Color lightColor;\r\n    private final Color darkColor;\r\n    private final int dimension;\r\n    private final boolean[][] tiles;\r\n    private final int cols;\r\n    private final int rows;\r\n    private final int spawnCol;\r\n    private final int spawnRow;\r\n\r\n    Tetrominoe(Color color, int dimension, int cols, int rows, boolean[][] tiles) {\r\n        this.baseColor = color;\r\n        this.lightColor = Color.BLACK;\r\n        this.darkColor = Color.BLACK;\r\n        this.dimension = dimension;\r\n        this.tiles = tiles;\r\n        this.cols = cols;\r\n        this.rows = rows;\r\n\r\n        this.spawnCol = 5 - (dimension >> 1);\r\n        this.spawnRow = getTopInset(0);\r\n    }\r\n\r\n    private int getTopInset(int rotation) {\r\n        return 0;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Dominio/Tetrominoe.java b/src/Dominio/Tetrominoe.java
+--- a/src/Dominio/Tetrominoe.java	(revision b7a75d27650a15313cc39e6f0f491ed428dc580f)
++++ b/src/Dominio/Tetrominoe.java	(date 1637517399759)
+@@ -155,7 +155,92 @@
+         this.spawnRow = getTopInset(0);
+     }
+ 
+-    private int getTopInset(int rotation) {
+-        return 0;
++    public Color getBaseColor() {
++        return baseColor;
++    }
++
++    public Color getLightColor() {
++        return lightColor;
++    }
++
++    public Color getDarkColor() {
++        return darkColor;
++    }
++
++    public int getDimension() {
++        return dimension;
++    }
++
++    public int getSpawnColumn() {
++        return spawnCol;
++    }
++
++    public int getSpawnRow() {
++        return spawnRow;
++    }
++
++    public int getRows() {
++        return rows;
++    }
++
++    public int getCols() {
++        return cols;
++    }
++
++    public boolean isTile(int x, int y, int rotation) {
++        return tiles[rotation][y * dimension + x];
++    }
++
++    public int getLeftInset(int rotation) {
++        for(int x = 0; x < dimension; x++) {
++            for(int y = 0; y < dimension; y++) {
++                if(isTile(x, y, rotation)) {
++                    return x;
++                }
++            }
++        }
++        return -1;
++    }
++
++    public int getRightInset(int rotation) {
++        /*
++         * Loop through from right to left until we find a tile then return
++         * the column.
++         */
++        for(int x = dimension - 1; x >= 0; x--) {
++            for(int y = 0; y < dimension; y++) {
++                if(isTile(x, y, rotation)) {
++                    return dimension - x;
++                }
++            }
++        }
++        return -1;
++    }
++
++    public int getTopInset(int rotation) {
++        /*
++         * Loop through from top to bottom until we find a tile then return
++         * the row.
++         */
++        for(int y = 0; y < dimension; y++) {
++            for(int x = 0; x < dimension; x++) {
++                if(isTile(x, y, rotation)) {
++                    return y;
++                }
++            }
++        }
++        return -1;
++    }
++
++    public int getBottomInset(int rotation) {
++
++        for(int y = dimension - 1; y >= 0; y--) {
++            for(int x = 0; x < dimension; x++) {
++                if(isTile(x, y, rotation)) {
++                    return dimension - y;
++                }
++            }
++        }
++        return -1;
+     }
+ }
+\ No newline at end of file
+Index: src/Presentacion/NewFigurePanel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Presentacion;\r\n\r\nimport java.awt.Color;\r\nimport java.awt.Dimension;\r\nimport java.awt.Font;\r\nimport java.awt.Graphics;\r\n\r\nimport javax.swing.*;\r\n\r\n\r\npublic class NewFigurePanel extends JPanel {\r\n\r\n    private static final int TILESIZE = Board.TILESIZE / 2;\r\n    private static final int SHADEWIDTH = Board.SHADEWIDTH >> 1;\r\n    private static final int TILECOUNT = 5;\r\n    private static final int SQUARECENTER_X = 130;\r\n    private static final int SQUARECENTER_Y = 65;\r\n    private static final int SQUARESIZE = (TILESIZE * TILECOUNT >> 1);\r\n    private static final int SMALL_INSET = 20;\r\n    private static final int LARGE_INSET = 40;\r\n    private static final int STATS_INSET = 175;\r\n    private static final int CONTROLS_INSET = 300;\r\n    private static final int TEXT_STRIDE = 25;\r\n    private static final Font SMALL_FONT = new Font(\"Arial\", Font.BOLD, 11);\r\n    private static final Font LARGE_FONT = new Font(\"Arial Bold\", Font.BOLD, 13);\r\n    private static final Color DRAW_COLOR = Color.BLACK;\r\n    private String nickname;\r\n    //Agregar atributos aca:\r\n    private JButton save;\r\n    private JButton color;\r\n    private JButton controls;\r\n    private JButton help;\r\n    private JLabel options;\r\n\r\n\r\n    //Fin nuevos atributos\r\n\r\n    private Tetris1 tetris;\r\n\r\n    public NewFigurePanel(Tetris1 tetris) {\r\n        this.tetris = tetris;\r\n        nickname = tetris.getNickname();\r\n        setPreferredSize(new Dimension(Board.PANELWIDTH, Board.PANELHEIGHT));\r\n        setBackground(Color.WHITE);\r\n        setLayout(null);\r\n        prepareElementosM1();\r\n    }\r\n    //Metodos nuevos aca:\r\n    private void prepareElementosM1() {\r\n        save = new JButton(\"Save\");\r\n        save.setBounds(30,200,90, 20);\r\n        controls = new JButton(\"Controls\");\r\n        controls.setBounds(130,200,90, 20);\r\n        color = new JButton(\"Color\");\r\n        color.setBounds(30,240,90, 20);\r\n//        help = new JButton(\"Help\")\r\n        add(save);\r\n        add(controls);\r\n        add(color);\r\n    }\r\n\r\n    //Fin metodos nuevos\r\n    @Override\r\n    public void paintComponent(Graphics g) {\r\n        super.paintComponent(g);\r\n        g.setColor(DRAW_COLOR);\r\n        int offset;\r\n\r\n        //Section stats\r\n        g.setFont(LARGE_FONT);\r\n        g.drawString(\"Options:\", SMALL_INSET, offset = STATS_INSET);\r\n        g.setFont(SMALL_FONT);\r\n        //g.drawString(\"Nickname: \" + tetris.getNickname(), LARGE_INSET, offset += TEXT_STRIDE);\r\n        //g.drawString(\"Score: \" + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);\r\n\r\n        //Section controls\r\n        g.setFont(LARGE_FONT);\r\n        g.drawString(\"Stats\", SMALL_INSET, offset = CONTROLS_INSET);\r\n        g.setFont(SMALL_FONT);\r\n        g.drawString(\"Nickname: \" + tetris.getNickname(), LARGE_INSET, offset += TEXT_STRIDE);\r\n//        g.drawString(\"A - Move Left\", LARGE_INSET, offset += TEXT_STRIDE);\r\n//        g.drawString(\"D - Move Right\", LARGE_INSET, offset += TEXT_STRIDE);\r\n//        g.drawString(\"W - Rotate\", LARGE_INSET, offset += TEXT_STRIDE);\r\n//        g.drawString(\". - Use a Buffo\", LARGE_INSET, offset += TEXT_STRIDE);\r\n//        g.drawString(\"S - Drop\", LARGE_INSET, offset += TEXT_STRIDE);\r\n//        g.drawString(\"P - Pause Game\", LARGE_INSET, offset += TEXT_STRIDE);\r\n\r\n        //Section next piece\r\n        g.setFont(LARGE_FONT);\r\n        g.drawString(\"Next Piece:\", SMALL_INSET, 70);\r\n        g.drawRect(SQUARECENTER_X - SQUARESIZE, SQUARECENTER_Y - SQUARESIZE, SQUARESIZE * 2, SQUARESIZE * 2);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Presentacion/NewFigurePanel.java b/src/Presentacion/NewFigurePanel.java
+--- a/src/Presentacion/NewFigurePanel.java	(revision f8bdd159892905b05e25952f4fe0b53a60b3fef5)
++++ b/src/Presentacion/NewFigurePanel.java	(date 1637514999764)
+@@ -30,7 +30,7 @@
+     private JButton color;
+     private JButton controls;
+     private JButton help;
+-    private JLabel options;
++    //private JLabel options;
+ 
+ 
+     //Fin nuevos atributos
+@@ -77,7 +77,7 @@
+         g.setFont(LARGE_FONT);
+         g.drawString("Stats", SMALL_INSET, offset = CONTROLS_INSET);
+         g.setFont(SMALL_FONT);
+-        g.drawString("Nickname: " + tetris.getNickname(), LARGE_INSET, offset += TEXT_STRIDE);
++        g.drawString("Nickname: " + nickname, LARGE_INSET, offset += TEXT_STRIDE);
+ //        g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
+ //        g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
+ //        g.drawString("W - Rotate", LARGE_INSET, offset += TEXT_STRIDE);
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"b2d7d353-4d5c-4575-b84c-54a645cdaf76\" name=\"Default Changelist\" comment=\"1\">\r\n      <change beforePath=\"$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"219ng7fLrLYiOThqrYRwlje8R7Z\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.TetrisMain\">\r\n    <configuration name=\"TetrisMain\" type=\"Application\" factoryName=\"Application\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Presentacion.TetrisMain\" />\r\n      <module name=\"ProyectoFinal\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"Presentacion.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"main1\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Presentacion.Tetris1\" />\r\n      <module name=\"ProyectoFinal\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"b2d7d353-4d5c-4575-b84c-54a645cdaf76\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1637362279305</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1637362279305</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"1\">\r\n      <created>1637378982334</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637378982334</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"1\">\r\n      <created>1637379033699</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637379033699</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"1\">\r\n      <created>1637513655121</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637513655121</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"1\">\r\n      <created>1637514268810</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637514268810</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"1\">\r\n      <created>1637514716557</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1637514716557</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"1\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"1\" />\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/ProyectoFinal$TetrisGUI.ic\" NAME=\"TetrisGUI Coverage Results\" MODIFIED=\"1636317703885\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n    <SUITE FILE_PATH=\"coverage/ProyectoFinal$Tetris.ic\" NAME=\"Tetris Coverage Results\" MODIFIED=\"1636420029275\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>Presentacion.*</FILTER>\r\n    </SUITE>\r\n    <SUITE FILE_PATH=\"coverage/ProyectoFinal$Test2.ic\" NAME=\"Test2 Coverage Results\" MODIFIED=\"1636310506778\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\r\n      <FILTER>Presentacion.*</FILTER>\r\n    </SUITE>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision b7a75d27650a15313cc39e6f0f491ed428dc580f)
++++ b/.idea/workspace.xml	(date 1637517399789)
+@@ -5,6 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="1">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/Dominio/Tetrominoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Tetrominoe.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -109,7 +111,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1637514716557</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="1">
++      <created>1637515024054</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1637515024054</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
