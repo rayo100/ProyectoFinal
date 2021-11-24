@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="1">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/BoardPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/Clock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/SidePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/Tetris$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/Tetris.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/TileType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Clock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Clock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Tetrominoe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Tetrominoe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/NewFigurePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris1$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ayudas/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/BoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ayudas/Clock.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ayudas/SidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/SidePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ayudas/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Tetris.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ayudas/TileType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Clock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Clock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Tetrominoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Tetrominoe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reciclaje/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/NewFigurePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reciclaje/NewFigurePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/ReservaCodigo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reciclaje/ReservaCodigo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/Tetris1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reciclaje/Tetris1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" afterDir="false" />
-    </list>
+    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -150,7 +123,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637517383184</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="1">
+      <created>1637732945474</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1637732945474</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -176,9 +156,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="1" />
     <MESSAGE value="s8i" />
-    <option name="LAST_COMMIT_MESSAGE" value="s8i" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
