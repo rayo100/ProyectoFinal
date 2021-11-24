@@ -132,9 +132,9 @@ public class TetrisMain extends JFrame {
     }
     private void startGame(){
         setVisible(false);
-        Tetris1 frame = new Tetris1(this,"Tetris Game");
-        frame.setVisible(true);
-        //frame.startGame();
+        Tetris1 inicial = new Tetris1(this,"Tetris Game");
+        //inicial.setVisible(true);
+        inicial.startGame();
     }
 
     private void irACreditos() {
