@@ -54,17 +54,22 @@ public class TetrisMain extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
         setLayout(new BorderLayout());
-        prepareElementosM1();
+        prepareElementosIcono();
+        prepareElementosBotones();
+        prepareElementosMenu();
         agregueElementosM1();
         prepareElementosChooser();
     }
 
-    private void prepareElementosM1(){
+    private void prepareElementosIcono(){
         iconTetris = new JPanel();
         icon = new ImageIcon("tetris.jpg");
         labelIcon = new JLabel(null,icon ,SwingConstants.CENTER);
         iconTetris.add(labelIcon);
         iconTetris.setBackground(Color.BLACK);
+
+    }
+    private void prepareElementosBotones(){
         botones = new JPanel(new GridLayout(1,5));
         comboMode = new JComboBox();
         players = new JButton("Players");
@@ -75,6 +80,8 @@ public class TetrisMain extends JFrame {
         spinnerBuffos.setModel(new SpinnerNumberModel(0, 0, 50, 1));
         start = new JButton("Start");
         exit = new JButton("Exit");
+    }
+    private void prepareElementosMenu(){
         menuExit = new JMenuBar();
         archivo = new JMenu("File");
         newGame = new JMenuItem("New");
