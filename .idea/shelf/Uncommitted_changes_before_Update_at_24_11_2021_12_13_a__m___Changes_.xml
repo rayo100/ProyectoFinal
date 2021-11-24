@@ -1,0 +1,29 @@
+<changelist name="Uncommitted_changes_before_Update_at_24_11_2021_12_13_a__m__[Changes]" date="1637730807523" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2021_12_13_a__m__[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 24/11/2021 12:13 a. m. [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Dominio/Tetrominoe.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Dominio/Tetrominoe.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2021_12_13_a__m__[Changes]/Tetrominoe.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Presentacion/Board.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Presentacion/Board.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2021_12_13_a__m__[Changes]/Board.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Presentacion/TetrisMain.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Presentacion/TetrisMain.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2021_12_13_a__m__[Changes]/TetrisMain.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Presentacion/Tetris1.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Presentacion/Tetris1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2021_12_13_a__m__[Changes]/Tetris1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Presentacion/NewFigurePanel.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Presentacion/NewFigurePanel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_24_11_2021_12_13_a__m__[Changes]/NewFigurePanel.class" />
+  </binary>
+</changelist>
