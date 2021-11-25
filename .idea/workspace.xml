@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="1">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Tetrominoe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Tetrominoe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Shape$Tetrominoe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Shape$Tetrominoe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Shape.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Ayudas/ayuda1/Shape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Buffo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Buffo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Clock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Clock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Machines.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Machines.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/TetrisException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/TetrisException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Credits.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Credits.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris1$2.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Tetris.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,16 +50,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\EdgarRonaldo\Desktop\2021-2\POOB\ProyectoFinal\src\Reciclaje" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.main1">
-    <configuration name="Tetris1" type="Application" factoryName="Application" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Reciclaje.Tetris1" />
+  <component name="RunManager" selected="Application.Tetris">
+    <configuration name="Tetris" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="Presentacion.Tetris" />
       <module name="ProyectoFinal" />
       <extension name="coverage">
         <pattern>
@@ -67,7 +70,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="main1" type="Application" factoryName="Application">
+    <configuration name="main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Presentacion.TetrisMain" />
       <module name="ProyectoFinal" />
       <method v="2">
@@ -75,8 +78,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.main1" />
-      <item itemvalue="Application.Tetris1" />
+      <item itemvalue="Application.main" />
+      <item itemvalue="Application.Tetris" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -137,7 +140,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637732945474</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="1">
+      <created>1637757273869</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1637757273869</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
