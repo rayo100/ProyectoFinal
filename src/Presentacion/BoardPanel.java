@@ -211,7 +211,7 @@ public class BoardPanel extends JPanel {
 		
 		g.setColor(base);
 		g.fillRect(x, y, TILE_SIZE, TILE_SIZE);
-		g.setColor(dark);
+		g.setColor(Color.BLACK);
 		g.fillRect(x, y + TILE_SIZE - SHADE_WIDTH, TILE_SIZE, SHADE_WIDTH);
 		g.fillRect(x + TILE_SIZE - SHADE_WIDTH, y, SHADE_WIDTH, TILE_SIZE);
 		

@@ -10,7 +10,7 @@ import java.util.Random;
 
 import javax.swing.*;
 
-public class Tetris extends JFrame {
+public class Tetris extends JDialog {
 
 	private static final long FRAME_TIME = 1000L / 50L;
 	private static final int TYPE_COUNT = Tetrominoe.values().length;
@@ -30,21 +30,30 @@ public class Tetris extends JFrame {
 	private int currentRotation;
 	private int dropCooldown;
 	private float gameSpeed;
-	//private TetrisMain main;
-	private Tetris(String title) {
-		super(title);
-		//this.main = main;
-		prepareElementos();
-		setVisible(true);
-	}
-	public static void main(String[] args){
-		Tetris gui = new Tetris("Tetris Game");
-		gui.startGame();
+
+
+	public static void loadGame(TetrisMain main){
+		Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+				Tetris tetris = new Tetris(main, "Tetris Game");
+				tetris.startGame();
+			}
+		};
+		Thread hilo = new Thread(runnable);
+		hilo.start();
 	}
 
+	private Tetris(TetrisMain principal, String title) {
+		super(principal,title);
+		prepareElementos();
+	}
+
+
 	private void prepareElementos(){
+		//setModalityType(ModalityType.APPLICATION_MODAL);
 		setLayout(new BorderLayout());
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setResizable(false);
 		cargarElementos();
 		//configurarElementos();
@@ -126,7 +135,7 @@ public class Tetris extends JFrame {
 		});
 	}
 
-	private void startGame() {
+	public void startGame() {
 		this.random = new Random();
 		this.isNewGame = true;
 		this.gameSpeed = 1.0f;

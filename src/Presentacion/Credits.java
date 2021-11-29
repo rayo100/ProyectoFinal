@@ -2,14 +2,14 @@ package Presentacion;
 
 import javax.swing.*;
 
-public class Credits extends JFrame {
-    public Credits(String title) {
-        super(title);
+public class Credits extends JDialog {
+    public Credits(TetrisMain main,String title) {
+        super(main,title);
         prepareElementos();
         prepareAcciones();
     }
     private void prepareElementos() {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         pack();
         setResizable(false);
     }
