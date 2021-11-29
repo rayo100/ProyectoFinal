@@ -95,8 +95,7 @@ public class Tetris1 extends JFrame {
                             currCol--;
                         break;
                     case KeyEvent.VK_D:
-                        if(!isPaused &&
-                                board.isValidAndEmpty(currPiece,currCol+1,currRow,currRotation)) currCol++;
+
                         break;
                     case KeyEvent.VK_Q:
                         if(!isPaused){
