@@ -97,7 +97,7 @@ public class TetrisMain extends JFrame {
         panelBuffos.add(numberBuffos);
         panelBuffos.add(spinnerBuffos);
         botones.add(comboMode);
-        botones.add(players);
+        //botones.add(players);
         botones.add(panelBuffos);
         botones.add(credits);
         botones.add(start);
@@ -147,7 +147,7 @@ public class TetrisMain extends JFrame {
         //players.addActionListener(e -> player());
     }
     private void startGame(){
-        setVisible(true);
+        setVisible(false);
         Tetris.loadGame(this);
     }
 

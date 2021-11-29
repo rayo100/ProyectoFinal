@@ -3,9 +3,11 @@ package Presentacion;
 import Dominio.Clock;
 import Dominio.Tetrominoe;
 
-import java.awt.BorderLayout;
+import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Random;
 
 import javax.swing.*;
@@ -30,6 +32,7 @@ public class Tetris extends JDialog {
 	private int currentRotation;
 	private int dropCooldown;
 	private float gameSpeed;
+	private TetrisMain main;
 
 
 	public static void loadGame(TetrisMain main){
@@ -46,17 +49,16 @@ public class Tetris extends JDialog {
 
 	private Tetris(TetrisMain principal, String title) {
 		super(principal,title);
+		this.main = principal;
 		prepareElementos();
 	}
 
 
 	private void prepareElementos(){
-		//setModalityType(ModalityType.APPLICATION_MODAL);
 		setLayout(new BorderLayout());
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setResizable(false);
 		cargarElementos();
-		//configurarElementos();
+		configurarElementos();
 		agregarElementos();
 		prepararAcciones();
 		pack();
@@ -69,7 +71,9 @@ public class Tetris extends JDialog {
 		this.side = new SidePanel(this);
 	}
 	private void configurarElementos(){
-		side.setVisible(true);
+		Color color = JColorChooser.showDialog(null, "Choose a color", Color.BLACK);
+
+		board.setBackground(color);
 	}
 
 	private void agregarElementos(){
@@ -81,44 +85,7 @@ public class Tetris extends JDialog {
 		addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				switch(e.getKeyCode()) {
-					case KeyEvent.VK_S:
-						if(!isPaused && dropCooldown == 0) {
-							logicTimer.setCyclesPerSecond(25.0f);
-						}
-						break;
-					case KeyEvent.VK_A:
-						if(!isPaused && board.isValidAndEmpty(currentType, currentCol - 1, currentRow, currentRotation)) {
-							currentCol--;
-						}
-						break;
-					case KeyEvent.VK_D:
-						if(!isPaused && board.isValidAndEmpty(currentType, currentCol + 1, currentRow, currentRotation)) {
-							currentCol++;
-						}
-						break;
-					case KeyEvent.VK_Q:
-						if(!isPaused) {
-							rotatePiece((currentRotation == 0) ? 3 : currentRotation - 1);
-						}
-						break;
-					case KeyEvent.VK_E:
-						if(!isPaused) {
-							rotatePiece((currentRotation == 3) ? 0 : currentRotation + 1);
-						}
-						break;
-					case KeyEvent.VK_P:
-						if(!isGameOver && !isNewGame) {
-							isPaused = !isPaused;
-							logicTimer.setPaused(isPaused);
-						}
-						break;
-					case KeyEvent.VK_ENTER:
-						if(isGameOver || isNewGame) {
-							resetGame();
-						}
-						break;
-				}
+				keyCases(e);
 			}
 
 			@Override
@@ -129,10 +96,67 @@ public class Tetris extends JDialog {
 						logicTimer.reset();
 						break;
 				}
-
 			}
-
 		});
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				main.setVisible(true);
+			}
+		});
+	}
+	private void keyCases(KeyEvent e){
+		switch(e.getKeyCode()) {
+			case KeyEvent.VK_S:
+				caseS();
+				break;
+			case KeyEvent.VK_A:
+				caseA();
+				break;
+			case KeyEvent.VK_W:
+				caseW();
+				break;
+			case KeyEvent.VK_P:
+				caseP();
+				break;
+			case KeyEvent.VK_D:
+				caseD();
+				break;
+			case KeyEvent.VK_ENTER:
+				caseEnter();
+				break;
+		}
+	}
+	private void caseD(){
+		if(!isPaused &&
+				board.isValidAndEmpty(currentType,currentCol+1,
+						currentRow,currentRotation)) currentCol++;
+	}
+	private void caseS(){
+		if(!isPaused && dropCooldown == 0) {
+			logicTimer.setCyclesPerSecond(25.0f);
+		}
+	}
+	private void caseW(){
+		if(!isPaused) {
+			rotatePiece((currentRotation == 0) ? 3 : currentRotation - 1);
+		}
+	}
+	private void caseA(){
+		if(!isPaused && board.isValidAndEmpty(currentType, currentCol - 1, currentRow, currentRotation)) {
+			currentCol--;
+		}
+	}
+	private void caseP(){
+		if(!isGameOver && !isNewGame) {
+			isPaused = !isPaused;
+			logicTimer.setPaused(isPaused);
+		}
+	}
+	private void caseEnter(){
+		if(isGameOver || isNewGame) {
+			resetGame();
+		}
 	}
 
 	public void startGame() {

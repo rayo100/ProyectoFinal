@@ -37,14 +37,14 @@ public class SidePanel extends JPanel {
 	
 	private static final Font LARGE_FONT = new Font("Tahoma", Font.BOLD, 13);
 	
-	private static final Color DRAW_COLOR = new Color(128, 192, 128);
+	private static final Color DRAW_COLOR = Color.BLACK;
 	
 	private Tetris tetris;
 	
 	public SidePanel(Tetris tetris) {
 		this.tetris = tetris;
 		setPreferredSize(new Dimension(200, BoardPanel.PANEL_HEIGHT));
-		setBackground(Color.BLACK);
+		setBackground(Color.WHITE);
 	}
 	
 	@Override

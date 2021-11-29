@@ -187,8 +187,8 @@ public enum Tetrominoe {
 	
 	Tetrominoe(Color color, int dimension, int cols, int rows, boolean[][] tiles) {
 		this.baseColor = color;
-		this.lightColor = color.brighter();
-		this.darkColor = color.darker();
+		this.lightColor = Color.BLACK;
+		this.darkColor = Color.BLACK;
 		this.dimension = dimension;
 		this.tiles = tiles;
 		this.cols = cols;
