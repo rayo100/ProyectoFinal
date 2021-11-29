@@ -148,7 +148,15 @@ public class TetrisMain extends JFrame {
     }
     private void startGame(){
         setVisible(true);
-        Tetris.loadGame(this);
+        main = this;
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Tetris.loadGame(main);
+            }
+        };
+        Thread hilo = new Thread(runnable);
+        hilo.start();
     }
 
     private void irACreditos() {
