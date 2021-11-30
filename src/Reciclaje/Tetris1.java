@@ -149,8 +149,7 @@ public class Tetris1 extends JFrame {
     private void configureElementos(){
         board.setBorder(new CompoundBorder(new EmptyBorder(5, 5, 5, 5),
                 new TitledBorder("Board")));
-        newFigure.setBorder(new CompoundBorder(new EmptyBorder(5,5,5,5),
-                new TitledBorder("Game Info")));
+        //newFigure.setBorder();
         Color color = JColorChooser.showDialog(null, "Choose a color", Color.BLACK);
         newFigure.setBackground(color);
         board.setBackground(color);

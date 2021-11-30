@@ -7,7 +7,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class SidePanel extends JPanel {
 	
@@ -40,11 +40,31 @@ public class SidePanel extends JPanel {
 	private static final Color DRAW_COLOR = Color.BLACK;
 	
 	private Tetris tetris;
+
+	private JButton save;
+	private JButton color;
+	private JButton controls;
+	private JButton help;
 	
 	public SidePanel(Tetris tetris) {
 		this.tetris = tetris;
-		setPreferredSize(new Dimension(200, BoardPanel.PANEL_HEIGHT));
+		setPreferredSize(new Dimension(BoardPanel.PANEL_WIDTH,
+				BoardPanel.PANEL_HEIGHT));
 		setBackground(Color.WHITE);
+		setLayout(null);
+		//prepareElementosM1();
+	}
+
+	private void prepareElementosM1(){
+		save = new JButton("Save");
+		save.setBounds(30,200,90, 20);
+		controls = new JButton("Controls");
+		controls.setBounds(130,200,90, 20);
+		color = new JButton("Color");
+		color.setBounds(30,240,90, 20);
+		add(save);
+		add(controls);
+		add(color);
 	}
 	
 	@Override
@@ -55,26 +75,28 @@ public class SidePanel extends JPanel {
 		
 		int offset;
 		
-		g.setFont(LARGE_FONT);
-		g.drawString("Stats", SMALL_INSET, offset = STATS_INSET);
-		g.setFont(SMALL_FONT);
-		g.drawString("Level: " + tetris.getLevel(), LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Score: " + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
-		
-		g.setFont(LARGE_FONT);
-		g.drawString("Controls", SMALL_INSET, offset = CONTROLS_INSET);
-		g.setFont(SMALL_FONT);
-		g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Q - Rotate Anticlockwise", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("E - Rotate Clockwise", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("S - Drop", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
-		
+//		g.setFont(LARGE_FONT);
+//		g.drawString("Stats", SMALL_INSET, offset = STATS_INSET);
+//		g.setFont(SMALL_FONT);
+//		g.drawString("Nickname: ", LARGE_INSET, offset += TEXT_STRIDE);
+//		//g.drawString("Score: " + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
+//
+//		g.setFont(LARGE_FONT);
+//		g.drawString("Controls", SMALL_INSET, offset = CONTROLS_INSET);
+//		g.setFont(SMALL_FONT);
+//		g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
+//		g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
+//		g.drawString("W - Rotate piece", LARGE_INSET,offset += TEXT_STRIDE);
+//		g.drawString("S - Drop", LARGE_INSET, offset += TEXT_STRIDE);
+//		g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
+		if(!tetris.isNewGame()) drawNextPiece(g);
+	}
+
+	private void drawNextPiece(Graphics g){
 		g.setFont(LARGE_FONT);
 		g.drawString("Next Piece:", SMALL_INSET, 70);
 		g.drawRect(SQUARE_CENTER_X - SQUARE_SIZE, SQUARE_CENTER_Y - SQUARE_SIZE, SQUARE_SIZE * 2, SQUARE_SIZE * 2);
-		
+
 		Tetrominoe type = tetris.getNextPieceType();
 		if(!tetris.isGameOver() && type != null) {
 			int cols = type.getCols();
@@ -93,7 +115,6 @@ public class SidePanel extends JPanel {
 			}
 		}
 	}
-	
 	private void drawTile(Tetrominoe type, int x, int y, Graphics g) {
 		g.setColor(type.getBaseColor());
 		g.fillRect(x, y, TILE_SIZE, TILE_SIZE);

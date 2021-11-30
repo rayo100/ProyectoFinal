@@ -11,11 +11,16 @@ import java.awt.event.WindowEvent;
 import java.util.Random;
 
 import javax.swing.*;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.TitledBorder;
 
 public class Tetris extends JDialog {
 
 	private static final long FRAME_TIME = 1000L / 50L;
 	private static final int TYPE_COUNT = Tetrominoe.values().length;
+	private final int ANCHO = 566;
+	private final int ALTO = 568;
 	private BoardPanel board;
 	private SidePanel side;
 	private boolean isPaused;
@@ -55,6 +60,7 @@ public class Tetris extends JDialog {
 
 
 	private void prepareElementos(){
+		setPreferredSize(new Dimension(ANCHO,ALTO));
 		setLayout(new BorderLayout());
 		setResizable(false);
 		cargarElementos();
@@ -72,13 +78,16 @@ public class Tetris extends JDialog {
 	}
 	private void configurarElementos(){
 		Color color = JColorChooser.showDialog(null, "Choose a color", Color.BLACK);
-
 		board.setBackground(color);
+		board.setBorder(new CompoundBorder(new EmptyBorder(3, 3, 8, 8),
+				new TitledBorder("Board")));
+		side.setBorder(new CompoundBorder(new EmptyBorder(5,5,5,5),
+				new TitledBorder("Game Info")));
 	}
 
 	private void agregarElementos(){
-		add(board, BorderLayout.EAST);
-		add(side, BorderLayout.CENTER);
+		add(board, BorderLayout.CENTER);
+		add(side, BorderLayout.WEST);
 	}
 
 	private void prepararAcciones(){
@@ -122,7 +131,7 @@ public class Tetris extends JDialog {
 			case KeyEvent.VK_D:
 				caseD();
 				break;
-			case KeyEvent.VK_ENTER:
+			case KeyEvent.VK_E:
 				caseEnter();
 				break;
 		}
