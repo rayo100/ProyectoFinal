@@ -30,6 +30,7 @@ public class SidePanel extends JPanel {
 	private JButton save;
 	private JButton reset;
 	private JButton controls;
+	private JButton exit;
 	private String nickname;
 	private int noBuffos;
 	
@@ -52,14 +53,19 @@ public class SidePanel extends JPanel {
 		controls.setBounds(70,360,90, 20);
 		reset = new JButton("Reset");
 		reset.setBounds(70,400,90, 20);
+		exit = new JButton("Exit");
+		exit.setBounds(70,440,90, 20);
 		add(save);
 		add(controls);
 		add(reset);
+		add(exit);
+		configurationButtons();
 	}
 	private void configurationButtons(){
 		save.setBackground(Color.WHITE);
 		controls.setBackground(Color.WHITE);
 		reset.setBackground(Color.WHITE);
+		exit.setBackground(Color.WHITE);
 	}
 
 	private void prepareAccionesBotones(){
@@ -88,7 +94,6 @@ public class SidePanel extends JPanel {
 		g.setFont(LARGE_FONT);
 		g.drawString("Options", SMALL_INSET, offset = CONTROLS_INSET);
 		prepareElementosBotones();
-		configurationButtons();
 		//prepareAccionesBotones();
 //		g.setFont(SMALL_FONT);
 //		g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
