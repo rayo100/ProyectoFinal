@@ -43,7 +43,6 @@ public class SidePanel extends JPanel {
 		setLayout(null);
 		//prepareElementosM1();
 		//prepareAccionesBotones();
-		//prepareElementosChooser();
 	}
 
 	private void prepareElementosBotones(){
@@ -91,7 +90,6 @@ public class SidePanel extends JPanel {
 		prepareElementosBotones();
 		configurationButtons();
 		//prepareAccionesBotones();
-		//prepareElementosChooser();
 //		g.setFont(SMALL_FONT);
 //		g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
 //		g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
