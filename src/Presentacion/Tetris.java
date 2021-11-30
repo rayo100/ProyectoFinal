@@ -58,7 +58,6 @@ public class Tetris extends JDialog {
 		prepareElementos();
 	}
 
-
 	private void prepareElementos(){
 		setPreferredSize(new Dimension(ANCHO,ALTO));
 		setLayout(new BorderLayout());
@@ -77,7 +76,8 @@ public class Tetris extends JDialog {
 		this.side = new SidePanel(this);
 	}
 	private void configurarElementos(){
-		Color color = JColorChooser.showDialog(null, "Choose a color", Color.BLACK);
+
+		Color color = JColorChooser.showDialog(null, "Choose a color", Color.WHITE);
 		board.setBackground(color);
 		board.setBorder(new CompoundBorder(new EmptyBorder(3, 3, 8, 8),
 				new TitledBorder("Board")));
@@ -335,7 +335,11 @@ public class Tetris extends JDialog {
 	public int getPieceRotation() {
 		return currentRotation;
 	}
-	public void saveGame(){main.save();}
-	public void exitGame(){main.salga();}
+	public void saveGame(){
+		main.save();
+	}
+	public void exitGame(){
+		main.salga();
+	}
 
 }

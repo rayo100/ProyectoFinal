@@ -19,8 +19,8 @@ public class SidePanel extends JPanel {
 	private static final int SQUARE_SIZE = (TILE_SIZE * TILE_COUNT >> 1);
 	private static final int SMALL_INSET = 20;
 	private static final int LARGE_INSET = 40;
-	private static final int STATS_INSET = 130;
-	private static final int CONTROLS_INSET = 270;
+	private static final int STATS_INSET = 120;
+	private static final int CONTROLS_INSET = 280;
 	private static final int TEXT_STRIDE = 25;
 	private static final Font SMALL_FONT = new Font("Times New Roman", Font.BOLD, 14);
 	private static final Font LARGE_FONT = new Font("Times New Roman", Font.BOLD, 16);
@@ -42,19 +42,16 @@ public class SidePanel extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
 		g.setColor(DRAW_COLOR);
-		
 		int offset;
-		
 		g.setFont(LARGE_FONT);
 		g.drawString("Stats", SMALL_INSET, offset = STATS_INSET);
 		g.setFont(SMALL_FONT);
-		g.drawString("Nickname: "+ nickname, LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Buffos: "+ noBuffos, LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Nickname: " + nickname, LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Buffos: " + noBuffos, LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("Level: " + tetris.getLevel(),LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("Score: " + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
-
+		g.drawString("Time: " , LARGE_INSET, offset += TEXT_STRIDE);
 		g.setFont(LARGE_FONT);
 		g.drawString("Options", SMALL_INSET, offset = CONTROLS_INSET);
 		g.setFont(SMALL_FONT);

@@ -12,6 +12,7 @@ public class TetrisMain extends JFrame {
     //Menu
     private JMenuBar menuExit;
     private JMenu archivo;
+    private JMenu records;
     private JMenuItem newGame;
     private JMenuItem saveGame;
     private JMenuItem openGame;
@@ -57,6 +58,7 @@ public class TetrisMain extends JFrame {
         setLayout(new BorderLayout());
         prepareElementosIcono();
         prepareElementosBotones();
+        //eleccion();
         prepareElementosMenu();
         agregueElementosBotones();
         agregueElementosMenu1();
@@ -83,11 +85,13 @@ public class TetrisMain extends JFrame {
         spinnerBuffos = new JSpinner();
         spinnerBuffos.setModel(new SpinnerNumberModel(0, 0, 50, 1));
         start = new JButton("Start");
+        start.setEnabled(false);
         exit = new JButton("Exit");
     }
     private void prepareElementosMenu(){
         menuExit = new JMenuBar();
         archivo = new JMenu("File");
+        records = new JMenu("Records");
         newGame = new JMenuItem("New");
         saveGame = new JMenuItem("Save");
         openGame = new JMenuItem("Open");
@@ -122,12 +126,12 @@ public class TetrisMain extends JFrame {
     }
     private void agregueElementosMenu2(){
         menuExit.add(archivo);
+        menuExit.add(records);
         setJMenuBar(menuExit);
         comboMode.addItem("Game Mode");
         comboMode.addItem("Player");
         comboMode.addItem("Player vs Player");
         comboMode.addItem("Player vs Machine");
-
     }
     private void configurationButtons(){
         comboMode.setBackground(Color.WHITE);
@@ -147,8 +151,16 @@ public class TetrisMain extends JFrame {
         saveGame.addActionListener(e -> save());
         openGame.addActionListener(e -> open());
         start.addActionListener(e -> startGame());
-
-        //players.addActionListener(e -> player());
+        comboMode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int aux = comboMode.getSelectedIndex();
+                if(aux == 0){
+                    start.setEnabled(false);
+                }
+                else{start.setEnabled(true);}
+            }
+        });
     }
     private void startGame(){
         setVisible(false);
@@ -209,6 +221,8 @@ public class TetrisMain extends JFrame {
         int noBuffos = (Integer) spinnerBuffos.getValue();
         return noBuffos;
     }
+
+
 //    private void bottonPlayers() throws TetrisException{
 //        String selected =(String) comboMode.getSelectedItem();
 //        switch (selected) {

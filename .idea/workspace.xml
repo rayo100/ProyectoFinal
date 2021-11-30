@@ -5,15 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="TT">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_10_39_p__m___Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/BoardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/BoardPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/SidePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/SidePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Reciclaje/NewFigurePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Reciclaje/NewFigurePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/BoardPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/SidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/SidePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Tetris.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reciclaje/NewFigurePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reciclaje/NewFigurePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638246525829</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="TT">
+      <created>1638295826742</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1638295826742</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

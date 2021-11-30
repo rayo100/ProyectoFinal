@@ -116,9 +116,7 @@ public class NewFigurePanel extends JPanel {
 //        g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
 
     }
-    private void botonControls(){
 
-    }
     private void drawTile(Tetrominoe type, int x, int y, Graphics g) {
         g.setColor(type.getBaseColor());
         g.fillRect(x, y, TILESIZE, TILESIZE);
