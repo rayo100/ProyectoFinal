@@ -134,6 +134,18 @@ public class Tetris extends JDialog {
 			case KeyEvent.VK_E:
 				caseEnter();
 				break;
+			case KeyEvent.VK_O:
+				caseO();
+				break;
+			case KeyEvent.VK_R:
+				caseR();
+				break;
+			case KeyEvent.VK_I:
+				caseI();
+				break;
+//			case KeyEvent.VK_SPACE:
+//				caseSpace();
+//				break;
 		}
 	}
 	private void caseD(){
@@ -167,6 +179,24 @@ public class Tetris extends JDialog {
 			resetGame();
 		}
 	}
+	private void caseO(){
+		if(!isGameOver && isPaused) {
+			saveGame();
+		}
+	}
+	private  void caseR(){
+		if (!isGameOver){
+			resetGame();
+		}
+	}
+	private void caseI(){
+		exitGame();
+	}
+//	private void caseSpace(){
+//		if(!isPaused){
+//			usarBuffo
+//		}
+//	}
 
 	public void startGame() {
 		this.random = new Random();
@@ -305,8 +335,7 @@ public class Tetris extends JDialog {
 	public int getPieceRotation() {
 		return currentRotation;
 	}
-	public void saveGame(){
-		main.save();
-	}
+	public void saveGame(){main.save();}
+	public void exitGame(){main.salga();}
 
 }

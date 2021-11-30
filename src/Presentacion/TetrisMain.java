@@ -182,7 +182,7 @@ public class TetrisMain extends JFrame {
         }
     }
 
-    private void salga() {
+    public void salga() {
         if (JOptionPane.showConfirmDialog(rootPane, "Do you want to log out?",
                 "Get out of the system", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);

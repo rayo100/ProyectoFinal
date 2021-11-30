@@ -12,39 +12,22 @@ import javax.swing.JPanel;
 public class BoardPanel extends JPanel {
 
 	public static final int COLOR_MIN = 35;
-	
 	public static final int COLOR_MAX = 255 - COLOR_MIN;
-	
 	private static final int BORDER_WIDTH = 5;
-	
 	public static final int COL_COUNT = 10;
-		
 	private static final int VISIBLE_ROW_COUNT = 20;
-	
 	private static final int HIDDEN_ROW_COUNT = 2;
-	
 	public static final int ROW_COUNT = VISIBLE_ROW_COUNT + HIDDEN_ROW_COUNT;
-	
 	public static final int TILE_SIZE = 24;
-	
 	public static final int SHADE_WIDTH = 4;
-	
 	private static final int CENTER_X = COL_COUNT * TILE_SIZE / 2;
-	
 	private static final int CENTER_Y = VISIBLE_ROW_COUNT * TILE_SIZE / 2;
-		
 	public static final int PANEL_WIDTH = COL_COUNT * TILE_SIZE + BORDER_WIDTH * 2;
-	
 	public static final int PANEL_HEIGHT = VISIBLE_ROW_COUNT * TILE_SIZE + BORDER_WIDTH * 2;
-	
 	private final int MOVEMENT = 25;
-
 	private static final Font LARGE_FONT = new Font("Tahoma", Font.BOLD, 16);
-
 	private static final Font SMALL_FONT = new Font("Tahoma", Font.BOLD, 12);
-	
 	private Tetris tetris;
-	
 	private Tetrominoe[][] tiles;
 		
 	public BoardPanel(Tetris tetris) {
