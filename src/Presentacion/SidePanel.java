@@ -27,7 +27,6 @@ public class SidePanel extends JPanel {
 	private static final Font LARGE_FONT = new Font("Times New Roman", Font.BOLD, 16);
 	private static final Color DRAW_COLOR = Color.BLACK;
 	private Tetris tetris;
-	private JFileChooser fileChooser;
 	private JButton save;
 	private JButton reset;
 	private JButton controls;
