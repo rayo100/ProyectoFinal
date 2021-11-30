@@ -216,7 +216,7 @@ public class Tetris extends JDialog {
 		board.repaint();
 		side.repaint();
 	}
-	private void resetGame() {
+	public void resetGame() {
 		this.level = 1;
 		this.score = 0;
 		this.gameSpeed = 1.0f;
@@ -278,6 +278,12 @@ public class Tetris extends JDialog {
 	public boolean isNewGame() {
 		return isNewGame;
 	}
+	public String getNickname(){
+		return main.player();
+	}
+	public int getBuffos(){
+		return main.getBuffos();
+	}
 	public int getScore() {
 		return score;
 	}
@@ -298,6 +304,9 @@ public class Tetris extends JDialog {
 	}
 	public int getPieceRotation() {
 		return currentRotation;
+	}
+	public void saveGame(){
+		main.save();
 	}
 
 }
