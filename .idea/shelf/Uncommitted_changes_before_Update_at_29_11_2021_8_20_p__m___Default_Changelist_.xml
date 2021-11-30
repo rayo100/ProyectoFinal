@@ -1,0 +1,44 @@
+<changelist name="Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]" date="1638235272308" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 29/11/2021 8:20 p. m. [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Ayudas/ayuda1/Shape.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Ayudas/ayuda1/Shape.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Shape.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Dominio/TetrisException.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Dominio/TetrisException.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/TetrisException.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Dominio/Buffo.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Dominio/Buffo.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Buffo.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Dominio/Clock.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Dominio/Clock.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Clock.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Ayudas/ayuda1/Shape$Tetrominoe.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Ayudas/ayuda1/Shape$Tetrominoe.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Shape$Tetrominoe.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Presentacion/Tetris.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Presentacion/Tetris.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Tetris.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Presentacion/SidePanel.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Presentacion/SidePanel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/SidePanel.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Dominio/Machines.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Dominio/Machines.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Machines.class" />
+  </binary>
+</changelist>
