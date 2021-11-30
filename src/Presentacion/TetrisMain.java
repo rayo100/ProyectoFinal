@@ -58,7 +58,10 @@ public class TetrisMain extends JFrame {
         prepareElementosIcono();
         prepareElementosBotones();
         prepareElementosMenu();
-        agregueElementosM1();
+        agregueElementosBotones();
+        agregueElementosMenu1();
+        agregueElementosMenu2();
+        configurationButtons();
         prepareElementosChooser();
     }
 
@@ -93,18 +96,18 @@ public class TetrisMain extends JFrame {
         exitGame = new JMenuItem("Exit");
     }
 
-    private void agregueElementosM1(){
+    private void agregueElementosBotones() {
         panelBuffos.add(numberBuffos);
         panelBuffos.add(spinnerBuffos);
         botones.add(comboMode);
-        //botones.add(players);
         botones.add(panelBuffos);
-        botones.add(credits);
         botones.add(start);
+        botones.add(credits);
         botones.add(exit);
-        add(iconTetris,BorderLayout.CENTER);
-        add(botones,BorderLayout.SOUTH);
-        menuExit.add(archivo);
+        add(iconTetris, BorderLayout.CENTER);
+        add(botones, BorderLayout.SOUTH);
+    }
+    private void agregueElementosMenu1(){
         archivo.add(newGame);
         archivo.addSeparator();
         archivo.add(openGame);
@@ -116,6 +119,9 @@ public class TetrisMain extends JFrame {
         archivo.add(exportGame);
         archivo.addSeparator();
         archivo.add(exitGame);
+    }
+    private void agregueElementosMenu2(){
+        menuExit.add(archivo);
         setJMenuBar(menuExit);
         comboMode.addItem("Game Mode");
         comboMode.addItem("Player");
@@ -123,13 +129,11 @@ public class TetrisMain extends JFrame {
         comboMode.addItem("Player vs Machine");
 
     }
-    private void ocultarJPanels(){
-        botones.setVisible(false);
-        archivo.setVisible(false);
-        iconTetris.setVisible(false);
-        menuExit.setVisible(false);
-        comboMode.setVisible(false);
-        panelBuffos.setVisible(false);
+    private void configurationButtons(){
+        comboMode.setBackground(Color.WHITE);
+        start.setBackground(Color.WHITE);
+        credits.setBackground(Color.WHITE);
+        exit.setBackground(Color.WHITE);
     }
 
     private void prepareAccionesMain(){
@@ -162,7 +166,7 @@ public class TetrisMain extends JFrame {
         fileChooser = new JFileChooser();
     }
 
-    private void save() {
+    public void save() {
         int action = fileChooser.showSaveDialog(saveGame);
         if (action == JFileChooser.APPROVE_OPTION) {
             File archivo = fileChooser.getSelectedFile();
@@ -199,6 +203,11 @@ public class TetrisMain extends JFrame {
         String nickname = (JOptionPane.showInputDialog(null, "Player Nickname.", "Player Information",
                 JOptionPane.PLAIN_MESSAGE));
         return nickname;
+    }
+
+    public int getBuffos(){
+        int noBuffos = (Integer) spinnerBuffos.getValue();
+        return noBuffos;
     }
 //    private void bottonPlayers() throws TetrisException{
 //        String selected =(String) comboMode.getSelectedItem();
