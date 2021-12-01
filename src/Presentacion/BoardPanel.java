@@ -1,6 +1,6 @@
 package Presentacion;
 
-import Dominio.Tetrominoe;
+import Dominio.*;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -27,104 +27,27 @@ public class BoardPanel extends JPanel {
 	private final int MOVEMENT = 25;
 	private static final Font LARGE_FONT = new Font("Times New Roman", Font.BOLD, 18);
 	private static final Font SMALL_FONT = new Font("Times New Roman", Font.BOLD, 14);
-	private Tetris tetris;
+	private Game game;
 	private Tetrominoe[][] tiles;
-		
-	public BoardPanel(Tetris tetris) {
-		this.tetris = tetris;
-		this.tiles = new Tetrominoe[ROW_COUNT][COL_COUNT];
+	private Board board;
+
+	public BoardPanel(Game game) {
+		this.game = game;
+		board = Board.getBoard(this,game);
 		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		setBackground(Color.BLACK);
 	}
 	
-	public void clear() {
-		for(int i = 0; i < ROW_COUNT; i++) {
-			for(int j = 0; j < COL_COUNT; j++) {
-				tiles[i][j] = null;
-			}
-		}
-	}
-	
-	public boolean isValidAndEmpty(Tetrominoe piece, int x, int y, int rotation) {
-				
-		if(x < -piece.getLeftInset(rotation) || x + piece.getDimension()
-				- piece.getRightInset(rotation) >= COL_COUNT) {
-			return false;
-		}
-		
-		if(y < -piece.getTopInset(rotation) || y + piece.getDimension()
-				- piece.getBottomInset(rotation) >= ROW_COUNT) {
-			return false;
-		}
 
-		for(int col = 0; col < piece.getDimension(); col++) {
-			for(int row = 0; row < piece.getDimension(); row++) {
-				if(piece.isTile(col, row, rotation) && isOccupied(x + col, y + row)) {
-					return false;
-				}
-			}
-		}
-		return true;
-	}
-
-
-	public void addPiece(Tetrominoe type, int x, int y, int rotation) {
-		for(int col = 0; col < type.getDimension(); col++) {
-			for(int row = 0; row < type.getDimension(); row++) {
-				if(type.isTile(col, row, rotation)) {
-					setTile(col + x, row + y, type);
-				}
-			}
-		}
-	}
-	
-	public int checkLines() {
-		int completedLines = 0;
-		
-		for(int row = 0; row < ROW_COUNT; row++) {
-			if(checkLine(row)) {
-				completedLines++;
-			}
-		}
-		return completedLines;
-	}
-			
-	private boolean checkLine(int line) {
-		for(int col = 0; col < COL_COUNT; col++) {
-			if(!isOccupied(col, line)) {
-				return false;
-			}
-		}
-		
-		for(int row = line - 1; row >= 0; row--) {
-			for(int col = 0; col < COL_COUNT; col++) {
-				setTile(col, row + 1, getTile(col, row));
-			}
-		}
-		return true;
-	}
-	
-	private boolean isOccupied(int x, int y) {
-		return tiles[y][x] != null;
-	}
-	
-	private void setTile(int  x, int y, Tetrominoe type) {
-		tiles[y][x] = type;
-	}
-		
-	private Tetrominoe getTile(int x, int y) {
-		return tiles[y][x];
-	}
-	
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
 		g.translate(BORDER_WIDTH, BORDER_WIDTH);
 		
-		if(tetris.isPaused()) {
+		if(game.isPaused()) {
 			drawCase1(g);
-		} else if(tetris.isNewGame() || tetris.isGameOver()) {
+		} else if(game.isNewGame() || game.isGameOver()) {
 			drawCase2(g);
 		} else {
 			drawSquares(g);
@@ -137,16 +60,16 @@ public class BoardPanel extends JPanel {
 	private void drawSquares(Graphics g){
 		for(int x = 0; x < COL_COUNT; x++) {
 			for(int y = HIDDEN_ROW_COUNT; y < ROW_COUNT; y++) {
-				Tetrominoe tile = getTile(x, y);
+				Tetrominoe tile = board.getTile(x, y);
 				if(tile != null) {
 					drawTile(tile, x * TILE_SIZE, (y - HIDDEN_ROW_COUNT) * TILE_SIZE, g);
 				}
 			}
 		}
-		Tetrominoe type = tetris.getPieceType();
-		int pieceCol = tetris.getPieceCol();
-		int pieceRow = tetris.getPieceRow();
-		int rotation = tetris.getPieceRotation();
+		Tetrominoe type = game.getPieceType();
+		int pieceCol = game.getPieceCol();
+		int pieceRow = game.getPieceRow();
+		int rotation = game.getPieceRotation();
 
 		for(int col = 0; col < type.getDimension(); col++) {
 			for(int row = 0; row < type.getDimension(); row++) {
@@ -159,7 +82,7 @@ public class BoardPanel extends JPanel {
 		Color base = type.getBaseColor();
 		base = new Color(base.getRed(), base.getGreen(), base.getBlue(), 20);
 		for(int lowest = pieceRow; lowest < ROW_COUNT; lowest++) {
-			if(isValidAndEmpty(type, pieceCol, lowest, rotation)) {
+			if(board.isValidAndEmpty(type, pieceCol, lowest, rotation)) {
 				continue;
 			}
 
@@ -186,10 +109,10 @@ public class BoardPanel extends JPanel {
 	private void drawCase2(Graphics g){
 		g.setFont(LARGE_FONT);
 		g.setColor(Color.BLACK);
-		String msg = tetris.isNewGame() ? "TETRIS GAME" : "GAME OVER";
+		String msg = game.isNewGame() ? "TETRIS GAME" : "GAME OVER";
 		g.drawString(msg, CENTER_X - g.getFontMetrics().stringWidth(msg) / 2 + 10, 150);
 		g.setFont(SMALL_FONT);
-		msg = "Press E to Play" + (tetris.isNewGame() ? "" : " Again");
+		msg = "Press E to Play" + (game.isNewGame() ? "" : " Again");
 		g.drawString(msg, CENTER_X - g.getFontMetrics().stringWidth(msg) / 2 + 10, 300);
 	}
 
@@ -222,5 +145,7 @@ public class BoardPanel extends JPanel {
 			g.drawLine(x+MOVEMENT + i, y+MOVEMENT, x + i+MOVEMENT, y +MOVEMENT+ TILE_SIZE - i - 1);
 		}
 	}
-
+	public Board getBoard(){
+		return board;
+	}
 }
