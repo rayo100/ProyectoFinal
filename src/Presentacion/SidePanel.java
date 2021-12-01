@@ -6,7 +6,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.io.File;
 
 import javax.swing.*;
 
@@ -20,20 +19,15 @@ public class SidePanel extends JPanel {
 	private static final int SQUARE_SIZE = (TILE_SIZE * TILE_COUNT >> 1);
 	private static final int SMALL_INSET = 20;
 	private static final int LARGE_INSET = 40;
-	private static final int STATS_INSET = 175;
-	private static final int CONTROLS_INSET = 300;
+	private static final int STATS_INSET = 120;
+	private static final int CONTROLS_INSET = 280;
 	private static final int TEXT_STRIDE = 25;
 	private static final Font SMALL_FONT = new Font("Times New Roman", Font.BOLD, 14);
 	private static final Font LARGE_FONT = new Font("Times New Roman", Font.BOLD, 16);
 	private static final Color DRAW_COLOR = Color.BLACK;
 	private Tetris tetris;
-	private JButton save;
-	private JButton reset;
-	private JButton controls;
-	private JButton exit;
 	private String nickname;
 	private int noBuffos;
-
 	
 	public SidePanel(Tetris tetris) {
 		this.tetris = tetris;
@@ -45,69 +39,32 @@ public class SidePanel extends JPanel {
 		setLayout(null);
 	}
 
-	public void prepareElementosBotones(){
-		save = new JButton("Save");
-		save.setBounds(70,320,90, 20);
-		controls = new JButton("Controls");
-		controls.setBounds(70,360,90, 20);
-		reset = new JButton("Reset");
-		reset.setBounds(70,400,90, 20);
-		exit = new JButton("Exit");
-		exit.setBounds(70,440,90, 20);
-		add(save);
-		add(controls);
-		add(reset);
-		add(exit);
-		configurationButtons();
-		prepareAccionesBotones();
-	}
-	private void configurationButtons(){
-		save.setBackground(Color.WHITE);
-		controls.setBackground(Color.WHITE);
-		reset.setBackground(Color.WHITE);
-		exit.setBackground(Color.WHITE);
-	}
-
-	private void prepareAccionesBotones(){
-		save.addActionListener(e -> tetris.saveGame());
-		controls.addActionListener(e -> controls());
-		exit.addActionListener(e -> salir());
-	}
-	private void controls(){
-
-	}
-	private void salir(){
-		tetris.setVisible(true);
-	}
-
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
 		g.setColor(DRAW_COLOR);
-		
 		int offset;
-		
 		g.setFont(LARGE_FONT);
 		g.drawString("Stats", SMALL_INSET, offset = STATS_INSET);
 		g.setFont(SMALL_FONT);
-		g.drawString("Nickname: "+ nickname, LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Buffos: "+ noBuffos, LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Nickname: " + nickname, LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Buffos: " + noBuffos, LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("Level: " + tetris.getLevel(),LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("Score: " + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
-
+		g.drawString("Time: " , LARGE_INSET, offset += TEXT_STRIDE);
 		g.setFont(LARGE_FONT);
 		g.drawString("Options", SMALL_INSET, offset = CONTROLS_INSET);
-		//prepareElementosBotones();
-
-//		g.setFont(SMALL_FONT);
-		g.drawString("Q - Quit", LARGE_INSET, offset += TEXT_STRIDE);
-//		g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
-//		g.drawString("W - Rotate piece", LARGE_INSET,offset += TEXT_STRIDE);
-//		g.drawString("S - Drop", LARGE_INSET, offset += TEXT_STRIDE);
-//		g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
+		g.setFont(SMALL_FONT);
+		g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("W - Rotate piece", LARGE_INSET,offset += TEXT_STRIDE);
+		g.drawString("S - Drop", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("O - Save Game", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("R - Reset Game", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Space - Use a Buffo",LARGE_INSET, offset += TEXT_STRIDE);//cambiar space por "."
+		g.drawString("I - Exit Game", LARGE_INSET, offset += TEXT_STRIDE);
 		if(!tetris.isNewGame()) drawNextPiece(g);
-
 	}
 
 	private void drawNextPiece(Graphics g){
