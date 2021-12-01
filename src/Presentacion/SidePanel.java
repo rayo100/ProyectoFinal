@@ -33,6 +33,7 @@ public class SidePanel extends JPanel {
 	private JButton exit;
 	private String nickname;
 	private int noBuffos;
+
 	
 	public SidePanel(Tetris tetris) {
 		this.tetris = tetris;
@@ -42,11 +43,9 @@ public class SidePanel extends JPanel {
 				BoardPanel.PANEL_HEIGHT));
 		setBackground(Color.WHITE);
 		setLayout(null);
-		//prepareElementosM1();
-		//prepareAccionesBotones();
 	}
 
-	private void prepareElementosBotones(){
+	public void prepareElementosBotones(){
 		save = new JButton("Save");
 		save.setBounds(70,320,90, 20);
 		controls = new JButton("Controls");
@@ -60,6 +59,7 @@ public class SidePanel extends JPanel {
 		add(reset);
 		add(exit);
 		configurationButtons();
+		prepareAccionesBotones();
 	}
 	private void configurationButtons(){
 		save.setBackground(Color.WHITE);
@@ -70,10 +70,15 @@ public class SidePanel extends JPanel {
 
 	private void prepareAccionesBotones(){
 		save.addActionListener(e -> tetris.saveGame());
-		//controls.addActionListener(e -> controls());
-		reset.addActionListener(e -> tetris.resetGame());
+		controls.addActionListener(e -> controls());
+		exit.addActionListener(e -> salir());
 	}
+	private void controls(){
 
+	}
+	private void salir(){
+		tetris.setVisible(true);
+	}
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -93,15 +98,16 @@ public class SidePanel extends JPanel {
 
 		g.setFont(LARGE_FONT);
 		g.drawString("Options", SMALL_INSET, offset = CONTROLS_INSET);
-		prepareElementosBotones();
-		//prepareAccionesBotones();
+		//prepareElementosBotones();
+
 //		g.setFont(SMALL_FONT);
-//		g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Q - Quit", LARGE_INSET, offset += TEXT_STRIDE);
 //		g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
 //		g.drawString("W - Rotate piece", LARGE_INSET,offset += TEXT_STRIDE);
 //		g.drawString("S - Drop", LARGE_INSET, offset += TEXT_STRIDE);
 //		g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
 		if(!tetris.isNewGame()) drawNextPiece(g);
+
 	}
 
 	private void drawNextPiece(Graphics g){
