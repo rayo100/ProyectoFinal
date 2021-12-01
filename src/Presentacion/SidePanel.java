@@ -62,7 +62,7 @@ public class SidePanel extends JPanel {
 		g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("O - Save Game", LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("R - Reset Game", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Space - Use a Buffo",LARGE_INSET, offset += TEXT_STRIDE);//cambiar space por "."
+		g.drawString(". - Use a Buffo",LARGE_INSET, offset += TEXT_STRIDE);//cambiar space por "."
 		g.drawString("I - Exit Game", LARGE_INSET, offset += TEXT_STRIDE);
 		if(!tetris.isNewGame()) drawNextPiece(g);
 	}

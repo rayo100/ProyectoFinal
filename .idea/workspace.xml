@@ -4,18 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="TT">
+    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Dominio/Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dominio/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dominio/Side.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2021_8_45_p__m__[Default_Changelist]1/Tetris1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2021_8_45_p__m__[Default_Changelist]1/TetrisMain.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2021_8_45_p__m__[Default_Changelist]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_23_11_2021_8_45_p__m___Default_Changelist_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/BoardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/BoardPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/SidePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/SidePanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Reciclaje/NewFigurePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Reciclaje/NewFigurePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/BoardPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/SidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/SidePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Tetris.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Reciclaje/NewFigurePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reciclaje/NewFigurePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,6 +231,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="TT" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presentacion/Tetris.java</url>
+          <line>241</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="this" language="JAVA" />
@@ -237,15 +248,15 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ProyectoFinal$Tetris1.ic" NAME="Tetris1 Coverage Results" MODIFIED="1637725213164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Presentacion.*</FILTER>
-    </SUITE>
+    <SUITE FILE_PATH="coverage/ProyectoFinal$TetrisGUI.ic" NAME="TetrisGUI Coverage Results" MODIFIED="1636317703885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ProyectoFinal$Tetris.ic" NAME="Tetris Coverage Results" MODIFIED="1636420029275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Presentacion.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ProyectoFinal$Test2.ic" NAME="Test2 Coverage Results" MODIFIED="1636310506778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Presentacion.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ProyectoFinal$TetrisGUI.ic" NAME="TetrisGUI Coverage Results" MODIFIED="1636317703885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ProyectoFinal$Tetris1.ic" NAME="Tetris1 Coverage Results" MODIFIED="1637725213164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Presentacion.*</FILTER>
+    </SUITE>
   </component>
 </project>

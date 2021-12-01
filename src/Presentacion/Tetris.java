@@ -339,7 +339,8 @@ public class Tetris extends JDialog {
 		main.save();
 	}
 	public void exitGame(){
-		main.salga();
+		main.setVisible(true);
+		dispose();
 	}
 
 }
