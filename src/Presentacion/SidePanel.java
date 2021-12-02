@@ -1,5 +1,6 @@
 package Presentacion;
 
+import Dominio.Game;
 import Dominio.Tetrominoe;
 
 import java.awt.Color;
@@ -25,12 +26,12 @@ public class SidePanel extends JPanel {
 	private static final Font SMALL_FONT = new Font("Times New Roman", Font.BOLD, 14);
 	private static final Font LARGE_FONT = new Font("Times New Roman", Font.BOLD, 16);
 	private static final Color DRAW_COLOR = Color.BLACK;
-	private Tetris tetris;
+	private Game game;
 	private String nickname;
 	private int noBuffos;
 	
-	public SidePanel(Tetris tetris) {
-		this.tetris = tetris;
+	public SidePanel(Game game, Tetris tetris) {
+		this.game = game;
 		nickname = tetris.getNickname();
 		noBuffos = tetris.getBuffos();
 		setPreferredSize(new Dimension(BoardPanel.PANEL_WIDTH,
@@ -49,8 +50,8 @@ public class SidePanel extends JPanel {
 		g.setFont(SMALL_FONT);
 		g.drawString("Nickname: " + nickname, LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("Buffos: " + noBuffos, LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Level: " + tetris.getLevel(),LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Score: " + tetris.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Level: " + game.getLevel(),LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Score: " + game.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("Time: " , LARGE_INSET, offset += TEXT_STRIDE);
 		g.setFont(LARGE_FONT);
 		g.drawString("Options", SMALL_INSET, offset = CONTROLS_INSET);
@@ -62,9 +63,9 @@ public class SidePanel extends JPanel {
 		g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("O - Save Game", LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("R - Reset Game", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Space - Use a Buffo",LARGE_INSET, offset += TEXT_STRIDE);//cambiar space por "."
+		g.drawString(". - Use a Buffo",LARGE_INSET, offset += TEXT_STRIDE);//cambiar space por "."
 		g.drawString("I - Exit Game", LARGE_INSET, offset += TEXT_STRIDE);
-		if(!tetris.isNewGame()) drawNextPiece(g);
+		if(!game.isNewGame()) drawNextPiece(g);
 	}
 
 	private void drawNextPiece(Graphics g){
@@ -72,8 +73,8 @@ public class SidePanel extends JPanel {
 		g.drawString("Next Piece:", SMALL_INSET, 70);
 		g.drawRect(SQUARE_CENTER_X - SQUARE_SIZE, SQUARE_CENTER_Y - SQUARE_SIZE, SQUARE_SIZE * 2, SQUARE_SIZE * 2);
 
-		Tetrominoe type = tetris.getNextPieceType();
-		if(!tetris.isGameOver() && type != null) {
+		Tetrominoe type = game.getNextPieceType();
+		if(!game.isGameOver() && type != null) {
 			int cols = type.getCols();
 			int rows = type.getRows();
 			int dimension = type.getDimension();
