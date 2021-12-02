@@ -5,18 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="TT">
+      <change afterPath="$PROJECT_DIR$/src/Dominio/TetrominoeC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dominio/TypeTetromino.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/BoardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/BoardPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/SidePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/SidePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/BoardPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/SidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/SidePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Tetris.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638388979481</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="TT">
+      <created>1638395771689</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1638395771689</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -237,6 +235,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="TT" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Dominio/Game.java</url>
+          <line>110</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="this" language="JAVA" />
