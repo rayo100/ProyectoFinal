@@ -1,7 +1,6 @@
 package Presentacion;
 
-import Dominio.Game;
-import Dominio.Tetrominoe;
+import Dominio.*;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -29,6 +28,7 @@ public class SidePanel extends JPanel {
 	private Game game;
 	private String nickname;
 	private int noBuffos;
+	private Clock time;
 	
 	public SidePanel(Game game, Tetris tetris) {
 		this.game = game;
@@ -52,9 +52,9 @@ public class SidePanel extends JPanel {
 		g.drawString("Buffos: " + noBuffos, LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("Level: " + game.getLevel(),LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("Score: " + game.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Time: " , LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Time: 00:00 " , LARGE_INSET, offset += TEXT_STRIDE);
 		g.setFont(LARGE_FONT);
-		g.drawString("Options", SMALL_INSET, offset = CONTROLS_INSET);
+		g.drawString("Controls", SMALL_INSET, offset = CONTROLS_INSET);
 		g.setFont(SMALL_FONT);
 		g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
@@ -63,7 +63,7 @@ public class SidePanel extends JPanel {
 		g.drawString("P - Pause Game", LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("O - Save Game", LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("R - Reset Game", LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString(". - Use a Buffo",LARGE_INSET, offset += TEXT_STRIDE);//cambiar space por "."
+		g.drawString(". - Use a Buffo",LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("I - Exit Game", LARGE_INSET, offset += TEXT_STRIDE);
 		if(!game.isNewGame()) drawNextPiece(g);
 	}

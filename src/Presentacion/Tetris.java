@@ -133,9 +133,6 @@ public class Tetris extends JDialog {
 //				break;
 		}
 	}
-
-
-
 	public void startGame() {
 		game.startGame();
 	}
@@ -153,10 +150,10 @@ public class Tetris extends JDialog {
 				JOptionPane.PLAIN_MESSAGE);
 		return nickname;
 	}
+
 	public int getBuffos(){
 		return main.getBuffos();
 	}
-
 	public BoardPanel getBoard(){
 		return board;
 	}

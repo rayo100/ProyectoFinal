@@ -168,21 +168,13 @@ public enum Tetrominoe {
 //	});
 		
 	private Color baseColor;
-	
 	private Color lightColor;
-	
 	private Color darkColor;
-	
 	private int spawnCol;
-	
 	private int spawnRow;
-	
 	private int dimension;
-	
 	private int rows;
-	
 	private int cols;
-	
 	private boolean[][] tiles;
 	
 	Tetrominoe(Color color, int dimension, int cols, int rows, boolean[][] tiles) {
@@ -267,10 +259,6 @@ public enum Tetrominoe {
 	}
 	
 	public int getBottomInset(int rotation) {
-		/*
-		 * Loop through from bottom to top until we find a tile then return
-		 * the row.
-		 */
 		for(int y = dimension - 1; y >= 0; y--) {
 			for(int x = 0; x < dimension; x++) {
 				if(isTile(x, y, rotation)) {

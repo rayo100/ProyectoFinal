@@ -25,9 +25,7 @@ public class TetrisMain extends JFrame {
     private JLabel numberBuffos;
     private JSpinner spinnerBuffos;
     private JButton start;
-    private JButton credits;
     private JButton exit;
-    private JButton players;
     private JPanel botones;
     //Panel images
     private JPanel iconTetris;
@@ -35,7 +33,8 @@ public class TetrisMain extends JFrame {
     private JLabel labelIcon;
     //Mode
     private JComboBox comboMode;
-
+    //Velocity
+    private JComboBox comboVelocity;
     private Tetris juego;
     private TetrisMain main;
 
@@ -58,7 +57,6 @@ public class TetrisMain extends JFrame {
         setLayout(new BorderLayout());
         prepareElementosIcono();
         prepareElementosBotones();
-        //eleccion();
         prepareElementosMenu();
         agregueElementosBotones();
         agregueElementosMenu1();
@@ -78,8 +76,7 @@ public class TetrisMain extends JFrame {
     private void prepareElementosBotones(){
         botones = new JPanel(new GridLayout(1,5));
         comboMode = new JComboBox();
-        players = new JButton("Players");
-        credits = new JButton("Credits");
+        comboVelocity = new JComboBox();
         panelBuffos = new JPanel(new GridLayout(1,2));
         numberBuffos = new JLabel("# Buffos:");
         spinnerBuffos = new JSpinner();
@@ -106,7 +103,8 @@ public class TetrisMain extends JFrame {
         botones.add(comboMode);
         botones.add(panelBuffos);
         botones.add(start);
-        botones.add(credits);
+        botones.add(comboVelocity);
+        //botones.add(credits);
         botones.add(exit);
         add(iconTetris, BorderLayout.CENTER);
         add(botones, BorderLayout.SOUTH);
@@ -132,11 +130,15 @@ public class TetrisMain extends JFrame {
         comboMode.addItem("Player");
         comboMode.addItem("Player vs Player");
         comboMode.addItem("Player vs Machine");
+        comboVelocity.addItem("Velocity");
+        comboVelocity.addItem("Accelerated");
+        comboVelocity.addItem("Uniform - Easy");
+        comboVelocity.addItem("Uniform - Hard");
     }
     private void configurationButtons(){
         comboMode.setBackground(Color.WHITE);
         start.setBackground(Color.WHITE);
-        credits.setBackground(Color.WHITE);
+        comboVelocity.setBackground(Color.WHITE);
         exit.setBackground(Color.WHITE);
     }
 
@@ -145,16 +147,31 @@ public class TetrisMain extends JFrame {
     }
 
     private void prepareAccionesMenu() {
-        credits.addActionListener(e -> irACreditos());
         exit.addActionListener(e -> salga());
         exitGame.addActionListener(e -> salga());
         saveGame.addActionListener(e -> save());
         openGame.addActionListener(e -> open());
         start.addActionListener(e -> startGame());
+        setComboMode();
+    }
+    private void setComboMode(){
         comboMode.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int aux = comboMode.getSelectedIndex();
+                int aux2 = comboVelocity.getSelectedIndex();
+                if(aux == 0 || aux2 == 0){
+                    start.setEnabled(false);
+                }
+                else{start.setEnabled(true);}
+            }
+        });
+    }
+    private void setComboVelocity(){
+        comboVelocity.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int aux = comboVelocity.getSelectedIndex();
                 if(aux == 0){
                     start.setEnabled(false);
                 }
@@ -162,6 +179,7 @@ public class TetrisMain extends JFrame {
             }
         });
     }
+
     private void startGame(){
         setVisible(false);
         Tetris.loadGame(this);

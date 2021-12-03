@@ -8,7 +8,6 @@ public class Board {
     private BoardPanel boardPanel;
     private Game game;
 
-
     //Atributos tablero
     public static final int COL_COUNT = 10;
     private static final int VISIBLE_ROW_COUNT = 20;

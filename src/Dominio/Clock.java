@@ -1,23 +1,18 @@
 package Dominio;
 
 public class Clock {
-	
 
 	private float millisPerCycle;
-	
 	private long lastUpdate;
-	
 	private int elapsedCycles;
-	
 	private float excessCycles;
-	
 	private boolean isPaused;
-	
+
 	public Clock(float cyclesPerSecond) {
 		setCyclesPerSecond(cyclesPerSecond);
 		reset();
 	}
-	
+
 	public void setCyclesPerSecond(float cyclesPerSecond) {
 		this.millisPerCycle = (1.0f / cyclesPerSecond) * 1000;
 	}

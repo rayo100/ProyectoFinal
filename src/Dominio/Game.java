@@ -75,13 +75,31 @@ public class Game {
             if(cleared > 0) {
                 score += 50 << cleared;
             }
-            gameSpeed += 0.035f;
-            logicTimer.setCyclesPerSecond(gameSpeed);
-            logicTimer.reset();
-            dropCooldown = 25;
-            level = (int)(gameSpeed * 1.70f);
-            spawnPiece();
+            acelerada();
+//            if (isAcelerada) {
+//                acelerada();
+//            }
+//            else if (isUniforme){
+//               uniforme();
+//            }
         }
+    }
+
+    private void acelerada(){
+        gameSpeed += 0.035f;
+        logicTimer.setCyclesPerSecond(gameSpeed);
+        logicTimer.reset();
+        dropCooldown = 25;
+        level = (int) (gameSpeed * 1.70f);
+        spawnPiece();
+    }
+    private void uniforme(){
+        //gameSpeed += 0.035f;
+        logicTimer.setCyclesPerSecond(gameSpeed);
+        logicTimer.reset();
+        dropCooldown = 25;
+        level ++;//level = (int) (gameSpeed * 1.70f);
+        spawnPiece();
     }
 
     public void resetGame() {
