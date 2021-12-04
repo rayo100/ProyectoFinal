@@ -208,6 +208,7 @@ public class Game {
         }
     }
     public void caseI(){
+        resetGame();
         tetris.Dispose();
     }
 

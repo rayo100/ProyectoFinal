@@ -5,19 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="TT">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_3_35_p__m___Default_Changelist_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Tetrominoe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Tetrominoe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/SidePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/SidePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/TetrisMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/TetrominoeC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/TetrominoeC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/TypeTetromino.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/TypeTetromino.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/BoardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/BoardPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dominio/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Tetrominoe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Tetrominoe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/TetrominoeC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/TetrominoeC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/TypeTetromino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/TypeTetromino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Presentacion/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Tetris.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentacion/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/BoardPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/TetrisMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

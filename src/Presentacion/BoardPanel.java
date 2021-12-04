@@ -28,7 +28,6 @@ public class BoardPanel extends JPanel {
 	private static final Font LARGE_FONT = new Font("Times New Roman", Font.BOLD, 18);
 	private static final Font SMALL_FONT = new Font("Times New Roman", Font.BOLD, 14);
 	private Game game;
-	private Tetrominoe[][] tiles;
 	private Board board;
 
 	public BoardPanel(Game game) {

@@ -71,7 +71,6 @@ public class TetrisMain extends JFrame {
         labelIcon = new JLabel(null,icon ,SwingConstants.CENTER);
         iconTetris.add(labelIcon);
         iconTetris.setBackground(Color.BLACK);
-
     }
     private void prepareElementosBotones(){
         botones = new JPanel(new GridLayout(1,5));
