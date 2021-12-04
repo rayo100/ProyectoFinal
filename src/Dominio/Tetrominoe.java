@@ -33,29 +33,6 @@ public enum Tetrominoe {
 			}
 	}),
 
-//	TypeJ(new Color(BoardPanel.COLOR_MIN, BoardPanel.COLOR_MIN, BoardPanel.COLOR_MAX), 3, 3, 2, new boolean[][]{
-//			{
-//					true, false, false,
-//					true, true, true,
-//					false, false, false,
-//			},
-//			{
-//					false, true, true,
-//					false, true, false,
-//					false, true, false,
-//			},
-//			{
-//					false, false, false,
-//					true, true, true,
-//					false, false, true,
-//			},
-//			{
-//					false, true, false,
-//					false, true, false,
-//					true, true, false,
-//			}
-//	}),
-
 	TypeL(new Color(BoardPanel.COLOR_MAX, 127, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][]{
 			{
 					false, false, true,
@@ -144,29 +121,6 @@ public enum Tetrominoe {
 			}
 	});
 
-//	TypeZ(new Color(BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][] {
-//		{
-//			true,	true,	false,
-//			false,	true,	true,
-//			false,	false,	false,
-//		},
-//		{
-//			false,	false,	true,
-//			false,	true,	true,
-//			false,	true,	false,
-//		},
-//		{
-//			false,	false,	false,
-//			true,	true,	false,
-//			false,	true,	true,
-//		},
-//		{
-//			false,	true,	false,
-//			true,	true,	false,
-//			true,	false,	false,
-//		}
-//	});
-		
 	private Color baseColor;
 	private Color lightColor;
 	private Color darkColor;

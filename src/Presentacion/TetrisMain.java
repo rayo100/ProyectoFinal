@@ -82,7 +82,7 @@ public class TetrisMain extends JFrame {
         spinnerBuffos = new JSpinner();
         spinnerBuffos.setModel(new SpinnerNumberModel(0, 0, 50, 1));
         start = new JButton("Start");
-        start.setEnabled(false);
+        start.setEnabled(true);
         exit = new JButton("Exit");
     }
     private void prepareElementosMenu(){
@@ -152,7 +152,7 @@ public class TetrisMain extends JFrame {
         saveGame.addActionListener(e -> save());
         openGame.addActionListener(e -> open());
         start.addActionListener(e -> startGame());
-        setComboMode();
+        //setComboMode();
     }
     private void setComboMode(){
         comboMode.addActionListener(new ActionListener() {
