@@ -89,13 +89,8 @@ public class Board {
 
 
         for(int row = line - 1; row >= 0; row--) {
-            if (!checkValidPiece(row)){
-                return false;
-            }
-            else {
-                for(int col = 0; col < COL_COUNT; col++) {
-                    setTile(col,row+1,getTile(col,row));
-                }
+            for(int col = 0; col < COL_COUNT; col++) {
+                setTile(col,row+1,getTile(col,row));
             }
         }
         return true;
