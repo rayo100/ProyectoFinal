@@ -189,7 +189,7 @@ public class Game {
             logicTimer.setPaused(isPaused);
         }
     }
-    public void caseEnter(){
+    public void caseE(){
         if(isGameOver || isNewGame) {
             resetGame();
         }
@@ -208,7 +208,8 @@ public class Game {
         }
     }
     public void caseI(){
-        tetris.dispose();
+        resetGame();
+        tetris.Dispose();
     }
 
     public boolean isPaused() {

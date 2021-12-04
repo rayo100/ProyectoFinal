@@ -95,7 +95,7 @@ public class Tetris extends JDialog {
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent e) {
-				main.setVisible(true);
+				Dispose();
 			}
 		});
 	}
@@ -117,7 +117,7 @@ public class Tetris extends JDialog {
 				game.caseD();
 				break;
 			case KeyEvent.VK_E:
-				game.caseEnter();
+				game.caseE();
 				break;
 			case KeyEvent.VK_O:
 				game.caseO();
@@ -137,8 +137,7 @@ public class Tetris extends JDialog {
 		game.startGame();
 	}
 
-	@Override
-	public void dispose(){
+	public void Dispose(){
 		main.setVisible(true);
 		super.dispose();
 	}
