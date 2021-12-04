@@ -242,4 +242,7 @@ public class Game {
     public int getPieceRotation() {
         return currentRotation;
     }
+    public float getGameSpeed(){
+        return gameSpeed;
+    }
 }

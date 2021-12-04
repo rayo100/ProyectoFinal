@@ -6,7 +6,6 @@ import Presentacion.Tetris;
 public class Board {
     private static Board board;
     private BoardPanel boardPanel;
-    private Game game;
 
     //Atributos tablero
     public static final int COL_COUNT = 10;
@@ -15,14 +14,13 @@ public class Board {
     public static final int ROW_COUNT = VISIBLE_ROW_COUNT + HIDDEN_ROW_COUNT;
     private Tetrominoe[][] tiles;
 
-    public static Board getBoard(BoardPanel boardPanel, Game game){
-        if(board == null) board = new Board(boardPanel,game);
+    public static Board getBoard(BoardPanel boardPanel){
+        if(board == null) board = new Board(boardPanel);
         return board;
     }
 
-    private Board(BoardPanel boardPanel,Game game){
+    private Board(BoardPanel boardPanel){
         this.boardPanel = boardPanel;
-        this.game = game;
         this.tiles = new Tetrominoe[ROW_COUNT][COL_COUNT];
     }
 
@@ -89,18 +87,35 @@ public class Board {
             }
         }
 
+
         for(int row = line - 1; row >= 0; row--) {
-            for(int col = 0; col < COL_COUNT; col++) {
-                setTile(col, row + 1, getTile(col, row));
+            if (!checkValidPiece(row)){
+                return false;
+            }
+            else {
+                for(int col = 0; col < COL_COUNT; col++) {
+                    setTile(col,row+1,getTile(col,row));
+                }
             }
         }
         return true;
     }
+
+    private boolean checkValidPiece(int row){
+
+        for (int col = 0; col < COL_COUNT; col++){
+            Tetrominoe tile = getTile(col,row);
+            if(tile != null) if (tile.getType() == "Plateado") return false;
+        }
+        return true;
+    }
+
     public Tetrominoe getTile(int x, int y) {
         return tiles[y][x];
     }
     private boolean isOccupied(int x, int y) {
-        return tiles[y][x] != null;
+        boolean valid = tiles[y][x] != null;
+        return valid;
     }
     public void repaint(){
         boardPanel.repaint();

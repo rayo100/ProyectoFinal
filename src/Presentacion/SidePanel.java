@@ -52,7 +52,7 @@ public class SidePanel extends JPanel {
 		g.drawString("Buffos: " + noBuffos, LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("Level: " + game.getLevel(),LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("Score: " + game.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Time: 00:00 " , LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Velocity: " + game.getGameSpeed(), LARGE_INSET, offset += TEXT_STRIDE);
 		g.setFont(LARGE_FONT);
 		g.drawString("Controls", SMALL_INSET, offset = CONTROLS_INSET);
 		g.setFont(SMALL_FONT);
