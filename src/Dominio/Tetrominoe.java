@@ -3,6 +3,7 @@ package Dominio;
 import Presentacion.BoardPanel;
 
 import java.awt.Color;
+import java.util.Random;
 
 public enum Tetrominoe {
 
@@ -31,7 +32,7 @@ public enum Tetrominoe {
 					false, true, false, false,
 					false, true, false, false,
 			}
-	}),
+	},new String[]{"Negro","Plateado","Rojo", "Dorado"}),
 
 	TypeL(new Color(BoardPanel.COLOR_MAX, 127, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][]{
 			{
@@ -54,7 +55,7 @@ public enum Tetrominoe {
 					false, true, false,
 					false, true, false,
 			}
-	}),
+	},new String[]{"Negro","Plateado","Rojo", "Dorado"}),
 
 	TypeO(new Color(BoardPanel.COLOR_MAX, BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN), 2, 2, 2, new boolean[][]{
 			{
@@ -73,7 +74,7 @@ public enum Tetrominoe {
 					true, true,
 					true, true,
 			}
-	}),
+	},new String[]{"Negro","Plateado","Rojo", "Dorado"}),
 
 	TypeS(new Color(BoardPanel.COLOR_MIN, BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][]{
 			{
@@ -96,7 +97,7 @@ public enum Tetrominoe {
 					true, true, false,
 					false, true, false,
 			}
-	}),
+	},new String[]{"Negro","Plateado","Rojo", "Dorado"}),
 
 	TypeT(new Color(128, BoardPanel.COLOR_MIN, 128), 3, 3, 2, new boolean[][]{
 			{
@@ -119,7 +120,7 @@ public enum Tetrominoe {
 					true, true, false,
 					false, true, false,
 			}
-	});
+	},new String[]{"Negro","Plateado","Rojo", "Dorado"});
 
 	private Color baseColor;
 	private Color lightColor;
@@ -130,8 +131,12 @@ public enum Tetrominoe {
 	private int rows;
 	private int cols;
 	private boolean[][] tiles;
+	private String[] types;
+	private String type;
 	
-	Tetrominoe(Color color, int dimension, int cols, int rows, boolean[][] tiles) {
+	Tetrominoe(Color color, int dimension, int cols, int rows, boolean[][] tiles, String[] types) {
+		Random r = new Random();
+		this.type = types[r.nextInt(2)];
 		this.baseColor = color;
 		this.lightColor = Color.BLACK;
 		this.darkColor = Color.BLACK;
@@ -141,8 +146,34 @@ public enum Tetrominoe {
 		this.rows = rows;
 		this.spawnCol = 5 - (dimension >> 1);
 		this.spawnRow = getTopInset(0);
+		this.type = types[r.nextInt(4)];
+		assignColors();
 	}
-	
+	public void changeType(){
+		Random r = new Random();
+		this.type = types[r.nextInt(2)];
+		assignColors();
+	}
+	private void assignColors(){
+		switch (type){
+			case ("Plateado"):
+				lightColor = Color.LIGHT_GRAY;
+				darkColor = Color.LIGHT_GRAY;
+				break;
+			case ("Rojo"):
+				lightColor = Color.RED;
+				darkColor = Color.RED;
+				break;
+			case ("Dorado"):
+				lightColor = Color.ORANGE;
+				darkColor = Color.ORANGE;
+				break;
+			case ("Negro"):
+				lightColor = Color.BLACK;
+				darkColor = Color.BLACK;
+		}
+	}
+
 	public Color getBaseColor() {
 		return baseColor;
 	}
@@ -222,5 +253,7 @@ public enum Tetrominoe {
 		}
 		return -1;
 	}
-	
+	public String getType(){
+		return type;
+	}
 }
