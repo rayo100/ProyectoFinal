@@ -59,13 +59,13 @@ public class BoardPanel extends JPanel {
 	private void drawSquares(Graphics g){
 		for(int x = 0; x < COL_COUNT; x++) {
 			for(int y = HIDDEN_ROW_COUNT; y < ROW_COUNT; y++) {
-				Tetrominoe tile = board.getTile(x, y);
+				TetrominoeC tile = board.getTile(x, y);
 				if(tile != null) {
 					drawTile(tile, x * TILE_SIZE, (y - HIDDEN_ROW_COUNT) * TILE_SIZE, g);
 				}
 			}
 		}
-		Tetrominoe type = game.getPieceType();
+		TetrominoeC type = game.getPieceType();
 		int pieceCol = game.getPieceCol();
 		int pieceRow = game.getPieceRow();
 		int rotation = game.getPieceRotation();
@@ -114,7 +114,7 @@ public class BoardPanel extends JPanel {
 		g.drawString(msg, CENTER_X - g.getFontMetrics().stringWidth(msg) / 2 + 10, 300);
 	}
 
-	private void drawTile(Tetrominoe type, int x, int y, Graphics g) {
+	private void drawTile(TetrominoeC type, int x, int y, Graphics g) {
 		drawTile(type.getBaseColor(), type.getLightColor(), type.getDarkColor(), x, y, g);
 	}
 	private void drawBoard(Graphics g){

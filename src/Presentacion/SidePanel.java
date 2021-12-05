@@ -73,7 +73,7 @@ public class SidePanel extends JPanel {
 		g.drawString("Next Piece:", SMALL_INSET, 70);
 		g.drawRect(SQUARE_CENTER_X - SQUARE_SIZE, SQUARE_CENTER_Y - SQUARE_SIZE, SQUARE_SIZE * 2, SQUARE_SIZE * 2);
 
-		Tetrominoe type = game.getNextPieceType();
+		TetrominoeC type = game.getNextPieceType();
 		if(!game.isGameOver() && type != null) {
 			int cols = type.getCols();
 			int rows = type.getRows();
@@ -91,7 +91,7 @@ public class SidePanel extends JPanel {
 			}
 		}
 	}
-	private void drawTile(Tetrominoe type, int x, int y, Graphics g) {
+	private void drawTile(TetrominoeC type, int x, int y, Graphics g) {
 		g.setColor(type.getBaseColor());
 		g.fillRect(x, y, TILE_SIZE, TILE_SIZE);
 		g.setColor(type.getDarkColor());
