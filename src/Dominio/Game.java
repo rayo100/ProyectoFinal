@@ -208,6 +208,11 @@ public class Game {
         this.isGameOver = true;
         logicTimer.setPaused(true);
     }
+//    public void casePeriod(){
+//        if (!isGameOver && !isPaused){
+//            //buffo.useBuffo();
+//        }
+//    }
 
     public boolean isPaused() {
         return isPaused;

@@ -125,8 +125,8 @@ public class Tetris extends JDialog {
 			case KeyEvent.VK_I:
 				game.caseI();
 				break;
-//			case KeyEvent.VK_SPACE:
-//				caseSpace();
+//			case KeyEvent.VK_PERIOD:
+//				game.casePeriod();
 //				break;
 		}
 	}
