@@ -12,7 +12,7 @@ public class Board {
     private static final int VISIBLE_ROW_COUNT = 20;
     private static final int HIDDEN_ROW_COUNT = 2;
     public static final int ROW_COUNT = VISIBLE_ROW_COUNT + HIDDEN_ROW_COUNT;
-    private Tetrominoe[][] tiles;
+    private TetrominoeC[][] tiles;
 
     public static Board getBoard(BoardPanel boardPanel){
         if(board == null) board = new Board(boardPanel);
@@ -21,7 +21,7 @@ public class Board {
 
     private Board(BoardPanel boardPanel){
         this.boardPanel = boardPanel;
-        this.tiles = new Tetrominoe[ROW_COUNT][COL_COUNT];
+        this.tiles = new TetrominoeC[ROW_COUNT][COL_COUNT];
     }
 
 
@@ -33,7 +33,7 @@ public class Board {
         }
     }
 
-    public boolean isValidAndEmpty(Tetrominoe piece, int x, int y, int rotation) {
+    public boolean isValidAndEmpty(TetrominoeC piece, int x, int y, int rotation) {
 
         if(x < -piece.getLeftInset(rotation) || x + piece.getDimension()
                 - piece.getRightInset(rotation) >= COL_COUNT) {
@@ -55,7 +55,7 @@ public class Board {
         return true;
     }
 
-    public void addPiece(Tetrominoe type, int x, int y, int rotation) {
+    public void addPiece(TetrominoeC type, int x, int y, int rotation) {
         for(int col = 0; col < type.getDimension(); col++) {
             for(int row = 0; row < type.getDimension(); row++) {
                 if(type.isTile(col, row, rotation)) {
@@ -65,7 +65,7 @@ public class Board {
         }
     }
 
-    private void setTile(int  x, int y, Tetrominoe type) {
+    private void setTile(int  x, int y, TetrominoeC type) {
         tiles[y][x] = type;
     }
 
@@ -87,7 +87,11 @@ public class Board {
             }
         }
 
-
+        for (int col = 0; col < COL_COUNT; col++){
+            TetrominoeC tile = getTile(col,line);
+            if (tile != null && !tile.isRemovable())
+                return false;
+        }
         for(int row = line - 1; row >= 0; row--) {
             for(int col = 0; col < COL_COUNT; col++) {
                 setTile(col,row+1,getTile(col,row));
@@ -96,16 +100,8 @@ public class Board {
         return true;
     }
 
-    private boolean checkValidPiece(int row){
 
-        for (int col = 0; col < COL_COUNT; col++){
-            Tetrominoe tile = getTile(col,row);
-            if(tile != null) if (tile.getType() == "Plateado") return false;
-        }
-        return true;
-    }
-
-    public Tetrominoe getTile(int x, int y) {
+    public TetrominoeC getTile(int x, int y) {
         return tiles[y][x];
     }
     private boolean isOccupied(int x, int y) {

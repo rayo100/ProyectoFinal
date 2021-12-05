@@ -12,16 +12,14 @@ public class Game {
 
     // Atributos del juego
     private static final long FRAME_TIME = 1000L / 50L;
-    private static final int TYPE_COUNT = Tetrominoe.values().length;
     private boolean isPaused;
     private boolean isNewGame;
     private boolean isGameOver;
     private int level;
     private int score;
-    private Random random;
     private Clock logicTimer;
-    private Tetrominoe currentType;
-    private Tetrominoe nextType;
+    private TetrominoeC currentType;
+    private TetrominoeC nextType;
     private int currentCol;
     private int currentRow;
     private int currentRotation;
@@ -40,7 +38,6 @@ public class Game {
     public void startGame(){
         board = tetris.getBoard().getBoard();
         side = tetris.getSide();
-        this.random = new Random();
         this.isNewGame = true;
         this.gameSpeed = 1.0f;
         this.logicTimer = new Clock(gameSpeed);
@@ -106,7 +103,7 @@ public class Game {
         this.level = 1;
         this.score = 0;
         this.gameSpeed = 1.0f;
-        this.nextType = Tetrominoe.values()[random.nextInt(TYPE_COUNT)];
+        this.nextType = new TetrominoeC();
         this.isNewGame = false;
         this.isGameOver = false;
         board.clear();
@@ -124,7 +121,7 @@ public class Game {
         this.currentCol = currentType.getSpawnColumn();
         this.currentRow = currentType.getSpawnRow();
         this.currentRotation = 0;
-        this.nextType = Tetrominoe.values()[random.nextInt(TYPE_COUNT)];
+        this.nextType = new TetrominoeC();
         if(!board.isValidAndEmpty(currentType, currentCol, currentRow, currentRotation)) {
             this.isGameOver = true;
             logicTimer.setPaused(true);
@@ -208,8 +205,8 @@ public class Game {
         }
     }
     public void caseI(){
-        resetGame();
-        tetris.Dispose();
+        this.isGameOver = true;
+        logicTimer.setPaused(true);
     }
 
     public boolean isPaused() {
@@ -227,10 +224,10 @@ public class Game {
     public int getLevel() {
         return level;
     }
-    public Tetrominoe getPieceType() {
+    public TetrominoeC getPieceType() {
         return currentType;
     }
-    public Tetrominoe getNextPieceType() {
+    public TetrominoeC getNextPieceType() {
         return nextType;
     }
     public int getPieceCol() {
