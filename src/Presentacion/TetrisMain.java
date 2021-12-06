@@ -13,12 +13,14 @@ public class TetrisMain extends JFrame {
     private JMenuBar menuExit;
     private JMenu archivo;
     private JMenu records;
+    private JMenu credits;
     private JMenuItem newGame;
     private JMenuItem saveGame;
     private JMenuItem openGame;
     private JMenuItem importGame;
     private JMenuItem exportGame;
     private JMenuItem exitGame;
+    private JMenuItem worldRecord;
     private JFileChooser fileChooser;
     //Panel bottons
     private JPanel panelBuffos;
@@ -88,12 +90,14 @@ public class TetrisMain extends JFrame {
         menuExit = new JMenuBar();
         archivo = new JMenu("File");
         records = new JMenu("Records");
+        credits = new JMenu("Credits");
         newGame = new JMenuItem("New");
         saveGame = new JMenuItem("Save");
         openGame = new JMenuItem("Open");
         importGame = new JMenuItem("Import");
         exportGame = new JMenuItem("Export");
         exitGame = new JMenuItem("Exit");
+        worldRecord = new JMenuItem("World");
     }
 
     private void agregueElementosBotones() {
@@ -103,7 +107,6 @@ public class TetrisMain extends JFrame {
         botones.add(panelBuffos);
         botones.add(start);
         botones.add(comboVelocity);
-        //botones.add(credits);
         botones.add(exit);
         add(iconTetris, BorderLayout.CENTER);
         add(botones, BorderLayout.SOUTH);
@@ -120,10 +123,12 @@ public class TetrisMain extends JFrame {
         archivo.add(exportGame);
         archivo.addSeparator();
         archivo.add(exitGame);
+        records.add(worldRecord);
     }
     private void agregueElementosMenu2(){
         menuExit.add(archivo);
         menuExit.add(records);
+        menuExit.add(credits);
         setJMenuBar(menuExit);
         comboMode.addItem("Game Mode");
         comboMode.addItem("Player");
@@ -160,18 +165,6 @@ public class TetrisMain extends JFrame {
                 int aux = comboMode.getSelectedIndex();
                 int aux2 = comboVelocity.getSelectedIndex();
                 if(aux == 0 || aux2 == 0){
-                    start.setEnabled(false);
-                }
-                else{start.setEnabled(true);}
-            }
-        });
-    }
-    private void setComboVelocity(){
-        comboVelocity.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int aux = comboVelocity.getSelectedIndex();
-                if(aux == 0){
                     start.setEnabled(false);
                 }
                 else{start.setEnabled(true);}
