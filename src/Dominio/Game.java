@@ -189,8 +189,7 @@ public class Game {
     }
     public void caseP(){
         if(!isGameOver && !isNewGame) {
-            isPaused = !isPaused;
-            logicTimer.setPaused(isPaused);
+            pauseGame();
         }
     }
     public void caseE(){
@@ -199,8 +198,9 @@ public class Game {
         }
     }
     public void caseO(){
-        if(!isGameOver && isPaused) {
-            //saveGame();
+        if(!isGameOver) {
+            pauseGame();
+            saveGame();
         }
     }
     public  void caseR(){
@@ -210,6 +210,13 @@ public class Game {
         else{
             //Lanzar excepcion
         }
+    }
+    private void pauseGame(){
+        isPaused = !isPaused;
+        logicTimer.setPaused(isPaused);
+    }
+    private void saveGame(){
+        //Llamado persistencia
     }
     public void caseI(){
         finishGame();

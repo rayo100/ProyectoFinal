@@ -46,7 +46,7 @@ public class Tetris extends JDialog {
 	}
 
 	private void prepareElementos(){
-		if(isTwoPlayer) ancho += BoardPanel.PANEL_WIDTH +50;
+		if(isTwoPlayer) ancho += BoardPanel.PANEL_WIDTH + 50;
 		setPreferredSize(new Dimension(ancho, ALTO));
 		setLayout(new GridLayout());
 		setResizable(false);
