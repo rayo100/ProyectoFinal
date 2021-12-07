@@ -17,9 +17,9 @@ public class SidePanel extends JPanel {
 	private static final int SQUARE_CENTER_X = 130;
 	private static final int SQUARE_CENTER_Y = 65;
 	private static final int SQUARE_SIZE = (TILE_SIZE * TILE_COUNT >> 1);
-	private static final int SMALL_INSET = 20;
+	private static int SMALL_INSET = 20;
 	private static final int LARGE_INSET = 20;
-	private static final int LARGE_INSET2 = LARGE_INSET +150;
+	private static final int LARGE_INSET2 = LARGE_INSET + 140;
 	private static final int STATS_INSET = 120;
 	private static final int CONTROLS_INSET = 280;
 	private static final int TEXT_STRIDE = 25;
@@ -28,17 +28,26 @@ public class SidePanel extends JPanel {
 	private static final Color DRAW_COLOR = Color.BLACK;
 	private Game game;
 	private String nickname;
+	private String[] nicknames;
 	private int noBuffos;
 	private Clock time;
 	
 	public SidePanel(Game game, Tetris tetris) {
 		this.game = game;
-		nickname = tetris.getNickname();
+		nickNames(tetris);
 		noBuffos = tetris.getBuffos();
 		setPreferredSize(new Dimension(BoardPanel.PANEL_WIDTH,
 				BoardPanel.PANEL_HEIGHT));
 		setBackground(Color.WHITE);
 		setLayout(null);
+	}
+	private void nickNames(Tetris tetris){
+		if(!Tetris.isTwoPlayer) {
+			nickname = tetris.getNickname();
+		}
+		else{
+			nicknames = tetris.getNicknames();
+		}
 	}
 
 	@Override
@@ -47,25 +56,26 @@ public class SidePanel extends JPanel {
 		g.setColor(DRAW_COLOR);
 		int offset;
 		g.setFont(LARGE_FONT);
-		g.drawString("Stats", SMALL_INSET, offset = STATS_INSET);
-		g.setFont(SMALL_FONT);
-		g.drawString("Nickname: " + nickname, LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Buffos: " + noBuffos, LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Level: " + game.getLevel(), LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Score: " + game.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
-		g.drawString("Velocity: " + game.getGameSpeed(), LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Stats Player 1", SMALL_INSET, offset = STATS_INSET);
+		playerStats1(offset, g);
 		g.setFont(LARGE_FONT);
-		g.drawString("Controls player 1", SMALL_INSET, offset = CONTROLS_INSET);
-		g.setFont(SMALL_FONT);
-		player1(offset,g);
+		g.drawString("Controls Player 1", SMALL_INSET, offset = CONTROLS_INSET);
+		playerControls1(offset, g);
 		if (Tetris.isTwoPlayer){
-			g.drawString("Controls player 2", LARGE_INSET2, offset = CONTROLS_INSET);
-			player2(offset,g);
+			g.setFont(LARGE_FONT);
+			g.drawString("Controls Player 2", LARGE_INSET2, offset = CONTROLS_INSET);
+			playerControls2(offset, g);
+		}
+		if (Tetris.isTwoPlayer){
+			g.setFont(LARGE_FONT);
+			g.drawString("Stats Player 2", LARGE_INSET2, offset = STATS_INSET);
+			playerStats2(offset, g);
 		}
 		if(!game.isNewGame()) drawNextPiece(g);
 	}
 
-	private void player1(int offset, Graphics g){
+	private void playerControls1(int offset, Graphics g){
+		g.setFont(SMALL_FONT);
 		g.drawString("A - Move Left", LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("D - Move Right", LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("W - Rotate piece", LARGE_INSET,offset += TEXT_STRIDE);
@@ -76,29 +86,49 @@ public class SidePanel extends JPanel {
 		g.drawString(". - Use a Buffo", LARGE_INSET, offset += TEXT_STRIDE);
 		g.drawString("I - Exit Game", LARGE_INSET, offset += TEXT_STRIDE);
 	}
-	private void player2(int offset, Graphics g){
-		g.drawString("A - Move Left", LARGE_INSET2, offset += TEXT_STRIDE);
-		g.drawString("D - Move Right", LARGE_INSET2, offset += TEXT_STRIDE);
-		g.drawString("W - Rotate piece", LARGE_INSET2,offset += TEXT_STRIDE);
-		g.drawString("S - Drop", LARGE_INSET2, offset += TEXT_STRIDE);
-		g.drawString("P - Pause Game", LARGE_INSET2, offset += TEXT_STRIDE);
-		g.drawString("O - Save Game", LARGE_INSET2, offset += TEXT_STRIDE);
-		g.drawString("R - Reset Game", LARGE_INSET2, offset += TEXT_STRIDE);
+	private void playerStats1(int offset, Graphics g){
+		g.setFont(SMALL_FONT);
+		if(Tetris.isTwoPlayer){nickname = nicknames[0];}
+		g.drawString("Nickname: " + nickname, LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Buffos: " + noBuffos, LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Level: " + game.getLevel(), LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Score: " + game.getScore(), LARGE_INSET, offset += TEXT_STRIDE);
+		g.drawString("Velocity: " + game.getGameSpeed(), LARGE_INSET, offset += TEXT_STRIDE);
+	}
+
+	private void playerControls2(int offset, Graphics g){
+		g.setFont(SMALL_FONT);
+		g.drawString("← - Move Left", LARGE_INSET2, offset += TEXT_STRIDE);
+		g.drawString("→ - Move Right", LARGE_INSET2, offset += TEXT_STRIDE);
+		g.drawString("↑ - Rotate piece", LARGE_INSET2,offset += TEXT_STRIDE);
+		g.drawString("↓ - Drop", LARGE_INSET2, offset += TEXT_STRIDE);
+		g.drawString("M - Pause Game", LARGE_INSET2, offset += TEXT_STRIDE);
+		g.drawString("N - Save Game", LARGE_INSET2, offset += TEXT_STRIDE);
+		g.drawString("L - Reset Game", LARGE_INSET2, offset += TEXT_STRIDE);
 		g.drawString(". - Use a Buffo", LARGE_INSET2, offset += TEXT_STRIDE);
-		g.drawString("I - Exit Game", LARGE_INSET2, offset += TEXT_STRIDE);
+		g.drawString("B - Exit Game", LARGE_INSET2, offset += TEXT_STRIDE);
+	}
+	private void playerStats2(int offset, Graphics g){
+		g.setFont(SMALL_FONT);
+		g.drawString("Nickname: " +  nicknames[1], LARGE_INSET2, offset += TEXT_STRIDE);
+		g.drawString("Buffos: " + noBuffos, LARGE_INSET2, offset += TEXT_STRIDE);
+		g.drawString("Level: " + game.getLevel(), LARGE_INSET2, offset += TEXT_STRIDE);
+		g.drawString("Score: " + game.getScore(), LARGE_INSET2, offset += TEXT_STRIDE);
+		g.drawString("Velocity: " + game.getGameSpeed(), LARGE_INSET2, offset += TEXT_STRIDE);
 	}
 
 	private void drawNextPiece(Graphics g){
 		g.setFont(LARGE_FONT);
-		g.drawString("Next Piece:", SMALL_INSET, 70);
-		g.drawRect(SQUARE_CENTER_X - SQUARE_SIZE, SQUARE_CENTER_Y - SQUARE_SIZE, SQUARE_SIZE * 2, SQUARE_SIZE * 2);
+		g.drawString("Next Piece:", SMALL_INSET+40, 70);
+		g.drawRect(SQUARE_CENTER_X - SQUARE_SIZE+40, SQUARE_CENTER_Y - SQUARE_SIZE,
+				SQUARE_SIZE * 2, SQUARE_SIZE * 2);
 
 		TetrominoeC type = game.getNextPieceType();
 		if(!game.isGameOver() && type != null) {
 			int cols = type.getCols();
 			int rows = type.getRows();
 			int dimension = type.getDimension();
-			int startX = (SQUARE_CENTER_X - (cols * TILE_SIZE / 2));
+			int startX = (SQUARE_CENTER_X - (cols * TILE_SIZE / 2)+40);
 			int startY = (SQUARE_CENTER_Y - (rows * TILE_SIZE / 2));
 			int top = type.getTopInset(0);
 			int left = type.getLeftInset(0);

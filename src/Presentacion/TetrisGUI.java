@@ -215,15 +215,6 @@ public class TetrisGUI extends JFrame {
         JOptionPane.showOptionDialog(null, "Choose machine level.", "Machine Level",
                 0, JOptionPane.QUESTION_MESSAGE, null, options, "Principiant");
     }
-    private void playerVsPlayer(){
-        JOptionPane.showInputDialog(null, "Player # 1 Nickname.", "Players Information", JOptionPane.PLAIN_MESSAGE);
-        JOptionPane.showInputDialog(null, "Player # 2 Nickname.", "Players Information", JOptionPane.PLAIN_MESSAGE);
-    }
-    public String player(){
-        String nickname = (JOptionPane.showInputDialog(null, "Player Nickname.", "Player Information",
-                JOptionPane.PLAIN_MESSAGE));
-        return nickname;
-    }
 
     public int getBuffos(){
         int noBuffos = (Integer) spinnerBuffos.getValue();

@@ -22,7 +22,7 @@ public class Tetris extends JDialog {
 	private BoardPanel board2;
 	private TetrisGUI main;
 	private Game game;
-	public static boolean isTwoPlayer = false;
+	public static boolean isTwoPlayer = true;
 
 	public static void loadGame(TetrisGUI main){
 
@@ -36,7 +36,6 @@ public class Tetris extends JDialog {
 		Thread hilo = new Thread(runnable);
 		hilo.start();
 	}
-
 
 	private Tetris(TetrisGUI principal, String title) {
 		super(principal,title);
@@ -81,9 +80,15 @@ public class Tetris extends JDialog {
 	}
 
 	private void agregarElementos(){
-		if(isTwoPlayer) add(board2);
-		add(side);
-		add(board1);
+		if(isTwoPlayer) {
+			add(board1);
+			add(side);
+			add(board2);
+		}
+		else {
+			add(side);
+			add(board1);
+		}
 	}
 
 	private void prepararAcciones(){
@@ -158,6 +163,15 @@ public class Tetris extends JDialog {
 				"Player # 1 Nickname.", "Players Information",
 				JOptionPane.PLAIN_MESSAGE);
 		return nickname;
+	}
+	public String[] getNicknames(){
+		String nickname1, nickname2;
+		nickname1 = JOptionPane.showInputDialog(null, "Player # 1 Nickname.",
+				"Players Information", JOptionPane.PLAIN_MESSAGE);
+		nickname2 = JOptionPane.showInputDialog(null, "Player # 2 Nickname.",
+				"Players Information", JOptionPane.PLAIN_MESSAGE);
+		String[] nicknames = {nickname1, nickname2};
+		return nicknames;
 	}
 
 	public int getBuffos(){
