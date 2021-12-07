@@ -3,9 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import Dominio.*;
 
-public class TetrisMain extends JFrame {
+public class TetrisGUI extends JFrame {
     //Tamano ventana
     private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 100;
     private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height / 2;
@@ -39,14 +38,14 @@ public class TetrisMain extends JFrame {
     private JComboBox comboVelocity;
 
 
-    public TetrisMain(String title) {
+    public TetrisGUI(String title) {
         super(title);
         prepareElementosMain();
         prepareAccionesMain();
     }
 
     public static void main(String[] args) {
-        TetrisMain gui = new TetrisMain("Tetris Game");
+        TetrisGUI gui = new TetrisGUI("Tetris Game");
         gui.setVisible(true);
     }
     private void prepareElementosMain(){

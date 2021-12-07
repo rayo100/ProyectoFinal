@@ -16,15 +16,15 @@ import javax.swing.border.TitledBorder;
 public class Tetris extends JDialog {
 
 	private int ancho = 600;
-	private int alto = 568;
+	private final int ALTO = 568;
 	private BoardPanel board1;
 	private SidePanel side;
 	private BoardPanel board2;
-	private TetrisMain main;
+	private TetrisGUI main;
 	private Game game;
 	public static boolean isTwoPlayer = false;
 
-	public static void loadGame(TetrisMain main){
+	public static void loadGame(TetrisGUI main){
 
 		Runnable runnable = new Runnable() {
 			@Override
@@ -38,7 +38,7 @@ public class Tetris extends JDialog {
 	}
 
 
-	private Tetris(TetrisMain principal, String title) {
+	private Tetris(TetrisGUI principal, String title) {
 		super(principal,title);
 		this.main = principal;
 		game = Game.getGame(this);
@@ -47,7 +47,7 @@ public class Tetris extends JDialog {
 
 	private void prepareElementos(){
 		if(isTwoPlayer) ancho += BoardPanel.PANEL_WIDTH +50;
-		setPreferredSize(new Dimension(ancho, alto));
+		setPreferredSize(new Dimension(ancho, ALTO));
 		setLayout(new GridLayout());
 		setResizable(false);
 		cargarElementos();
@@ -81,9 +81,9 @@ public class Tetris extends JDialog {
 	}
 
 	private void agregarElementos(){
+		if(isTwoPlayer) add(board2);
 		add(side);
 		add(board1);
-		if(isTwoPlayer) add(board2);
 	}
 
 	private void prepararAcciones(){
