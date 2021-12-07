@@ -1,12 +1,10 @@
 package Dominio;
 
 import Presentacion.BoardPanel;
-import Presentacion.Tetris;
 
 public class Board {
     private static Board board;
     private BoardPanel boardPanel;
-
     //Atributos tablero
     public static final int COL_COUNT = 10;
     private static final int VISIBLE_ROW_COUNT = 20;

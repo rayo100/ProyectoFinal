@@ -184,4 +184,10 @@ public class Tetris extends JDialog {
 		return side;
 	}
 
+//	private void vsMachine(){
+//		JOptionPane.showInputDialog(null, "Player Nickname.", "Player Information", JOptionPane.PLAIN_MESSAGE);
+//		String [] options= {"Principiant", "Expert", "Cancel"};
+//		JOptionPane.showOptionDialog(null, "Choose machine level.", "Machine Level",
+//				0, JOptionPane.QUESTION_MESSAGE, null, options, "Principiant");
+//	}
 }

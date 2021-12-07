@@ -14,7 +14,6 @@ public class TetrisGUI extends JFrame {
     private JMenu records;
     private JMenu credits;
     private JMenuItem newGame;
-    private JMenuItem saveGame;
     private JMenuItem openGame;
     private JMenuItem importGame;
     private JMenuItem exportGame;
@@ -90,7 +89,6 @@ public class TetrisGUI extends JFrame {
         records = new JMenu("Records");
         credits = new JMenu("Credits");
         newGame = new JMenuItem("New");
-        saveGame = new JMenuItem("Save");
         openGame = new JMenuItem("Open");
         importGame = new JMenuItem("Import");
         exportGame = new JMenuItem("Export");
@@ -113,8 +111,6 @@ public class TetrisGUI extends JFrame {
         archivo.add(newGame);
         archivo.addSeparator();
         archivo.add(openGame);
-        archivo.addSeparator();
-        archivo.add(saveGame);
         archivo.addSeparator();
         archivo.add(importGame);
         archivo.addSeparator();
@@ -151,7 +147,6 @@ public class TetrisGUI extends JFrame {
     private void prepareAccionesMenu() {
         exit.addActionListener(e -> salga());
         exitGame.addActionListener(e -> salga());
-        saveGame.addActionListener(e -> save());
         openGame.addActionListener(e -> open());
         start.addActionListener(e -> startGame());
         //setComboMode();
@@ -186,13 +181,13 @@ public class TetrisGUI extends JFrame {
         fileChooser = new JFileChooser();
     }
 
-    public void save() {
-        int action = fileChooser.showSaveDialog(saveGame);
-        if (action == JFileChooser.APPROVE_OPTION) {
-            File archivo = fileChooser.getSelectedFile();
-            JOptionPane.showMessageDialog(null, "File "+ archivo.getName() +" saved" + "\nFuncionalidad Salvar en construccion");
-        }
-    }
+//    public void save() {
+//        int action = fileChooser.showSaveDialog(saveGame);
+//        if (action == JFileChooser.APPROVE_OPTION) {
+//            File archivo = fileChooser.getSelectedFile();
+//            JOptionPane.showMessageDialog(null, "File "+ archivo.getName() +" saved" + "\nFuncionalidad Salvar en construccion");
+//        }
+//    }
 
     private void open() {
         int action = fileChooser.showOpenDialog(openGame);
@@ -209,12 +204,6 @@ public class TetrisGUI extends JFrame {
         }
     }
 
-    private void vsMachine(){
-        JOptionPane.showInputDialog(null, "Player Nickname.", "Player Information", JOptionPane.PLAIN_MESSAGE);
-        String [] options= {"Principiant", "Expert", "Cancel"};
-        JOptionPane.showOptionDialog(null, "Choose machine level.", "Machine Level",
-                0, JOptionPane.QUESTION_MESSAGE, null, options, "Principiant");
-    }
 
     public int getBuffos(){
         int noBuffos = (Integer) spinnerBuffos.getValue();

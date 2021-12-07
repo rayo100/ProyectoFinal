@@ -30,7 +30,7 @@ public class SidePanel extends JPanel {
 	private String nickname;
 	private String[] nicknames;
 	private int noBuffos;
-	private Clock time;
+	//private Clock time;
 	
 	public SidePanel(Game game, Tetris tetris) {
 		this.game = game;

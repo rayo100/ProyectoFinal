@@ -4,14 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="1">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="TT">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bosquejo Tetris.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/SidePanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/SidePanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetris.asta" beforeDir="false" afterPath="$PROJECT_DIR$/Tetris.asta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dominio/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/SidePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/SidePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Tetris.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Presentacion/TetrisGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/TetrisGUI.java" afterDir="false" />
@@ -246,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638837166906</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="TT">
+      <created>1638847361411</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1638847361412</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -273,11 +276,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="s8i" />
-    <MESSAGE value="TT" />
     <MESSAGE value="tragic Update" />
     <MESSAGE value="no me digassss jajaja lo de &#10;persistencia esta peor jajaja" />
     <MESSAGE value="1" />
-    <option name="LAST_COMMIT_MESSAGE" value="1" />
+    <MESSAGE value="TT" />
+    <option name="LAST_COMMIT_MESSAGE" value="TT" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
