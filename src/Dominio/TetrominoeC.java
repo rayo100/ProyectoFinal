@@ -1,10 +1,15 @@
 package Dominio;
 
 import Presentacion.BoardPanel;
-
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Random;
+/**
+ * The TetrominoeC class it is where we create the
+ * game pieces and their embroidery
+ *
+ * @author Cesar Vasquez - Ronaldo Henao
+ * @version 1.0  (December 07, 2021)
+ */
 
 public class TetrominoeC {
     private final boolean[][] TYPEO = {
@@ -145,6 +150,9 @@ public class TetrominoeC {
     private int cols;
     private boolean[][] tiles;
 
+    /**
+     * Create ramdomly the possible pieces and they embroidery
+     */
     public TetrominoeC(){
         Random r = new Random();
         int typePiece = r.nextInt(5);
@@ -159,6 +167,9 @@ public class TetrominoeC {
         this.spawnRow = getTopInset(0);
     }
 
+    /*
+     * This method assigns the color of the edges of a piece
+     */
     private void assignColors(){
         switch (borderType){
             case("Plateado"):
@@ -180,26 +191,48 @@ public class TetrominoeC {
         }
     }
 
+    /**
+     * This method returns the color of the base of the piece
+     * @return baseColor, baseColor is the color of the base
+     */
     public Color getBaseColor() {
         return baseColor;
     }
-    public Color getLightColor() {
-        return lightColor;
-    }
 
-    public Color getDarkColor() {
-        return darkColor;
-    }
-    public int getDimension() {
-        return dimension;
-    }
+    /**
+     * This method returns the light color of the piece
+     * @return lightColor, lightColor is the light color of the piece
+     */
+    public Color getLightColor() {return lightColor;}
+    /**
+     * This method returns the dark color of the piece
+     * @return darkColor, darkColor is the dark color of the piece
+     */
+    public Color getDarkColor() {return darkColor;}
 
-    public int getSpawnColumn() {
-        return spawnCol;
-    }
-    public int getRows() {
-        return rows;
-    }
+    /**
+     * This method returns the dimension of the piece
+     * @return dimension, dimension is the dimension of the piece
+     */
+    public int getDimension() {return dimension;}
+
+    /**
+     * This method returns the spawn column of the piece
+     * @return spawnCol, spawnCol is the spawn column
+     */
+    public int getSpawnColumn() {return spawnCol;}
+
+    /**
+     * This method returns the number of the rows
+     * @return rows, rows is the number of the rows
+     */
+    public int getRows() {return rows;}
+
+    /**
+     * This method returns if there is room left to rotate
+     * @param rotation, rotation is the number to rotate
+     * @return, the number of spaces to the left
+     */
     public int getLeftInset(int rotation) {
         for(int x = 0; x < dimension; x++) {
             for(int y = 0; y < dimension; y++) {
@@ -211,6 +244,11 @@ public class TetrominoeC {
         return -1;
     }
 
+    /**
+     * This method returns if there is room right to rotate
+     * @param rotation, rotation is the number to rotate
+     * @return, the number of spaces to the right
+     */
     public int getRightInset(int rotation) {
         for(int x = dimension - 1; x >= 0; x--) {
             for(int y = 0; y < dimension; y++) {
@@ -222,6 +260,11 @@ public class TetrominoeC {
         return -1;
     }
 
+    /**
+     * This method returns if there is room to rotate up
+     * @param rotation, rotation is the number to rotate
+     * @return, the number of spaces above
+     */
     public int getTopInset(int rotation) {
         for(int y = 0; y < dimension; y++) {
             for(int x = 0; x < dimension; x++) {
@@ -232,6 +275,12 @@ public class TetrominoeC {
         }
         return -1;
     }
+
+    /**
+     * This method returns if there is room to rotate down
+     * @param rotation, rotation is the number to rotate
+     * @return, the number of spaces below
+     */
     public int getBottomInset(int rotation) {
         for(int y = dimension - 1; y >= 0; y--) {
             for(int x = 0; x < dimension; x++) {
@@ -242,18 +291,32 @@ public class TetrominoeC {
         }
         return -1;
     }
+    /**
+     * This method returns the number of the cols
+     * @return cols, cols is the number of the cols
+     */
+    public int getCols() {return cols;}
+    /**
+     * This method returns the spawn row of the piece
+     * @return spawnRow, spawnRow is the spawn row
+     */
+    public int getSpawnRow() {return spawnRow;}
 
-    public int getCols() {
-        return cols;
-    }
-
-    public int getSpawnRow() {
-        return spawnRow;
-    }
-
+    /**
+     * This method returns where is the tile
+     * @param x, x is the X coordinate where the tile is located
+     * @param y, y is the Y coordinate where the tile is located
+     * @param rotation, rotation is the number to rotate
+     * @return
+     */
     public boolean isTile(int x, int y, int rotation) {
         return tiles[rotation][y * dimension + x];
     }
+
+    /**
+     * This method returns if a tile has a silver border
+     * @return boolean
+     */
     public boolean isRemovable(){
         if (borderType.equals("Plateado")) return false;
         return true;
