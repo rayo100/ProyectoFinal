@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="Diseño">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_11_39_p__m__[Default_Changelist]/SidePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_11_39_p__m__[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_11_39_p__m___Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Buffo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Clock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Machines.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Shape$Tetrominoe.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Shape.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/SidePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Tetris.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/TetrisException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m___Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetris.asta" beforeDir="false" afterPath="$PROJECT_DIR$/Tetris.asta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Buffo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Buffo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Clock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Clock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Machines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Machines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/TetrisException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/TetrisException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/TetrominoeC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/TetrominoeC.java" afterDir="false" />
-    </list>
+    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -289,6 +266,11 @@
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="63d01b2c-3aad-425d-84fe-ce89ad3ff76a">
+          <value>
+            <State />
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State />
@@ -321,15 +303,15 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ProyectoFinal$Tetris1.ic" NAME="Tetris1 Coverage Results" MODIFIED="1637725213164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>Presentacion.*</FILTER>
-    </SUITE>
+    <SUITE FILE_PATH="coverage/ProyectoFinal$TetrisGUI.ic" NAME="TetrisGUI Coverage Results" MODIFIED="1636317703885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/ProyectoFinal$Tetris.ic" NAME="Tetris Coverage Results" MODIFIED="1636420029275" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Presentacion.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ProyectoFinal$Test2.ic" NAME="Test2 Coverage Results" MODIFIED="1636310506778" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>Presentacion.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/ProyectoFinal$TetrisGUI.ic" NAME="TetrisGUI Coverage Results" MODIFIED="1636317703885" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/ProyectoFinal$Tetris1.ic" NAME="Tetris1 Coverage Results" MODIFIED="1637725213164" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>Presentacion.*</FILTER>
+    </SUITE>
   </component>
 </project>
