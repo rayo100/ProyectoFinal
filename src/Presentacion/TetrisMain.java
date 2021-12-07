@@ -37,8 +37,7 @@ public class TetrisMain extends JFrame {
     private JComboBox comboMode;
     //Velocity
     private JComboBox comboVelocity;
-    private Tetris juego;
-    private TetrisMain main;
+
 
     public TetrisMain(String title) {
         super(title);

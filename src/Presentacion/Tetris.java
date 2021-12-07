@@ -15,14 +15,17 @@ import javax.swing.border.TitledBorder;
 
 public class Tetris extends JDialog {
 
-	private final int ANCHO = 566;
-	private final int ALTO = 568;
-	private BoardPanel board;
+	private int ancho = 600;
+	private int alto = 568;
+	private BoardPanel board1;
 	private SidePanel side;
+	private BoardPanel board2;
 	private TetrisMain main;
 	private Game game;
+	public static boolean isTwoPlayer = false;
 
 	public static void loadGame(TetrisMain main){
+
 		Runnable runnable = new Runnable() {
 			@Override
 			public void run() {
@@ -34,6 +37,7 @@ public class Tetris extends JDialog {
 		hilo.start();
 	}
 
+
 	private Tetris(TetrisMain principal, String title) {
 		super(principal,title);
 		this.main = principal;
@@ -42,8 +46,9 @@ public class Tetris extends JDialog {
 	}
 
 	private void prepareElementos(){
-		setPreferredSize(new Dimension(ANCHO,ALTO));
-		setLayout(new BorderLayout());
+		if(isTwoPlayer) ancho += BoardPanel.PANEL_WIDTH +50;
+		setPreferredSize(new Dimension(ancho, alto));
+		setLayout(new GridLayout());
 		setResizable(false);
 		cargarElementos();
 		configurarElementos();
@@ -55,22 +60,30 @@ public class Tetris extends JDialog {
 	}
 
 	private void cargarElementos(){
-		this.board = new BoardPanel(game);
+		this.board1 = new BoardPanel(game);
 		this.side = new SidePanel(game,this);
+		if(isTwoPlayer) this.board2 = new BoardPanel(game);
 	}
 	private void configurarElementos(){
 
 		Color color = JColorChooser.showDialog(null, "Choose a color", Color.WHITE);
-		board.setBackground(color);
-		board.setBorder(new CompoundBorder(new EmptyBorder(3, 3, 8, 8),
+		board1.setBackground(color);
+		board1.setBorder(new CompoundBorder(new EmptyBorder(3, 3, 8, 8),
 				new TitledBorder("Board")));
 		side.setBorder(new CompoundBorder(new EmptyBorder(5,5,5,5),
 				new TitledBorder("Game Info")));
+		if (isTwoPlayer){
+			color = JColorChooser.showDialog(null, "Choose a color", Color.WHITE);
+			board2.setBackground(color);
+			board2.setBorder(new CompoundBorder(new EmptyBorder(3, 3, 8, 8),
+					new TitledBorder("Board")));
+		}
 	}
 
 	private void agregarElementos(){
-		add(board, BorderLayout.CENTER);
-		add(side, BorderLayout.WEST);
+		add(side);
+		add(board1);
+		if(isTwoPlayer) add(board2);
 	}
 
 	private void prepararAcciones(){
@@ -150,8 +163,8 @@ public class Tetris extends JDialog {
 	public int getBuffos(){
 		return main.getBuffos();
 	}
-	public BoardPanel getBoard(){
-		return board;
+	public BoardPanel getBoard1(){
+		return board1;
 	}
 	public SidePanel getSide(){
 		return side;

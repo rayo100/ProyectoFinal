@@ -4,8 +4,6 @@ import Presentacion.BoardPanel;
 import Presentacion.SidePanel;
 import Presentacion.Tetris;
 
-import java.util.Random;
-
 public class Game {
     private static Game GAME;
     private Tetris tetris;
@@ -27,6 +25,7 @@ public class Game {
     private float gameSpeed;
     private Board board;
     private SidePanel side;
+    private int nRenders;
 
     public static Game getGame(Tetris tetris){
         if(GAME == null) GAME = new Game(tetris);
@@ -36,7 +35,8 @@ public class Game {
         this.tetris = tetris;
     }
     public void startGame(){
-        board = tetris.getBoard().getBoard();
+        nRenders = 0;
+        board = tetris.getBoard1().getBoard();
         side = tetris.getSide();
         this.isNewGame = true;
         this.gameSpeed = 1.0f;
@@ -113,6 +113,7 @@ public class Game {
     }
 
     private void renderGame(){
+        nRenders += 1;
         board.repaint();
         side.repaint();
     }
@@ -123,10 +124,16 @@ public class Game {
         this.currentRotation = 0;
         this.nextType = new TetrominoeC();
         if(!board.isValidAndEmpty(currentType, currentCol, currentRow, currentRotation)) {
-            this.isGameOver = true;
-            logicTimer.setPaused(true);
+            finishGame();
         }
     }
+
+    private void finishGame(){
+        System.out.println(nRenders);
+        this.isGameOver = true;
+        logicTimer.setPaused(true);
+    }
+
     private void rotatePiece(int newRotation) {
         int newColumn = currentCol;
         int newRow = currentRow;
@@ -205,8 +212,7 @@ public class Game {
         }
     }
     public void caseI(){
-        this.isGameOver = true;
-        logicTimer.setPaused(true);
+        finishGame();
     }
 //    public void casePeriod(){
 //        if (!isGameOver && !isPaused){
