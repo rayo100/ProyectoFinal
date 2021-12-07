@@ -43,12 +43,21 @@ public class Board {
             return false;
         }
 
+
         for(int col = 0; col < piece.getDimension(); col++) {
             for(int row = 0; row < piece.getDimension(); row++) {
                 if(piece.isTile(col, row, rotation) && isOccupied(x + col, y + row)) {
                     return false;
                 }
             }
+        }
+        return true;
+    }
+
+    public boolean isValidAndEmpty(){
+        for (int col = 0; col < COL_COUNT; col++){
+            TetrominoeC tile = getTile(col,2);
+            if (tile != null) return false;
         }
         return true;
     }

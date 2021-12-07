@@ -1,8 +1,11 @@
 package Dominio;
 
+import Persistencia.FileHandler;
 import Presentacion.BoardPanel;
 import Presentacion.SidePanel;
 import Presentacion.Tetris;
+
+import java.io.File;
 
 public class Game {
     private static Game GAME;
@@ -126,12 +129,14 @@ public class Game {
         if(!board.isValidAndEmpty(currentType, currentCol, currentRow, currentRotation)) {
             finishGame();
         }
+        if(!board.isValidAndEmpty()) finishGame();
     }
 
     private void finishGame(){
         System.out.println(nRenders);
         this.isGameOver = true;
         logicTimer.setPaused(true);
+        saveRecords();
     }
 
     private void rotatePiece(int newRotation) {
@@ -217,6 +222,11 @@ public class Game {
     }
     private void saveGame(){
         //Llamado persistencia
+    }
+
+    private void saveRecords(){
+        Records record = Records.getRecord(tetris);
+
     }
     public void caseI(){
         finishGame();

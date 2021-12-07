@@ -1,6 +1,7 @@
 package Presentacion;
 
 import Dominio.Game;
+import Dominio.TetrisException;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -20,16 +21,19 @@ public class Tetris extends JDialog {
 	private BoardPanel board1;
 	private SidePanel side;
 	private BoardPanel board2;
-	private TetrisGUI main;
+	private POOBtrizGUI main;
+	private String nickname;
 	private Game game;
-	public static boolean isTwoPlayer = true;
 
-	public static void loadGame(TetrisGUI main){
+	public static boolean isTwoPlayer = false;
+
+
+	public static void loadGame(POOBtrizGUI main){
 
 		Runnable runnable = new Runnable() {
 			@Override
 			public void run() {
-				Tetris tetris = new Tetris(main, "Tetris Game");
+				Tetris tetris = new Tetris(main, "POOBtriz game");
 				tetris.startGame();
 			}
 		};
@@ -37,7 +41,7 @@ public class Tetris extends JDialog {
 		hilo.start();
 	}
 
-	private Tetris(TetrisGUI principal, String title) {
+	private Tetris(POOBtrizGUI principal, String title) {
 		super(principal,title);
 		this.main = principal;
 		game = Game.getGame(this);
@@ -158,7 +162,7 @@ public class Tetris extends JDialog {
 	}
 
 	public String getNickname(){
-		String nickname;
+
 		nickname = JOptionPane.showInputDialog(null,
 				"Player # 1 Nickname.", "Players Information",
 				JOptionPane.PLAIN_MESSAGE);
@@ -183,6 +187,16 @@ public class Tetris extends JDialog {
 	public SidePanel getSide(){
 		return side;
 	}
+	public String getnickname(){
+		return nickname;
+	}
+	public int getScore() throws TetrisException {
+		if (game.isGameOver()) return game.getScore();
+		else{
+			throw new TetrisException(TetrisException.NO_GAME_FINISHED);
+		}
+	}
+
 
 //	private void vsMachine(){
 //		JOptionPane.showInputDialog(null, "Player Nickname.", "Player Information", JOptionPane.PLAIN_MESSAGE);

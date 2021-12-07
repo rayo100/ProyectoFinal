@@ -6,9 +6,9 @@ import java.awt.event.WindowEvent;
 
 
 public class Credits extends JDialog {
-    private TetrisGUI main;
+    private POOBtrizGUI main;
 
-    public Credits(TetrisGUI main, String title) {
+    public Credits(POOBtrizGUI main, String title) {
         super(main,title);
         this.main = main;
         prepareElementos();
