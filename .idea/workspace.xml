@@ -4,7 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="1" />
+    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Buffo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Buffo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Clock.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Clock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Machines.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Machines.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Records.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/Records.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/TetrisException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/TetrisException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/TetrominoeC.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Dominio/TetrominoeC.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/BoardPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/BoardPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ProyectoFinal/Presentacion/Tetris.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dominio/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dominio/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dominio/Records.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Records.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dominio/TetrominoeC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/TetrominoeC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Persistencia/FileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Persistencia/FileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentacion/BoardPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/BoardPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Presentacion/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Presentacion/Tetris.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,7 +84,7 @@
       </method>
     </configuration>
     <configuration name="main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Presentacion.TetrisGUI" />
+      <option name="MAIN_CLASS_NAME" value="Presentacion.POOBtrizGUI" />
       <module name="ProyectoFinal" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -250,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638852110491</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="1">
+      <created>1638905855700</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1638905855700</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -284,15 +313,30 @@
     <MESSAGE value="s8i" />
     <MESSAGE value="tragic Update" />
     <MESSAGE value="no me digassss jajaja lo de &#10;persistencia esta peor jajaja" />
-    <MESSAGE value="1" />
     <MESSAGE value="TT" />
     <MESSAGE value="Diseño" />
-    <option name="LAST_COMMIT_MESSAGE" value="Diseño" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presentacion/Tetris.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Presentacion/Tetris.java</url>
+          <line>184</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Presentacion.Tetris$1" memberName="main" />
+        <PinnedItemInfo parentTag="Dominio.Game" memberName="board" />
       </pinned-members>
     </pin-to-top-manager>
     <watches-manager>

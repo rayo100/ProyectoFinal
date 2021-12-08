@@ -3,35 +3,60 @@ package Dominio;
 import Persistencia.FileHandler;
 import Presentacion.Tetris;
 
-import java.io.File;
 
 public class Records {
     private static Records record;
+    private int[] scores;
+    private String[] data;
+    private String[] nickNames;
+    private Tetris tetris;
     private int currentScore;
     private String currentNickname;
-    private Tetris tetris;
-    private String[] data;
-    private String nickNames[];
-    private int[] scores;
 
     public static Records getRecord(Tetris tetris){
         if (record == null) record = new Records(tetris);
         return record;
     }
-
     private Records(Tetris tetris){
         this.tetris = tetris;
     }
+//    public static void main(String[] args){
+//        extractData();
+//        orderData();
+//        showData();
+//    }
+
+    private void showData(){
+        String[] info = convertData();
+        for (String i: info){
+            System.out.println(i);
+        }
+        FileHandler.writeToFile(info);
+    }
+
+
     public void getScores(){
-        try {
-            currentScore = tetris.getScore();
+        try{
+            extractData();
             currentNickname = tetris.getnickname();
+            currentScore = tetris.getScore();
+            nickNames[0] = currentNickname;
+            scores[0] = currentScore;
+            orderData();
+            convertData();
+            showData();
         }
         catch (TetrisException e){
 
         }
     }
-    public void retrieveScoresFromFile(){
+
+    public boolean isWinner(){
+        if(scores[data.length] == currentScore) return true;
+        return false;
+    }
+
+    private void retrieveScoresFromFile(){
         data = FileHandler.readData();
     }
 
@@ -39,8 +64,7 @@ public class Records {
         retrieveScoresFromFile();
         scores = new int[data.length];
         nickNames = new String[data.length];
-        String[] partes = {"",""};
-
+        String[] partes;
         for (int i = 0; i < data.length; i++){
             partes = data[i].split(" ");
             String nickname = partes[0];
@@ -76,17 +100,11 @@ public class Records {
         return datos;
     }
 
-    public void writeDatatoFile(String[] data){
-        FileHandler.writeToFile(data);
-    }
 
-    private String toString(int score, String nickname){
+    private static String toString(int score, String nickname){
         String datos = nickname + " " + score;
         return datos;
     }
 
-    public String toString(){
-        String datos = currentNickname + " " + currentScore;
-        return datos;
-    }
+
 }

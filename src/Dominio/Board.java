@@ -23,16 +23,16 @@ public class Board {
      * @param boardPanel, is the board panel of the game
      * @return board, board is the board game
      */
-    public static Board getBoard(BoardPanel boardPanel){
-        if(board == null) board = new Board(boardPanel);
-        return board;
-    }
+//    public static Board getBoard(BoardPanel boardPanel){
+//        if(board == null) board = new Board(boardPanel);
+//        return board;
+//    }
 
     /*
      * Create the board panel of the game
      * @param boardPanel, is the board panel of the game
      */
-    private Board(BoardPanel boardPanel){
+    public Board(BoardPanel boardPanel){
         this.boardPanel = boardPanel;
         this.tiles = new TetrominoeC[ROW_COUNT][COL_COUNT];
     }
@@ -75,6 +75,17 @@ public class Board {
                 }
             }
         }
+        return true;
+    }
+
+    public boolean isValidAndEmpty() {
+        for(int col = 0; col < 10; ++col) {
+            TetrominoeC tile = this.getTile(col, 2);
+            if (tile != null) {
+                return false;
+            }
+        }
+
         return true;
     }
 

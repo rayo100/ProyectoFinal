@@ -32,7 +32,7 @@ public class BoardPanel extends JPanel {
 
 	public BoardPanel(Game game) {
 		this.game = game;
-		board = Board.getBoard(this);
+		board = new Board(this);
 		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		setBackground(Color.BLACK);
 	}

@@ -8,7 +8,7 @@ public class FileHandler {
 
     public static void writeToFile(String[] data){
         try {
-            FileWriter writer = new FileWriter("file.txt");
+            FileWriter writer = new FileWriter("records.txt");
             for(String i: data){
                 writer.write(i + "\r\n");
             }
@@ -24,7 +24,7 @@ public class FileHandler {
     public static String[] readData(){
         String[] data = new String[10];
         try {
-            File obj = new File("file.txt");
+            File obj = new File("records.txt");
             Scanner reader = new Scanner(obj);
 
             int n = 0;

@@ -23,9 +23,10 @@ public class Tetris extends JDialog {
 	private BoardPanel board2;
 	private POOBtrizGUI main;
 	private String nickname;
-	private Game game;
+	private Game game1;
+	private Game game2;
 
-	public static boolean isTwoPlayer = false;
+	public static boolean isTwoPlayer = true;
 
 
 	public static void loadGame(POOBtrizGUI main){
@@ -44,7 +45,12 @@ public class Tetris extends JDialog {
 	private Tetris(POOBtrizGUI principal, String title) {
 		super(principal,title);
 		this.main = principal;
-		game = Game.getGame(this);
+		game1 = new Game(this,false);
+		if (isTwoPlayer) {
+			game1 = new Game(this,false);
+			game2 = new Game(this,isTwoPlayer);
+		}
+
 		prepareElementos();
 	}
 
@@ -63,9 +69,9 @@ public class Tetris extends JDialog {
 	}
 
 	private void cargarElementos(){
-		this.board1 = new BoardPanel(game);
-		this.side = new SidePanel(game,this);
-		if(isTwoPlayer) this.board2 = new BoardPanel(game);
+		this.board1 = new BoardPanel(game1);
+		this.side = new SidePanel(game1,this);
+		if(isTwoPlayer) this.board2 = new BoardPanel(game2);
 	}
 	private void configurarElementos(){
 
@@ -106,7 +112,7 @@ public class Tetris extends JDialog {
 			public void keyReleased(KeyEvent e) {
 				switch(e.getKeyCode()) {
 					case KeyEvent.VK_S:
-						game.caseSPressed();
+						game1.caseSPressed();
 						break;
 				}
 			}
@@ -121,39 +127,62 @@ public class Tetris extends JDialog {
 	private void keyCases(KeyEvent e){
 		switch(e.getKeyCode()) {
 			case KeyEvent.VK_S:
-				game.caseS();
+				game1.caseS();
 				break;
 			case KeyEvent.VK_A:
-				game.caseA();
+				game1.caseA();
 				break;
 			case KeyEvent.VK_W:
-				game.caseW();
+				game1.caseW();
 				break;
 			case KeyEvent.VK_P:
-				game.caseP();
+				game1.caseP();
+				if(isTwoPlayer) game2.caseP();
 				break;
 			case KeyEvent.VK_D:
-				game.caseD();
+				game1.caseD();
 				break;
 			case KeyEvent.VK_E:
-				game.caseE();
+				game1.caseE();
+				if (isTwoPlayer) game2.caseE();
 				break;
 			case KeyEvent.VK_O:
-				game.caseO();
+				game1.caseO();
 				break;
 			case KeyEvent.VK_R:
-				game.caseR();
+				game1.caseR();
+				if (isTwoPlayer) game2.caseR();
 				break;
 			case KeyEvent.VK_I:
-				game.caseI();
+				game1.caseI();
+				if(isTwoPlayer) game2.caseI();
+				break;
+			case KeyEvent.VK_LEFT:
+				if (isTwoPlayer) game2.caseA();
+				break;
+			case KeyEvent.VK_DOWN:
+				if(isTwoPlayer)game2.caseS();
+				break;
+			case KeyEvent.VK_UP:
+				if(isTwoPlayer)game2.caseW();
+				break;
+			case KeyEvent.VK_RIGHT:
+				if(isTwoPlayer)game2.caseD();
 				break;
 //			case KeyEvent.VK_PERIOD:
 //				game.casePeriod();
 //				break;
 		}
 	}
+
+
+
+	public Game getMaingame(){
+		return this.game1;
+	}
 	public void startGame() {
-		game.startGame();
+		game1.startGame();
+		if(isTwoPlayer) game2.startGame();
 	}
 
 	public void Dispose(){
@@ -162,7 +191,6 @@ public class Tetris extends JDialog {
 	}
 
 	public String getNickname(){
-
 		nickname = JOptionPane.showInputDialog(null,
 				"Player # 1 Nickname.", "Players Information",
 				JOptionPane.PLAIN_MESSAGE);
@@ -184,6 +212,10 @@ public class Tetris extends JDialog {
 	public BoardPanel getBoard1(){
 		return board1;
 	}
+
+	public BoardPanel getBoard2(){
+		return board2;
+	}
 	public SidePanel getSide(){
 		return side;
 	}
@@ -191,7 +223,7 @@ public class Tetris extends JDialog {
 		return nickname;
 	}
 	public int getScore() throws TetrisException {
-		if (game.isGameOver()) return game.getScore();
+		if (game1.isGameOver()) return game1.getScore();
 		else{
 			throw new TetrisException(TetrisException.NO_GAME_FINISHED);
 		}
