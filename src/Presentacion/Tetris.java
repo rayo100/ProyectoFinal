@@ -25,21 +25,22 @@ public class Tetris extends JDialog {
 	private String nickname;
 	private Game game1;
 	private Game game2;
+	private static Tetris tetris;
 
 	public static boolean isTwoPlayer = true;
 
 
 	public static void loadGame(POOBtrizGUI main){
-
-		Runnable runnable = new Runnable() {
-			@Override
-			public void run() {
-				Tetris tetris = new Tetris(main, "POOBtriz game");
-				tetris.startGame();
-			}
-		};
+		tetris = new Tetris(main, "POOBtriz game");
+		Runnable runnable = () -> tetris.startGame1();
 		Thread hilo = new Thread(runnable);
 		hilo.start();
+		if(isTwoPlayer) loadGame2();
+	}
+	private static void loadGame2(){
+		Runnable runnable = () -> tetris.startGame2();
+		Thread hilo2 = new Thread(runnable);
+		hilo2.start();
 	}
 
 	private Tetris(POOBtrizGUI principal, String title) {
@@ -114,6 +115,9 @@ public class Tetris extends JDialog {
 					case KeyEvent.VK_S:
 						game1.caseSPressed();
 						break;
+					case KeyEvent.VK_DOWN:
+						if(isTwoPlayer) game2.caseSPressed();
+						break;
 				}
 			}
 		});
@@ -180,9 +184,11 @@ public class Tetris extends JDialog {
 	public Game getMaingame(){
 		return this.game1;
 	}
-	public void startGame() {
+	public void startGame1() {
 		game1.startGame();
-		if(isTwoPlayer) game2.startGame();
+	}
+	public void startGame2(){
+		game2.startGame();
 	}
 
 	public void Dispose(){
