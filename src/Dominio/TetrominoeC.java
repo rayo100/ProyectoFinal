@@ -4,11 +4,11 @@ import Presentacion.BoardPanel;
 import java.awt.*;
 import java.util.Random;
 /**
- * The TetrominoeC class it is where we create the
- * game pieces and their embroidery
+ * La clase TetrominoeC es donde creamos las
+ * piezas del juego y sus bordados
  *
  * @author Cesar Vasquez - Ronaldo Henao
- * @version 1.0  (December 07, 2021)
+ * @version 1.0  (December 09, 2021)
  */
 
 public class TetrominoeC {
@@ -151,7 +151,7 @@ public class TetrominoeC {
     private boolean[][] tiles;
 
     /**
-     * Create ramdomly the possible pieces and they embroidery
+     * Crea aleatoriamente las posibles piezas y sus bordeados
      */
     public TetrominoeC(){
         Random r = new Random();
@@ -168,7 +168,7 @@ public class TetrominoeC {
     }
 
     /*
-     * This method assigns the color of the edges of a piece
+     * Este metodo asigna los colores de los bordes de las piezas
      */
     private void assignColors(){
         switch (borderType){
@@ -192,46 +192,46 @@ public class TetrominoeC {
     }
 
     /**
-     * This method returns the color of the base of the piece
-     * @return baseColor, baseColor is the color of the base
+     * Este metodo retorna el color de la base de la pieza
+     * @return baseColor, es el color de la base de la pieza
      */
     public Color getBaseColor() {
         return baseColor;
     }
 
     /**
-     * This method returns the light color of the piece
-     * @return lightColor, lightColor is the light color of the piece
+     * Este metodo retorna el color claro de la pieza
+     * @return lightColor, es el color claro de la pieza
      */
     public Color getLightColor() {return lightColor;}
     /**
-     * This method returns the dark color of the piece
-     * @return darkColor, darkColor is the dark color of the piece
+     * Este metodo retorna el color oscuro de la pieza
+     * @return darkColor, es el color oscuro de la pieza
      */
     public Color getDarkColor() {return darkColor;}
 
     /**
-     * This method returns the dimension of the piece
-     * @return dimension, dimension is the dimension of the piece
+     * Este metodo retorna la dimension de la pieza
+     * @return dimension, es la dimension de la pieza
      */
     public int getDimension() {return dimension;}
 
     /**
-     * This method returns the spawn column of the piece
-     * @return spawnCol, spawnCol is the spawn column
+     * Este metodo retorna
+     * @return
      */
     public int getSpawnColumn() {return spawnCol;}
 
     /**
-     * This method returns the number of the rows
-     * @return rows, rows is the number of the rows
+     * Este metodo retorna el numero de filas
+     * @return rows, es el numero de filas
      */
     public int getRows() {return rows;}
 
     /**
-     * This method returns if there is room left to rotate
-     * @param rotation, rotation is the number to rotate
-     * @return, the number of spaces to the left
+     * Este metodo retorna si hay espacio a la izquierda para rotar
+     * @param rotation, numero de rotacion
+     * @return, numero de espacios a la izquierda
      */
     public int getLeftInset(int rotation) {
         for(int x = 0; x < dimension; x++) {
@@ -245,9 +245,9 @@ public class TetrominoeC {
     }
 
     /**
-     * This method returns if there is room right to rotate
-     * @param rotation, rotation is the number to rotate
-     * @return, the number of spaces to the right
+     * Este metodo retorna si hay espacio a la derecha para rotar
+     * @param rotation, numero de rotacion
+     * @return, numero de espacios a la derecha
      */
     public int getRightInset(int rotation) {
         for(int x = dimension - 1; x >= 0; x--) {
@@ -261,9 +261,9 @@ public class TetrominoeC {
     }
 
     /**
-     * This method returns if there is room to rotate up
-     * @param rotation, rotation is the number to rotate
-     * @return, the number of spaces above
+     * Este metodo retorna si hay espacio arriba para rotar
+     * @param rotation, numero de rotacion
+     * @return, numero de espacios arriba
      */
     public int getTopInset(int rotation) {
         for(int y = 0; y < dimension; y++) {
@@ -277,9 +277,9 @@ public class TetrominoeC {
     }
 
     /**
-     * This method returns if there is room to rotate down
-     * @param rotation, rotation is the number to rotate
-     * @return, the number of spaces below
+     * Este metodo retorna si hay espacio abajo para rotar
+     * @param rotation, numero de rotacion
+     * @return, numero de espacios abajo
      */
     public int getBottomInset(int rotation) {
         for(int y = dimension - 1; y >= 0; y--) {
@@ -292,30 +292,30 @@ public class TetrominoeC {
         return -1;
     }
     /**
-     * This method returns the number of the cols
-     * @return cols, cols is the number of the cols
+     * Este metodo retotna el numero de columnas
+     * @return cols, es el numero de columnas
      */
     public int getCols() {return cols;}
     /**
-     * This method returns the spawn row of the piece
-     * @return spawnRow, spawnRow is the spawn row
+     * Este metodo retorna
+     * @return
      */
     public int getSpawnRow() {return spawnRow;}
 
     /**
-     * This method returns where is the tile
-     * @param x, x is the X coordinate where the tile is located
-     * @param y, y is the Y coordinate where the tile is located
-     * @param rotation, rotation is the number to rotate
-     * @return
+     * Este metodo retorna si se puede rotar la pieza donde está
+     * @param x, es la coordenada X donde se encuentra la pieza
+     * @param y, es la coordenada Y donde se encuentra la pieza
+     * @param rotation, numero de rotacion
+     * @return True or False
      */
     public boolean isTile(int x, int y, int rotation) {
         return tiles[rotation][y * dimension + x];
     }
 
     /**
-     * This method returns if a tile has a silver border
-     * @return boolean
+     * Este metodo retorna si una pieza tiene borde plateado
+     * @return True or False
      */
     public boolean isRemovable(){
         if (borderType.equals("Plateado")) return false;

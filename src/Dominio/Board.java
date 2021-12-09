@@ -2,11 +2,11 @@ package Dominio;
 
 import Presentacion.BoardPanel;
 /**
- * The Board class is in charge of the board's
- * funcionality
+ * La clase Board es la encargada de la
+ * funcionalidad de los tableros
  *
  * @author Cesar Vasquez - Ronaldo Henao
- * @version 1.0  (December 07, 2021)
+ * @version 1.0  (December 09, 2021)
  */
 public class Board {
     private static Board board;
@@ -18,19 +18,14 @@ public class Board {
     public static final int ROW_COUNT = VISIBLE_ROW_COUNT + HIDDEN_ROW_COUNT;
     private TetrominoeC[][] tiles;
 
-    /**
-     * This method returns the board
-     * @param boardPanel, is the board panel of the game
-     * @return board, board is the board game
-     */
 //    public static Board getBoard(BoardPanel boardPanel){
 //        if(board == null) board = new Board(boardPanel);
 //        return board;
 //    }
 
-    /*
-     * Create the board panel of the game
-     * @param boardPanel, is the board panel of the game
+    /**
+     * Este metodo crea el panel del tablero del juego
+     * @param boardPanel, es el panel del talero
      */
     public Board(BoardPanel boardPanel){
         this.boardPanel = boardPanel;
@@ -38,7 +33,7 @@ public class Board {
     }
 
     /**
-     * This method clean the game board
+     * Este metodo limpia el tablero de juego
      */
     public void clear() {
         for(int i = 0; i < ROW_COUNT; i++) {
@@ -49,11 +44,11 @@ public class Board {
     }
 
     /**
-     *This method returns if valid and empty
-     * @param piece, is type of the piece
-     * @param x, x is the X coordinate where the tile is located
-     * @param y, y is the Y coordinate where the tile is located
-     * @param rotation, rotation is the number to rotate
+     * Este metodo retorna si es valido y está vacio el tablero
+     * @param piece, es el tipo de pieza
+     * @param x, es la coordenada X donde esta localizada la pieza
+     * @param y, es la coordenada Y donde esta localizada la pieza
+     * @param rotation, es el numero de rotacion
      * @return  True or False
      */
     public boolean isValidAndEmpty(TetrominoeC piece, int x, int y, int rotation) {
@@ -90,11 +85,11 @@ public class Board {
     }
 
     /**
-     * This method add a piece to the board
-     * @param type, is type of the piece
-     * @param x, x is the X coordinate where the tile is located
-     * @param y, y is the Y coordinate where the tile is located
-     * @param rotation, rotation is the number to rotate
+     * Este metodo agrega una pieza en el tablero
+     * @param type, es el tipo de pieza
+     * @param x, es la coordenada X donde esta localizada la pieza
+     * @param y, es la coordenada Y donde esta localizada la pieza
+     * @param rotation, es el numero de rotacion
      */
     public void addPiece(TetrominoeC type, int x, int y, int rotation) {
         for(int col = 0; col < type.getDimension(); col++) {
@@ -107,18 +102,18 @@ public class Board {
     }
 
     /*
-     * This method place the part in a position
-     * @param x, x is the X coordinate where the tile is located
-     * @param y, y is the Y coordinate where the tile is located
-     * @param type, is type of the piece
+     * Este metodo coloca la pieza en una posicion
+     * @param x, es la coordenada X donde esta localizada la pieza
+     * @param y, es la coordenada Y donde esta localizada la pieza
+     * @param type, es el numero de rotacion
      */
     private void setTile(int  x, int y, TetrominoeC type) {
         tiles[y][x] = type;
     }
 
     /**
-     * This method returns how many line are complete
-     * @return completedLines, is number of lines completed
+     * Este metodo retorna el numero de todas las lineas que estan completas
+     * @return completedLines, es el numero de lineas completas
      */
     public int checkLines() {
         int completedLines = 0;
@@ -132,8 +127,8 @@ public class Board {
     }
 
     /*
-     * This method returns if a line is complete
-     * @param line, is number of line
+     * Este metodo retorna si una linea esta completa
+     * @param line, es el numero de linea
      * @return, True or False
      */
     private boolean checkLine(int line) {
@@ -157,19 +152,19 @@ public class Board {
     }
 
     /**
-     * This method returns the position of a tile
-     * @param x, x is the X coordinate where the tile is located
-     * @param y, y is the Y coordinate where the tile is located
-     * @return location of the tile
+     * Este metodo retorna la posicion de una pieza
+     * @param x, es la coordenada X donde esta localizada la pieza
+     * @param y, es la coordenada Y donde esta localizada la pieza
+     * @return posicion de la pieza
      */
     public TetrominoeC getTile(int x, int y) {
         return tiles[y][x];
     }
 
     /*
-     * This method returns if a position is occuped
-     * @param x, x is the X coordinate where the tile is located
-     * @param y, y is the Y coordinate where the tile is located
+     * Este metodo retorna si una posicion esta ocupada
+     * @param x, es la coordenada X
+     * @param y, es la coordenada Y
      * @return True or False
      */
     private boolean isOccupied(int x, int y) {
@@ -178,7 +173,7 @@ public class Board {
     }
 
     /**
-     * This method repaint the board
+     * Este metodo repinta el tablero
      */
     public void repaint(){
         boardPanel.repaint();

@@ -8,6 +8,13 @@ import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
+/**
+ * La clase BoardPanel es la encargada de mostrar al o los
+ * jugadores los tableros de juego
+ *
+ * @author Cesar Vasquez - Ronaldo Henao
+ * @version 1.0  (December 09, 2021)
+ */
 
 public class BoardPanel extends JPanel {
 
@@ -30,14 +37,23 @@ public class BoardPanel extends JPanel {
 	private Game game;
 	private Board board;
 
+	/**
+	 * Este metodo es el que crea el JPanel en el
+	 * cual se muestra el tablero de juego
+	 * @param game, es el motor del juego
+	 */
 	public BoardPanel(Game game) {
 		this.game = game;
 		board = new Board(this);
 		setPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));
 		setBackground(Color.BLACK);
 	}
-	
 
+	/**
+	 * Este metodo se encarga de pintar todas las componentes
+	 * del tablero del juego
+	 * @param g, es la grafica de los componentes
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -56,6 +72,11 @@ public class BoardPanel extends JPanel {
 		g.drawRect(MOVEMENT, MOVEMENT, TILE_SIZE * COL_COUNT, TILE_SIZE * VISIBLE_ROW_COUNT);
 	}
 
+	/*
+	 * Este metodo dibuja los cuadrados de las figuras
+	 * que apareceran en el tablero
+	 * @param g, es la grafica de los componentes
+	 */
 	private void drawSquares(Graphics g){
 		for(int x = 0; x < COL_COUNT; x++) {
 			for(int y = HIDDEN_ROW_COUNT; y < ROW_COUNT; y++) {
@@ -98,12 +119,21 @@ public class BoardPanel extends JPanel {
 		}
 	}
 
+	/*
+	 * Este metodo dibuja el caso de pausa del juego
+	 * @param g, es la grafica de los componentes
+	 */
 	private void drawCase1(Graphics g){
 		g.setFont(LARGE_FONT);
 		g.setColor(Color.BLACK);
 		String msg = "PAUSED";
 		g.drawString(msg, CENTER_X - g.getFontMetrics().stringWidth(msg) / 2 + 10, CENTER_Y);
 	}
+
+	/*
+	 * Este memtodo dibuja los casos de inicio y fin del juego
+	 * @param g, es la grafica de los componentes
+	 */
 	private void drawCase2(Graphics g){
 		g.setFont(LARGE_FONT);
 		g.setColor(Color.BLACK);
@@ -114,9 +144,21 @@ public class BoardPanel extends JPanel {
 		g.drawString(msg, CENTER_X - g.getFontMetrics().stringWidth(msg) / 2 + 10, 300);
 	}
 
+	/*
+	 * Este metodo dibuja la ficha a aparecer en el tablero
+	 * @param type, es el tipo de tetromino que será el próximo a salir
+	 * @param x, es la posicion en X donde lo dibujaremos en la gráfica
+	 * @param y, es la posicion en Y donde lo dibujaremos en la gráfica
+	 * @param g, es la grafica de los componentes
+	 */
 	private void drawTile(TetrominoeC type, int x, int y, Graphics g) {
 		drawTile(type.getBaseColor(), type.getLightColor(), type.getDarkColor(), x, y, g);
 	}
+
+	/*
+	 * Este metodo dibuja las rectas o cuadrados del tablero de juego
+	 * @param g, es la grafica de los componentes
+	 */
 	private void drawBoard(Graphics g){
 		g.setColor(Color.DARK_GRAY);
 		for(int col = 0; col < COL_COUNT; col++){
@@ -129,6 +171,17 @@ public class BoardPanel extends JPanel {
 		g.setColor(Color.BLACK);
 		g.drawRect(MOVEMENT,MOVEMENT,(TILE_SIZE*COL_COUNT),(TILE_SIZE*COL_COUNT));
 	}
+
+	/*
+	 * Este metodo la ficha a aparecer en el tablero con sus
+	 * respectivos colores de la ficha y el borde
+	 * @param base, es el color base de la pieza
+	 * @param light, es el color claro de la pieza
+	 * @param dark, es el color oscurp de la pieza
+	 * @param x, es la posicion en X donde lo dibujaremos en la gráfica
+	 * @param y, es la posicion en Y donde lo dibujaremos en la gráfica
+	 * @param g, es la grafica de los componentes
+	 */
 	private void drawTile(Color base, Color light, Color dark, int x, int y, Graphics g) {
 		
 		g.setColor(base);
@@ -143,6 +196,11 @@ public class BoardPanel extends JPanel {
 			g.drawLine(x+MOVEMENT + i, y+MOVEMENT, x + i+MOVEMENT, y +MOVEMENT+ TILE_SIZE - i - 1);
 		}
 	}
+
+	/**
+	 * Este metodo retorna el tablero
+	 * @return board, es el tablero del juego
+	 */
 	public Board getBoard(){
 		return board;
 	}

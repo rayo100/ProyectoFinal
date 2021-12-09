@@ -1,8 +1,8 @@
 package Dominio;
 
 /**
- * The Clock class is in charge of controlling
- * game times as speeds
+ * La clase Clock es la que controla los
+ * tiempos del juego y las velocidades
  *
  * @author Cesar Vasquez - Ronaldo Henao
  * @version 1.0  (December 07, 2021)
@@ -16,9 +16,9 @@ public class Clock {
 	private boolean isPaused;
 
 	/**
-	 * Create the time with which the speed of he game starts
-	 * @param cyclesPerSecond, are the cycles per seconds with
-	 *                         which the game starts
+	 * Este metodo crea el tiempo con el que comienza la velocidad del juego
+	 * @param cyclesPerSecond, son los ciclos por segundo  para la velocidad
+	 *                         con la que el juego inicia
 	 */
 	public Clock(float cyclesPerSecond) {
 		setCyclesPerSecond(cyclesPerSecond);
@@ -26,16 +26,16 @@ public class Clock {
 	}
 
 	/**
-	 * This method set the cycles Per Second
-	 * @param cyclesPerSecond, are the cycles per seconds with
-	 *                         which the game starts
+	 * Este metodo coloca los ciclos por segundo
+	 * @param cyclesPerSecond, son los ciclos por segundo  para la velocidad
+	 * 	 *                     con la que el juego inicia
 	 */
 	public void setCyclesPerSecond(float cyclesPerSecond) {
 		this.millisPerCycle = (1.0f / cyclesPerSecond) * 1000;
 	}
 
 	/**
-	 * This method resets the times and speed of the game
+	 * Este metodo restablece los tiempos y la velocidad del juego
 	 */
 	public void reset() {
 		this.elapsedCycles = 0;
@@ -45,7 +45,7 @@ public class Clock {
 	}
 
 	/**
-	 * This method updates game times and speed
+	 * Este metodo actualiza los tiempos y la velocidad del juego
 	 */
 	public void update() {
 		long currUpdate = getCurrentTime();
@@ -60,21 +60,21 @@ public class Clock {
 	}
 
 	/**
-	 * This method assign game paused
-	 * @param paused, paused is is True or False
+	 * Este metodo coloca en pausa el juego
+	 * @param paused, es True or False
 	 */
 	public void setPaused(boolean paused) {
 		this.isPaused = paused;
 	}
 
 	/**
-	 * This method says if the game is paused or not
-	 * @return isPaused, isPaused is True or False
+	 * Es metodo dice si el juego esta pausado o no
+	 * @return isPaused, es True or False
 	 */
 	public boolean isPaused() {return isPaused;}
 
 	/**
-	 * This method returns if a cycle has elapsed
+	 * Este metodo retorna si ha transcurrido un ciclo o no
 	 * @return True or False
 	 */
 	public boolean hasElapsedCycle() {
@@ -86,8 +86,8 @@ public class Clock {
 	}
 
 	/*
-	 * This method returns the current time of the game
-	 * @return current time
+	 * Este metodo retorna el tiempo actual del juego
+	 * @return tiempo actual
 	 */
 	private static final long getCurrentTime() {
 		return (System.nanoTime() / 1000000L);

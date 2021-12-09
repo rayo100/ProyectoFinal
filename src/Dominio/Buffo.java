@@ -1,10 +1,10 @@
 package Dominio;
 
 /**
- * The Buffo class if a new action for the tetris game
+ * La clase Buffo es una nueva accion para el juego
  *
  * @author Cesar Vasquez - Ronaldo Henao
- * @version 1.0  (December 07, 2021)
+ * @version 1.0  (December 09, 2021)
  */
 public class Buffo {
     public Buffo(){

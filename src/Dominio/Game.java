@@ -4,14 +4,12 @@ import Presentacion.BoardPanel;
 import Presentacion.SidePanel;
 import Presentacion.Tetris;
 
-
 /**
- * The Machines class is the engine
- * of the tetris game
+ * La clase Game es el motor de juego
  *
  * @author Cesar Vasquez - Ronaldo Henao
- * @version 1.0  (December 07, 2021)
- */
+ * @version 1.0  (December 09, 2021)
+*/
 public class Game {
     private static Game GAME;
     private Tetris tetris;
@@ -35,27 +33,24 @@ public class Game {
     private SidePanel side;
     private boolean twoPlayers;
     private boolean isWinner;
-    /**
-     * This method return the new game
-     * @param tetris, tetris is the panel of the game
-     * @return
-     */
+
 //    public static Game getGame(Tetris tetris){
 //        if(GAME == null) GAME = new Game(tetris);
 //        return GAME;
 //    }
 
-    /*
-     * Create the dialog of the tetris game
-     * @param tetris, tetris is the panel of the game
+    /**
+     * Este metodo crea el JDialog del juego
+     * @param tetris, es el JDialog donde se vizualiza el juego
+     * @param twoPlayers, dice si el juego es de para dos
      */
-    public Game(Tetris tetris,boolean twoPlayers){
+    public Game(Tetris tetris, boolean twoPlayers){
         this.twoPlayers = twoPlayers;
         this.tetris = tetris;
     }
 
     /**
-     * This method start the tetris game
+     * Este metodo inicia el juego
      */
     public void startGame(){
         if (twoPlayers) board = tetris.getBoard2().getBoard();
@@ -87,7 +82,7 @@ public class Game {
     }
 
     /*
-     * This method update the tetris game
+     * Este metodo actualiza el juego
      */
     private void updateGame() {
         if(board.isValidAndEmpty(currentType, currentCol, currentRow + 1, currentRotation)) {
@@ -109,7 +104,7 @@ public class Game {
     }
 
     /*
-     * This method initialize accelerated speed
+     * Este metodo permite iniciar el juego con velociada acelerada
      */
     private void acelerada(){
         gameSpeed += 0.035f;
@@ -120,7 +115,7 @@ public class Game {
         spawnPiece();
     }
     /*
-     * This method initialize uniform speed
+     * Este metodo permite iniciar el juego con velociada uniforme
      */
     private void uniforme(){
         //gameSpeed += 0.035f;
@@ -132,7 +127,7 @@ public class Game {
     }
 
     /**
-     * This method reset the tetris game
+     * Este metodo resetea el juego
      */
     public void resetGame() {
         this.level = 1;
@@ -152,7 +147,7 @@ public class Game {
     }
 
     /*
-     * This method render the tetris game
+     * Este metodo repinta el juego
      */
     private void renderGame(){
         board.repaint();
@@ -160,7 +155,7 @@ public class Game {
     }
 
     /*
-     * This method
+     * Este metodo
      */
     private void spawnPiece() {
         this.currentType = nextType;
@@ -177,7 +172,7 @@ public class Game {
     }
 
     /*
-     * This method finish the tetris game
+     * Este metodo finaliza el juego
      */
     private void finishGame(){
         isGameOver = true;
@@ -185,16 +180,17 @@ public class Game {
         records();
     }
 
+    /*
+     * Este metodo envia el puntaje al finalizar el juego
+     */
     private void records(){
         Records records = Records.getRecord(tetris);
         records.getScores();
     }
 
-
-
     /*
-     * This method rotate a piece
-     * @param newRotation, newRotation is the number to rotate
+     * Este metodo rota una pieza
+     * @param newRotation, numero de rotacion
      */
     private void rotatePiece(int newRotation) {
         int newColumn = currentCol;
@@ -225,14 +221,14 @@ public class Game {
     }
 
     /**
-     * This method returns what the D key does
+     * Este metodo da la funcion al pulsar la tecla D
      */
     public void caseD(){
         if(!isPaused && board.isValidAndEmpty(currentType,currentCol+1,
                     currentRow,currentRotation)) currentCol++;
     }
     /**
-     * This method returns what the S key does
+     * Este metodo da la funcion al pulsar la tecla S
      */
     public void caseS(){
         if(!isPaused && dropCooldown == 0) {
@@ -240,15 +236,14 @@ public class Game {
         }
     }
     /**
-     * This method returns what the S key does
-     * pressed for a long time
+     * Este metodo da la funcion al mantener pulsada la tecla D
      */
     public void caseSPressed(){
         logicTimer.setCyclesPerSecond(gameSpeed);
         logicTimer.reset();
     }
     /**
-     * This method returns what the W key does
+     * Este metodo da la funcion al pulsar la tecla W
      */
     public void caseW(){
         if(!isPaused) {
@@ -256,7 +251,7 @@ public class Game {
         }
     }
     /**
-     * This method returns what the A key does
+     * Este metodo da la funcion al pulsar la tecla A
      */
     public void caseA(){
         if(!isPaused && board.isValidAndEmpty(currentType, currentCol - 1, currentRow, currentRotation)) {
@@ -264,7 +259,7 @@ public class Game {
         }
     }
     /**
-     * This method returns what the P key does
+     * Este metodo da la funcion al pulsar la tecla P
      */
     public void caseP(){
         if(!isGameOver && !isNewGame) {
@@ -272,7 +267,7 @@ public class Game {
         }
     }
     /**
-     * This method returns what the E key does
+     * Este metodo da la funcion al pulsar la tecla E
      */
     public void caseE(){
         if(isGameOver || isNewGame) {
@@ -280,7 +275,7 @@ public class Game {
         }
     }
     /**
-     * This method returns what the O key does
+     * Este metodo da la funcion al pulsar la tecla O
      */
     public void caseO(){
         if(!isGameOver) {
@@ -289,7 +284,7 @@ public class Game {
         }
     }
     /**
-     * This method returns what the R key does
+     * Este metodo da la funcion al pulsar la tecla R
      */
     public  void caseR(){
         if (!isGameOver && !isPaused){
@@ -300,26 +295,26 @@ public class Game {
         }
     }
     /*
-     * This method paused the tetris game
+     * Este metodo pausa el juego
      */
     private void pauseGame(){
         isPaused = !isPaused;
         logicTimer.setPaused(isPaused);
     }
     /*
-     * This method save a tetris game
+     * Este metodo guarda el juego
      */
     private void saveGame(){
         //Llamado persistencia
     }
     /**
-     * This method returns what the I key does
+     * Este metodo da la funcion al pulsar la tecla I
      */
     public void caseI(){
         finishGame();
     }
     /**
-     * This method returns what the . key does
+     * Este metodo da la funcion al pulsar la tecla "."
      */
 //    public void casePeriod(){
 //        if (!isGameOver && !isPaused){
@@ -328,66 +323,66 @@ public class Game {
 //    }
 
     /**
-     * This method returns if the game is paused
+     * Este metodo retorna si el juego está pausado
      * @return True or False
      */
     public boolean isPaused() {return isPaused;}
 
     /**
-     * This method returns if game over
+     * Este metodo retorna si se terminó el juego
      * @return True or False
      */
     public boolean isGameOver() {return isGameOver;}
 
     /**
-     * This method return if is new game
+     * Este metodo retorna si el juego empezo
      * @return True or False
      */
     public boolean isNewGame() {return isNewGame;}
 
     /**
-     * This method returns the score of the game
-     * @return score, is the score of the game
+     * Este metodo retorna el puntaje del juego
+     * @return score,es el puntaje del juego
      */
     public int getScore() {return score;}
     /**
-     * This method returns the level of the game
-     * @return level, is the level of the game
+     * Este metodo retorna el nivel del juego
+     * @return level, es el nivel del juego
      */
     public int getLevel() {return level;}
 
     /**
-     * This method returns the current type of the piece
-     * @return currentType, is the current type of the tile
+     * Este metodo retorna el tipo actual de la pieza
+     * @return currentType, es el tipo actual de la pieza
      */
     public TetrominoeC getPieceType() {return currentType;}
 
     /**
-     * This method returns the next type of the piece
-     * @return nextType, is the next type of the tile
+     * Este metodo retorna el siguiente tipo de la pieza
+     * @return nextType, es el siguiente tipo de la pieza
      */
     public TetrominoeC getNextPieceType() {return nextType;}
 
     /**
-     * This method returns of the number of the current columns
-     * @return currentCol, is the number of the current columns
+     * Este metodo retorna el numero actual de columnas
+     * @return currentCol, es el numero actual de columnas
      */
     public int getPieceCol() {return currentCol;}
     /**
-     * This method returns of the number of the current rows
-     * @return currentRow, is the number of the current rows
+     * Este metodo retorna el numero actual de filas
+     * @return currentRow, es el numero actual de filas
      */
     public int getPieceRow() {return currentRow;}
 
     /**
-     * This method returns of the number of the current rotation
-     * @return currentRotation, is the number of the current rotation
+     * Este numero retorna el numero actual de rotacion
+     * @return currentRotation, es el numero actual de rotacion
      */
     public int getPieceRotation() {return currentRotation;}
 
     /**
-     * This method the game speed
-     * @return gameSpeed, is the game speed
+     * Este metodo retorna la velocidad del juego
+     * @return gameSpeed, es la velocidad del juego
      */
     public float getGameSpeed(){return gameSpeed;}
 }

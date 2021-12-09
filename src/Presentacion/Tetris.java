@@ -13,6 +13,14 @@ import javax.swing.*;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+/**
+ * La clase Tetris es la encargada de la vizualización
+ * del juego, apodos, funcionalidad de los botones y
+ * eleccion de modo de juego
+ *
+ * @author Cesar Vasquez - Ronaldo Henao
+ * @version 1.0  (December 09, 2021)
+ */
 
 public class Tetris extends JDialog {
 
@@ -29,7 +37,10 @@ public class Tetris extends JDialog {
 
 	public static boolean isTwoPlayer = true;
 
-
+	/**
+	 * Este metodo
+	 * @param main, es el JFrame principal del juego
+	 */
 	public static void loadGame(POOBtrizGUI main){
 		tetris = new Tetris(main, "POOBtriz game");
 		Runnable runnable = () -> tetris.startGame1();
@@ -37,12 +48,21 @@ public class Tetris extends JDialog {
 		hilo.start();
 		if(isTwoPlayer) loadGame2();
 	}
+
+	/*
+	 * Este metodo
+	 */
 	private static void loadGame2(){
 		Runnable runnable = () -> tetris.startGame2();
 		Thread hilo2 = new Thread(runnable);
 		hilo2.start();
 	}
 
+	/*
+	 * Este metodo crea el juego de lo jugadores, ya sean dos o uno
+	 * @param principal, es el JFrame principal del juego
+	 * @param title, es el titulo que se le dá a la ventana del JFrame
+	 */
 	private Tetris(POOBtrizGUI principal, String title) {
 		super(principal,title);
 		this.main = principal;
@@ -51,10 +71,13 @@ public class Tetris extends JDialog {
 			game1 = new Game(this,false);
 			game2 = new Game(this,isTwoPlayer);
 		}
-
 		prepareElementos();
 	}
 
+	/*
+	 * Este metodo prepara los elementos que iran en el
+	 * JDialog donde los usuarios juegan
+	 */
 	private void prepareElementos(){
 		if(isTwoPlayer) ancho += BoardPanel.PANEL_WIDTH + 50;
 		setPreferredSize(new Dimension(ancho, ALTO));
@@ -69,13 +92,21 @@ public class Tetris extends JDialog {
 		setVisible(true);
 	}
 
+	/*
+	 * Este metodo carga los elementos de los juagadores
+	 * ya sea para uno o dos
+	 */
 	private void cargarElementos(){
 		this.board1 = new BoardPanel(game1);
 		this.side = new SidePanel(game1,this);
 		if(isTwoPlayer) this.board2 = new BoardPanel(game2);
 	}
-	private void configurarElementos(){
 
+	/*
+	 * Este metodo permite a los jugadores elegir el color de su
+	 * tablero antes de iniciar el juego
+	 */
+	private void configurarElementos(){
 		Color color = JColorChooser.showDialog(null, "Choose a color", Color.WHITE);
 		board1.setBackground(color);
 		board1.setBorder(new CompoundBorder(new EmptyBorder(3, 3, 8, 8),
@@ -90,6 +121,10 @@ public class Tetris extends JDialog {
 		}
 	}
 
+	/*
+	 * Este metodo permite agregar los tableros del juego
+	 * ya sea para uno o dos jugadores
+	 */
 	private void agregarElementos(){
 		if(isTwoPlayer) {
 			add(board1);
@@ -102,6 +137,10 @@ public class Tetris extends JDialog {
 		}
 	}
 
+	/*
+	 * Este metodo permite al o los juagadores a realizar
+	 * los movimientos y posibles acciones con ordenador
+	 */
 	private void prepararAcciones(){
 		addKeyListener(new KeyAdapter() {
 			@Override
@@ -128,6 +167,13 @@ public class Tetris extends JDialog {
 			}
 		});
 	}
+
+	/*
+	 * Este metodo realiza las acciones que el o los
+	 * jugadores realicen en el teclado al jugar
+	 * @param e, es el que indica que se produjo una
+	 * 			 pulsacion en el teclado
+	 */
 	private void keyCases(KeyEvent e){
 		switch(e.getKeyCode()) {
 			case KeyEvent.VK_S:
@@ -179,29 +225,46 @@ public class Tetris extends JDialog {
 		}
 	}
 
+	/**
+	 * Este metodo retorna el juego uno
+	 * @return
+	 */
+	public Game getMaingame(){return this.game1;}
+	/**
+	 * Este metodo inicia el juego para el primer usuario
+	 */
+	public void startGame1() {game1.startGame();}
 
+	/**
+	 * Este metodo inicia el juego para el segundo usuario
+	 */
+	public void startGame2(){game2.startGame();}
 
-	public Game getMaingame(){
-		return this.game1;
-	}
-	public void startGame1() {
-		game1.startGame();
-	}
-	public void startGame2(){
-		game2.startGame();
-	}
-
+	/**
+	 * Este metodo libera todos los recursos
+	 * de pantalla usados por esta ventana
+	 */
 	public void Dispose(){
 		main.setVisible(true);
 		super.dispose();
 	}
 
+	/**
+	 * Este metodo retorna la cadena con el apodo de un jugador
+	 * @return nickname, es la cadena con el apodo del jugador
+	 */
 	public String getNickname(){
 		nickname = JOptionPane.showInputDialog(null,
 				"Player # 1 Nickname.", "Players Information",
 				JOptionPane.PLAIN_MESSAGE);
 		return nickname;
 	}
+
+	/**
+	 * Este metodo retorna una lista de cadenas con los
+	 * apodos de los jugadores
+	 * @return nicknames, es la lista de cadenas con los apodos
+	 */
 	public String[] getNicknames(){
 		String nickname1, nickname2;
 		nickname1 = JOptionPane.showInputDialog(null, "Player # 1 Nickname.",
@@ -212,22 +275,45 @@ public class Tetris extends JDialog {
 		return nicknames;
 	}
 
-	public int getBuffos(){
-		return main.getBuffos();
-	}
-	public BoardPanel getBoard1(){
-		return board1;
-	}
+	/**
+	 * Este metodo retorna el numero de buffos elegidos
+	 * para el juego
+	 * @return buffos, es el numero inicial de buffos
+	 */
+	public int getBuffos(){return main.getBuffos();}
 
-	public BoardPanel getBoard2(){
-		return board2;
-	}
-	public SidePanel getSide(){
-		return side;
-	}
-	public String getnickname(){
-		return nickname;
-	}
+	/**
+	 * Este metodo retorna el JPanel del tablero
+	 * del jugador numero uno
+	 * @return board1, es el tablero del jugador uno
+	 */
+	public BoardPanel getBoard1(){return board1;}
+
+	/**
+	 * Este metodo retorna el JPanel del tablero
+	 * del jugador numero dos
+	 * @return board2, es el tablero del jugador dos
+	 */
+	public BoardPanel getBoard2(){return board2;}
+
+	/**
+	 * Este metodo retorna el JPanel de la informacion
+	 * del juego
+	 * @return side, JPanel de la informacion del juego
+	 */
+	public SidePanel getSide(){return side;}
+
+	/**
+	 * Este metodo retorna el apodo del jugador
+	 * @return nickname, es el apodo el jugador
+	 */
+	public String getnickname(){return nickname;}
+
+	/**
+	 * Este metodo retorna el puntaje del jugador uno
+	 * @return puntaje jugador uno
+	 * @throws TetrisException, "El juego aun no a terminado"
+	 */
 	public int getScore() throws TetrisException {
 		if (game1.isGameOver()) return game1.getScore();
 		else{

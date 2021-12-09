@@ -1,11 +1,11 @@
 package Dominio;
 
 /**
- * The TetrisException class is where game exception
- * handling is done
+ * La clase TetrisException es donde manejamos
+ * las excepcione spropias del juego
  *
  * @author Cesar Vasquez - Ronaldo Henao
- * @version 1.0  (December 07, 2021)
+ * @version 1.0  (December 09, 2021)
  */
 public class TetrisException extends Exception{
 
@@ -14,8 +14,8 @@ public class TetrisException extends Exception{
     public static final String NO_GAME_FINISHED = "Game has not finished yet";
 
     /**
-     * Create exception
-     * @param message, is the message when throwing exception
+     * Crea la excepcion
+     * @param message, es el mensaje lanzado en la excepcion
      */
     public TetrisException(String message){
         super(message);

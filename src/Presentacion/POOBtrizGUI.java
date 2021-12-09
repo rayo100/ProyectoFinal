@@ -4,6 +4,15 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
+/**
+ * La clase POOBtrizGUI es el JFrame unico y principal
+ * donde inicia el juego, allí podremos empezar a jugar,
+ * elegir el numero de buffos, elegir el modo de juego,
+ * elegir la velocidad del juego, entre otras acciones
+ *
+ * @author Cesar Vasquez - Ronaldo Henao
+ * @version 1.0  (December 09, 2021)
+ */
 public class POOBtrizGUI extends JFrame {
     //Tamano ventana
     private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 100;
@@ -36,17 +45,28 @@ public class POOBtrizGUI extends JFrame {
     //Velocity
     private JComboBox comboVelocity;
 
-
+    /**
+     * Este metodo crea el JFrame donde inicia el juego
+     * @param title,  es el titulo que llevará el JFrame
+     */
     public POOBtrizGUI(String title) {
         super(title);
         prepareElementosMain();
         prepareAccionesMain();
     }
 
+    /**
+     * Este metodo es el encargado de hacer correr el juego
+     * @param args
+     */
     public static void main(String[] args) {
         POOBtrizGUI gui = new POOBtrizGUI("POOBtriz Game");
         gui.setVisible(true);
     }
+
+    /*
+     * Este metodo prepara los elementos que el JFrame mostrará
+     */
     private void prepareElementosMain(){
         setPreferredSize(new Dimension(ANCHO,ALTO));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -64,6 +84,10 @@ public class POOBtrizGUI extends JFrame {
         prepareElementosChooser();
     }
 
+    /*
+     * Este metodo prepara los elementos que se mostraran del icono
+     * del juego
+     */
     private void prepareElementosIcono(){
         iconTetris = new JPanel();
         icon = new ImageIcon("tetris.jpg");
@@ -71,6 +95,10 @@ public class POOBtrizGUI extends JFrame {
         iconTetris.add(labelIcon);
         iconTetris.setBackground(Color.BLACK);
     }
+
+    /*
+     * Este metodo prepara los elementos que son botones
+     */
     private void prepareElementosBotones(){
         botones = new JPanel(new GridLayout(1,5));
         comboMode = new JComboBox();
@@ -83,6 +111,10 @@ public class POOBtrizGUI extends JFrame {
         start.setEnabled(true);
         exit = new JButton("Exit");
     }
+
+    /*
+     * Este metodo prepara los elementos del menú del juego
+     */
     private void prepareElementosMenu(){
         menuExit = new JMenuBar();
         archivo = new JMenu("File");
@@ -96,6 +128,9 @@ public class POOBtrizGUI extends JFrame {
         worldRecord = new JMenuItem("World");
     }
 
+    /*
+     * Este metodo agrega los elementos que son botones
+     */
     private void agregueElementosBotones() {
         panelBuffos.add(numberBuffos);
         panelBuffos.add(spinnerBuffos);
@@ -107,6 +142,10 @@ public class POOBtrizGUI extends JFrame {
         add(iconTetris, BorderLayout.CENTER);
         add(botones, BorderLayout.SOUTH);
     }
+
+    /*
+     * Este metodo agrega algunos elementos que son parte del menu
+     */
     private void agregueElementosMenu1(){
         archivo.add(newGame);
         archivo.addSeparator();
@@ -119,6 +158,9 @@ public class POOBtrizGUI extends JFrame {
         archivo.add(exitGame);
         records.add(worldRecord);
     }
+    /*
+     * Este metodo agrega el resto de elementos que son parte del menu
+     */
     private void agregueElementosMenu2(){
         menuExit.add(archivo);
         menuExit.add(records);
@@ -133,6 +175,10 @@ public class POOBtrizGUI extends JFrame {
         comboVelocity.addItem("Uniform - Easy");
         comboVelocity.addItem("Uniform - Hard");
     }
+
+    /*
+     * Este metodo configura los botones
+     */
     private void configurationButtons(){
         comboMode.setBackground(Color.WHITE);
         start.setBackground(Color.WHITE);
@@ -140,10 +186,16 @@ public class POOBtrizGUI extends JFrame {
         exit.setBackground(Color.WHITE);
     }
 
-    private void prepareAccionesMain(){
-        prepareAccionesMenu();
-    }
+    /*
+     * Este metodo prepara las acciones que se
+     * podran realizar en el JFrame
+     */
+    private void prepareAccionesMain(){prepareAccionesMenu();}
 
+    /*
+     * Este metodo prepara las acciones que se
+     * pueden realizar en el menú
+     */
     private void prepareAccionesMenu() {
         exit.addActionListener(e -> salga());
         exitGame.addActionListener(e -> salga());
@@ -151,6 +203,11 @@ public class POOBtrizGUI extends JFrame {
         start.addActionListener(e -> startGame());
         //setComboMode();
     }
+
+    /*
+     * Este metodo nos muestra cando puede estar
+     * activo el boton start para iniciar el juego
+     */
     private void setComboMode(){
         comboMode.addActionListener(new ActionListener() {
             @Override
@@ -165,6 +222,9 @@ public class POOBtrizGUI extends JFrame {
         });
     }
 
+    /*
+     * Este metodo inicia el juego
+     */
     private void startGame(){
         setVisible(false);
         Tetris.loadGame(this);
@@ -176,7 +236,9 @@ public class POOBtrizGUI extends JFrame {
         frame.setVisible(true);
     }
 
-
+    /*
+     * Este metodo prepara el selector de archivos
+     */
     private void prepareElementosChooser() {
         fileChooser = new JFileChooser();
     }
@@ -197,6 +259,9 @@ public class POOBtrizGUI extends JFrame {
         }
     }
 
+    /**
+     * Este metodo nos permite salir del juego y finalizar la ejecucion
+     */
     public void salga() {
         if (JOptionPane.showConfirmDialog(rootPane, "Do you want to log out?",
                 "Get out of the system", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -204,7 +269,10 @@ public class POOBtrizGUI extends JFrame {
         }
     }
 
-
+    /**
+     * Este metodo retorna el numero de buffos que se podran usar en el juego
+     * @return noBuffos, numerode buffos inicial
+     */
     public int getBuffos(){
         int noBuffos = (Integer) spinnerBuffos.getValue();
         return noBuffos;

@@ -3,9 +3,19 @@ package Persistencia;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.Scanner;
+/**
+ * La clase FileHandler es el manejador de archivos
+ * para el juego
+ *
+ * @author Cesar Vasquez - Ronaldo Henao
+ * @version 1.0  (December 09, 2021)
+ */
 
 public class FileHandler {
-
+    /**
+     * Este metodo escribe en el archivo que se crea
+     * @param data, es una lista de cadenas
+     */
     public static void writeToFile(String[] data){
         try {
             FileWriter writer = new FileWriter("records.txt");
@@ -20,7 +30,11 @@ public class FileHandler {
         }
     }
 
-
+    /**
+     * Este metodo retorna la lista de cadenas de
+     * los records de los jugadores
+     * @return data, la lista de cadenas
+     */
     public static String[] readData(){
         String[] data = new String[10];
         try {
