@@ -1,6 +1,7 @@
 package Presentacion;
 
 import Dominio.Game;
+import Dominio.TetrisException;
 
 import java.awt.*;
 import java.awt.event.KeyAdapter;
@@ -20,27 +21,37 @@ public class Tetris extends JDialog {
 	private BoardPanel board1;
 	private SidePanel side;
 	private BoardPanel board2;
-	private TetrisGUI main;
-	private Game game;
+	private POOBtrizGUI main;
+	private String nickname;
+	private Game game1;
+	private Game game2;
+	private static Tetris tetris;
+
 	public static boolean isTwoPlayer = true;
 
-	public static void loadGame(TetrisGUI main){
 
-		Runnable runnable = new Runnable() {
-			@Override
-			public void run() {
-				Tetris tetris = new Tetris(main, "Tetris Game");
-				tetris.startGame();
-			}
-		};
+	public static void loadGame(POOBtrizGUI main){
+		tetris = new Tetris(main, "POOBtriz game");
+		Runnable runnable = () -> tetris.startGame1();
 		Thread hilo = new Thread(runnable);
 		hilo.start();
+		if(isTwoPlayer) loadGame2();
+	}
+	private static void loadGame2(){
+		Runnable runnable = () -> tetris.startGame2();
+		Thread hilo2 = new Thread(runnable);
+		hilo2.start();
 	}
 
-	private Tetris(TetrisGUI principal, String title) {
+	private Tetris(POOBtrizGUI principal, String title) {
 		super(principal,title);
 		this.main = principal;
-		game = Game.getGame(this);
+		game1 = new Game(this,false);
+		if (isTwoPlayer) {
+			game1 = new Game(this,false);
+			game2 = new Game(this,isTwoPlayer);
+		}
+
 		prepareElementos();
 	}
 
@@ -59,9 +70,9 @@ public class Tetris extends JDialog {
 	}
 
 	private void cargarElementos(){
-		this.board1 = new BoardPanel(game);
-		this.side = new SidePanel(game,this);
-		if(isTwoPlayer) this.board2 = new BoardPanel(game);
+		this.board1 = new BoardPanel(game1);
+		this.side = new SidePanel(game1,this);
+		if(isTwoPlayer) this.board2 = new BoardPanel(game2);
 	}
 	private void configurarElementos(){
 
@@ -102,7 +113,10 @@ public class Tetris extends JDialog {
 			public void keyReleased(KeyEvent e) {
 				switch(e.getKeyCode()) {
 					case KeyEvent.VK_S:
-						game.caseSPressed();
+						game1.caseSPressed();
+						break;
+					case KeyEvent.VK_DOWN:
+						if(isTwoPlayer) game2.caseSPressed();
 						break;
 				}
 			}
@@ -117,39 +131,64 @@ public class Tetris extends JDialog {
 	private void keyCases(KeyEvent e){
 		switch(e.getKeyCode()) {
 			case KeyEvent.VK_S:
-				game.caseS();
+				game1.caseS();
 				break;
 			case KeyEvent.VK_A:
-				game.caseA();
+				game1.caseA();
 				break;
 			case KeyEvent.VK_W:
-				game.caseW();
+				game1.caseW();
 				break;
 			case KeyEvent.VK_P:
-				game.caseP();
+				game1.caseP();
+				if(isTwoPlayer) game2.caseP();
 				break;
 			case KeyEvent.VK_D:
-				game.caseD();
+				game1.caseD();
 				break;
 			case KeyEvent.VK_E:
-				game.caseE();
+				game1.caseE();
+				if (isTwoPlayer) game2.caseE();
 				break;
 			case KeyEvent.VK_O:
-				game.caseO();
+				game1.caseO();
 				break;
 			case KeyEvent.VK_R:
-				game.caseR();
+				game1.caseR();
+				if (isTwoPlayer) game2.caseR();
 				break;
 			case KeyEvent.VK_I:
-				game.caseI();
+				game1.caseI();
+				if(isTwoPlayer) game2.caseI();
+				break;
+			case KeyEvent.VK_LEFT:
+				if (isTwoPlayer) game2.caseA();
+				break;
+			case KeyEvent.VK_DOWN:
+				if(isTwoPlayer)game2.caseS();
+				break;
+			case KeyEvent.VK_UP:
+				if(isTwoPlayer)game2.caseW();
+				break;
+			case KeyEvent.VK_RIGHT:
+				if(isTwoPlayer)game2.caseD();
 				break;
 //			case KeyEvent.VK_PERIOD:
 //				game.casePeriod();
 //				break;
 		}
 	}
-	public void startGame() {
-		game.startGame();
+
+
+
+	public Game getMaingame(){
+		return this.game1;
+	}
+	public void startGame1() {
+		game1.startGame();
+	}
+	public void startGame2(){
+		game2.startGame();
 	}
 
 	public void Dispose(){
@@ -158,7 +197,6 @@ public class Tetris extends JDialog {
 	}
 
 	public String getNickname(){
-		String nickname;
 		nickname = JOptionPane.showInputDialog(null,
 				"Player # 1 Nickname.", "Players Information",
 				JOptionPane.PLAIN_MESSAGE);
@@ -180,9 +218,23 @@ public class Tetris extends JDialog {
 	public BoardPanel getBoard1(){
 		return board1;
 	}
+
+	public BoardPanel getBoard2(){
+		return board2;
+	}
 	public SidePanel getSide(){
 		return side;
 	}
+	public String getnickname(){
+		return nickname;
+	}
+	public int getScore() throws TetrisException {
+		if (game1.isGameOver()) return game1.getScore();
+		else{
+			throw new TetrisException(TetrisException.NO_GAME_FINISHED);
+		}
+	}
+
 
 //	private void vsMachine(){
 //		JOptionPane.showInputDialog(null, "Player Nickname.", "Player Information", JOptionPane.PLAIN_MESSAGE);

@@ -33,23 +33,24 @@ public class Game {
     private float gameSpeed;
     private Board board;
     private SidePanel side;
-    private int nRenders;
-
+    private boolean twoPlayers;
+    private boolean isWinner;
     /**
      * This method return the new game
      * @param tetris, tetris is the panel of the game
      * @return
      */
-    public static Game getGame(Tetris tetris){
-        if(GAME == null) GAME = new Game(tetris);
-        return GAME;
-    }
+//    public static Game getGame(Tetris tetris){
+//        if(GAME == null) GAME = new Game(tetris);
+//        return GAME;
+//    }
 
     /*
-     * Create the panel of the tetris game
+     * Create the dialog of the tetris game
      * @param tetris, tetris is the panel of the game
      */
-    private Game(Tetris tetris){
+    public Game(Tetris tetris,boolean twoPlayers){
+        this.twoPlayers = twoPlayers;
         this.tetris = tetris;
     }
 
@@ -57,8 +58,8 @@ public class Game {
      * This method start the tetris game
      */
     public void startGame(){
-        nRenders = 0;
-        board = tetris.getBoard1().getBoard();
+        if (twoPlayers) board = tetris.getBoard2().getBoard();
+        else board = tetris.getBoard1().getBoard();
         side = tetris.getSide();
         this.isNewGame = true;
         this.gameSpeed = 1.0f;
@@ -137,7 +138,11 @@ public class Game {
         this.level = 1;
         this.score = 0;
         this.gameSpeed = 1.0f;
-        this.nextType = new TetrominoeC();
+        if (!twoPlayers) {
+            this.nextType = new TetrominoeC();
+        } else {
+            this.nextType = tetris.getMaingame().getNextPieceType();
+        }
         this.isNewGame = false;
         this.isGameOver = false;
         board.clear();
@@ -150,7 +155,6 @@ public class Game {
      * This method render the tetris game
      */
     private void renderGame(){
-        nRenders += 1;
         board.repaint();
         side.repaint();
     }
@@ -163,20 +167,30 @@ public class Game {
         this.currentCol = currentType.getSpawnColumn();
         this.currentRow = currentType.getSpawnRow();
         this.currentRotation = 0;
-        this.nextType = new TetrominoeC();
-        if(!board.isValidAndEmpty(currentType, currentCol, currentRow, currentRotation)) {
+        if(twoPlayers)this.nextType = tetris.getMaingame().getNextPieceType();
+        else this.nextType = new TetrominoeC();
+        if(!board.isValidAndEmpty(currentType, currentCol, currentRow, currentRotation) ||
+                !board.isValidAndEmpty()) {
             finishGame();
         }
+
     }
 
     /*
      * This method finish the tetris game
      */
     private void finishGame(){
-        System.out.println(nRenders);
-        this.isGameOver = true;
+        isGameOver = true;
         logicTimer.setPaused(true);
+        records();
     }
+
+    private void records(){
+        Records records = Records.getRecord(tetris);
+        records.getScores();
+    }
+
+
 
     /*
      * This method rotate a piece
@@ -320,7 +334,7 @@ public class Game {
     public boolean isPaused() {return isPaused;}
 
     /**
-     * his method returns if game over
+     * This method returns if game over
      * @return True or False
      */
     public boolean isGameOver() {return isGameOver;}

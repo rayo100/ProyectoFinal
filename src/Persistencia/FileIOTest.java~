@@ -1,0 +1,55 @@
+package Persistencia;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.Scanner;
+
+public class FileIOTest {
+
+    private static FileIOTest test;
+    private static StringBuffer stringBufferofData = new StringBuffer();
+    private static String filename = "Records.txt";
+    private static File records;
+    private String[] data;
+
+    public static FileIOTest getFileHandler(){
+        if (test == null) test = new FileIOTest();
+        return test;
+    }
+
+    private FileIOTest(){
+
+    }
+
+
+    private static void createFile() {
+        try{
+            records = new File(filename);
+            if (records.createNewFile()) replacement();
+            else
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private static void writeFile(){
+        try{
+            FileWriter writer = new FileWriter(filename);
+            for (String i: test.data){
+                writer.write(i);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public static void replacement() {
+
+    }
+
+    private static boolean readFile() {
+
+    }
+}

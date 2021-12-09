@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class TetrisGUI extends JFrame {
+public class POOBtrizGUI extends JFrame {
     //Tamano ventana
     private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 100;
     private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height / 2;
@@ -37,14 +37,14 @@ public class TetrisGUI extends JFrame {
     private JComboBox comboVelocity;
 
 
-    public TetrisGUI(String title) {
+    public POOBtrizGUI(String title) {
         super(title);
         prepareElementosMain();
         prepareAccionesMain();
     }
 
     public static void main(String[] args) {
-        TetrisGUI gui = new TetrisGUI("Tetris Game");
+        POOBtrizGUI gui = new POOBtrizGUI("POOBtriz Game");
         gui.setVisible(true);
     }
     private void prepareElementosMain(){
