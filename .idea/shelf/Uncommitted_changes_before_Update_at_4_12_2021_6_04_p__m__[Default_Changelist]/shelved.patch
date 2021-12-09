@@ -1,0 +1,380 @@
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_3_35_p__m___Default_Changelist_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_3_35_p__m___Default_Changelist_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_3_35_p__m___Default_Changelist_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_3_35_p__m___Default_Changelist_.xml	(revision 95bf4095dfd5032685c1a9240d5840c6670863b7)
++++ /dev/null	(revision 95bf4095dfd5032685c1a9240d5840c6670863b7)
+@@ -1,14 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_2_12_2021_3_35_p__m__[Default_Changelist]" date="1638477318258" recycled="false" toDelete="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2_12_2021_3_35_p__m__[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2/12/2021 3:35 p. m. [Default Changelist]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_23_11_2021_8_45_p__m__[Default_Changelist]1/Tetris1.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".idea/shelf/Uncommitted_changes_before_Update_at_23_11_2021_8_45_p__m__[Default_Changelist]1/TetrisMain.class" />
+-    <option name="AFTER_PATH" />
+-    <option name="SHELVED_PATH" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: src/Presentacion/TetrisMain.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Presentacion;\r\nimport javax.swing.*;\r\nimport java.awt.*;\r\nimport java.awt.event.*;\r\nimport java.io.*;\r\nimport Dominio.*;\r\n\r\npublic class TetrisMain extends JFrame {\r\n    //Tamano ventana\r\n    private final int ANCHO = Toolkit.getDefaultToolkit().getScreenSize().width / 2 - 100;\r\n    private final int ALTO = Toolkit.getDefaultToolkit().getScreenSize().height / 2;\r\n    //Menu\r\n    private JMenuBar menuExit;\r\n    private JMenu archivo;\r\n    private JMenu records;\r\n    private JMenuItem newGame;\r\n    private JMenuItem saveGame;\r\n    private JMenuItem openGame;\r\n    private JMenuItem importGame;\r\n    private JMenuItem exportGame;\r\n    private JMenuItem exitGame;\r\n    private JFileChooser fileChooser;\r\n    //Panel bottons\r\n    private JPanel panelBuffos;\r\n    private JLabel numberBuffos;\r\n    private JSpinner spinnerBuffos;\r\n    private JButton start;\r\n    private JButton exit;\r\n    private JPanel botones;\r\n    //Panel images\r\n    private JPanel iconTetris;\r\n    private ImageIcon icon;\r\n    private JLabel labelIcon;\r\n    //Mode\r\n    private JComboBox comboMode;\r\n    //Velocity\r\n    private JComboBox comboVelocity;\r\n    private Tetris juego;\r\n    private TetrisMain main;\r\n\r\n    public TetrisMain(String title) {\r\n        super(title);\r\n        prepareElementosMain();\r\n        prepareAccionesMain();\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        TetrisMain gui = new TetrisMain(\"Tetris Game\");\r\n        gui.setVisible(true);\r\n    }\r\n    private void prepareElementosMain(){\r\n        setPreferredSize(new Dimension(ANCHO,ALTO));\r\n        setDefaultCloseOperation(EXIT_ON_CLOSE);\r\n        pack();\r\n        setLocationRelativeTo(null);\r\n        setResizable(false);\r\n        setLayout(new BorderLayout());\r\n        prepareElementosIcono();\r\n        prepareElementosBotones();\r\n        prepareElementosMenu();\r\n        agregueElementosBotones();\r\n        agregueElementosMenu1();\r\n        agregueElementosMenu2();\r\n        configurationButtons();\r\n        prepareElementosChooser();\r\n    }\r\n\r\n    private void prepareElementosIcono(){\r\n        iconTetris = new JPanel();\r\n        icon = new ImageIcon(\"tetris.jpg\");\r\n        labelIcon = new JLabel(null,icon ,SwingConstants.CENTER);\r\n        iconTetris.add(labelIcon);\r\n        iconTetris.setBackground(Color.BLACK);\r\n\r\n    }\r\n    private void prepareElementosBotones(){\r\n        botones = new JPanel(new GridLayout(1,5));\r\n        comboMode = new JComboBox();\r\n        comboVelocity = new JComboBox();\r\n        panelBuffos = new JPanel(new GridLayout(1,2));\r\n        numberBuffos = new JLabel(\"# Buffos:\");\r\n        spinnerBuffos = new JSpinner();\r\n        spinnerBuffos.setModel(new SpinnerNumberModel(0, 0, 50, 1));\r\n        start = new JButton(\"Start\");\r\n        start.setEnabled(false);\r\n        exit = new JButton(\"Exit\");\r\n    }\r\n    private void prepareElementosMenu(){\r\n        menuExit = new JMenuBar();\r\n        archivo = new JMenu(\"File\");\r\n        records = new JMenu(\"Records\");\r\n        newGame = new JMenuItem(\"New\");\r\n        saveGame = new JMenuItem(\"Save\");\r\n        openGame = new JMenuItem(\"Open\");\r\n        importGame = new JMenuItem(\"Import\");\r\n        exportGame = new JMenuItem(\"Export\");\r\n        exitGame = new JMenuItem(\"Exit\");\r\n    }\r\n\r\n    private void agregueElementosBotones() {\r\n        panelBuffos.add(numberBuffos);\r\n        panelBuffos.add(spinnerBuffos);\r\n        botones.add(comboMode);\r\n        botones.add(panelBuffos);\r\n        botones.add(start);\r\n        botones.add(comboVelocity);\r\n        //botones.add(credits);\r\n        botones.add(exit);\r\n        add(iconTetris, BorderLayout.CENTER);\r\n        add(botones, BorderLayout.SOUTH);\r\n    }\r\n    private void agregueElementosMenu1(){\r\n        archivo.add(newGame);\r\n        archivo.addSeparator();\r\n        archivo.add(openGame);\r\n        archivo.addSeparator();\r\n        archivo.add(saveGame);\r\n        archivo.addSeparator();\r\n        archivo.add(importGame);\r\n        archivo.addSeparator();\r\n        archivo.add(exportGame);\r\n        archivo.addSeparator();\r\n        archivo.add(exitGame);\r\n    }\r\n    private void agregueElementosMenu2(){\r\n        menuExit.add(archivo);\r\n        menuExit.add(records);\r\n        setJMenuBar(menuExit);\r\n        comboMode.addItem(\"Game Mode\");\r\n        comboMode.addItem(\"Player\");\r\n        comboMode.addItem(\"Player vs Player\");\r\n        comboMode.addItem(\"Player vs Machine\");\r\n        comboVelocity.addItem(\"Velocity\");\r\n        comboVelocity.addItem(\"Accelerated\");\r\n        comboVelocity.addItem(\"Uniform - Easy\");\r\n        comboVelocity.addItem(\"Uniform - Hard\");\r\n    }\r\n    private void configurationButtons(){\r\n        comboMode.setBackground(Color.WHITE);\r\n        start.setBackground(Color.WHITE);\r\n        comboVelocity.setBackground(Color.WHITE);\r\n        exit.setBackground(Color.WHITE);\r\n    }\r\n\r\n    private void prepareAccionesMain(){\r\n        prepareAccionesMenu();\r\n    }\r\n\r\n    private void prepareAccionesMenu() {\r\n        exit.addActionListener(e -> salga());\r\n        exitGame.addActionListener(e -> salga());\r\n        saveGame.addActionListener(e -> save());\r\n        openGame.addActionListener(e -> open());\r\n        start.addActionListener(e -> startGame());\r\n        setComboMode();\r\n    }\r\n    private void setComboMode(){\r\n        comboMode.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                int aux = comboMode.getSelectedIndex();\r\n                int aux2 = comboVelocity.getSelectedIndex();\r\n                if(aux == 0 || aux2 == 0){\r\n                    start.setEnabled(false);\r\n                }\r\n                else{start.setEnabled(true);}\r\n            }\r\n        });\r\n    }\r\n    private void setComboVelocity(){\r\n        comboVelocity.addActionListener(new ActionListener() {\r\n            @Override\r\n            public void actionPerformed(ActionEvent e) {\r\n                int aux = comboVelocity.getSelectedIndex();\r\n                if(aux == 0){\r\n                    start.setEnabled(false);\r\n                }\r\n                else{start.setEnabled(true);}\r\n            }\r\n        });\r\n    }\r\n\r\n    private void startGame(){\r\n        setVisible(false);\r\n        Tetris.loadGame(this);\r\n    }\r\n\r\n    private void irACreditos() {\r\n        setVisible(false);\r\n        Credits frame = new Credits(this,\"Credits\");\r\n        frame.setVisible(true);\r\n    }\r\n\r\n\r\n    private void prepareElementosChooser() {\r\n        fileChooser = new JFileChooser();\r\n    }\r\n\r\n    public void save() {\r\n        int action = fileChooser.showSaveDialog(saveGame);\r\n        if (action == JFileChooser.APPROVE_OPTION) {\r\n            File archivo = fileChooser.getSelectedFile();\r\n            JOptionPane.showMessageDialog(null, \"File \"+ archivo.getName() +\" saved\" + \"\\nFuncionalidad Salvar en construccion\");\r\n        }\r\n    }\r\n\r\n    private void open() {\r\n        int action = fileChooser.showOpenDialog(openGame);\r\n        if (action == JFileChooser.APPROVE_OPTION) {\r\n            File archivo = fileChooser.getSelectedFile();\r\n            JOptionPane.showMessageDialog(null, \"File \" + archivo.getName() + \" opened \"  +\"\\nFuncionalidad Abir en construccion\");\r\n        }\r\n    }\r\n\r\n    public void salga() {\r\n        if (JOptionPane.showConfirmDialog(rootPane, \"Do you want to log out?\",\r\n                \"Get out of the system\", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {\r\n            System.exit(0);\r\n        }\r\n    }\r\n\r\n    private void vsMachine(){\r\n        JOptionPane.showInputDialog(null, \"Player Nickname.\", \"Player Information\", JOptionPane.PLAIN_MESSAGE);\r\n        String [] options= {\"Principiant\", \"Expert\", \"Cancel\"};\r\n        JOptionPane.showOptionDialog(null, \"Choose machine level.\", \"Machine Level\",\r\n                0, JOptionPane.QUESTION_MESSAGE, null, options, \"Principiant\");\r\n    }\r\n    private void playerVsPlayer(){\r\n        JOptionPane.showInputDialog(null, \"Player # 1 Nickname.\", \"Players Information\", JOptionPane.PLAIN_MESSAGE);\r\n        JOptionPane.showInputDialog(null, \"Player # 2 Nickname.\", \"Players Information\", JOptionPane.PLAIN_MESSAGE);\r\n    }\r\n    public String player(){\r\n        String nickname = (JOptionPane.showInputDialog(null, \"Player Nickname.\", \"Player Information\",\r\n                JOptionPane.PLAIN_MESSAGE));\r\n        return nickname;\r\n    }\r\n\r\n    public int getBuffos(){\r\n        int noBuffos = (Integer) spinnerBuffos.getValue();\r\n        return noBuffos;\r\n    }\r\n\r\n\r\n//    private void bottonPlayers() throws TetrisException{\r\n//        String selected =(String) comboMode.getSelectedItem();\r\n//        switch (selected) {\r\n//\r\n//            case KeyEvent.VK_P -> player();\r\n//            case KeyEvent.VK_LEFT -> playerVsPlayer();\r\n//            case KeyEvent.VK_RIGHT -> vsMachine();\r\n//        }\r\n//    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Presentacion/TetrisMain.java b/src/Presentacion/TetrisMain.java
+--- a/src/Presentacion/TetrisMain.java	(revision 95bf4095dfd5032685c1a9240d5840c6670863b7)
++++ b/src/Presentacion/TetrisMain.java	(date 1638638545757)
+@@ -71,7 +71,6 @@
+         labelIcon = new JLabel(null,icon ,SwingConstants.CENTER);
+         iconTetris.add(labelIcon);
+         iconTetris.setBackground(Color.BLACK);
+-
+     }
+     private void prepareElementosBotones(){
+         botones = new JPanel(new GridLayout(1,5));
+@@ -82,7 +81,7 @@
+         spinnerBuffos = new JSpinner();
+         spinnerBuffos.setModel(new SpinnerNumberModel(0, 0, 50, 1));
+         start = new JButton("Start");
+-        start.setEnabled(false);
++        start.setEnabled(true);
+         exit = new JButton("Exit");
+     }
+     private void prepareElementosMenu(){
+@@ -152,7 +151,7 @@
+         saveGame.addActionListener(e -> save());
+         openGame.addActionListener(e -> open());
+         start.addActionListener(e -> startGame());
+-        setComboMode();
++        //setComboMode();
+     }
+     private void setComboMode(){
+         comboMode.addActionListener(new ActionListener() {
+Index: src/Dominio/TetrominoeC.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Dominio;\r\n\r\npublic class TetrominoeC {\r\n    public static boolean[] TYPEO;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Dominio/TetrominoeC.java b/src/Dominio/TetrominoeC.java
+--- a/src/Dominio/TetrominoeC.java	(revision 95bf4095dfd5032685c1a9240d5840c6670863b7)
++++ b/src/Dominio/TetrominoeC.java	(date 1638638545719)
+@@ -1,5 +1,134 @@
+ package Dominio;
+ 
++import Presentacion.BoardPanel;
++
++import java.awt.*;
++import java.util.ArrayList;
++
+ public class TetrominoeC {
+-    public static boolean[] TYPEO;
++    private final boolean[][] TYPEO = {
++        {
++                true, true,
++                true, true,
++        },
++        {
++                true, true,
++                true, true,
++        },
++        {
++                true, true,
++                true, true,
++        },
++        {
++                true, true,
++                true, true,
++        }
++    };
++    private final boolean[][] TYPES = {
++            {
++                    false, true, true,
++                    true, true, false,
++                    false, false, false,
++            },
++            {
++                    false, true, false,
++                    false, true, true,
++                    false, false, true,
++            },
++            {
++                    false, false, false,
++                    false, true, true,
++                    true, true, false,
++            },
++            {
++                    true, false, false,
++                    true, true, false,
++                    false, true, false,
++            }
++    };
++    private final boolean[][] TYPET = {
++            {
++                    false, true, false,
++                    true, true, true,
++                    false, false, false,
++            },
++            {
++                    false, true, false,
++                    false, true, true,
++                    false, true, false,
++            },
++            {
++                    false, false, false,
++                    true, true, true,
++                    false, true, false,
++            },
++            {
++                    false, true, false,
++                    true, true, false,
++                    false, true, false,
++            }
++    };
++    private final boolean[][] TYPEL = {
++            {
++                    false, false, true,
++                    true, true, true,
++                    false, false, false,
++            },
++            {
++                    false, true, false,
++                    false, true, false,
++                    false, true, true,
++            },
++            {
++                    false, false, false,
++                    true, true, true,
++                    true, false, false,
++            },
++            {
++                    true, true, false,
++                    false, true, false,
++                    false, true, false,
++            }
++    };
++    private final boolean[][] TYPEI = {
++            {
++                    false, false, false, false,
++                    true, true, true, true,
++                    false, false, false, false,
++                    false, false, false, false,
++            },
++            {
++                    false, false, true, false,
++                    false, false, true, false,
++                    false, false, true, false,
++                    false, false, true, false,
++            },
++            {
++                    false, false, false, false,
++                    false, false, false, false,
++                    true, true, true, true,
++                    false, false, false, false,
++            },
++            {
++                    false, true, false, false,
++                    false, true, false, false,
++                    false, true, false, false,
++                    false, true, false, false,
++            }
++    };
++    private final boolean[][][] types = {TYPEO,TYPEI,TYPET,TYPES,TYPEL};
++    private final Color[] colors = {
++            new Color(BoardPanel.COLOR_MAX, BoardPanel.COLOR_MAX,BoardPanel.COLOR_MIN),
++            new Color(BoardPanel.COLOR_MIN,BoardPanel.COLOR_MAX,BoardPanel.COLOR_MAX),
++            new Color(128,BoardPanel.COLOR_MIN,128),
++            new Color(BoardPanel.COLOR_MIN,BoardPanel.COLOR_MAX,BoardPanel.COLOR_MIN),
++            new Color(BoardPanel.COLOR_MAX,127,BoardPanel.COLOR_MIN)
++    };
++    private final int[] DIMENSIONS = {2,4,3,3,3};
++
++    private final int[] COLUMNS = {2,4,3,3,3};
++
++    private final int[] ROWS = {2,1,2,2,2};
++
++
+ }
+Index: src/Presentacion/Tetris.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Presentacion;\r\n\r\nimport Dominio.Clock;\r\nimport Dominio.Game;\r\nimport Dominio.Tetrominoe;\r\n\r\nimport java.awt.*;\r\nimport java.awt.event.KeyAdapter;\r\nimport java.awt.event.KeyEvent;\r\nimport java.awt.event.WindowAdapter;\r\nimport java.awt.event.WindowEvent;\r\nimport java.util.Random;\r\n\r\nimport javax.swing.*;\r\nimport javax.swing.border.CompoundBorder;\r\nimport javax.swing.border.EmptyBorder;\r\nimport javax.swing.border.TitledBorder;\r\n\r\npublic class Tetris extends JDialog {\r\n\r\n\tprivate final int ANCHO = 566;\r\n\tprivate final int ALTO = 568;\r\n\tprivate BoardPanel board;\r\n\tprivate SidePanel side;\r\n\tprivate TetrisMain main;\r\n\tprivate Game game;\r\n\r\n\tpublic static void loadGame(TetrisMain main){\r\n\t\tRunnable runnable = new Runnable() {\r\n\t\t\t@Override\r\n\t\t\tpublic void run() {\r\n\t\t\t\tTetris tetris = new Tetris(main, \"Tetris Game\");\r\n\t\t\t\ttetris.startGame();\r\n\t\t\t}\r\n\t\t};\r\n\t\tThread hilo = new Thread(runnable);\r\n\t\thilo.start();\r\n\t}\r\n\r\n\tprivate Tetris(TetrisMain principal, String title) {\r\n\t\tsuper(principal,title);\r\n\t\tthis.main = principal;\r\n\t\tgame = Game.getGame(this);\r\n\t\tprepareElementos();\r\n\t}\r\n\r\n\tprivate void prepareElementos(){\r\n\t\tsetPreferredSize(new Dimension(ANCHO,ALTO));\r\n\t\tsetLayout(new BorderLayout());\r\n\t\tsetResizable(false);\r\n\t\tcargarElementos();\r\n\t\tconfigurarElementos();\r\n\t\tagregarElementos();\r\n\t\tprepararAcciones();\r\n\t\tpack();\r\n\t\tsetLocationRelativeTo(null);\r\n\t\tsetVisible(true);\r\n\t}\r\n\r\n\tprivate void cargarElementos(){\r\n\t\tthis.board = new BoardPanel(game);\r\n\t\tthis.side = new SidePanel(game,this);\r\n\t}\r\n\tprivate void configurarElementos(){\r\n\r\n\t\tColor color = JColorChooser.showDialog(null, \"Choose a color\", Color.WHITE);\r\n\t\tboard.setBackground(color);\r\n\t\tboard.setBorder(new CompoundBorder(new EmptyBorder(3, 3, 8, 8),\r\n\t\t\t\tnew TitledBorder(\"Board\")));\r\n\t\tside.setBorder(new CompoundBorder(new EmptyBorder(5,5,5,5),\r\n\t\t\t\tnew TitledBorder(\"Game Info\")));\r\n\t}\r\n\r\n\tprivate void agregarElementos(){\r\n\t\tadd(board, BorderLayout.CENTER);\r\n\t\tadd(side, BorderLayout.WEST);\r\n\t}\r\n\r\n\tprivate void prepararAcciones(){\r\n\t\taddKeyListener(new KeyAdapter() {\r\n\t\t\t@Override\r\n\t\t\tpublic void keyPressed(KeyEvent e) {\r\n\t\t\t\tkeyCases(e);\r\n\t\t\t}\r\n\r\n\t\t\t@Override\r\n\t\t\tpublic void keyReleased(KeyEvent e) {\r\n\t\t\t\tswitch(e.getKeyCode()) {\r\n\t\t\t\t\tcase KeyEvent.VK_S:\r\n\t\t\t\t\t\tgame.caseSPressed();\r\n\t\t\t\t\t\tbreak;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t});\r\n\t\taddWindowListener(new WindowAdapter() {\r\n\t\t\t@Override\r\n\t\t\tpublic void windowClosing(WindowEvent e) {\r\n\t\t\t\tmain.setVisible(true);\r\n\t\t\t}\r\n\t\t});\r\n\t}\r\n\tprivate void keyCases(KeyEvent e){\r\n\t\tswitch(e.getKeyCode()) {\r\n\t\t\tcase KeyEvent.VK_S:\r\n\t\t\t\tgame.caseS();\r\n\t\t\t\tbreak;\r\n\t\t\tcase KeyEvent.VK_A:\r\n\t\t\t\tgame.caseA();\r\n\t\t\t\tbreak;\r\n\t\t\tcase KeyEvent.VK_W:\r\n\t\t\t\tgame.caseW();\r\n\t\t\t\tbreak;\r\n\t\t\tcase KeyEvent.VK_P:\r\n\t\t\t\tgame.caseP();\r\n\t\t\t\tbreak;\r\n\t\t\tcase KeyEvent.VK_D:\r\n\t\t\t\tgame.caseD();\r\n\t\t\t\tbreak;\r\n\t\t\tcase KeyEvent.VK_E:\r\n\t\t\t\tgame.caseEnter();\r\n\t\t\t\tbreak;\r\n\t\t\tcase KeyEvent.VK_O:\r\n\t\t\t\tgame.caseO();\r\n\t\t\t\tbreak;\r\n\t\t\tcase KeyEvent.VK_R:\r\n\t\t\t\tgame.caseR();\r\n\t\t\t\tbreak;\r\n\t\t\tcase KeyEvent.VK_I:\r\n\t\t\t\tgame.caseI();\r\n\t\t\t\tbreak;\r\n//\t\t\tcase KeyEvent.VK_SPACE:\r\n//\t\t\t\tcaseSpace();\r\n//\t\t\t\tbreak;\r\n\t\t}\r\n\t}\r\n\tpublic void startGame() {\r\n\t\tgame.startGame();\r\n\t}\r\n\r\n\t@Override\r\n\tpublic void dispose(){\r\n\t\tmain.setVisible(true);\r\n\t\tsuper.dispose();\r\n\t}\r\n\r\n\tpublic String getNickname(){\r\n\t\tString nickname;\r\n\t\tnickname = JOptionPane.showInputDialog(null,\r\n\t\t\t\t\"Player # 1 Nickname.\", \"Players Information\",\r\n\t\t\t\tJOptionPane.PLAIN_MESSAGE);\r\n\t\treturn nickname;\r\n\t}\r\n\r\n\tpublic int getBuffos(){\r\n\t\treturn main.getBuffos();\r\n\t}\r\n\tpublic BoardPanel getBoard(){\r\n\t\treturn board;\r\n\t}\r\n\tpublic SidePanel getSide(){\r\n\t\treturn side;\r\n\t}\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Presentacion/Tetris.java b/src/Presentacion/Tetris.java
+--- a/src/Presentacion/Tetris.java	(revision 95bf4095dfd5032685c1a9240d5840c6670863b7)
++++ b/src/Presentacion/Tetris.java	(date 1638638545756)
+@@ -95,7 +95,7 @@
+ 		addWindowListener(new WindowAdapter() {
+ 			@Override
+ 			public void windowClosing(WindowEvent e) {
+-				main.setVisible(true);
++				Dispose();
+ 			}
+ 		});
+ 	}
+@@ -117,7 +117,7 @@
+ 				game.caseD();
+ 				break;
+ 			case KeyEvent.VK_E:
+-				game.caseEnter();
++				game.caseE();
+ 				break;
+ 			case KeyEvent.VK_O:
+ 				game.caseO();
+@@ -137,8 +137,7 @@
+ 		game.startGame();
+ 	}
+ 
+-	@Override
+-	public void dispose(){
++	public void Dispose(){
+ 		main.setVisible(true);
+ 		super.dispose();
+ 	}
+Index: src/Dominio/TypeTetromino.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Dominio;\r\n\r\nimport java.awt.*;\r\n\r\npublic class TypeTetromino {\r\n    private Color firstColor;\r\n    private Color secondColor;\r\n    private Color thirdColor;\r\n    private int dimension;\r\n    private int cols;\r\n    private int rows;\r\n    private Boolean[][] typeRotations;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Dominio/TypeTetromino.java b/src/Dominio/TypeTetromino.java
+--- a/src/Dominio/TypeTetromino.java	(revision 95bf4095dfd5032685c1a9240d5840c6670863b7)
++++ b/src/Dominio/TypeTetromino.java	(date 1638638545721)
+@@ -3,9 +3,7 @@
+ import java.awt.*;
+ 
+ public class TypeTetromino {
+-    private Color firstColor;
+-    private Color secondColor;
+-    private Color thirdColor;
++    private Color color;
+     private int dimension;
+     private int cols;
+     private int rows;
+Index: src/Dominio/Game.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Dominio;\r\n\r\nimport Presentacion.BoardPanel;\r\nimport Presentacion.SidePanel;\r\nimport Presentacion.Tetris;\r\n\r\nimport java.util.Random;\r\n\r\npublic class Game {\r\n    private static Game GAME;\r\n    private Tetris tetris;\r\n\r\n    // Atributos del juego\r\n    private static final long FRAME_TIME = 1000L / 50L;\r\n    private static final int TYPE_COUNT = Tetrominoe.values().length;\r\n    private boolean isPaused;\r\n    private boolean isNewGame;\r\n    private boolean isGameOver;\r\n    private int level;\r\n    private int score;\r\n    private Random random;\r\n    private Clock logicTimer;\r\n    private Tetrominoe currentType;\r\n    private Tetrominoe nextType;\r\n    private int currentCol;\r\n    private int currentRow;\r\n    private int currentRotation;\r\n    private int dropCooldown;\r\n    private float gameSpeed;\r\n    private Board board;\r\n    private SidePanel side;\r\n\r\n    public static Game getGame(Tetris tetris){\r\n        if(GAME == null) GAME = new Game(tetris);\r\n        return GAME;\r\n    }\r\n    private Game(Tetris tetris){\r\n        this.tetris = tetris;\r\n    }\r\n    public void startGame(){\r\n        board = tetris.getBoard().getBoard();\r\n        side = tetris.getSide();\r\n        this.random = new Random();\r\n        this.isNewGame = true;\r\n        this.gameSpeed = 1.0f;\r\n        this.logicTimer = new Clock(gameSpeed);\r\n        logicTimer.setPaused(true);\r\n        while(true) {\r\n            long start = System.nanoTime();\r\n            logicTimer.update();\r\n            if(logicTimer.hasElapsedCycle()) {\r\n                updateGame();\r\n            }\r\n            if(dropCooldown > 0) {\r\n                dropCooldown--;\r\n            }\r\n            renderGame();\r\n            long delta = (System.nanoTime() - start) / 1000000L;\r\n            if(delta < FRAME_TIME) {\r\n                try {\r\n                    Thread.sleep(FRAME_TIME - delta);\r\n                } catch(Exception e) {\r\n                    e.printStackTrace();\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n    private void updateGame() {\r\n        if(board.isValidAndEmpty(currentType, currentCol, currentRow + 1, currentRotation)) {\r\n            currentRow++;\r\n        } else {\r\n            board.addPiece(currentType, currentCol, currentRow, currentRotation);\r\n            int cleared = board.checkLines();\r\n            if(cleared > 0) {\r\n                score += 50 << cleared;\r\n            }\r\n            acelerada();\r\n//            if (isAcelerada) {\r\n//                acelerada();\r\n//            }\r\n//            else if (isUniforme){\r\n//               uniforme();\r\n//            }\r\n        }\r\n    }\r\n\r\n    private void acelerada(){\r\n        gameSpeed += 0.035f;\r\n        logicTimer.setCyclesPerSecond(gameSpeed);\r\n        logicTimer.reset();\r\n        dropCooldown = 25;\r\n        level = (int) (gameSpeed * 1.70f);\r\n        spawnPiece();\r\n    }\r\n    private void uniforme(){\r\n        //gameSpeed += 0.035f;\r\n        logicTimer.setCyclesPerSecond(gameSpeed);\r\n        logicTimer.reset();\r\n        dropCooldown = 25;\r\n        level ++;//level = (int) (gameSpeed * 1.70f);\r\n        spawnPiece();\r\n    }\r\n\r\n    public void resetGame() {\r\n        this.level = 1;\r\n        this.score = 0;\r\n        this.gameSpeed = 1.0f;\r\n        this.nextType = Tetrominoe.values()[random.nextInt(TYPE_COUNT)];\r\n        this.isNewGame = false;\r\n        this.isGameOver = false;\r\n        board.clear();\r\n        logicTimer.reset();\r\n        logicTimer.setCyclesPerSecond(gameSpeed);\r\n        spawnPiece();\r\n    }\r\n\r\n    private void renderGame(){\r\n        board.repaint();\r\n        side.repaint();\r\n    }\r\n    private void spawnPiece() {\r\n        this.currentType = nextType;\r\n        this.currentCol = currentType.getSpawnColumn();\r\n        this.currentRow = currentType.getSpawnRow();\r\n        this.currentRotation = 0;\r\n        this.nextType = Tetrominoe.values()[random.nextInt(TYPE_COUNT)];\r\n        if(!board.isValidAndEmpty(currentType, currentCol, currentRow, currentRotation)) {\r\n            this.isGameOver = true;\r\n            logicTimer.setPaused(true);\r\n        }\r\n    }\r\n    private void rotatePiece(int newRotation) {\r\n        int newColumn = currentCol;\r\n        int newRow = currentRow;\r\n\r\n        int left = currentType.getLeftInset(newRotation);\r\n        int right = currentType.getRightInset(newRotation);\r\n        int top = currentType.getTopInset(newRotation);\r\n        int bottom = currentType.getBottomInset(newRotation);\r\n\r\n        if(currentCol < -left) {\r\n            newColumn -= currentCol - left;\r\n        } else if(currentCol + currentType.getDimension() - right >= BoardPanel.COL_COUNT) {\r\n            newColumn -= (currentCol + currentType.getDimension() - right) - BoardPanel.COL_COUNT + 1;\r\n        }\r\n\r\n        if(currentRow < -top) {\r\n            newRow -= currentRow - top;\r\n        } else if(currentRow + currentType.getDimension() - bottom >= BoardPanel.ROW_COUNT) {\r\n            newRow -= (currentRow + currentType.getDimension() - bottom) - BoardPanel.ROW_COUNT + 1;\r\n        }\r\n\r\n        if(board.isValidAndEmpty(currentType, newColumn, newRow, newRotation)) {\r\n            currentRotation = newRotation;\r\n            currentRow = newRow;\r\n            currentCol = newColumn;\r\n        }\r\n    }\r\n\r\n    public void caseD(){\r\n        if(!isPaused &&\r\n                board.isValidAndEmpty(currentType,currentCol+1,\r\n                        currentRow,currentRotation)) currentCol++;\r\n    }\r\n    public void caseS(){\r\n        if(!isPaused && dropCooldown == 0) {\r\n            logicTimer.setCyclesPerSecond(25.0f);\r\n        }\r\n    }\r\n    public void caseSPressed(){\r\n        logicTimer.setCyclesPerSecond(gameSpeed);\r\n        logicTimer.reset();\r\n    }\r\n\r\n    public void caseW(){\r\n        if(!isPaused) {\r\n            rotatePiece((currentRotation == 0) ? 3 : currentRotation - 1);\r\n        }\r\n    }\r\n    public void caseA(){\r\n        if(!isPaused && board.isValidAndEmpty(currentType, currentCol - 1, currentRow, currentRotation)) {\r\n            currentCol--;\r\n        }\r\n    }\r\n    public void caseP(){\r\n        if(!isGameOver && !isNewGame) {\r\n            isPaused = !isPaused;\r\n            logicTimer.setPaused(isPaused);\r\n        }\r\n    }\r\n    public void caseEnter(){\r\n        if(isGameOver || isNewGame) {\r\n            resetGame();\r\n        }\r\n    }\r\n    public void caseO(){\r\n        if(!isGameOver && isPaused) {\r\n            //saveGame();\r\n        }\r\n    }\r\n    public  void caseR(){\r\n        if (!isGameOver && !isPaused){\r\n            resetGame();\r\n        }\r\n        else{\r\n            //Lanzar excepcion\r\n        }\r\n    }\r\n    public void caseI(){\r\n        tetris.dispose();\r\n    }\r\n\r\n    public boolean isPaused() {\r\n        return isPaused;\r\n    }\r\n    public boolean isGameOver() {\r\n        return isGameOver;\r\n    }\r\n    public boolean isNewGame() {\r\n        return isNewGame;\r\n    }\r\n    public int getScore() {\r\n        return score;\r\n    }\r\n    public int getLevel() {\r\n        return level;\r\n    }\r\n    public Tetrominoe getPieceType() {\r\n        return currentType;\r\n    }\r\n    public Tetrominoe getNextPieceType() {\r\n        return nextType;\r\n    }\r\n    public int getPieceCol() {\r\n        return currentCol;\r\n    }\r\n    public int getPieceRow() {\r\n        return currentRow;\r\n    }\r\n    public int getPieceRotation() {\r\n        return currentRotation;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Dominio/Game.java b/src/Dominio/Game.java
+--- a/src/Dominio/Game.java	(revision 95bf4095dfd5032685c1a9240d5840c6670863b7)
++++ b/src/Dominio/Game.java	(date 1638638545680)
+@@ -189,7 +189,7 @@
+             logicTimer.setPaused(isPaused);
+         }
+     }
+-    public void caseEnter(){
++    public void caseE(){
+         if(isGameOver || isNewGame) {
+             resetGame();
+         }
+@@ -208,7 +208,8 @@
+         }
+     }
+     public void caseI(){
+-        tetris.dispose();
++        resetGame();
++        tetris.Dispose();
+     }
+ 
+     public boolean isPaused() {
+Index: src/Dominio/Tetrominoe.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Dominio;\r\n\r\nimport Presentacion.BoardPanel;\r\n\r\nimport java.awt.Color;\r\n\r\npublic enum Tetrominoe {\r\n\r\n\tTypeI(new Color(BoardPanel.COLOR_MIN, BoardPanel.COLOR_MAX, BoardPanel.COLOR_MAX), 4, 4, 1, new boolean[][]{\r\n\t\t\t{\r\n\t\t\t\t\tfalse, false, false, false,\r\n\t\t\t\t\ttrue, true, true, true,\r\n\t\t\t\t\tfalse, false, false, false,\r\n\t\t\t\t\tfalse, false, false, false,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\tfalse, false, true, false,\r\n\t\t\t\t\tfalse, false, true, false,\r\n\t\t\t\t\tfalse, false, true, false,\r\n\t\t\t\t\tfalse, false, true, false,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\tfalse, false, false, false,\r\n\t\t\t\t\tfalse, false, false, false,\r\n\t\t\t\t\ttrue, true, true, true,\r\n\t\t\t\t\tfalse, false, false, false,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\tfalse, true, false, false,\r\n\t\t\t\t\tfalse, true, false, false,\r\n\t\t\t\t\tfalse, true, false, false,\r\n\t\t\t\t\tfalse, true, false, false,\r\n\t\t\t}\r\n\t}),\r\n\r\n//\tTypeJ(new Color(BoardPanel.COLOR_MIN, BoardPanel.COLOR_MIN, BoardPanel.COLOR_MAX), 3, 3, 2, new boolean[][]{\r\n//\t\t\t{\r\n//\t\t\t\t\ttrue, false, false,\r\n//\t\t\t\t\ttrue, true, true,\r\n//\t\t\t\t\tfalse, false, false,\r\n//\t\t\t},\r\n//\t\t\t{\r\n//\t\t\t\t\tfalse, true, true,\r\n//\t\t\t\t\tfalse, true, false,\r\n//\t\t\t\t\tfalse, true, false,\r\n//\t\t\t},\r\n//\t\t\t{\r\n//\t\t\t\t\tfalse, false, false,\r\n//\t\t\t\t\ttrue, true, true,\r\n//\t\t\t\t\tfalse, false, true,\r\n//\t\t\t},\r\n//\t\t\t{\r\n//\t\t\t\t\tfalse, true, false,\r\n//\t\t\t\t\tfalse, true, false,\r\n//\t\t\t\t\ttrue, true, false,\r\n//\t\t\t}\r\n//\t}),\r\n\r\n\tTypeL(new Color(BoardPanel.COLOR_MAX, 127, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][]{\r\n\t\t\t{\r\n\t\t\t\t\tfalse, false, true,\r\n\t\t\t\t\ttrue, true, true,\r\n\t\t\t\t\tfalse, false, false,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\tfalse, true, false,\r\n\t\t\t\t\tfalse, true, false,\r\n\t\t\t\t\tfalse, true, true,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\tfalse, false, false,\r\n\t\t\t\t\ttrue, true, true,\r\n\t\t\t\t\ttrue, false, false,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\ttrue, true, false,\r\n\t\t\t\t\tfalse, true, false,\r\n\t\t\t\t\tfalse, true, false,\r\n\t\t\t}\r\n\t}),\r\n\r\n\tTypeO(new Color(BoardPanel.COLOR_MAX, BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN), 2, 2, 2, new boolean[][]{\r\n\t\t\t{\r\n\t\t\t\t\ttrue, true,\r\n\t\t\t\t\ttrue, true,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\ttrue, true,\r\n\t\t\t\t\ttrue, true,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\ttrue, true,\r\n\t\t\t\t\ttrue, true,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\ttrue, true,\r\n\t\t\t\t\ttrue, true,\r\n\t\t\t}\r\n\t}),\r\n\r\n\tTypeS(new Color(BoardPanel.COLOR_MIN, BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][]{\r\n\t\t\t{\r\n\t\t\t\t\tfalse, true, true,\r\n\t\t\t\t\ttrue, true, false,\r\n\t\t\t\t\tfalse, false, false,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\tfalse, true, false,\r\n\t\t\t\t\tfalse, true, true,\r\n\t\t\t\t\tfalse, false, true,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\tfalse, false, false,\r\n\t\t\t\t\tfalse, true, true,\r\n\t\t\t\t\ttrue, true, false,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\ttrue, false, false,\r\n\t\t\t\t\ttrue, true, false,\r\n\t\t\t\t\tfalse, true, false,\r\n\t\t\t}\r\n\t}),\r\n\r\n\tTypeT(new Color(128, BoardPanel.COLOR_MIN, 128), 3, 3, 2, new boolean[][]{\r\n\t\t\t{\r\n\t\t\t\t\tfalse, true, false,\r\n\t\t\t\t\ttrue, true, true,\r\n\t\t\t\t\tfalse, false, false,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\tfalse, true, false,\r\n\t\t\t\t\tfalse, true, true,\r\n\t\t\t\t\tfalse, true, false,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\tfalse, false, false,\r\n\t\t\t\t\ttrue, true, true,\r\n\t\t\t\t\tfalse, true, false,\r\n\t\t\t},\r\n\t\t\t{\r\n\t\t\t\t\tfalse, true, false,\r\n\t\t\t\t\ttrue, true, false,\r\n\t\t\t\t\tfalse, true, false,\r\n\t\t\t}\r\n\t});\r\n\r\n//\tTypeZ(new Color(BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][] {\r\n//\t\t{\r\n//\t\t\ttrue,\ttrue,\tfalse,\r\n//\t\t\tfalse,\ttrue,\ttrue,\r\n//\t\t\tfalse,\tfalse,\tfalse,\r\n//\t\t},\r\n//\t\t{\r\n//\t\t\tfalse,\tfalse,\ttrue,\r\n//\t\t\tfalse,\ttrue,\ttrue,\r\n//\t\t\tfalse,\ttrue,\tfalse,\r\n//\t\t},\r\n//\t\t{\r\n//\t\t\tfalse,\tfalse,\tfalse,\r\n//\t\t\ttrue,\ttrue,\tfalse,\r\n//\t\t\tfalse,\ttrue,\ttrue,\r\n//\t\t},\r\n//\t\t{\r\n//\t\t\tfalse,\ttrue,\tfalse,\r\n//\t\t\ttrue,\ttrue,\tfalse,\r\n//\t\t\ttrue,\tfalse,\tfalse,\r\n//\t\t}\r\n//\t});\r\n\t\t\r\n\tprivate Color baseColor;\r\n\tprivate Color lightColor;\r\n\tprivate Color darkColor;\r\n\tprivate int spawnCol;\r\n\tprivate int spawnRow;\r\n\tprivate int dimension;\r\n\tprivate int rows;\r\n\tprivate int cols;\r\n\tprivate boolean[][] tiles;\r\n\t\r\n\tTetrominoe(Color color, int dimension, int cols, int rows, boolean[][] tiles) {\r\n\t\tthis.baseColor = color;\r\n\t\tthis.lightColor = Color.BLACK;\r\n\t\tthis.darkColor = Color.BLACK;\r\n\t\tthis.dimension = dimension;\r\n\t\tthis.tiles = tiles;\r\n\t\tthis.cols = cols;\r\n\t\tthis.rows = rows;\r\n\t\tthis.spawnCol = 5 - (dimension >> 1);\r\n\t\tthis.spawnRow = getTopInset(0);\r\n\t}\r\n\t\r\n\tpublic Color getBaseColor() {\r\n\t\treturn baseColor;\r\n\t}\r\n\t\r\n\tpublic Color getLightColor() {\r\n\t\treturn lightColor;\r\n\t}\r\n\t\r\n\tpublic Color getDarkColor() {\r\n\t\treturn darkColor;\r\n\t}\r\n\t\r\n\tpublic int getDimension() {\r\n\t\treturn dimension;\r\n\t}\r\n\t\r\n\tpublic int getSpawnColumn() {\r\n\t\treturn spawnCol;\r\n\t}\r\n\t\r\n\tpublic int getSpawnRow() {\r\n\t\treturn spawnRow;\r\n\t}\r\n\t\r\n\tpublic int getRows() {\r\n\t\treturn rows;\r\n\t}\r\n\t\r\n\tpublic int getCols() {\r\n\t\treturn cols;\r\n\t}\r\n\t\r\n\tpublic boolean isTile(int x, int y, int rotation) {\r\n\t\treturn tiles[rotation][y * dimension + x];\r\n\t}\r\n\t\r\n\tpublic int getLeftInset(int rotation) {\r\n\t\tfor(int x = 0; x < dimension; x++) {\r\n\t\t\tfor(int y = 0; y < dimension; y++) {\r\n\t\t\t\tif(isTile(x, y, rotation)) {\r\n\t\t\t\t\treturn x;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n\t\treturn -1;\r\n\t}\r\n\t\r\n\tpublic int getRightInset(int rotation) {\r\n\t\tfor(int x = dimension - 1; x >= 0; x--) {\r\n\t\t\tfor(int y = 0; y < dimension; y++) {\r\n\t\t\t\tif(isTile(x, y, rotation)) {\r\n\t\t\t\t\treturn dimension - x;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n\t\treturn -1;\r\n\t}\r\n\t\r\n\tpublic int getTopInset(int rotation) {\r\n\t\tfor(int y = 0; y < dimension; y++) {\r\n\t\t\tfor(int x = 0; x < dimension; x++) {\r\n\t\t\t\tif(isTile(x, y, rotation)) {\r\n\t\t\t\t\treturn y;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n\t\treturn -1;\r\n\t}\r\n\t\r\n\tpublic int getBottomInset(int rotation) {\r\n\t\tfor(int y = dimension - 1; y >= 0; y--) {\r\n\t\t\tfor(int x = 0; x < dimension; x++) {\r\n\t\t\t\tif(isTile(x, y, rotation)) {\r\n\t\t\t\t\treturn dimension - y;\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n\t\treturn -1;\r\n\t}\r\n\t\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Dominio/Tetrominoe.java b/src/Dominio/Tetrominoe.java
+--- a/src/Dominio/Tetrominoe.java	(revision 95bf4095dfd5032685c1a9240d5840c6670863b7)
++++ b/src/Dominio/Tetrominoe.java	(date 1638638545718)
+@@ -33,29 +33,6 @@
+ 			}
+ 	}),
+ 
+-//	TypeJ(new Color(BoardPanel.COLOR_MIN, BoardPanel.COLOR_MIN, BoardPanel.COLOR_MAX), 3, 3, 2, new boolean[][]{
+-//			{
+-//					true, false, false,
+-//					true, true, true,
+-//					false, false, false,
+-//			},
+-//			{
+-//					false, true, true,
+-//					false, true, false,
+-//					false, true, false,
+-//			},
+-//			{
+-//					false, false, false,
+-//					true, true, true,
+-//					false, false, true,
+-//			},
+-//			{
+-//					false, true, false,
+-//					false, true, false,
+-//					true, true, false,
+-//			}
+-//	}),
+-
+ 	TypeL(new Color(BoardPanel.COLOR_MAX, 127, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][]{
+ 			{
+ 					false, false, true,
+@@ -144,29 +121,6 @@
+ 			}
+ 	});
+ 
+-//	TypeZ(new Color(BoardPanel.COLOR_MAX, BoardPanel.COLOR_MIN, BoardPanel.COLOR_MIN), 3, 3, 2, new boolean[][] {
+-//		{
+-//			true,	true,	false,
+-//			false,	true,	true,
+-//			false,	false,	false,
+-//		},
+-//		{
+-//			false,	false,	true,
+-//			false,	true,	true,
+-//			false,	true,	false,
+-//		},
+-//		{
+-//			false,	false,	false,
+-//			true,	true,	false,
+-//			false,	true,	true,
+-//		},
+-//		{
+-//			false,	true,	false,
+-//			true,	true,	false,
+-//			true,	false,	false,
+-//		}
+-//	});
+-		
+ 	private Color baseColor;
+ 	private Color lightColor;
+ 	private Color darkColor;
+Index: src/Presentacion/BoardPanel.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package Presentacion;\r\n\r\nimport Dominio.*;\r\n\r\nimport java.awt.Color;\r\nimport java.awt.Dimension;\r\nimport java.awt.Font;\r\nimport java.awt.Graphics;\r\n\r\nimport javax.swing.JPanel;\r\n\r\npublic class BoardPanel extends JPanel {\r\n\r\n\tpublic static final int COLOR_MIN = 35;\r\n\tpublic static final int COLOR_MAX = 255 - COLOR_MIN;\r\n\tprivate static final int BORDER_WIDTH = 5;\r\n\tpublic static final int COL_COUNT = 10;\r\n\tprivate static final int VISIBLE_ROW_COUNT = 20;\r\n\tprivate static final int HIDDEN_ROW_COUNT = 2;\r\n\tpublic static final int ROW_COUNT = VISIBLE_ROW_COUNT + HIDDEN_ROW_COUNT;\r\n\tpublic static final int TILE_SIZE = 24;\r\n\tpublic static final int SHADE_WIDTH = 4;\r\n\tprivate static final int CENTER_X = COL_COUNT * TILE_SIZE / 2;\r\n\tprivate static final int CENTER_Y = VISIBLE_ROW_COUNT * TILE_SIZE / 2;\r\n\tpublic static final int PANEL_WIDTH = COL_COUNT * TILE_SIZE + BORDER_WIDTH * 2;\r\n\tpublic static final int PANEL_HEIGHT = VISIBLE_ROW_COUNT * TILE_SIZE + BORDER_WIDTH * 2;\r\n\tprivate final int MOVEMENT = 25;\r\n\tprivate static final Font LARGE_FONT = new Font(\"Times New Roman\", Font.BOLD, 18);\r\n\tprivate static final Font SMALL_FONT = new Font(\"Times New Roman\", Font.BOLD, 14);\r\n\tprivate Game game;\r\n\tprivate Tetrominoe[][] tiles;\r\n\tprivate Board board;\r\n\r\n\tpublic BoardPanel(Game game) {\r\n\t\tthis.game = game;\r\n\t\tboard = Board.getBoard(this,game);\r\n\t\tsetPreferredSize(new Dimension(PANEL_WIDTH, PANEL_HEIGHT));\r\n\t\tsetBackground(Color.BLACK);\r\n\t}\r\n\t\r\n\r\n\t@Override\r\n\tpublic void paintComponent(Graphics g) {\r\n\t\tsuper.paintComponent(g);\r\n\t\t\r\n\t\tg.translate(BORDER_WIDTH, BORDER_WIDTH);\r\n\t\t\r\n\t\tif(game.isPaused()) {\r\n\t\t\tdrawCase1(g);\r\n\t\t} else if(game.isNewGame() || game.isGameOver()) {\r\n\t\t\tdrawCase2(g);\r\n\t\t} else {\r\n\t\t\tdrawSquares(g);\r\n\t\t\tdrawBoard(g);\r\n\t\t}\r\n\t\tg.setColor(Color.WHITE);\r\n\t\tg.drawRect(MOVEMENT, MOVEMENT, TILE_SIZE * COL_COUNT, TILE_SIZE * VISIBLE_ROW_COUNT);\r\n\t}\r\n\r\n\tprivate void drawSquares(Graphics g){\r\n\t\tfor(int x = 0; x < COL_COUNT; x++) {\r\n\t\t\tfor(int y = HIDDEN_ROW_COUNT; y < ROW_COUNT; y++) {\r\n\t\t\t\tTetrominoe tile = board.getTile(x, y);\r\n\t\t\t\tif(tile != null) {\r\n\t\t\t\t\tdrawTile(tile, x * TILE_SIZE, (y - HIDDEN_ROW_COUNT) * TILE_SIZE, g);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n\t\tTetrominoe type = game.getPieceType();\r\n\t\tint pieceCol = game.getPieceCol();\r\n\t\tint pieceRow = game.getPieceRow();\r\n\t\tint rotation = game.getPieceRotation();\r\n\r\n\t\tfor(int col = 0; col < type.getDimension(); col++) {\r\n\t\t\tfor(int row = 0; row < type.getDimension(); row++) {\r\n\t\t\t\tif(pieceRow + row >= 2 && type.isTile(col, row, rotation)) {\r\n\t\t\t\t\tdrawTile(type, (pieceCol + col) * TILE_SIZE, (pieceRow + row - HIDDEN_ROW_COUNT) * TILE_SIZE, g);\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t\tColor base = type.getBaseColor();\r\n\t\tbase = new Color(base.getRed(), base.getGreen(), base.getBlue(), 20);\r\n\t\tfor(int lowest = pieceRow; lowest < ROW_COUNT; lowest++) {\r\n\t\t\tif(board.isValidAndEmpty(type, pieceCol, lowest, rotation)) {\r\n\t\t\t\tcontinue;\r\n\t\t\t}\r\n\r\n\t\t\tlowest--;\r\n\r\n\t\t\tfor(int col = 0; col < type.getDimension(); col++) {\r\n\t\t\t\tfor(int row = 0; row < type.getDimension(); row++) {\r\n\t\t\t\t\tif(lowest + row >= 2 && type.isTile(col, row, rotation)) {\r\n\t\t\t\t\t\tdrawTile(base, base.brighter(), base.darker(), (pieceCol + col) * TILE_SIZE, (lowest + row - HIDDEN_ROW_COUNT) * TILE_SIZE, g);\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t\tbreak;\r\n\t\t}\r\n\t}\r\n\r\n\tprivate void drawCase1(Graphics g){\r\n\t\tg.setFont(LARGE_FONT);\r\n\t\tg.setColor(Color.BLACK);\r\n\t\tString msg = \"PAUSED\";\r\n\t\tg.drawString(msg, CENTER_X - g.getFontMetrics().stringWidth(msg) / 2 + 10, CENTER_Y);\r\n\t}\r\n\tprivate void drawCase2(Graphics g){\r\n\t\tg.setFont(LARGE_FONT);\r\n\t\tg.setColor(Color.BLACK);\r\n\t\tString msg = game.isNewGame() ? \"TETRIS GAME\" : \"GAME OVER\";\r\n\t\tg.drawString(msg, CENTER_X - g.getFontMetrics().stringWidth(msg) / 2 + 10, 150);\r\n\t\tg.setFont(SMALL_FONT);\r\n\t\tmsg = \"Press E to Play\" + (game.isNewGame() ? \"\" : \" Again\");\r\n\t\tg.drawString(msg, CENTER_X - g.getFontMetrics().stringWidth(msg) / 2 + 10, 300);\r\n\t}\r\n\r\n\tprivate void drawTile(Tetrominoe type, int x, int y, Graphics g) {\r\n\t\tdrawTile(type.getBaseColor(), type.getLightColor(), type.getDarkColor(), x, y, g);\r\n\t}\r\n\tprivate void drawBoard(Graphics g){\r\n\t\tg.setColor(Color.DARK_GRAY);\r\n\t\tfor(int col = 0; col < COL_COUNT; col++){\r\n\t\t\tfor(int row = 0; row < VISIBLE_ROW_COUNT; row++){\r\n\t\t\t\tg.drawLine(MOVEMENT,row*TILE_SIZE+MOVEMENT,COL_COUNT*TILE_SIZE+MOVEMENT,row*TILE_SIZE+MOVEMENT);\r\n\t\t\t\tg.drawLine(col*TILE_SIZE+MOVEMENT,MOVEMENT,col*TILE_SIZE+MOVEMENT,\r\n\t\t\t\t\t\tVISIBLE_ROW_COUNT*TILE_SIZE+MOVEMENT);\r\n\t\t\t}\r\n\t\t}\r\n\t\tg.setColor(Color.BLACK);\r\n\t\tg.drawRect(MOVEMENT,MOVEMENT,(TILE_SIZE*COL_COUNT),(TILE_SIZE*COL_COUNT));\r\n\t}\r\n\tprivate void drawTile(Color base, Color light, Color dark, int x, int y, Graphics g) {\r\n\t\t\r\n\t\tg.setColor(base);\r\n\t\tg.fillRect(x+MOVEMENT, y+MOVEMENT, TILE_SIZE, TILE_SIZE);\r\n\t\tg.setColor(Color.BLACK);\r\n\t\tg.fillRect(x+MOVEMENT, y+MOVEMENT + TILE_SIZE - SHADE_WIDTH, TILE_SIZE, SHADE_WIDTH);\r\n\t\tg.fillRect(x + TILE_SIZE - SHADE_WIDTH+MOVEMENT, y+MOVEMENT, SHADE_WIDTH, TILE_SIZE);\r\n\t\t\r\n\t\tg.setColor(light);\r\n\t\tfor(int i = 0; i < SHADE_WIDTH; i++) {\r\n\t\t\tg.drawLine(x+MOVEMENT, y+MOVEMENT + i, x+MOVEMENT + TILE_SIZE - i - 1, y +MOVEMENT+ i);\r\n\t\t\tg.drawLine(x+MOVEMENT + i, y+MOVEMENT, x + i+MOVEMENT, y +MOVEMENT+ TILE_SIZE - i - 1);\r\n\t\t}\r\n\t}\r\n\tpublic Board getBoard(){\r\n\t\treturn board;\r\n\t}\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/Presentacion/BoardPanel.java b/src/Presentacion/BoardPanel.java
+--- a/src/Presentacion/BoardPanel.java	(revision 95bf4095dfd5032685c1a9240d5840c6670863b7)
++++ b/src/Presentacion/BoardPanel.java	(date 1638638545754)
+@@ -28,7 +28,6 @@
+ 	private static final Font LARGE_FONT = new Font("Times New Roman", Font.BOLD, 18);
+ 	private static final Font SMALL_FONT = new Font("Times New Roman", Font.BOLD, 14);
+ 	private Game game;
+-	private Tetrominoe[][] tiles;
+ 	private Board board;
+ 
+ 	public BoardPanel(Game game) {

@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Update_at_5_12_2021_9_25_a__m__[Default_Changelist]" date="1638714377326" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_12_2021_9_25_a__m__[Default_Changelist]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 5/12/2021 9:25 a. m. [Default Changelist]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Dominio/Board.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Dominio/Board.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_12_2021_9_25_a__m__[Default_Changelist]/Board.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Presentacion/TetrisMain.class" />
+    <option name="AFTER_PATH" value="out/production/ProyectoFinal/Presentacion/TetrisMain.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_12_2021_9_25_a__m__[Default_Changelist]/TetrisMain.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/ProyectoFinal/Presentacion/TetrisMain$2.class" />
+    <option name="AFTER_PATH" />
+    <option name="SHELVED_PATH" />
+  </binary>
+</changelist>
