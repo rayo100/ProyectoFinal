@@ -4,29 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="Diseño">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_11_39_p__m__[Default_Changelist]/SidePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_11_39_p__m__[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_11_39_p__m___Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Buffo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Clock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Machines.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Shape$Tetrominoe.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Shape.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/SidePanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/Tetris.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/TetrisException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m__[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_29_11_2021_8_20_p__m___Default_Changelist_.xml" beforeDir="false" />
+    <list default="true" id="b2d7d353-4d5c-4575-b84c-54a645cdaf76" name="Default Changelist" comment="Diagramas de clases y documentacion">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetris.asta" beforeDir="false" afterPath="$PROJECT_DIR$/Tetris.asta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Buffo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Buffo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Clock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Clock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/Machines.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/Machines.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/TetrisException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/TetrisException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dominio/TetrominoeC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dominio/TetrominoeC.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638852110491</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Diagramas de clases y documentacion">
+      <created>1638905591573</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1638905591573</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -305,7 +291,8 @@
     <MESSAGE value="1" />
     <MESSAGE value="TT" />
     <MESSAGE value="Diseño" />
-    <option name="LAST_COMMIT_MESSAGE" value="Diseño" />
+    <MESSAGE value="Diagramas de clases y documentacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="Diagramas de clases y documentacion" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
