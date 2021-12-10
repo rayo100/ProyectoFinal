@@ -142,7 +142,7 @@ public class Records {
      * @return datos, es la cadena con el puntaje del jugador y su apodo
      */
     private static String toString(int score, String nickname){
-        String datos = nickname + " → " + score;
+        String datos = nickname + " " + score;
         return datos;
     }
 
