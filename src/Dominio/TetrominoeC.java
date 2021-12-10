@@ -156,7 +156,7 @@ public class TetrominoeC {
     public TetrominoeC(){
         Random r = new Random();
         int typePiece = r.nextInt(5);
-        this.borderType = BORDERTYPES[r.nextInt(1)];
+        this.borderType = BORDERTYPES[r.nextInt(4)];
         this.baseColor = COLORS[typePiece];
         assignColors();
         this.dimension = DIMENSIONS[typePiece];

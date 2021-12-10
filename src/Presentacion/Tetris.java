@@ -35,7 +35,7 @@ public class Tetris extends JDialog {
 	private Game game2;
 	private static Tetris tetris;
 
-	public static boolean isTwoPlayer = true;
+	public static boolean isTwoPlayer = false;
 
 	/**
 	 * Este metodo
@@ -81,6 +81,7 @@ public class Tetris extends JDialog {
 	private void prepareElementos(){
 		if(isTwoPlayer) ancho += BoardPanel.PANEL_WIDTH + 50;
 		setPreferredSize(new Dimension(ancho, ALTO));
+		setModalityType(ModalityType.MODELESS);
 		setLayout(new GridLayout());
 		setResizable(false);
 		cargarElementos();
